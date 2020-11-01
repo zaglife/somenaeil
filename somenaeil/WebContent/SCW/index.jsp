@@ -16,7 +16,8 @@ jsp
 %>
 
 
-<!DOCTYPE html>
+
+<!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
@@ -64,9 +65,24 @@ a { text-decoration: none; }
 	border: 1px black solid;
 }
 </style>
-<!-- TODO 분류탭 -->
+
+<!-- TODO main 분류탭 -->
 <!-- TODO 아이콘 -->
 <!--  TODO footer -->
+<!-- TODO create js -->
+<!--  
+<TODO List>
+- main 분류탭
+- 아이콘 추가
+- footer 구현
+- 상호작용 (create js file)
+- 코드 및 파일 정리 (유지보수) (css, html, js)
+- main page에 필요한 데이터 정리
+- 포스팅 읽기 페이지
+
+<요청사항>
+- main page에 필요한 이미지 파일 요청 (png, jpg)
+-->
 
 </head>
 <body>

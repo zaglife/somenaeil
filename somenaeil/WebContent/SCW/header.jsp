@@ -41,7 +41,7 @@
 	
 	fieldset > * { vertical-align: middle }
 	
-	#search_filter {
+	#filter_search {
 		flex: 1;
 		width: 30px;
 		height: 30px;
@@ -53,7 +53,8 @@
 		height: 30px;
     }
 
-    #search_btn {
+
+    #btn_search {
     	flex: 1;
         width: 30px;
         height: 30px;
@@ -74,13 +75,17 @@
 </style>
 
 <!-- 상단 메뉴바 -->
-<div id="logo"><img src="${pageContext.request.contextPath}/main/img/cate_a_l.png"></img></div>
+<div id="logo">
+	<a href="#">
+	<img src="${pageContext.request.contextPath}/main/img/cate_a_l.png"/>
+	</a>
+</div>
 <div id="search">
     <form id="sform" name="sform" action="" method="GET">
         <fieldset>
-        	<img id="search_filter" src="${pageContext.request.contextPath}/main/img/cate_a_l.png"></img>
+        	<img id="filter_search" src="${pageContext.request.contextPath}/main/img/cate_a_l.png"></img>
             <input id="search" name="search" type="text" title="검색어 입력">
-            <button id="search_btn" type="submit" title="검색" class="btn_submit"></button>
+            <button id="btn_search" type="submit" title="검색" class="btn_submit"></button>
         </fieldset>
     </form>
 </div>
