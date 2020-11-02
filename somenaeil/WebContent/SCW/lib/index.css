@@ -1,0 +1,32 @@
+body { margin: 0; padding-top: 50px; }		/* 상단바(50px) + 20px */
+
+a { color:black; text-decoration: none; }
+
+#container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#header { 
+	display: flex;
+	position: fixed;
+	
+	flex: 1;
+	top: 0; left: 0;
+	width: 100%; height: 50px;
+    line-height: 50px;
+    z-index: 3;
+        
+    border-bottom: 1px solid black;
+    background-color: white;
+}
+
+#content {
+    flex: 3;
+    width: 55%;
+}
+
+#footer {
+	border: 1px black solid;
+}

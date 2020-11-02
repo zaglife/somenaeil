@@ -1,0 +1,175 @@
+/* tab_menu */
+.tab_menu {
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	
+	position: fixed;
+	width: 55%; height: 50px;
+	margin: 0; padding: 0;
+	z-index: 2;
+	
+	border-bottom: 1px solid black;
+	background-color: white;
+	
+}
+
+.t_menu {
+	text-align: center;
+	list-style-type: none;
+	
+	flex: 1 1 50px;
+	line-height: 50px;
+	margin: 0 40px;
+}
+
+.current {
+	border-bottom: 3px solid green;
+}
+
+
+/* tab_content */
+.tab_content {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	
+	flex: 1;
+	width: 100%;
+	margin-top: 100px; /* 50px(상단바) + 50px(tab)*/
+}
+
+
+/* post */
+.post {
+	display: flex;
+	flex-direction: column;
+	
+	flex: 1 0 45%;
+	width: 450px; height: 450px;
+	margin: 15px; padding: 15px;
+	
+	border: 1px solid black;
+	box-sizing: border-box;
+	border-radius: 40px 40px;
+}
+
+
+/* post detail */
+.post_header {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+}
+
+.post_header_thumb {
+	display: flex;
+	position: relative;
+	justify-content: center;
+	align-items: center;
+	
+	width: 15%; height: 100%;
+}
+
+.tab_thumb, .user_thumb { border-radius: 50%; }
+
+.tab_thumb {
+	position: absolute;
+	
+	top: 5px; left: 10px;
+	width: 25px; height: 25px;
+	z-index: 1;
+	
+	background-color: white; 
+}
+
+.user_thumb {
+	position: absolute;
+	
+	top: 10px; left: 20px;
+	width: 50px; height: 50px;
+}
+
+.post_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	width: 85%; height: 100%;
+	padding-left: 20px;
+}
+
+.post_auth {
+	font-size: 20pt;
+	font-weight: bold;
+}
+
+.post_date { font-size: 12pt; }
+
+
+/* title */
+.post_title {
+	display: table;
+	height: 80px;
+	flex: 1 0;
+}
+
+.post_title a {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	
+	font-size: 25pt; font-weight: bold;
+}
+
+
+/* content */
+.post_content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	flex: 1 100px;
+	padding: 15px;
+}
+
+.post_content p {
+	text-align: center;
+	font-size: 17pt;
+	
+	margin: 0;
+}
+
+
+/* post img frame  */
+.post_thumb {
+	text-align: center;
+	
+	flex: 2 2 150px;
+	width: 150px; height: 150px;
+	margin: 0 auto;
+	margin-top: 15px;
+	
+}
+
+.post_thumb img {
+	max-width: 150px; max-height: 150px;
+}
+
+
+/* footer */
+.post_footer {
+	display: flex;
+	flex: 0.5 0;
+}
+
+.post_footer_hashTag { flex: 4; }
+
+.hash { margin: 0 10px; }
+
+.post_footer_subInfo {
+	flex: 1;
+	
+	margin: 0 auto;
+	text-align: center;
+}

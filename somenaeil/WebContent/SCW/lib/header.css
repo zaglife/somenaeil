@@ -1,0 +1,70 @@
+img { vertical-align: middle; }
+
+#logo {
+	flex: 1;
+	width: 200px;
+}
+    
+#search { flex: 2; }
+    
+#nav_list {
+	display: flex;
+	justify-content: flex-end;
+    flex: 1;
+    width: 30%;
+}
+	
+	/* logo 파트 */
+#logo img {
+	width: 120px;
+	height: 30px;
+	margin-left: 10px;
+}
+
+/* search 파트 */
+fieldset {
+	
+	border: 0;
+	height: 50px;
+	margin: 0; padding: 0;
+	
+	text-align: center;
+}
+
+fieldset > * { vertical-align: middle }
+
+#filter_search {
+	flex: 1;
+	width: 30px; height: 30px;
+}
+
+#search {
+	flex: 2;
+    width: 300px; height: 30px;
+  }
+
+
+#btn_search {
+	flex: 1;
+    width: 30px; height: 30px;
+    
+    background: none;
+    border: none;
+}
+
+#btn_search img {
+	width: 20px; height: 20px;
+	cursor: pointer;
+}
+ 
+/* list_nav 파트 */
+.nav_item {
+	float: left;
+	
+	width: 50px; height: 50px;
+	padding: 0 2px;
+}
+
+.nav_item_img {
+	 width: 70%; height: 70%;
+}
