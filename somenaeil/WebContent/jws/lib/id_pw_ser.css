@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+
+html ,body ,div ,span,input{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	font-family: 'paybooc-Medium';
+}
+
+/*
+
+	font-family: 'paybooc-Light';
+
+	font-family: 'paybooc-Medium';
+
+	font-family: 'paybooc-Bold';
+
+	font-family: 'paybooc-ExtraBold';
+
+*/
+
+.main{
+	left: 50%;
+    height: auto;
+    margin-top: 200px;
+    width: 600px;
+    position: relative;
+    transform: translate(-50%,0);
+}
+#ser_top{
+	left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+    border-bottom: 1px dashed;
+    height: 50px;
+}
+#id_pw{
+	float: left;
+    left: 50%;
+    position: relative;
+    transform: translate(-52%, 0);
+}
+#id_ser{
+	width: 200px;
+    height: 40px;
+    font-size: 19px;
+    font-weight: 800;
+    margin: 0px 30px 15px 0;
+    border-radius: 10px;
+}
+#pw_ser{
+	width: 200px;
+    height: 40px;
+    font-size: 19px;
+    font-weight: 800;
+    border-radius: 10px;
+}
+#ser_body{
+	height: 225px;
+    border-bottom: 1px dashed;
+}
+
+#bd_te{
+	position: relative;
+    left: 50%;
+    transform: translate(-28%, 0);
+    font-size: 13px;
+    font-weight: 900;
+    margin: 46px 0 0 0;
+    width: 400px;
+}
+#ser_name{
+	left: 50%;
+    position: relative;
+    transform: translate(-15%, 0);
+    font-size: 18px;
+    font-weight: 900;
+    margin: 10px 0 5px 0;
+}
+#ser_id{
+	left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+    font-size: 18px;
+    font-weight: 900;
+    margin: 25px 0 5px 0;
+    float: left;
+}
+#name_te{
+	width: 200px;
+    height: 20px;
+    font-size: 18px;
+    border-radius:6px;
+    border:1px solid black;
+}
+#name_te_pw{
+	width: 200px;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+#ser_mail{
+	left: 50%;
+    position: relative;
+    transform: translate(-24%, 0);
+    font-size: 18px;
+    font-weight: 900;
+}
+#ser_mail_pw{
+	left: 50%;
+    position: relative;
+    transform: translate(-65%, 0);
+    font-size: 17px;
+    font-weight: 900;
+    float: left;
+}
+#mail_te{
+	width: 200px;
+    height: 20px;
+    font-size: 18px;
+    border-radius:6px;
+    border:1px solid black;
+}
+#mail_te_pw{
+	width: 201px;
+    height: 20px;
+    font-size: 15px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+#mail_in{
+	width: 70px;
+    height: 25px;
+    float: left;
+    position: relative;
+    left: 100%;
+    margin: 0 0 0 5px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+#id_bt{
+	left: 50%;
+    position: relative;
+    transform: translate(-5%, 0);
+    margin: 10px 0 0 0;
+}
+#idser_bt{
+	width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+#ser_bt{
+	position: relative;
+    text-align: center;
+    float: left;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 21px;
+}
+
+#id_cl_bd{
+	float: left;
+    border-bottom: 1px dashed;
+    text-align: center;
+    width: 100%;
+    height: 225px;
+}
+#cl_te{
+	margin-top: 50px;
+}
+#cl_te1{
+	font-size: 27px;
+    font-weight: bold;
+}
+#cl_te2{
+	font-size: 19px;
+    font-weight: 800;
+}
+#cl_bt{
+	
+}
+#cl_lo{
+	    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+#cl_pw{
+	width: 100px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+

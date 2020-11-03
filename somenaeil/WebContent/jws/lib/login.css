@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+html , body , div ,span{
+	margin:0;
+	padding:0;
+	font-size: 12px;
+	font-family: 'paybooc-Medium';
+}
+a{
+	text-decoration:none;
+}
+
+/*
+
+	font-family: 'paybooc-Light';
+
+	font-family: 'paybooc-Medium';
+
+	font-family: 'paybooc-Bold';
+
+	font-family: 'paybooc-ExtraBold';
+
+*/
+
+.main {
+       margin-top: 200px;
+    background: #ccc;
+    width: 600px;
+    height: auto;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+.title{
+    background:white;
+    position: relative;
+    height: 55px;
+}
+#title1{
+    width:76px;
+    position:relative;
+    font-size:12pt;
+    left: 1%;
+    top: 22px;
+    margin-right: 0;
+    color: green;
+}
+#title2{
+    position: relative;
+    left: 34%;
+    width: 342px;
+    color: darkseagreen;
+}
+#ser{
+	width: 300px;
+    height: 20px;
+    left: 12px;
+    position: relative;
+    border: 1px solid lawngreen;
+    border-radius: 30px;
+    outline: none;
+}
+#title3{
+    position: relative;
+    width: 150px;
+    left: 85%;
+    top: -44%;
+}
+#login_title{
+        background: #888;
+    width: 100%;
+    position: relative
+    }
+#title_text{
+	  FONT-WEIGHT: 900;
+    float: left;
+    background: white;
+    position: relative;
+    width: 540px;
+    font-size: 28px;
+    text-align: center;
+    border-bottom: 1px dashed #555;
+    padding: 30px;
+}
+
+
+#login_body{
+    background: #ddd;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+#body_text{
+	position: relative;
+    float: left;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 35px 0;
+    width: 350px;
+}
+#body_text_left{
+	float: left;
+	width:250px;
+}
+#body_text_left input{
+	width: 220px;
+	height: 20px;
+	margin: 5px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border:1px solid #555;
+}
+#login_bt{
+	float: left;
+	position: relative;
+	width: 75px;
+    height: 75px;
+	border-radius: 5px;
+	border:1px solid #555;
+	margin: 5px;
+	padding: 5px 10px;
+}
+
+#login_id{
+	border-radius:6px;
+	
+}
+#password{
+	border-radius:6px;
+	
+}
+#body_bt{
+	float: left;
+	width: 100%;
+}
+#login_ing{
+	float: left;
+	margin: 5px 0 0 5px;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	width: 15px;
+    height: 15px;
+}
+#body_bt p{
+	float: left;
+	margin: 5px 0 0 2px;
+	height: 20px;
+    line-height: 17px;
+}   
+#body_bt_right{
+	float: right;
+	margin: 5px 20px 0 0;
+}
+
+#id_ser{
+	
+}
+#pw_ser{
+	
+}
+
+
+
+
+#snsLogin{
+	background: #fff;
+    width: 100%;
+    text-align: center;
+        float: left;
+    position: relative
+}
+#sns_text{
+	font-size: 22px;
+    font-weight: 600;
+}
+#sns_box{
+	margin:20px 0 60px 0;
+}
+#kakao{
+	width: 50px;
+    height: 50px;
+    margin-right: 30px;
+}
+#naver{
+	width: 50px;
+    height: 50px;
+}
+#facebook{
+	width: 50px;
+    height: 50px;
+    margin-left: 30px;
+}
+
+#login_bot{
+    width: 600px;
+    text-align: center;
+    border-top: 1px dashed;
+    float: left;
+    position: relative;
+}
+#bot_text{
+	margin-top: 44px;
+    font-weight: 600;
+    font-size: 13px;
+}
+#newjoin{
+	margin-top: 10px;
+}
+#join{
+	font-size: 15px;
+    font-weight: normal;
+    width: 1;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid royalblue;
+    color: royalblue;
+    width: 20px;
+    padding: 2px 30px 2px 30px;
+}
