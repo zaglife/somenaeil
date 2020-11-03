@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+
+html ,body ,div ,span,input{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	font-family: 'paybooc-Medium';
+}
+
+/*
+
+	font-family: 'paybooc-Light';
+
+	font-family: 'paybooc-Medium';
+
+	font-family: 'paybooc-Bold';
+
+	font-family: 'paybooc-ExtraBold';
+
+*/
+
+.main{
+	left: 50%;
+    height: auto;
+    margin-top: 200px;
+    width: 600px;
+    position: relative;
+    transform: translate(-50%,0);
+}
+
+#pw_cl_bd{
+	text-align: center;
+}
+#bd_te1{
+	font-size: 32px;
+    font-weight: 900;
+}
+#bd_te2{
+	font-size: 18px;
+    font-weight: 500;
+}
+#bd_te3{
+	font-size: 18px;
+    margin-top: -15px;
+    font-weight: 500;
+}
+#lo_bt{
+	width: 160px;
+    height: 35px;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 7px;
+}
+#ch_bd{
+	float: left;
+    position: relative;
+}
+#ch_t1{
+	font-size: 17px;
+    width: 100px;
+    font-weight: 600;
+    margin: 0;
+    float: left;
+    position: relative;
+}
+#ch_t2{
+	font-size: 11px;
+    font-weight: 700;
+    color: darkgray;
+    position: relative;
+    margin: 7px 0 11px 0px;
+}
+#ch_p1{
+	width: 150px;
+    height: 21px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+#ch_bt{
+    position: relative;
+    left: 50%;
+    transform: translate(10%, 0);
+    margin: -23px 0 50px 0;
+}
+#ch_pw1{
+	width: 150px;
+    height: 21px;
+    border-radius: 8px;
+    border: 1px solid limegreen;
+    color: limegreen;
+}
+#ch_pw2{
+    width: 150px;
+    height: 21px;
+    border-radius: 8px;
+    border: 1px solid limegreen;
+    color: limegreen;
+}
+#ch_bt2{
+	position: relative;
+    left: 76%
+}
+#ch_but{
+	width: 100px;
+    height: 40px;
+    border-radius: 15px;
+    border-color: limegreen;
+    font-size: 18px;
+    font-weight: bolder;
+}

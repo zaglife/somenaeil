@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+html ,body ,div ,span{
+	margin:0;
+	padding:0;
+	font-size:12px;
+	font-family: 'paybooc-Medium';
+}
+
+/*
+
+	font-family: 'paybooc-Light';
+
+	font-family: 'paybooc-Medium';
+
+	font-family: 'paybooc-Bold';
+
+	font-family: 'paybooc-ExtraBold';
+
+*/
+
+.main{
+	    left: 50%;
+    top: 50%;
+    height: 440px;
+    width: 600px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+    background: url('../img/join_back_l.png') no-repeat center top;
+    background-size: 360px;
+}
+
+#clear_text{
+	font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 120px;
+}
+#clear_p{
+	font-size: 16px;
+    font-weight: 100;
+}
+#go_posting{
+	text-align: center;
+    padding: 70px 0 90px;
+}
+#post_bt{
+	width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    position: relative;
+}
+#post_te{
+	font-size: 17px;
+    font-weight: 600;
+    position: relative;
+    margin: -20px;
+}
