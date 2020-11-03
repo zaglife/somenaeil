@@ -1,0 +1,375 @@
+@charset "UTF-8";
+html, body, div, input, p, span, a, button {
+	margin:0;
+	padding:0;
+	font-family: 'paybooc-Medium';
+
+} 
+/*
+	font-family: 'paybooc-Light';
+	font-family: 'paybooc-Medium';
+	font-family: 'paybooc-Bold';
+	font-family: 'paybooc-ExtraBold';
+*/
+
+
+/*post_wrap start*/
+#post_wrap{
+	width:1200px;
+	float:left;
+	left:50%;
+	transform:translate(-50%, 0);
+	position:relative;
+}
+/*post_wrap end*/
+
+
+/*post_title start*/
+#post_title{
+	left:50%;
+	transform:translate(-50%, 0);
+	position:relative;
+	background:#eee;
+	text-align:center;
+	margin:150px 0 0 0;
+	height:100px;
+	font-size: 22pt;
+    font-weight: 600;
+}
+/*post_title end*/
+
+
+/**** 게시판 카테고리 post_cont start ****/
+#post_cont{
+	background:#eee;
+}
+.post_cate{
+	float:left;
+	width:40px;
+	height:40px;
+	background: #fff;
+	margin:8px;
+	text-align: center;
+	line-height:37px;
+	
+	font-size: 31px;
+	font-weight: 900;
+	
+	opacity: .5;
+}
+
+.post_cate:hover {
+	opacity: 1;
+}
+
+#post_cate_exp{
+	float:left;
+	margin: 40px 0 10px 5px;
+	font-size: 13px;
+    color: red;
+}
+#post_cate_exp img{
+	margin:0 0 -2px 3px; 
+}
+#post_cate_exp img:hover{
+	 
+}
+/**** 게시판카테고리 post_cont end ****/
+
+
+/**** 게시판 글씨 및 파일첨부 start****/
+#post_mid{
+	float: left;
+    width: 1198px;
+    border: 1px solid #555;
+    border-radius: 20px;
+}
+#post_mid_top{ 
+	width:1198px;
+	border-bottom: 1px dashed #555;
+    float: left;
+}
+.post_tcate{
+	width: 50px;
+    float: left;
+    height: 50px;
+}
+.post_tcate img{
+	margin:15px 0 0 0;
+}
+.post_tcate_part{
+	padding:0 10px;
+	float: left;
+    height: 50px;
+    text-align:center;	
+}
+.tcate_side{
+	border-left:1px solid #555;
+	border-right:1px solid #555;
+}
+.tcate_b{
+	font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 50px;
+}
+.tcate_i{
+font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 50px;
+    font-style: italic;
+    font-family: cursive;
+}
+.tcate_u{
+	font-size: 23px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: underline;
+}
+.tcate_s{
+    font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: line-through;
+}
+.tcate_c{
+	font-size: 25px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 50px;
+}
+.post_file{
+	width:50px;
+	float: left;
+	line-height:50px;
+}
+.post_file a{
+	float:left;
+}
+.post_file img{
+	margin:15px 0 0 15px;;
+}
+#post_embed_wrap{
+	display: none;
+	float: left;
+    position: absolute;
+    width: 461px;
+    height: 40px;
+    border: 2px solid #555;
+    border-radius: 25px;
+    margin: 56px 0 0px 0;
+}
+#post_embed_ti{
+	width: 80px;
+    float: left;
+    position: relative;
+    margin: 2px 0 0 3px;
+    padding: 0 10px;
+    line-height: 36px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 30px;
+    
+}
+#post_link_wrap{
+	display: none;
+	
+	float: left;
+    position: absolute;
+    width: 461px;
+    height: 40px;
+    border: 2px solid #555;
+    border-radius: 25px;
+    margin: 56px 0 0px 0;
+}
+#lk_text{
+	width: 80px;
+    float: left;
+    position: relative;
+    margin: 2px 0 0 3px;
+    padding: 0 10px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.1);
+    border: 0;
+    border-radius: 30px;
+    
+}
+#lk,
+#embed{
+	width: 300px;
+	float: left;
+    position: relative;
+    margin: 2px 0 0 10px;
+    padding: 0 5px;
+    height: 36px;
+    border:none;
+}
+#lk_bt,
+#embed_bt{
+	float: left;
+	position: relative;
+	width: 25px;
+    height: 25px;
+    margin: 7px 0 0 8px;
+    font-size: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    cursor: pointer;	
+}
+    
+/***** 게시판 글씨 및 파일첨부  end ****/
+
+/**** text입력부분 start(post_mid) ****/
+#post_write{
+	height:250px;
+	clear: both;
+	padding: 20px;
+	min-height:350px;
+}
+/**** text입력부분 end(post_mid) ****/
+
+/**** text입력부분 소스코드 start ****/
+#post_code_cont{
+	display:none;
+	clear: both;
+	float: left;
+	position: relative;
+	width: 860px;
+	height: 252px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 20px 0;
+	border: 2px solid #999;
+	border-radius: 20px;
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#post_code_cont::-webkit-scrollbar{
+	width: 8px;
+	margin-right: 10px;
+}
+#post_code_cont::-webkit-scrollbar-thumb{
+	background: #777;
+	border-radius: 10px;
+}
+#post_code_cont::-webkit-scrollbar-track{
+	background: rgba(255,255,255,0);
+	border-radius: 10px;
+	border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+}
+
+
+.post_code_li{
+	width: 820px;
+	height: 22px;
+	padding: 10px 15px;
+	border-bottom: 1px dashed #999;
+}
+#post_code_cont div:last-child{
+	border-bottom: 0 !important;
+}
+#post_code_cont div:nth-child(2n){
+	background: rgba(0, 0, 0, .05);
+}
+/**** text입력부분 소스코드 end ****/
+
+/**** post_bottom start ****/
+#post_bottom{
+	background:#eee;
+}
+
+/**** 해시태그 start (post_bottom) ****/
+.post_hash{
+	float:left;
+	height:40px;
+	width:150px;
+	margin:5px;
+}
+.post_hash input{
+	width: 118px;
+    height: 38px;
+    border: 1px solid #555;
+    border-radius: 12px;
+    padding: 0px 15px;
+}
+#post_hashbt{
+	width:50px; 
+	height:40px;
+	margin:5px;
+	float:left;
+}
+#post_hashbt button{
+	width:50px;
+	height:40px;
+	border:1px solid #555;
+	border-radius:15px;
+}
+/**** 해시태그 end (post_bottom) ****/
+
+
+/**** 작성버튼 start (post_bottom) ****/
+#post_send{
+	width:100px; 
+	height:50px; 
+	float:right;
+}
+#post_send button{
+	width:100px;
+	height:50px;
+	border:1px solid #555;
+	border-radius:15px;
+	font-size:16px;
+}
+/**** 작성버튼 end 및 post_bottom end ****/
+
+
+/***** 게시판 파일업로드 input styling start *****/
+.filebox {
+	float: left;
+	clear: left;
+}
+
+
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
+
+.filebox label {
+    float: left;
+    display: block;
+    cursor: pointer;
+    width: 118px;
+    height: 38px;
+    border: 1px solid #555;
+    border-radius: 12px;
+    padding: 0px 15px;
+    margin: 5px;
+    line-height: 38px;
+    text-align: center;
+    background: #eee;
+}
+/* named upload */
+.filebox .upload-name {
+	float: left;
+	position: relative;
+    display: block;
+    min-height: 80px;
+    font-size:18px; 
+    margin: 5px;
+    padding: 0 10px;
+    border: 1px solid #555;
+    border-radius: 12px;
+}
+
+/***** 게시판 파일업로드 input styling end *****/
