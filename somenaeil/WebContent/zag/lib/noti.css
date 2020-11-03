@@ -1,0 +1,249 @@
+@charset "UTF-8";
+
+html, body, div, span, p {
+	margin: 0;
+	padding: 0;
+	font-family: 'paybooc-Medium';
+}
+
+#noti_wrap {
+	width: 100%;
+	margin-top: 150px; /* nav 영역  */
+}
+
+#noti_title {
+	position: relative;
+	width: 770px;
+	height: 30px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#noti_title p {
+	font-size: 16px;
+	text-align: left;
+	margin-left: 10px;
+}
+
+#noti_scrap_wrap {
+	float: left;
+	width: 100%;
+	height: auto;
+	background: #edf8e6;
+}
+
+.noti_center {
+	float: left;
+	position: relative;
+	width: 770px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.noti_scrap {
+	float: left;
+	position: relative;
+	width: 100px;
+	height: 100px;
+	margin: 20px 5px 10px;
+}
+
+.noti_scrap img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+	
+	cursor: pointer;
+	
+	transform: scale(1, 1);
+	opacity: 1;
+	
+	transition: transform .2s ease, opacity .2s ease;
+	-webkit-transition: transform .2s ease, opacity .2s ease;
+}
+
+.noti_scrap img:hover {
+	opacity: .9;
+	transform: scale(1.03, 1.03);
+}
+
+.noti_icon {
+	float: right;
+	position: absolute;
+	width: 12px;
+	height: 30px;
+	right: 0;
+	top: 0;
+	margin: -10px 10px 0 0;
+	border: 5px solid #de4b62;
+	border-radius: 20px;
+}
+
+#noti_scrap_more {
+	float: right;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin: 12px 0;
+	font-size: 13px;
+	font-weight: bold;
+	color: #777;
+}
+
+#noti_scrap_all {
+	float: left;
+	position: relative;
+	width: auto;
+	margin: 10px 0 20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#noti_scrap_all p {
+	position: relative;
+
+	color: #777;
+	font-size: 16px;
+	font-family: 'paybooc-Bold';
+	text-align: center;
+	
+	opacity: .5;	
+	cursor: pointer;
+}
+
+#noti_scrap_all p:hover {
+	opacity: 1;
+}
+
+#noti_cont_wrap {
+	clear: both;
+	float: left;
+	position: relative;
+	width: 600px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.noti_border_side {
+	float: left;
+	width: 100%;
+	border-left: 1px dashed #c4dec1;
+	border-right: 1px dashed #c4dec1;
+	padding-bottom: 30px;
+}
+
+.noti_timeline {
+	float: left;
+	position: relative;
+	margin-bottom: 10px;
+	padding: 30px 30px 2px 30px;
+	color: #aaa;
+	border-bottom: 1px dashed #d5ecd2;
+	font-size: 13px;
+}
+
+.noti_newline {
+	float: left;
+	width: 540px;
+	margin: 10px 30px;
+	font-size: 14px;
+}
+
+.noti_newline a:link {
+ 	text-decoration: none;
+	color: #333;
+}
+
+.noti_newline a:visited {
+ 	text-decoration: none;
+	color: #777;
+}
+
+.noti_newline a:hover {
+ 	text-decoration: underline;
+	color: #777;
+}
+
+.noti_newline a p {
+	float: left;
+	color: #73a1e5;
+	font-family: 'paybooc-ExtraBold';
+}
+
+.noti_new_follow::before {
+	content: "";
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: -2px 7px 0 0;
+	background: url("../img/noti_follow_20.png");
+}
+
+.noti_new_like::before {
+	content: "";
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: -2px 7px 0 0;
+	background: url("../img/noti_like_n_20.png");
+}
+
+.noti_new_scrap::before {
+	content: "";
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin: -2px 7px 0 0;
+	background: url("../img/noti_scrap_n_20.png");
+}
+
+/*****************************************************/
+/*					      스크랩 전체 페이지  				 */
+/*****************************************************/
+#noti_scrap_topspace {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 50px;
+}
+
+.line_next {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 1px;
+}
+.noti_scrapline {
+	float: left;
+	position: relative;
+	width: 100px;
+	height: 125px;
+	margin: 10px;
+}
+
+.noti_scrapline a {
+	font-size: 13px;
+	text-align: center;
+}
+
+.noti_scrapline a:link {
+ 	text-decoration: none;
+	color: #333;
+}
+
+.noti_scrapline a:visited {
+ 	text-decoration: none;
+	color: #777;
+}
+
+.noti_scrapline a img {
+	width: 100%;
+	height: auto;
+	border-radius: 10px;
+}
+
+#noti_scrap_pg {
+	font-size: 13px;
+	text-align: center;
+	margin: 10px 0 50px;
+}
