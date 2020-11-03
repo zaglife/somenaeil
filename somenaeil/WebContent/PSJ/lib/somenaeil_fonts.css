@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'paybooc-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+	font-family: 'paybooc-Light';
+	font-family: 'paybooc-Medium';
+	font-family: 'paybooc-Bold';
+	font-family: 'paybooc-ExtraBold';
+*/
