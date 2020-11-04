@@ -4,21 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>some, 내일</title>
 
-<link rel="stylesheet" type="text/css" href="lib/top.css">
-<link rel="stylesheet" type="text/css" href="lib/user.css">
-<link rel="stylesheet" type="text/css" href="lib/dm.css">
-<link rel="stylesheet" type="text/css" href="lib/noti.css">
-
-<link rel="stylesheet" type="text/css" href="lib/somenaeil_fonts.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<jsp:include page="css.jsp" />
 
 </head>
 <body>
 
 <div id="user_wrap">
   <div id="user_top">
+  
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
       <div id="user_nick">nickname</div>
@@ -26,7 +22,7 @@
       <div id="user_info_follow">
         <a href="#"><p>팔로워</p><p>126</p></a>
         <a href="#"><p>팔로우</p><p>98</p></a>
-        <a href="#"><p>게시글</p><p>52</p></a>
+        <p>게시글</p><p>52</p>
       </div>
     </div>
     
@@ -41,23 +37,29 @@
       <p>R 타입</p>
     </div>
     <!-- 비로그인시 other_right에 링크는 로그인 페이지 -->
-    
-    
-    <div id="user_post_cate_wrap">
-      <div id="user_post_cate_center">
-        <a href="#">A전체</a>
-        <a href="#">G일반</a>
-        <a href="#">R리뷰</a>
-        <a href="#">Q질문</a>
-        <a href="#">S스크랩</a>
-        <div id="cate_focus"></div>
-      </div>
-    </div>
   </div>
+
 </div>
 
-<!-- 탑 네비 메뉴 페이지 -->
+
+
+<!-- 유저 첫화면 "user_cont.jsp" -->
+<!-- cont에서 카테고리 내용 변경 -->
+<jsp:include page="user_cont.jsp" />
+
+
+
+<!-- 유저 팔로워 리스트 "user_follower.jsp" -->
+<!-- 유저 팔로우 리스트 "user_follow.jsp" -->
+<!--jsp:include page="user_follower.jsp" /-->
+
+
+
+<div id="btm_space"></div>
+
 <jsp:include page="top.jsp" />
+<jsp:include page="bottom.jsp" />
+<jsp:include page="nav.jsp" />
 
 </body>
 </html>

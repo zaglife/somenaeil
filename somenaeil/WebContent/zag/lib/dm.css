@@ -1,14 +1,8 @@
 @charset "UTF-8";
 
-html, body, div, span, p, button {
-	margin: 0;
-	padding: 0;
-	font-family: 'paybooc-Medium';
-}
-
 #dm_wrap {
 	width: 100%;
-	margin-top: 150px; /* nav 영역  */
+	margin-top: 120px; /* nav 영역  */
 }
 
 #dm_new_wrap {
@@ -209,7 +203,7 @@ html, body, div, span, p, button {
 #dm_c_left img {
 	width: 112px;
 	height: auto;
-	border: 4px solid #80ca7c;
+	border: 4px solid #91c38e;
 	border-radius: 20px;
 }
 
@@ -223,6 +217,10 @@ html, body, div, span, p, button {
 	font-family: 'paybooc-ExtraBold';
 }
 
+#dm_c_left p a {
+	font-weight: 900;
+}
+
 #dm_c_right {
 	float: left;
 	position: relative;
@@ -230,7 +228,7 @@ html, body, div, span, p, button {
 	height: 550px;
 	margin: 10px;
 	padding-top: 20px;
-	border: 4px solid #80ca7c;
+	border: 4px solid #91c38e;
 	border-radius: 28px;
 }
 
@@ -248,7 +246,7 @@ html, body, div, span, p, button {
 	margin-right: 5px;
 }
 #dm_c_list::-webkit-scrollbar-thumb {
-	background-color: #80ca7c;
+	background-color: #91c38e;
 	border-radius: 10px;
 }
 #dm_c_list::-webkit-scrollbar-track {
@@ -339,7 +337,7 @@ html, body, div, span, p, button {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	border-top: 1px dashed #80ca7c;
+	border-top: 1px dashed #91c38e;
 }
 
 #dm_c_msg input {
@@ -348,7 +346,7 @@ html, body, div, span, p, button {
 	margin: 10px;
 	padding: 5px 10px;
 	
-	border: 2px solid #80ca7c;
+	border: 2px solid #91c38e;
 	border-radius: 30px;
 }
 
@@ -364,4 +362,10 @@ html, body, div, span, p, button {
 
 	cursor: pointer;
 	background: url("../img/icon_send_20.png") no-repeat center center;
+	
+	transition: transform .2s;
+}
+
+#dm_c_msg button:hover {
+	transform: rotate(-80deg);
 }

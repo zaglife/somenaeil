@@ -21,25 +21,25 @@
 
 <title>some, 내일</title>
 
-<link rel="stylesheet" type="text/css" href="lib/somenaeil_fonts.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.12.0.min.js" ></script>
-
-<link rel="stylesheet" href="lib/index.css">
-<link rel="stylesheet" href="lib/top.css">
-<link rel="stylesheet" href="lib/content.css">
-<link rel="stylesheet" href="lib/user.css">
-<link rel="stylesheet" href="lib/dm.css">
-<link rel="stylesheet" href="lib/noti.css">
+<jsp:include page="css.jsp" />
 
 </head>
 <body>
 
+
+
+
+<!--jsp:include page="content.jsp" /-->
+<jsp:include page="search.jsp" />
+
+
+
+<div id="btm_space"></div>
+
 <jsp:include page="top.jsp" />
+<jsp:include page="bottom.jsp" />
+<jsp:include page="nav.jsp" />
 
-<jsp:include page="content.jsp" />
-
-<!-- 공지사항 스크롤 -->
-
+  
 </body>
 </html>

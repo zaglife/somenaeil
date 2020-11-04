@@ -1,48 +1,49 @@
 @charset "UTF-8";
-html, body, div, input, p, span, a, button {
-	margin:0;
-	padding:0;
-	font-family: 'paybooc-Medium';
-
-} 
-/*
-	font-family: 'paybooc-Light';
-	font-family: 'paybooc-Medium';
-	font-family: 'paybooc-Bold';
-	font-family: 'paybooc-ExtraBold';
-*/
-
 
 /*post_wrap start*/
 #post_wrap{
-	width:1200px;
-	float:left;
-	left:50%;
-	transform:translate(-50%, 0);
-	position:relative;
+	float: left;
+	position: relative;
+	width: 900px;
+	left: 50%;
+	transform: translate(-50%, 0);
 }
 /*post_wrap end*/
 
 
 /*post_title start*/
 #post_title{
-	left:50%;
-	transform:translate(-50%, 0);
-	position:relative;
-	background:#eee;
-	text-align:center;
-	margin:150px 0 0 0;
-	height:100px;
-	font-size: 22pt;
+	position: relative;
+	width: 100%;
+	height: auto;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 150px 0 10px 0px;
     font-weight: 600;
+	text-align: center;
 }
-/*post_title end*/
+#post_title input{
+	width: 898px;
+    height: 50px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 1px solid #999;
+}
 
 
 /**** 게시판 카테고리 post_cont start ****/
 #post_cont{
 	background:#eee;
 }
+#post_cont p{
+	float: left;
+	position: absolute;
+	margin: 42px 0 10px 176px;
+	font-size: 12px;
+    color: red;
+}
+
 .post_cate{
 	float:left;
 	width:40px;
@@ -63,160 +64,139 @@ html, body, div, input, p, span, a, button {
 }
 
 #post_cate_exp{
+	float: left;
+	position: absolute;
+	margin: 38px 0 10px 285px;
+	cursor: pointer;
+}
+
+#post_cate_exp_img{
 	float:left;
-	margin: 40px 0 10px 5px;
-	font-size: 13px;
-    color: red;
+	position: absolute;
+	margin: -22px 0 0 299px;
+	display: none;
 }
-#post_cate_exp img{
-	margin:0 0 -2px 3px; 
-}
-#post_cate_exp img:hover{
-	 
+#post_cate_exp:hover + #post_cate_exp_img{
+	display: block;
 }
 /**** 게시판카테고리 post_cont end ****/
 
 
 /**** 게시판 글씨 및 파일첨부 start****/
-#post_mid{
+#post_mid {
 	float: left;
-    width: 1198px;
+    width: 898px;
     border: 1px solid #555;
     border-radius: 20px;
+    margin-top: 10px;
 }
-#post_mid_top{ 
-	width:1198px;
+#post_mid_top { 
+    float: left;
+	width: 898px;
 	border-bottom: 1px dashed #555;
-    float: left;
 }
-.post_tcate{
-	width: 50px;
-    float: left;
-    height: 50px;
+.post_tcate {
+	float: left;
+	width: 34px;
+    height: 34px;
 }
-.post_tcate img{
-	margin:15px 0 0 0;
+.post_tcate img {
+	width: 14px;
+    height: auto;
+    margin: 10px;
 }
 .post_tcate_part{
 	padding:0 10px;
 	float: left;
-    height: 50px;
+    height: 34px;
     text-align:center;	
 }
 .tcate_side{
 	border-left:1px solid #555;
 	border-right:1px solid #555;
 }
-.tcate_b{
-	font-size: 25px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 50px;
-}
-.tcate_i{
-font-size: 25px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 50px;
-    font-style: italic;
-    font-family: cursive;
-}
-.tcate_u{
-	font-size: 23px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 50px;
-    text-decoration: underline;
-}
-.tcate_s{
-    font-size: 25px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 50px;
-    text-decoration: line-through;
-}
-.tcate_c{
-	font-size: 25px;
-    font-weight: 900;
-    text-align: center;
-    line-height: 50px;
-}
 .post_file{
-	width:50px;
 	float: left;
-	line-height:50px;
+	width:34px;
+	height: 34px;
 }
 .post_file a{
 	float:left;
 }
 .post_file img{
-	margin:15px 0 0 15px;;
+	width: 14px;
+    height: auto;
+    margin: 10px;
 }
 #post_embed_wrap{
 	display: none;
 	float: left;
     position: absolute;
     width: 461px;
-    height: 40px;
+    height: 30px;
     border: 2px solid #555;
     border-radius: 25px;
-    margin: 56px 0 0px 0;
+    margin: 38px 0 0px -23px;
 }
 #post_embed_ti{
 	width: 80px;
     float: left;
     position: relative;
     margin: 2px 0 0 3px;
-    padding: 0 10px;
-    line-height: 36px;
+    font-size: 14px;
+    line-height: 26px;
     background: rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 30px;
     
 }
+
 #post_link_wrap{
 	display: none;
-	
 	float: left;
     position: absolute;
     width: 461px;
-    height: 40px;
+    height: 30px;
     border: 2px solid #555;
     border-radius: 25px;
-    margin: 56px 0 0px 0;
+    margin: 38px 0 0px -27px;
 }
+
 #lk_text{
 	width: 80px;
     float: left;
     position: relative;
     margin: 2px 0 0 3px;
-    padding: 0 10px;
-    height: 36px;
+    font-size: 14px;
+    line-height: 26px;
     background: rgba(0, 0, 0, 0.1);
     border: 0;
     border-radius: 30px;
-    
+    text-align: center;
 }
+
 #lk,
 #embed{
-	width: 300px;
 	float: left;
-    position: relative;
-    margin: 2px 0 0 10px;
-    padding: 0 5px;
-    height: 36px;
-    border:none;
+	position: relative;
+	width: 321px;
+	height: 24px;
+    margin: 2px 0 0 2px;
+    padding: 0 12px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
 }
 #lk_bt,
 #embed_bt{
 	float: left;
 	position: relative;
-	width: 25px;
-    height: 25px;
-    margin: 7px 0 0 8px;
-    font-size: 20px;
+	width: 24px;
+    height: 24px;
+    margin: 3px 0 0 2px;
+    font-size: 18px;
     border-radius: 20px;
-    border: 1px solid black;
+    border: 1px solid #555;
+    color: #555;
     cursor: pointer;	
 }
     
@@ -228,6 +208,7 @@ font-size: 25px;
 	clear: both;
 	padding: 20px;
 	min-height:350px;
+	font-size: 14px;
 }
 /**** text입력부분 end(post_mid) ****/
 
@@ -285,10 +266,10 @@ font-size: 25px;
 
 /**** 해시태그 start (post_bottom) ****/
 .post_hash{
-	float:left;
-	height:40px;
-	width:150px;
-	margin:5px;
+	float: left;
+	height: 40px;
+	width: 150px;
+	margin: 5px 10px 5px 0;
 }
 .post_hash input{
 	width: 118px;
@@ -297,11 +278,11 @@ font-size: 25px;
     border-radius: 12px;
     padding: 0px 15px;
 }
-#post_hashbt{
-	width:50px; 
-	height:40px;
-	margin:5px;
+#post_hashbt {
 	float:left;
+	width: 50px; 
+	height: 40px;
+	margin: 5px 0;
 }
 #post_hashbt button{
 	width:50px;
@@ -313,17 +294,19 @@ font-size: 25px;
 
 
 /**** 작성버튼 start (post_bottom) ****/
-#post_send{
-	width:100px; 
-	height:50px; 
-	float:right;
+#post_send {
+	float: right;
+	width: 100px; 
+	height: 42px; 
+	margin: -45px 0 0 0;
 }
 #post_send button{
 	width:100px;
-	height:50px;
+	height:40px;
 	border:1px solid #555;
 	border-radius:15px;
 	font-size:16px;
+	cursor: pointer;
 }
 /**** 작성버튼 end 및 post_bottom end ****/
 
@@ -354,8 +337,9 @@ font-size: 25px;
     border: 1px solid #555;
     border-radius: 12px;
     padding: 0px 15px;
-    margin: 5px;
+    margin-right: 10px;
     line-height: 38px;
+    font-size: 14px;
     text-align: center;
     background: #eee;
 }
@@ -363,13 +347,13 @@ font-size: 25px;
 .filebox .upload-name {
 	float: left;
 	position: relative;
-    display: block;
-    min-height: 80px;
-    font-size:18px; 
-    margin: 5px;
+    min-height: 40px;
     padding: 0 10px;
+    font-size:18px; 
     border: 1px solid #555;
     border-radius: 12px;
+    
+    display: none;
 }
 
 /***** 게시판 파일업로드 input styling end *****/

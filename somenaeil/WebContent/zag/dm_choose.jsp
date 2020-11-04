@@ -4,10 +4,10 @@
 <div id="dm_c_wrap">
   <div id="dm_c_left">
     <img src="img/profile01.jpg">
-    <p>nickname</p>
+    <p><a href="user.jsp">nickname</a></p>
     
     <div id="dm_cl_ct">
-      <div class="dm_cl_btn"><a href="#"><img src="img/dm_home_20.png"></a></div>
+      <div class="dm_cl_btn"><a href="user.jsp"><img src="img/dm_home_20.png"></a></div>
       <div class="dm_cl_btn"><a href="#"><img src="img/noti_follow_n_20.png"></a></div>
     </div>
   </div>

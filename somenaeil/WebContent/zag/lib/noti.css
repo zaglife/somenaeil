@@ -1,11 +1,5 @@
 @charset "UTF-8";
 
-html, body, div, span, p {
-	margin: 0;
-	padding: 0;
-	font-family: 'paybooc-Medium';
-}
-
 #noti_wrap {
 	width: 100%;
 	margin-top: 150px; /* nav 영역  */
@@ -124,12 +118,13 @@ html, body, div, span, p {
 	transform: translate(-50%, 0);
 }
 
-.noti_border_side {
+.noti_border {
 	float: left;
 	width: 100%;
 	border-left: 1px dashed #c4dec1;
 	border-right: 1px dashed #c4dec1;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .noti_timeline {
@@ -147,21 +142,6 @@ html, body, div, span, p {
 	width: 540px;
 	margin: 10px 30px;
 	font-size: 14px;
-}
-
-.noti_newline a:link {
- 	text-decoration: none;
-	color: #333;
-}
-
-.noti_newline a:visited {
- 	text-decoration: none;
-	color: #777;
-}
-
-.noti_newline a:hover {
- 	text-decoration: underline;
-	color: #777;
 }
 
 .noti_newline a p {
@@ -213,6 +193,7 @@ html, body, div, span, p {
 	width: 100%;
 	height: 1px;
 }
+
 .noti_scrapline {
 	float: left;
 	position: relative;
@@ -223,17 +204,8 @@ html, body, div, span, p {
 
 .noti_scrapline a {
 	font-size: 13px;
+	font-weight: 900;
 	text-align: center;
-}
-
-.noti_scrapline a:link {
- 	text-decoration: none;
-	color: #333;
-}
-
-.noti_scrapline a:visited {
- 	text-decoration: none;
-	color: #777;
 }
 
 .noti_scrapline a img {

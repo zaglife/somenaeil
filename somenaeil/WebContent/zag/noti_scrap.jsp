@@ -4,7 +4,7 @@
 <div id="noti_scrap_topspace"></div>
 
 <div id="noti_cont_wrap">
-  <div class="noti_border_side">
+  <div class="noti_border">
 
     <div class="noti_timeline">1일 전</div>
     <div class="line_next"></div>

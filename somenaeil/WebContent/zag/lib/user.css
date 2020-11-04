@@ -1,14 +1,8 @@
 @charset "UTF-8";
 
-html, body, div, span, p {
-	margin: 0;
-	padding: 0;
-	font-family: 'paybooc-Medium';
-}
-
 #user_wrap {
 	width: 100%;
-	margin-top: 150px; /* nav 영역  */
+	margin-top: 120px; /* nav 영역  */
 }
 
 #user_top {
@@ -20,6 +14,7 @@ html, body, div, span, p {
 	left: 50%;
 	transform: translate(-50%, 0);
 }
+
 #user_img {
 	float: left;
 	position: relative;
@@ -65,7 +60,8 @@ html, body, div, span, p {
 	margin-top: 20px;
 }
 
-#user_info_follow a p {
+#user_info_follow a p,
+#user_info_follow p {
 	float: left;
 	position: relative;
 	color: #999;
@@ -134,6 +130,8 @@ html, body, div, span, p {
 	float: left;
 	position: relative;
 	width: 800px;
+	left: 50%;
+	transform: translate(-50%, 0);
 	margin-top: 30px;
 	border-top: 1px solid #999;
 	border-bottom: 1px solid #999;
@@ -149,36 +147,168 @@ html, body, div, span, p {
 
 #user_post_cate_wrap div a {
 	float: left;
-	width: 80px;
-	padding: 10px 20px;
+	padding: 10px 40px;
 	font-size: 13px;
 	font-weight: 900;
 	color: #333;
 }
 
-#user_post_cate_wrap div a:link,
-#user_post_cate_wrap div a:visited,
-#user_post_cate_wrap div a:focus {
-	color: #333;
-	text-decoration: none;
-}
-
-#user_post_cate_wrap div a:hover {
-	color: #333;
-	text-decoration: none;
-	opacity: .7;
-}
-
 #cate_focus {
 	float: left;
 	position: absolute;
-	width: 53px;
+	width: 80px;
 	height: 3px;
 	left: 0;
 	bottom: 0;
-	margin: 0 0 0 10px;
+	margin: 0 0 0 17px;
 	background: #999;
 }
     
     
     
+    
+/****************** follow, follower *******************/
+
+.user_popup_wrap {
+	float: left;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, .7);
+	z-index: 999;
+}
+
+.user_popup_center {
+	float: left;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 500px;
+	height: 500px;
+	transform: translate(-50%, -50%);
+	
+	border-radius: 25px;
+	background: #fff;
+}
+
+#user_popup_top_space {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 10px;
+	margin: 30px 0 20px 0;
+	padding-bottom: 19px;
+}
+
+#user_popup_top {
+	float: left;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	font-size: 16px;
+	font-weight: 900;
+	color: #555;
+	text-align: center;
+	margin: 30px 0 20px 0;
+	padding-bottom: 19px;
+	border-bottom: 1px dashed #999;
+}
+
+#user_popup_close {
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 30px;
+	cursor: pointer;
+}
+
+#user_popup_close img {
+	width: 100%;
+	height: auto;
+	
+	transition: transform .2s;
+}
+
+#user_popup_close img:hover {
+	transform: rotate(90deg);
+}
+
+#user_popup_cont {
+	float: left;
+	position: relative;
+	width: 400px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 10px 0;
+}
+
+#user_popup_scroll {
+	width: 490px;
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#user_popup_scroll::-webkit-scrollbar {
+	width: 5px;
+	margin-right: 5px;
+}
+#user_popup_scroll::-webkit-scrollbar-thumb {
+	background-color: #999;
+	border-radius: 10px;
+}
+#user_popup_scroll::-webkit-scrollbar-track {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+
+.user_popup_pimg {
+	float: left;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 5px 0;
+}
+
+.user_popup_pimg img {
+	width: 100%;
+	height: auto;
+	border-radius: 30px;
+}
+
+.user_popup_name {
+	float: left;
+	position: relative;
+	font-size: 13px;
+	font-weight: 900;
+	margin: 20px 0 3px 5px;
+}
+
+.user_popup_comment {
+	float: left;
+	position: relative;
+	width: 310px;
+	font-size: 11px;
+	font-weight: 100;
+	color: #555;
+	margin-left: 5px;
+}
+
+
+.user_popup_btn {
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(-10px, -50%);
+	transition: transform .2s;
+}
+
+.user_popup_btn img:hover {
+	opacity: .7;
+	transform: scale(1.1);
+	cursor: pointer;
+}

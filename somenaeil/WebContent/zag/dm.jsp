@@ -4,14 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>some, 내일</title>
 
-<link rel="stylesheet" type="text/css" href="lib/top.css">
-<link rel="stylesheet" type="text/css" href="lib/user.css">
-<link rel="stylesheet" type="text/css" href="lib/dm.css">
-<link rel="stylesheet" type="text/css" href="lib/noti.css">
-<link rel="stylesheet" type="text/css" href="lib/somenaeil_fonts.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<jsp:include page="css.jsp" />
 
 </head>
 <body>
@@ -44,6 +40,14 @@
   </div>
   
 </div>
+
+
+<div id="btm_space"></div>
+
+<jsp:include page="top.jsp" />
+<jsp:include page="bottom.jsp" />
+<jsp:include page="nav.jsp" />
+
 
 </body>
 </html>
