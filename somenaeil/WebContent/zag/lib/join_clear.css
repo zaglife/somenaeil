@@ -19,8 +19,8 @@ html ,body ,div ,span{
 
 */
 
-.main{
-	    left: 50%;
+#main{
+	left: 50%;
     top: 50%;
     height: 440px;
     width: 600px;
@@ -35,8 +35,9 @@ html ,body ,div ,span{
 	font-size: 30px;
     font-weight: 700;
     text-align: center;
-    padding-top: 120px;
+    padding-top: 50px;
 }
+
 #clear_p{
 	font-size: 16px;
     font-weight: 100;
