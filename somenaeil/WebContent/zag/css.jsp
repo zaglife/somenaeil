@@ -18,3 +18,4 @@
 
 <link rel="stylesheet" href="lib/post_main.css">
 <link rel="stylesheet" href="lib/popup.css">
+<link rel="stylesheet" href="lib/post.css">
