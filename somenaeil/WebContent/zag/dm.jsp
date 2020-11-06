@@ -12,11 +12,6 @@
 </head>
 <body>
 
-
-<!-- 탑 네비 메뉴 페이지 -->
-<jsp:include page="top.jsp" />
-
-
 <div id="dm_wrap">
 
   <div id="dm_new_wrap">
@@ -40,7 +35,6 @@
   </div>
   
 </div>
-
 
 <div id="btm_space"></div>
 

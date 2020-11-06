@@ -12,11 +12,6 @@
 </head>
 <body>
 
-
-<!-- 탑 네비 메뉴 페이지 -->
-<jsp:include page="top.jsp" />
-
-
 <div id="noti_wrap">
 
   <div id="noti_title"><p>NEW 스크랩</p></div>
