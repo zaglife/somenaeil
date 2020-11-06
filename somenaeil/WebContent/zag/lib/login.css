@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+.login_main {
+    margin-top: 150px;
+    width: 600px;
+    height: auto;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+#ser{
+	width: 300px;
+    height: 20px;
+    left: 12px;
+    position: relative;
+    border: 1px solid lawngreen;
+    border-radius: 30px;
+    outline: none;
+}
+#login_title{
+        background: #888;
+    width: 100%;
+    position: relative
+    }
+#login_title_text{
+	  FONT-WEIGHT: 900;
+    float: left;
+    background: white;
+    position: relative;
+    width: 540px;
+    font-size: 28px;
+    text-align: center;
+    border-bottom: 1px dashed #555;
+    padding: 30px;
+}
+
+
+#login_body{ 	
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+#body_text{
+	position: relative;
+    float: left;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 35px 0;
+    width: 350px;
+}
+#body_text_left{
+	float: left;
+	width:250px;
+}
+#body_text_left input{
+	width: 220px;
+	height: 25px;
+	margin: 5px;
+	padding: 5px 10px;
+	border-radius: 10px;
+	border:1px solid #777;
+}
+#login_bt{
+	float: left;
+	position: relative;
+	width: 85px;
+    height: 85px;
+	border-radius: 10px;
+	border: 1px solid #91c38E;
+	margin: 5px;
+	padding: 5px 10px;
+	background: #edf8e6;
+	cursor: pointer;
+	font-size: 16px;
+    font-weight: 900;
+}
+
+#login_id{
+	border-radius:6px;
+	
+}
+#password{
+	border-radius:6px;
+	
+}
+#body_bt{
+	float: left;
+	width: 100%;
+}
+#body_bt p{
+	float: left;
+	margin: 5px 0 0 2px;
+	height: 20px;
+    line-height: 17px;
+    font-size: 13px;
+}   
+#login_ing{
+	float: left;
+	margin: 5px 0 0 5px;
+	border: 1px solid #fff;
+	border-radius: 3px;
+	width: 15px;
+    height: 15px;
+}
+
+#body_bt_right{
+	float: right;
+	margin: 5px 20px 0 0;
+	color: blue;
+	font-size: 13px;
+}
+
+
+
+#sns_login{
+    float: left;
+    position: relative;
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-bottom: 20px;
+}
+#sns_text{
+	font-size: 22px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+.sns_box{
+	float: left;
+    position: relative;
+    margin: 10px 20px;
+}
+.sns_box a {
+	float: left;
+	width: 64px;
+	height: 64px;
+}
+.sns_box p{
+	font-size: 14px;
+	margin-top: 70px;
+}
+
+#body_text_left input::placeholder {
+	color: #aaa;
+	text-align: center;
+	
+}
+
+#login_bot{
+    width: 600px;
+    text-align: center;
+    border-top: 1px dashed;
+    float: left;
+    position: relative;
+}
+#bot_text{
+	margin-top: 44px;
+    font-weight: 500;
+    font-size: 13px;
+}
+#newjoin{
+	margin-top: 15px;
+}
+#login_join_btn{
+    float: left;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 5px 40px;
+    
+	font-size: 15px;
+    font-weight: normal;
+    border-radius: 10px;
+    text-decoration: none;
+    border: 1px solid royalblue;
+    color: royalblue;
+}

@@ -22,7 +22,7 @@
     </div>
     <div id="login_cl_bt">
       <a href="login.jsp" id="cl_lo">로그인</a>
-      <a href="#" id="cl_pw">비밀번호 찾기</a>
+      <a href="pw_ser.jsp" id="cl_pw">비밀번호 찾기</a>
     </div>
   </div>
 </div>

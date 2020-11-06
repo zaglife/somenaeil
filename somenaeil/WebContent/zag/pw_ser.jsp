@@ -15,8 +15,8 @@
 <div class="login_main">
   <div id="ser_top">
     <div id="id_pw">
-      <input type="button" id="id_ser" value="아이디찾기">
-      <input type="button" id="pw_ser" value="비밀번호찾기">
+      <a href="id_ser.jsp" id="id_ser">아이디찾기</a>
+      <a href="pw_ser.jsp" id="pw_ser">비밀번호찾기</a>
     </div>
   </div>
   <div id="ser_body">

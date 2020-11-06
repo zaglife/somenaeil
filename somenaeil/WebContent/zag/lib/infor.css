@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+.infor_main{
+    margin-top: 150px;
+    width: 600px;
+    height: auto;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+}
+/****채용 정보 main start****/
+#top_main{
+	border-bottom: 1px dashed #555;
+	padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: 900;
+}
+#go_job{
+	float: right;
+	font-size: 20px;
+}
+#top_body{
+	margin: 25px 0 0 0
+}
+#top_body div:last-child {
+	border: 0 !important;
+}
+
+.job_lik{
+	border-bottom: 1px solid #555;
+    font-size: 14px;
+    margin: 15px 0 0 0;
+    font-weight: normal;
+    height: 28px;
+}
+.job_lik p{
+	float:right;
+	font-weight: 100;
+    line-height: 25px;
+    margin-top: -5px;
+}
+.job_lik_com{
+	width:80px;
+	text-align:center;
+}
+/****채용 정보 main end****/
+
+
+/****고객센터 main start****/
+#infor_body{
+	width: 330px;
+}
+#infor_bt{
+    border-bottom: 1px dashed #555;
+    float: left;
+    position: relative;
+    width: 330px;
+    margin: 70px 5px 0 0;
+    font-size: 20px;
+    font-weight: 900;
+    padding-bottom: 10px;
+}
+#infor_bt a{
+	margin: 0;
+    float: right;
+}
+
+#bt_main{
+	float: left;
+    position: relative;
+    width: 330px;
+    margin: 10px 0 0 0;
+}
+#bt_main div:last-child {
+	border: 0 !important;
+}
+.inf_lik{
+	border-bottom: 1px solid #555;
+    font-size: 14px;
+    font-weight: normal;
+    height: 28px;
+    margin: 15px 0 0 0;
+}
+.job_lik a,
+.inf_lik a{
+	font-weight: 900;
+}
+.job_lik a:first-child {
+	margin-right: 15px;
+}
+/****고객센터 main end****/
+
+
+/****고객센터 정보 start****/
+#infor_moon{
+	width: 250px;
+    float: right;
+    position: relative;
+    text-align: center;
+    top: -22px;
+    height: 250px;
+    background: #edf8e6;
+    border-radius: 20px;
+}
+#i_m_t1{
+	font-size: 17px;
+    font-weight: 900;
+    margin-top: 28px;
+}
+#i_m_t2{
+	font-size: 13px;
+    font-weight: 800;
+    margin: 5px 0 2px;
+}
+#i_m_t3{
+	font-size: 13px;
+    font-weight: 700;
+}
+#i_m_t4{
+	font-size: 28px;
+    font-weight: 700;
+    color: darkgreen;
+    margin: 15px 0 0 0;
+}
+#i_mt{
+    font-weight: 800;
+}
+#i_mt_1{
+	color: forestgreen;
+    font-size: 16px;
+    font-weight: 800;
+}
+#i_mt_2{
+	margin: 25px 0 0 0;
+}
+
+/****고객센터 정보 end****/
