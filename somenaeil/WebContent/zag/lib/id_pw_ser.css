@@ -33,7 +33,29 @@
     left: 50%;
     transform: translate(-50%, 0);
 }
-#id_ser{
+#id_id_ser{
+	float: left;
+    position: relative;
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    margin: 0px 30px 15px 0;
+    border-radius: 10px;
+    border: 1px solid #999;
+    background: #fff;
+    cursor: default;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #999;
+}
+#id_id_ser:hover{
+	opacity: 1 !important;
+	color: #999;
+}
+
+
+#id_pw_ser{
 	float: left;
     position: relative;
     width: 120px;
@@ -49,7 +71,7 @@
     font-size: 14px;
 }
 
-#pw_ser{
+#pw_id_ser{
 	float: left;
     position: relative;
     width: 120px;
@@ -64,6 +86,29 @@
     line-height: 30px;
     font-size: 14px;
 }
+
+#pw_pw_ser{
+	float: left;
+    position: relative;
+    width: 120px;
+    height: 30px;
+    font-weight: 600;
+    margin: 0px 30px 15px 0;
+    border-radius: 10px;
+    border: 1px solid #999;
+    background: #fff;
+    cursor: default;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #999;
+}
+
+#pw_pw_ser:hover{
+	opacity: 1 !important;
+	color: #999;
+}
+
 #ser_body{
 	float: left;
 	position: relative;

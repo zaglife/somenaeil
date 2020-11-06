@@ -40,7 +40,7 @@
 	  <p id="i_m_t3">저희에게알려주세요! :)</p>
 	  <p id="i_m_t4">1234-1234</p>
 	  <div id="i_mt">
-	    <p id="i_mt_1"><a href="#">Help@somenaeil.co.kr</a></p>
+	    <p id="i_mt_1">Help@somenaeil.co.kr</p>
 	    <p id="i_mt_2">평일 10:00~18:00</p>                 
 		<p id="i_mt_3">주말및공휴일 휴무</p>
 	  </div>

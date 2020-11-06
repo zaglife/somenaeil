@@ -15,8 +15,8 @@
 <div class="login_main">
   <div id="ser_top">
     <div id="id_pw">
-      <a href="id_ser.jsp" id="id_ser">아이디찾기</a>
-      <a href="pw_ser.jsp" id="pw_ser">비밀번호찾기</a>
+      <a href="id_ser.jsp" id="pw_id_ser">아이디찾기</a>
+      <a id="pw_pw_ser">비밀번호찾기</a>
     </div>
   </div>
   <div id="ser_body">
