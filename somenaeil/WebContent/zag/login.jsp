@@ -57,5 +57,11 @@
 	  <div id="newjoin"><a id="login_join_btn" href="join.jsp">회원가입</a></div>
     </div>
   </div>
+  
+  
+<jsp:include page="top.jsp" />
+<jsp:include page="nav.jsp" />
+  
+  
 </body>
 </html></html>

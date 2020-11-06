@@ -34,27 +34,35 @@
     transform: translate(-50%, 0);
 }
 #id_ser{
-	width: 200px;
-    height: 40px;
-    font-size: 18px;
+	float: left;
+    position: relative;
+    width: 120px;
+    height: 30px;
     font-weight: 600;
     margin: 0px 30px 15px 0;
     border-radius: 10px;
     border: 1px solid #91c38E;
-    background:#edf8e6;
-	cursor: pointer;
+    background: #edf8e6;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
 }
 
 #pw_ser{
-	width: 200px;
-    height: 40px;
-    font-size: 18px;
+	float: left;
+    position: relative;
+    width: 120px;
+    height: 30px;
     font-weight: 600;
+    margin: 0px 30px 15px 0;
     border-radius: 10px;
-    border: 1px solid #ccc;
-	color: #aaa;
-
-	cursor: pointer;
+    border: 1px solid #91c38E;
+    background: #edf8e6;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
 }
 #ser_body{
 	float: left;
