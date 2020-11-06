@@ -6,7 +6,7 @@
 	width: 900px;
 	left: 50%;
 	transform: translate(-50%, 0);
-	margin-top: 120px;
+	margin: 120px 0 100px;
 	padding: 0;
 	
 	border: 1px solid #999;
@@ -26,10 +26,10 @@
 
 .article_header_thumb {
 	float: left;
-  position: relative;
-  width: 150px;
-  height: 150px;
-  margin: 10px 0 0 10px;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	margin: 10px 0 0 10px;
 }
 
 .article_tab_thumb, .article_user_thumb { border-radius: 50%; }
@@ -37,8 +37,8 @@
 .article_tab_thumb {
 	position: absolute;
 	
-  top: 5px;
-  left: 10px;
+	top: 5px;
+	left: 10px;
 	width: 50px;
 	height: 50px;
 	z-index: 1;
@@ -51,22 +51,22 @@
 	width: 100px;
 	height: 100px;
 	top: 20px;
-  left: 25px;
+	left: 25px;
   
-  border: 3px solid #333;
-  background-color: #333;
+	border: 3px solid #333;
+	background-color: #333;
 }
 
 .article_info {
 	position: relative;
 	width: 700px;
 	height: 150px;
-  float: left;
+	float: left;
 }
 
 .article_title {
 	margin-top: 40px;
-  font-size: 25px;
+	font-size: 25px;
 }
 
 .article_title, .user_id a {
@@ -75,36 +75,36 @@
 }
 
 .article_subinfo1 {
-  height: 30px;
+	height: 30px;
 }
 
 .article_subinfo2 {
-  height: 30px;
-  font-size: 14px;
-  margin-top: 5px;
-  padding-top: 5px;
-  border-top: 1px dotted black;
+	height: 30px;
+	font-size: 14px;
+	margin-top: 5px;
+	padding-top: 5px;
+	border-top: 1px dashed #999;
 }
 
 .article_auth {
 	float: left;
 	width: 500px;
-  font-size: 18px;
-  margin-top: 5px;
+	font-size: 18px;
+	margin-top: 5px;
 }
 
 .user_id {
-  margin-right: 10px;
-  float: left;
+	margin-right: 10px;
+	float: left;
 }
 
 .follow, .dm {
-  margin: 0 5px;
-  float: left;
+	margin: 0 5px;
+	float: left;
 }
 
 .like, .scrap {
-  margin: 0 2px;
+	margin: 0 2px;
 }
 
 .article_icon {
@@ -112,19 +112,19 @@
 }
 
 .article_follow_info {
-  float: left;
-  font-size: 14px;
-  color: #999;
+	float: left;
+	font-size: 14px;
+	color: #999;
 }
 
 .user_follower, .user_follow {
-  margin-right: 15px;
+	margin-right: 15px;
 
 }
 
 .article_date {
-  float: right;
-  color: #999;
+	float: right;
+	color: #999;
 }
 
 
@@ -134,8 +134,8 @@
 	margin-left: 160px;
 }
 .article_content p {
-  margin: 10px auto;
-  line-height: 2;
+	margin: 10px auto;
+	line-height: 2;
 }
 
 .article_hashTag {
@@ -144,27 +144,27 @@
 }
 .hash {
 	color: #7899ec !important; 
-  font-size: 15px;
-  margin: 0 3px;
-  font-style: italic;
+	font-size: 15px;
+	margin: 0 3px;
+	font-style: italic;
 }
 
 /* comment */
 .article_comment {
-	border-top: 1px dotted black;
+	border-top: 1px dashed #999;
 	margin-top: 10px;
-  padding-top: 10px;
-  overflow: auto;
+	padding-top: 10px;
+	overflow: auto;
 }
 
 .comment_id {
-  width: 150px;
-  margin: 5px auto;
-  text-align: center;
+	width: 150px;
+	margin: 5px auto;
+	text-align: center;
 }
 
 .comment_context {
-	width: 700px;
+	width: 680px;
 }
 
 .comment_id, .comment_context {
@@ -174,14 +174,19 @@
 
 .input_comment {
 	overflow: auto;
-	margin: 20px 0;
+	margin: 20px 0 0;
 }
 
 
 .btn_more_comment {
-  text-align: center;
-  width: 500px;
-  margin: 5px auto;
+	text-align: center;
+	width: 500px;
+	margin: 5px auto;
+	transition: transform .2s;
+}
+
+.btn_rotate {
+	transform: rotate(45deg);
 }
 
 /* comment form */
@@ -192,18 +197,18 @@
 
 input.comment_context {
 	border: 2px solid #333;
-  border-radius: 20px;
+	border-radius: 20px;
   
 	font-size: 14px;
 	padding: 10px 20px;
 }
 
 .comment_send {
-  position: relative;
-  float: right;
-  bottom: 36px;
-  margin-right: 25px;
-  z-index: 2;
+	position: relative;
+	float: right;
+	bottom: 38px;
+	margin-right: 42px;
+	z-index: 2;
 }
 
 

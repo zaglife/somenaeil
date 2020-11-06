@@ -15,6 +15,44 @@
 
   <div id="join_form_title"><img src="img/logo_40.png"></div>
 
+  <div id="join_form_private">
+  
+    <p class="join_form_tt">개인 정보</p>
+    
+    <div class="join_form_sub_tt"><p>이름</p><div id="jf_name_back"></div></div>
+    <input type="text" placeholder="썸내일" class="jf_input jf_name">
+    <p class="join_form_exp jfe_name">*이름 변경 불가</p>
+    
+    <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
+    
+    <input type="text" placeholder="somenaeil" class="jf_input jf_email">
+    <p id="jf_email_at">@</p>
+    <select id="jf_email_addr">
+      <option>이메일</option>
+      <option value="naver.com" selected>naver.com</option>
+      <option value="gmail.com">gmail.com</option>
+      <option value="daum.net">daum.net</option>
+      <option value="hanmail.net">hanmail.net</option>
+      <option value="nate.com">nate.com</option>
+      <option value="empas.com">empas.com</option>
+      <option value="yahoo.co.kr">yahoo.co.kr</option>
+      <option value="hotmail.com">hotmail.com</option>
+    </select>
+    <a href="#veri" id="join_form_email_btn">인증메일</a>
+    <p class="join_form_exp jfe_email">*이메일 주소로 수신된 링크 인증 필수</p>
+    
+    
+    <p class="join_form_sub_tt">비밀번호</p>
+    <input type="text" placeholder="썸내일" class="jf_input jf_pw">
+    <input type="text" placeholder="썸내일" class="jf_input jf_pwc">
+    <span class="jf_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
+    <span class="jf_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
+    <p class="join_form_exp jfe_pw">*영문, 숫자 조합 8글자 이상</p>
+    
+  </div>
+  
+  
+  
   <div id="join_form_open">
   
     <p class="join_form_tt">공개 정보</p>
@@ -40,31 +78,9 @@
   
   
   
-  <div id="join_form_private">
-  
-    <p class="join_form_tt">개인 정보</p>
-    
-    <p class="join_form_sub_tt">이름<div id="jf_name_back"></div></p>
-    <input type="text" placeholder="썸내일" class="jf_input jf_name">
-    <p class="join_form_exp jfe_name">*이름 변경 불가</p>
-    
-    <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
-    <input type="text" placeholder="somenaeil" class="jf_input jf_email">
-    <p id="jf_email_at">@</p>
-    <select id="jf_email_addr">
-      <option>이메일</option>
-      <option value="naver.com" selected>naver.com</option>
-      <option value="gmail.com">gmail.com</option>
-      <option value="daum.net">daum.net</option>
-      <option value="hanmail.net">hanmail.net</option>
-      <option value="nate.com">nate.com</option>
-      <option value="empas.com">empas.com</option>
-      <option value="yahoo.co.kr">yahoo.co.kr</option>
-      <option value="hotmail.com">hotmail.com</option>
-    </select>
-    <a href="#veri" id="join_form_pimg_btn">인증메일</a>
-    <p class="join_form_exp jfe_name">*이름 변경 불가</p>
-    
+  <div id="join_form_end">
+    <button id="join_form_cancle">취소</button>
+    <button id="join_form_clear">회원가입</button>
   </div>
 
 </div>

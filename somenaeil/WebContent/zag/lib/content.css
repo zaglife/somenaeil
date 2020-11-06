@@ -173,7 +173,14 @@
 	overflow: hidden;
 }
 
-.post_thumb img {
+.post_thumb a {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.post_thumb a img {
 	position: relative;
 	width: inherit;
 	height: inherit;

@@ -18,6 +18,15 @@
 
 <link rel="stylesheet" href="lib/post_main.css">
 <link rel="stylesheet" href="lib/popup.css">
-<link rel="stylesheet" href="lib/join.css">
-<link rel="stylesheet" href="lib/join_clear.css">
 <link rel="stylesheet" href="lib/post.css">
+
+<link rel="stylesheet" href="lib/join.css">
+<link rel="stylesheet" href="lib/join_form.css">
+<link rel="stylesheet" href="lib/join_clear.css">
+<link rel="stylesheet" href="lib/login.css">
+<link rel="stylesheet" href="lib/gosen.css">
+<link rel="stylesheet" href="lib/job_inf.css">
+<link rel="stylesheet" href="lib/infor.css">
+<link rel="stylesheet" href="lib/id_pw_ser.css">
+<link rel="stylesheet" href="lib/pw_ch.css">
+<link rel="stylesheet" href="lib/pw_ser_clear.css">

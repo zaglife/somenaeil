@@ -113,24 +113,25 @@
 	clear: both;
 	float: left;
 	position: relative;
-	width: 600px;
+	width: 770px;
 	left: 50%;
 	transform: translate(-50%, 0);
 }
 
 .noti_border {
 	float: left;
-	width: 100%;
+	width: 720px;
 	border-left: 1px dashed #c4dec1;
 	border-right: 1px dashed #c4dec1;
-	padding-bottom: 20px;
+	padding: 0 24px 20px 24px;
 	margin-bottom: 20px;
 }
 
 .noti_timeline {
+	clear: both;
 	float: left;
 	position: relative;
-	margin-bottom: 10px;
+	margin: 10px 3px 0 -25px;
 	padding: 30px 30px 2px 30px;
 	color: #aaa;
 	border-bottom: 1px dashed #d5ecd2;
@@ -138,6 +139,7 @@
 }
 
 .noti_newline {
+	clear: both;
 	float: left;
 	width: 540px;
 	margin: 10px 30px;
@@ -180,6 +182,7 @@
 /*****************************************************/
 /*					      스크랩 전체 페이지  				 */
 /*****************************************************/
+
 #noti_scrap_topspace {
 	float: left;
 	position: relative;

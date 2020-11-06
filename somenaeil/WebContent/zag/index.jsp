@@ -30,7 +30,9 @@
 
 
 <!--jsp:include page="content.jsp" /-->
-<jsp:include page="search.jsp" />
+<!--jsp:include page="search.jsp" /-->
+
+<jsp:include page="content.jsp" />
 
 
 

@@ -24,14 +24,14 @@ function hasScrolled() {
 	if(Math.abs(lastScrollTop - st) <= delta) { return; }
 
 	if (st > lastScrollTop && st > navbarHeight){
-		// Scroll Down
+		// show
 		$('#top_wrap').addClass('sc_down');
 		$('#top_search_cate').addClass('tsc_down');
 		$('#top_search input').addClass('tsi_down');
 		$('#top_search a').addClass('tsa_down');
 		$('#nav_top').addClass('btn_show');
 	} else {
-		// Scroll Up
+		// hide
 		if(st + $(window).height() < $(document).height()) {
 			$('#top_wrap').removeClass('sc_down');
 			$('#top_search_cate').removeClass('tsc_down');
@@ -47,29 +47,38 @@ var drop= 1;
 
 function dropdown() {
 	if(drop == 1) {
-		$('.dropdown').addClass('d_down');
+		$('.dropdown').removeClass('d_hide');
+		setTimeout(function() {
+			$('.dropdown').addClass('d_down');
+		}, 1);
 		$('.top_menu_btn').addClass('d_rotation');
+		
 		++drop;
+		
 	}else if(drop == 2) {
 		$('.dropdown').removeClass('d_down');
+		setTimeout(function() {
+			$('.dropdown').addClass('d_hide');
+		}, 1);
 		$('.top_menu_btn').removeClass('d_rotation');
+		
 		drop= 1;
 	}
 }
 </script>
 
 <div class="dropdown" style="display:none;">
-  <a href="#">로그인</a>
-  <a href="#">회원가입</a>
+  <a href="login.jsp">로그인</a>
+  <a href="join.jsp">회원가입</a>
 </div>
 
-<div class="dropdown">
+<div class="dropdown d_hide">
   <a href="index.jsp">메인 페이지</a>
   <a href="user.jsp">마이 페이지</a>
-  <a href="#">포스팅</a>
+  <a href="post_main.jsp">포스팅</a>
   <a href="noti.jsp">알림</a>
   <a href="dm.jsp">메세지</a>
-  <a href="#">채용정보</a>
+  <a href="infor.jsp">채용정보</a>
   <a href="#">로그아웃</a>
 </div>
 
@@ -89,7 +98,7 @@ function dropdown() {
     <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
     <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
     <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
-    <a href="user.jsp"><img src="img/icon_profile_30.png"></a>
+    <a href="login.jsp"><img src="img/icon_profile_30.png"></a>
   </div>
 
 </div>

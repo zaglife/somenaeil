@@ -65,7 +65,6 @@
   	        <button id='embed_bt'>+</button>	       
   	      </div>
   	    </div>
-  	    <div class="post_file"><a href="#"><img src="img/Untitled-5.png"></a></div>
   	  </div>
   	  <div class="post_tcate_part">
   	    <div class="post_file"><a href="#"><img src="img/post_table_20.png"></a></div>

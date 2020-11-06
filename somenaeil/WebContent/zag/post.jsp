@@ -65,47 +65,47 @@
 				</p>
 				<img src="img/profile04.jpg">
 				<div class="article_hashTag">
-					<a class="hash" href="#">#제약바이오</a>
-					<a class="hash" href="#">#60초영상</a>
+					<a class="hash" href="index.jsp#search">#제약바이오</a>
+					<a class="hash" href="index.jsp#search">#60초영상</a>
 				</div>
 			</div>
 			<!-- footer (댓글) -->
 			<div class="article_footer">
 				<div class="article_comment">
-					<div class="comment_id">gggg</div>
+					<div class="comment_id"><a href="user.jsp">gggg</a></div>
 					<div class="comment_context">좋은 정보 감사합니다</div>
-					<div class="comment_id">asdfsgdf</div>
+					<div class="comment_id"><a href="user.jsp">asdfsgdf</a></div>
 					<div class="comment_context">공모전 공고는 어디서 확인할 수 있나요?</div>
-					<div class="comment_id">soalx</div>
+					<div class="comment_id"><a href="user.jsp">soalx</a></div>
 					<div class="comment_context">안녕하세요. 인사 남깁니다. 잘 보고가요</div>
-					<div class="comment_id">asdfsgdf</div>
+					<div class="comment_id"><a href="user.jsp">asdfsgdf</a></div>
 					<div class="comment_context">제약바이오 제가 관심있는 회사였는데ㅠㅠ</div>
-					<div class="comment_id">gkvw426</div>
+					<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 					<div class="comment_context">감사합니다</div>
 
 					<!-- more comment -->
 					<div class="comment_hidden">
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
-						<div class="comment_id">gkvw426</div>
+						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
 						<div class="comment_context">감사합니다</div>
 					</div>
 				</div>
@@ -143,15 +143,19 @@
 		// 댓글 개수 확인 후 
 		function check_comment() {
 			if ($(".comment_hidden > .comment_id").length == 0) {
-				$(".btn_more_comment").remove();
+				$(".btn_more_comment").addClass("btn_rotate");
 			}
-			
 		}
 		
 		$().ready(function(){
 			$(".comment_hidden").hide();
 			check_comment();
 		})
+		
+		// 코멘트 모두 출력 후 버튼 45도 돌려진 이후 코멘트 닫기버튼으로 변경
+		//var c_hide = document.getElementClassName("btn_rotate");
+		//c_hide.onclick= function() {};
+		
 		
 		// 아이콘 클릭 후 카운트 변화
 		var follow_icon = {

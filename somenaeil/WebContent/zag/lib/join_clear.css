@@ -1,25 +1,7 @@
 @charset "UTF-8";
 
-html ,body ,div ,span{
-	margin:0;
-	padding:0;
-	font-size:12px;
-	font-family: 'paybooc-Medium';
-}
-
-/*
-
-	font-family: 'paybooc-Light';
-
-	font-family: 'paybooc-Medium';
-
-	font-family: 'paybooc-Bold';
-
-	font-family: 'paybooc-ExtraBold';
-
-*/
-
-#main{
+#join_clear_main{
+	float: left;
 	left: 50%;
     top: 50%;
     height: 440px;
@@ -35,16 +17,17 @@ html ,body ,div ,span{
 	font-size: 30px;
     font-weight: 700;
     text-align: center;
-    padding-top: 50px;
+    padding-top: 120px;
 }
 
 #clear_p{
 	font-size: 16px;
     font-weight: 100;
+    margin-top: 10px;
 }
 #go_posting{
 	text-align: center;
-    padding: 70px 0 90px;
+    padding: 80px 0 90px;
 }
 #post_bt{
 	width: 70px;

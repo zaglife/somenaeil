@@ -37,12 +37,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -58,8 +58,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -100,12 +100,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -121,8 +121,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -170,12 +170,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -191,8 +191,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -233,12 +233,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -254,8 +254,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -300,12 +300,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -321,8 +321,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -363,12 +363,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -384,8 +384,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -433,12 +433,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -454,8 +454,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">
@@ -496,12 +496,12 @@
     <!-- post_header end -->
     <!-- post_title start -->
     <div class="post_title">
-      <a href='#'>제약바이오 60초 영상공모전</a>
+      <a href='post.jsp'>제약바이오 60초 영상공모전</a>
     </div>
     <!-- post_title end -->
     <!-- post_content start -->
     <div class="post_content">
-      <a href="#">
+      <a href="post.jsp">
         <p>
 제약바이오 60초 영상공모전 <br>
 1등 상금이 500만원?! <br>
@@ -517,8 +517,8 @@
     <div class="post_footer">
     
       <div class="post_footer_hashTag">
-        <a class="hash" href="#">#제약바이오</a> 
-        <a class="hash" href="#">#60초영상</a>
+        <a class="hash" href="index.jsp#search">#제약바이오</a> 
+        <a class="hash" href="index.jsp#search">#60초영상</a>
       </div>
       
       <div class="post_footer_subInfo">

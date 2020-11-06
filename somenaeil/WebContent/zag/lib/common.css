@@ -33,6 +33,11 @@ input::placeholder {
 	color: #999;
 }
 
+button:hover {
+	opacity: .7;
+	cursor: pointer;
+}
+
 select {
 	-webkit-appearance: none; /* 네이티브 외형 감추기 */
 	-moz-appearance: none;
@@ -114,6 +119,10 @@ select {
 
 .d_down {
 	opacity: 1 !important;
+}
+
+.d_hide {
+	display: none;
 }
 
 .dropdown a {
