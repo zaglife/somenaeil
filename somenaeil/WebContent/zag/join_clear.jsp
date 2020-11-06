@@ -21,5 +21,12 @@
 	  <p id="post_te"><a href="post_main.jsp">포스팅 하러가기</a></p>        
 	</div>     
   </div>
+  
+  
+<jsp:include page="top.jsp" />
+<jsp:include page="bottom.jsp" />
+<jsp:include page="totop.jsp" />
+<jsp:include page="nav.jsp" />
+  
 </body>
 </html>

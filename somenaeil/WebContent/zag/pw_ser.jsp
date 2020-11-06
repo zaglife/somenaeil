@@ -33,12 +33,12 @@
     <div id="ser_bt">
       <p id="bt_te1">회원가입시 입력한 이메일 인증 필요</p>
       <p id="bt_te2">메일 확인 버튼을 누르시면 입력하신 이메일 주소로 임시 비밀번호가 전송됩니다.</p>
-      <p id="bt_te3">로그인후 비밀번호를 꼭 변경해주세요.</p>
     </div>
   </div>
 </div>
 
 <jsp:include page="top.jsp" />
+<jsp:include page="totop.jsp" />
 
 </body>
 </html>

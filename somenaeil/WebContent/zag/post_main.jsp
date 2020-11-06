@@ -132,10 +132,8 @@
 
 
 <jsp:include page="top.jsp" />
+<jsp:include page="totop.jsp" />
 
-<!-- 글쓰기 페이지에서는 nav버튼과 채용공고 슬라이드 없어도 됨 -->
-<!-- "nav.jsp" -->
-<!-- "bottom.jsp" -->
 
 </body>
 </html>

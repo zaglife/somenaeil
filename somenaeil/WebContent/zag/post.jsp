@@ -121,6 +121,8 @@
 		</div>
 	</div>
 	
+	<jsp:include page="totop.jsp" />
+	
 	<!-- js script -->
 	<script>
 		// 더 많은 댓글 보여주기
