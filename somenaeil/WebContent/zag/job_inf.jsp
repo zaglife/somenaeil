@@ -27,16 +27,17 @@
       </div>
     <div id="j_bt">
        <div id="j_n">
-         <a href="#"><</a>
+         <a href="#">&lt;</a>
          <a href="#">1</a>
          <a href="#">2</a>
          <a href="#">3</a>
          <a href="#">4</a>
          <a href="#">5</a>
-         <a href="#">></a>
+         <a href="#">&gt;</a>
          </div>
          <div id="j_ser">
-          <input type="text" placeholder="채용정보검색">
+           <input type="text" placeholder="채용정보검색">
+           <a href="job_inf.jsp#search"><img src="img/btn_search02_20.png"></a>
          </div>
       
       </div>  
