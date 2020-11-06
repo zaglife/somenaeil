@@ -38,7 +38,7 @@
   <!-- "noti_basic.jsp" -->
   <!-- 페이지 2.스크랩 전체 알림페이지 -->
   <!-- "noti_scrap.jsp" -->
-  <jsp:include page="noti_scrap.jsp" />
+  <jsp:include page="noti_basic.jsp" />
 
 </div>
 

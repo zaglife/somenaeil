@@ -43,8 +43,8 @@
     
     
     <p class="join_form_sub_tt">비밀번호</p>
-    <input type="text" placeholder="썸내일" class="jf_input jf_pw">
-    <input type="text" placeholder="썸내일" class="jf_input jf_pwc">
+    <input type="password" placeholder="비밀번호" class="jf_input jf_pw">
+    <input type="password" placeholder="비밀번호 확인" class="jf_input jf_pwc">
     <span class="jf_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
     <span class="jf_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
     <p class="join_form_exp jfe_pw">*영문, 숫자 조합 8글자 이상</p>

@@ -29,14 +29,14 @@
     
     <a href="#" id="dm_manage"><img src="img/setting_20.png"></a>
   </div>
-  <div id="dm_choose"><a href="#">메세지를 선택해주세요.</a></div>
+  <div id="dm_choose"><a href="#">유저를 선택해주세요.</a></div>
   
   <div id="dm_cont">
     <!-- 페이지 1.메세지 없는 경우 -->
     <!-- jsp include page "dm_default.jsp" -->
     <!-- 페이지 2.메세지 있는 경우 -->
     <!-- jsp include page "dm_choose.jsp" -->
-    <jsp:include page="dm_choose.jsp" />
+    <jsp:include page="dm_default.jsp" />
   </div>
   
 </div>

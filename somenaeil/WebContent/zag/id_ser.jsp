@@ -20,12 +20,16 @@
     </div>
   </div>
   
-  <div id="ser_body">
+  <div id="id_ser_body">
     <p id="bd_te">회원가입시 입력한 이메일 주소를 입력해주세요 </p>
     <div id="ser_name">이름 <input type='text' id="name_te" placeholder="썸네일"></div>
     <div id="ser_mail">이메일 주소 <input type='text' id="mail_te" placeholder="예)id@somenaeil.net"></div>
     <div id="id_bt"><a href="id_ser_clear.jsp" id="idser_bt">아이디 찾기</a></div>
   </div>
 </div>
+
+<jsp:include page="top.jsp" />
+<jsp:include page="nav.jsp" />
+
 </body>
 </html>
