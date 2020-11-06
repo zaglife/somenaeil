@@ -140,7 +140,7 @@
 }
 
 
-.jf_pw {
+.jf_pwo {
 	clear: left;
 	border: 1px solid #91c38e;
 	border-radius: 15px;
@@ -148,10 +148,18 @@
 	height: 35px;
 }
 
+.jf_pw {
+	clear: left;
+	border: 1px solid #91c38e;
+	border-radius: 15px;
+	margin: 7px 10px 0 0;
+	height: 35px;
+}
+
 .jf_pwc {
 	border: 1px solid #91c38e;
 	border-radius: 15px;
-	margin-top: -10px;
+	margin-top: 7px;
 	height: 35px;
 }
 .jf_nick {
@@ -177,14 +185,14 @@
 	float: left;
     font-size: 12px;
     color: red;
-    margin: 10px 0 0 3px;
+    margin: 25px 0 0 3px;
 }
 .jf_pw_correct {
 	display: none;
 	float: left;
     font-size: 12px;
     color: #91c38e;
-    margin: 10px 0 0 3px;
+    margin: 25px 0 0 3px;
 }
 
 

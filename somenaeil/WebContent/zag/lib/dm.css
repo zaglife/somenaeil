@@ -92,21 +92,10 @@
 	position: relative;
 	width: 100%;
 	height: auto;
-}
-
-#dm_choose a {
-	float: left;
-	position: relative;
+	text-align: center;
 	margin: 10px;
-	color: #bbb;
-	font-size: 13px;
-	left: 50%;
-	transform: translate(-50%, 0);
-	text-decoration: none;
-}
-
-#dm_choose a:hover {
 	color: #999;
+	font-size: 13px;
 }
 
 #dm_cont {

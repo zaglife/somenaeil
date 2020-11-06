@@ -37,7 +37,6 @@
             <a href="">3</a>
             <a href="">4</a>
             <a href="">5</a>
-            <a href="">...</a>
             <a href="">></a>
           </div>
         <div id="g_ser">

@@ -27,12 +27,13 @@
       </div>
     <div id="j_bt">
        <div id="j_n">
-         <a href="">1</a>
-         <a href="">2</a>
-         <a href="">3</a>
-         <a href="">4</a>
-         <a href="">5</a>
-         <a href="">...</a>
+         <a href="#"><</a>
+         <a href="#">1</a>
+         <a href="#">2</a>
+         <a href="#">3</a>
+         <a href="#">4</a>
+         <a href="#">5</a>
+         <a href="#">></a>
          </div>
          <div id="j_ser">
           <input type="text" placeholder="채용정보검색">
@@ -44,10 +45,8 @@
 
 <%-- <jsp:include page="job_click.jsp" /> --%>
   
-  
 <jsp:include page="top.jsp" />
 <jsp:include page="totop.jsp" />
-<jsp:include page="nav.jsp" />
 
 </body>
 </html>

@@ -27,7 +27,7 @@
     <div id="ser_mail_pw">
       <p>이메일 주소</p>
       <input type='text' id="mail_te_pw" placeholder="예)id@somenaeil.net">
-      <a href="#" id="mail_in">메일 확인</a>
+      <a href="pw_ser_clear.jsp" id="mail_in">메일 확인</a>
     </div>
     </div>
     <div id="ser_bt">
