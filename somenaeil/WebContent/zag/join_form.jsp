@@ -79,8 +79,8 @@
   
   
   <div id="join_form_end">
-    <button id="join_form_cancle">취소</button>
-    <button id="join_form_clear">회원가입</button>
+    <button id="join_form_cancle" onclick="location.href='login.jsp'">취소</button>
+    <button id="join_form_clear" onclick="location.href='join_clear.jsp'">회원가입</button>
   </div>
 
 </div>
