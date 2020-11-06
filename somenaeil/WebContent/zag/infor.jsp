@@ -49,6 +49,7 @@
 </div>
 
 <jsp:include page="top.jsp" />
+<jsp:include page="nav.jsp" />
 
 </body>
 </html>
