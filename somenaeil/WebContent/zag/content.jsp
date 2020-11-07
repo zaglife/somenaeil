@@ -5,7 +5,7 @@
 <!-- 분류 탭  -->
 <div id="main_menu_wrap">
   <div id="main_menu_center">
-    <a href="#">A전체1</a>
+    <a href="#">A전체</a>
     <a href="#">G일반</a>
     <a href="#">R리뷰</a>
     <a href="#">Q질문</a>

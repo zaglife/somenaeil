@@ -23,5 +23,5 @@
 <link rel="stylesheet" href="lib/join.css">
 <link rel="stylesheet" href="lib/login.css">
 <link rel="stylesheet" href="lib/gosen.css">
-<link rel="stylesheet" href="lib/job_inf.css">
+<link rel="stylesheet" href="lib/job.css">
 <link rel="stylesheet" href="lib/info.css">
