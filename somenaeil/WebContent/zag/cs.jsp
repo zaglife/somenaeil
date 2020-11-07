@@ -41,6 +41,7 @@
           </div>
         <div id="g_ser">
           <input type="text" placeholder="고객센터검색">
+          <a href="cs.jsp#search"><img src="img/btn_search02_20.png"></a>
         </div>
       </div>  
     </div>

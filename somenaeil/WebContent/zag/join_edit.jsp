@@ -83,7 +83,7 @@
   
   <div id="join_form_end">
     <button id="join_form_cancle">취소</button>
-    <button id="join_form_clear">변경</button>
+    <button id="join_form_clear" onclick="window.history.back()">변경</button>
   </div>
 
 </div>

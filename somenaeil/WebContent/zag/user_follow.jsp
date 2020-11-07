@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div class="user_popup_wrap">
+<div id="user_follow" class="user_popup_wrap user_follow_hide">
   <div class="user_popup_center">
     <div id="user_popup_top_space"></div>
     <div id="user_popup_top">팔로우</div>
-    <div id="user_popup_close"><img src="img/btn_close_20.png"></div>
+    <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowPop()"></div>
     
     <div id="user_popup_scroll">
     <div id="user_popup_cont">

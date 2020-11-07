@@ -5,7 +5,7 @@
 <div id="all" class="tab_content">
 
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -72,7 +72,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -141,7 +141,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -209,7 +209,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -277,7 +277,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -344,7 +344,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -413,7 +413,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">
@@ -481,7 +481,7 @@
   
   
   <!-- post start -->
-  <div class="post">
+  <div class="post user_scrap">
   
     <!-- post_header start -->
     <div class="post_header">

@@ -57,7 +57,6 @@
     transform: translate(-50%, 0);
 }
 #g_n{
-    width: 210px;
 	margin: 0 0 12px 0;
     font-size: 13px;
     font-weight: 900;
@@ -66,11 +65,19 @@
 	margin:7px;
 }
 #g_ser input{
+	width: 186px;
 	height: 30px;
     margin-top: 10px;
     padding: 5px 20px;
-    border: 1px solid black;
+    border: 1px solid #999;
     border-radius: 30px;
+}
+
+#g_ser img {
+	float: left;
+	position: absolute;
+	left: 0;
+	margin: 21px 0 0 193px;
 }
 
 /****고객센터 하단 번호 start****/

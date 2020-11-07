@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
 var didScroll;
@@ -67,21 +69,25 @@ function dropdown() {
 }
 </script>
 
-<div class="dropdown" style="display:none;">
-  <a href="login.jsp">로그인</a>
-  <a href="join.jsp">회원가입</a>
-</div>
-
-<div class="dropdown d_hide">
-  <a href="index.jsp">메인 페이지</a>
-  <a href="user.jsp">마이 페이지</a>
-  <a href="post_main.jsp">포스팅</a>
-  <a href="noti.jsp">알림</a>
-  <a href="dm.jsp">메세지</a>
-  <a href="info.jsp">채용정보</a>
-  <a href="index.jsp#logout">로그아웃</a>
-</div>
-
+<c:choose>
+  <c:when test="${param.state == 'login' }">
+    <div class="dropdown d_hide">
+      <a href="index.jsp?state=login">메인 페이지</a>
+      <a href="user.jsp?state=login">마이 페이지</a>
+      <a href="post_main.jsp?state=login">포스팅</a>
+      <a href="noti.jsp?state=login">알림</a>
+      <a href="dm.jsp?state=login">메세지</a>
+      <a href="info.jsp?state=login">채용정보</a>
+      <a href="index.jsp">로그아웃</a>
+    </div>
+  </c:when>
+  <c:otherwise>
+    <div class="dropdown">
+      <a href="login.jsp">로그인</a>
+      <a href="join.jsp">회원가입</a>
+    </div>
+  </c:otherwise>
+</c:choose>
 <div id="top_wrap">
 
   <div id="top_logo">

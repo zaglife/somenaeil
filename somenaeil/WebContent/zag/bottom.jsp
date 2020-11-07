@@ -7,11 +7,11 @@
     <div id="bottom_left"><a href="job_inf.jsp">채용정보</a></div>
     
     <div id="bottom_cont">
-      <p><a href="job_inf.jsp#divpopup">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
-      <p><a href="job_inf.jsp#divpopup">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
-      <p><a href="job_inf.jsp#divpopup">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
-      <p><a href="job_inf.jsp#divpopup">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
-      <p><a href="job_inf.jsp#divpopup">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
+      <p><a href="job.jsp?state=pop">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
+      <p><a href="job.jsp?state=pop">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
+      <p><a href="job.jsp?state=pop">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
+      <p><a href="job.jsp?state=pop">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
+      <p><a href="job.jsp?state=pop">게임빌·컴투스, 하반기 신입사원 공개채용</a></p>
     </div>
     
     <div id="bottom_controll">

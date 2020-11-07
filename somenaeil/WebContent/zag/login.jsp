@@ -28,7 +28,7 @@
 		  <input type='text' placeholder="••••">
 	    </div>
 	    
-	    <input type="button" id="login_bt" value="로그인">
+	    <a href="index.jsp?state=login" id="login_bt">로그인</a>
 	    
 	    <div id="lb_bt">
 		  <input type="checkbox" id="login_ing">

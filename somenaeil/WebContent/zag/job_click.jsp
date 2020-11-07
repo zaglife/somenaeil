@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-<div id="job_cli">
+<div id="job_click" class="job_click_hide" onclick="jobClick()">
 
-  <div id="j_cl">
+  <div id="j_cl" >
     <div id="cl_top">
       <p id="cl_top_te1">(주)오뚜기</p>
       <p id="cl_top_te2">2020년하반기 대졸신입사원채용</p>
@@ -38,4 +38,6 @@
     
   </div>
 </div>
+
+
 

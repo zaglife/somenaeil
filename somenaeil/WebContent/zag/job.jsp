@@ -1,5 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script>
+var job= 1;
+
+function jobClick() {
+	if(job == 1) {
+		$('#job_click').removeClass('job_click_hide');
+		++job;
+	}else if(job == 2) {
+		$('#job_click').addClass('job_click_hide');
+		job= 1;
+	}
+}
+</script>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,15 +30,15 @@
   <div class="j_inf_main">
     <div id="j_top"><p>채용정보</p></div>
       <div id="j_body">
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
-       <div class="job_go"><a href="#">(주)오뚜기</a><a href="#">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
+       <div class="job_go"><a onclick="jobClick()">(주)오뚜기</a><a onclick="jobClick()">- 2020년 하반기 대졸신입사원 채용</a><p>~2020년10월29일</p></div>
       </div>
     <div id="j_bt">
        <div id="j_n">
@@ -37,14 +52,16 @@
          </div>
          <div id="j_ser">
            <input type="text" placeholder="채용정보검색">
-           <a href="job.jsp#search"><img src="../img/btn_search02_20.png"></a>
+           <a href="job.jsp#search"><img src="img/btn_search02_20.png"></a>
          </div>
       
       </div>  
   </div>
   
 
-<%-- <jsp:include page="job_click.jsp" /> --%>
+<jsp:include page="job_click.jsp" />
+
+
   
 <jsp:include page="top.jsp" />
 <jsp:include page="totop.jsp" />

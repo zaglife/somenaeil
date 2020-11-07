@@ -78,7 +78,7 @@
     <div class="post_header">
     
       <div class="post_header_thumb">
-        <img class="tab_thumb" src="img/cate_r_s.png">
+        <img class="tab_thumb" src="img/cate_q_s.png">
         <a href="user.jsp">
           <img class="user_thumb" src="img/profile01.jpg"/>
         </a>
@@ -147,7 +147,7 @@
     <div class="post_header">
     
       <div class="post_header_thumb">
-        <img class="tab_thumb" src="img/cate_r_s.png">
+        <img class="tab_thumb" src="img/cate_q_s.png">
         <a href="user.jsp">
           <img class="user_thumb" src="img/profile01.jpg"/>
         </a>
@@ -350,7 +350,7 @@
     <div class="post_header">
     
       <div class="post_header_thumb">
-        <img class="tab_thumb" src="img/cate_r_s.png">
+        <img class="tab_thumb" src="img/cate_q_s.png">
         <a href="user.jsp">
           <img class="user_thumb" src="img/profile01.jpg"/>
         </a>
@@ -419,7 +419,7 @@
     <div class="post_header">
     
       <div class="post_header_thumb">
-        <img class="tab_thumb" src="img/cate_r_s.png">
+        <img class="tab_thumb" src="img/cate_q_s.png">
         <a href="user.jsp">
           <img class="user_thumb" src="img/profile01.jpg"/>
         </a>

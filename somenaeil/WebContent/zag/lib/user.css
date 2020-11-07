@@ -60,17 +60,20 @@
 	margin-top: 20px;
 }
 
-#user_info_follow a p,
+#user_info_follow a {
+	cursor: pointer;
+}
+
+#user_info_follow a,
 #user_info_follow p {
 	float: left;
 	position: relative;
 	color: #999;
 	font-size: 14px;
-	margin-right: 5px;
 }
 
-#user_info_follow a p:nth-child(2n) {
-	margin-right: 15px !important;
+#user_info_follow a:nth-child(2n) {
+	margin: 0 15px;
 }
 
 #user_right,
@@ -91,7 +94,7 @@
 }
 
 #user_right a img,
-#other_right a img {
+#other_right a {
 	float: right;
 	position: relative;
 	left: 0;
@@ -103,9 +106,24 @@
 	transform: rotate(45deg);
 }
 
-#other_right a img:hover {
-	transform: scale(1.2);
+#user_follow_btn_chg {
+	width: 20px;
+	height: 20px;
 }
+
+.user_follow_btn:hover,
+.user_unfollow_btn:hover {
+	transform: scale(1.1);
+}
+
+.user_follow_btn {
+	background: url("../img/noti_follow_n_20.png") no-repeat center center;
+}
+.user_unfollow_btn {
+	background: url("../img/noti_follow_20.png") no-repeat center center;
+}
+
+
 
 #user_right p,
 #other_right p {
@@ -179,6 +197,9 @@
 	background: rgba(0, 0, 0, .7);
 	z-index: 999;
 }
+
+.user_follower_hide { display: none; }
+.user_follow_hide { display: none; }
 
 .user_popup_center {
 	float: left;
@@ -311,4 +332,17 @@
 	opacity: .7;
 	transform: scale(1.1);
 	cursor: pointer;
+}
+
+.user_scrap::after {
+	content: "";
+	float: left;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 20px;
+	height: 50px;
+	border: 3px solid #de4b62;
+	border-radius: 30px;
+	margin: -12px 0 0 338px;
 }

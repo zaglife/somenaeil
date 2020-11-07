@@ -66,16 +66,17 @@
 #login_bt {
 	float: left;
 	position: relative;
-	width: 85px;
-    height: 85px;
+	width: 82px;
+    height: 82px;
 	border-radius: 10px;
 	border: 1px solid #91c38E;
 	margin: 5px;
-	padding: 5px 10px;
 	background: #edf8e6;
 	cursor: pointer;
 	font-size: 16px;
     font-weight: 900;
+    text-align: center;
+    line-height: 82px;
 }
 
 #lb_bt {
