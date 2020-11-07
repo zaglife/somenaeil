@@ -1,19 +1,13 @@
 @charset "UTF-8";
 
-.join_main{
+/**********join.jsp**********/
+
+#join_main{
 	left: 50%;
     top: 50%;
     width: 600px;
     position: absolute;
     transform: translate(-50%,-50%);
-}
-
-.main_bg {
-	background: url('../img/join_back_l.png') no-repeat center top;
-}
-.main_join{
-	margin:0;
-	padding:0;
 }
 
 #join_title{
@@ -22,13 +16,13 @@
     border-bottom: 1px dashed #555;;
     padding-bottom: 20px;
 }
-#title_text{
+
+#join_title_text{
 	font-size: 30px;
     font-weight: 600;
     text-align: center;
     position: relative;
 }
-
 
 #join_body{
 	float: left;
@@ -37,6 +31,7 @@
 	transform: translate(-50%, 0);
 	margin: 50px 0;
 }
+
 #join_sns{
 	float: left;
 	position: relative;
@@ -50,20 +45,6 @@
     cursor: pointer;
     margin: 10px;
 }
-.sns_m{
-	margin: 30px 0 10px 0;
-	font-family: 'paybooc-ExtraBold';
-}
-.sns_t1{
-	margin: -8px 0 0 0;
-    font-size: 25px;
-    font-weight: 500;
-}
-.sns_t2{
-	font-weight: 800;
-    font-size: 10px;
-    margin: 30px 0 0 0;
-}
 
 #join_st{
 	float: left;
@@ -72,11 +53,52 @@
 	height: 150px;
     border: 1px solid #dccb5b;
     border-radius: 15px;
-    text-align: center;
     font-size: 25px;
     font-weight: 900;
     cursor: pointer;
     margin: 10px;
+}
+
+#join_sns a,
+#join_st a {
+	clear: both;
+	float: left;
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+#join_sns a:link,
+#join_sns a:focus,
+#join_sns a:hover,
+#join_sns a:visited,
+#join_st a:link,
+#join_st a:focus,
+#join_st a:hover,
+#join_st a:visited {
+	opacity: 1;
+}
+
+#join_sns:hover,
+#join_st:hover {
+	opacity: .7;
+}
+
+.join_sns_m{
+	margin: 30px 0 10px 0;
+	font-family: 'paybooc-ExtraBold';
+}
+
+.join_sns_t1{
+	margin: -8px 0 0 0;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.join_sns_t2{
+	font-weight: 800;
+    font-size: 10px;
+    margin: 30px 0 0 0;
 }
 
 #join_bt{
@@ -84,22 +106,416 @@
 	border-top: 1px dashed #555;
 	width: 100%;
 }
-.bt_te{
+
+.join_bt_te{
 	text-align:center;
     font-size: 14px;
     margin: 10px;
     color: #555;
 }
-.bt_te a{
-	font-size:14px;
-	font-weight:900;
-	text-decoration: none;
-	color:black;
-	cursor: default;	
-}
-#bt_cm{
+
+#join_bt_cm{
 	text-align: center;
     padding: 10px 0 0 0;
     font-size: 12px;
-    color: blue;
+    color: royalblue;
 }
+
+/**********join_clear.jsp**********/
+
+#join_clear_main{
+	float: left;
+	left: 50%;
+    top: 50%;
+    height: 440px;
+    width: 600px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    padding: 30px;
+    background: url('../img/join_back_l.png') no-repeat center top;
+    background-size: 360px;
+}
+
+#join_clear_text{
+	font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 120px;
+}
+
+#join_clear_p{
+	font-size: 16px;
+    font-weight: 100;
+    margin-top: 10px;
+}
+
+#join_clear_post{
+	text-align: center;
+    padding: 80px 0 90px;
+}
+
+#join_clear_post_te{
+	font-size: 17px;
+    font-weight: 600;
+    position: relative;
+    margin: -20px;
+}
+
+/**********join_form.jsp**********/
+
+#join_form_wrap {
+	float: left;
+	position: relative;
+	width: 750px;
+	height: auto;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 80px 0;
+}
+
+#join_form_title {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-bottom: 20px;
+}
+
+#join_form_title img {
+	width: auto;
+	height: 40px;
+}
+
+#join_form_private {
+	float: left;
+	position: relative;
+	width: 100%;
+	margin: 20px 0;
+}
+
+.join_form_tt {
+	font-size: 20px;
+	font-weight: 900;
+	margin: 50px 0 15px;
+}
+
+.join_form_sub_tt {
+	clear: both;
+	float: left;
+	font-size: 16px;
+	margin: 20px 0;
+}
+
+.jf_input {
+	float: left;
+	position: relative;
+	height: 30px;
+	left: 0;
+	
+	background: rgba(0, 0, 0, 0);
+
+	text-align: center;
+	color: #333;
+}
+
+.jf_name {
+	width: 100px;
+	border: 0;
+	font-size: 20px;
+	font-weight: 900;
+	margin: 10px;
+}
+
+.jf_email {
+	width: 150px;
+	border: 0;
+	font-size: 20px;
+	font-weight: 900;
+	margin: 10px;
+}
+
+#jf_email_at {
+	float: left;
+    font-size: 20px;
+    font-weight: 900;
+    color: #777;
+    margin: 13px 0 0 -5px;
+}
+
+#jf_email_addr {
+	float: left;
+    border-radius: 15px;
+    margin: 1px 0 0 7px;
+}
+
+.join_form_exp {
+	float: left;
+	font-size: 12px;
+	color: #999;
+}
+
+.jfe_name { margin-top: 25px; }
+.jfe_email { margin: 29px 0 0 -100px; }
+.jfe_pw { margin: -34px 0 0 -427px; }
+.jfe_pimg { margin: 85px 0 0 -100px; }
+.jfe_comment1 { margin-left: 5px; }
+.jfe_comment2 {
+	float: right;
+	right: 0;
+	margin-right: 30px;
+}
+.jfe_nick { margin: 15px 0 0 5px; }
+
+.jf_pwo {
+	clear: left;
+	border: 1px solid #91c38e;
+	border-radius: 15px;
+	margin: -10px 10px 0 0;
+	height: 35px;
+}
+
+.jf_pw {
+	clear: left;
+	border: 1px solid #91c38e;
+	border-radius: 15px;
+	margin: 7px 10px 0 0;
+	height: 35px;
+}
+
+.jf_pwc {
+	border: 1px solid #91c38e;
+	border-radius: 15px;
+	margin-top: 7px;
+	height: 35px;
+}
+
+.jf_nick {
+	clear: left;
+    width: 100px;
+    height: 30px;
+    border: 1px solid #91c38e;
+    border-radius: 10px;
+    text-align: left !important;
+    padding: 5px 10px;
+    margin-top: -10px;
+}
+
+.jf_comment {
+	width: 700px;
+	height: 30px;
+	border: 1px solid #91c38e;
+	border-radius: 10px;
+	text-align: left !important;
+	padding: 5px 10px;
+	margin: -10px 0 5px 0;
+}
+
+.jf_pw_incorrect {
+	float: left;
+    font-size: 12px;
+    color: red;
+    margin: 25px 0 0 3px;
+}
+
+.jf_pw_correct {
+	display: none;
+	float: left;
+    font-size: 12px;
+    color: #91c38e;
+    margin: 25px 0 0 3px;
+}
+
+#join_form_open {
+	float: left;
+	position: relative;
+	width: 100%;
+	margin: 20px 0;
+}
+
+#join_form_pimg {
+	clear: both;
+	float: left;
+	position: relative;
+}
+
+#join_form_pimg_back {
+	float: left;
+	position: relative;
+	width: 90px;
+	height: 90px;
+	border: 5px solid #777;
+	border-radius: 60px;
+	background: rgba(0, 0, 0, .4);
+}
+
+#join_form_pimg_back a {
+	float: left;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#join_form_pimg_back a img {
+	width: 100%;
+	height: auto;
+	transition: transform .2s;
+}
+
+#join_form_pimg_back a img:hover {
+	transform: rotate(45deg);
+}
+
+#join_form_pimg_btn {
+	float: left;
+	position: relative;
+	width: 100px;
+	height: 30px;
+	border: 1px solid #777;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 30px;
+	margin: 45px 0 0 10px;
+}
+
+#join_form_email_btn {
+	float: left;
+    position: relative;
+    width: 100px;
+    height: 25px;
+    border: 1px solid #777;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+    margin: 0px 0 0 10px;
+}
+
+#join_form_end {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#join_form_cancle {
+	float: left;
+	position: relative;
+	width: 130px;
+	height: 40px;
+	border: 1px solid #777;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 40px;
+	margin: 30px 5px;
+	background: #fff;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+#join_form_clear {
+	float: left;
+	position: relative;
+	width: 130px;
+	height: 40px;
+	border: 1px solid #91c38e;
+	border-radius: 15px;
+	text-align: center;
+	line-height: 40px;
+	margin: 30px 5px;
+	background: #edf8e6;
+	font-size: 16px;
+	font-weight: 900;
+}
+
+/* join_form 이름, 이메일 뒤 밑줄*/
+#jf_name_back {
+	float: left;
+	position: absolute;
+	width: 100px;
+	height: 15px;
+	background: #edf8e6;
+	margin: -14px 0 0 39px;
+}
+
+#jf_email_back {
+	float: left;
+    position: absolute;
+    width: 150px;
+    height: 15px;
+    background: #edf8e6;
+    margin: 84px 0 0 53px;
+}
+
+/**********join_edit.jsp**********/
+
+#jf_edit_wrap {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+#jf_edit_wrap input {
+	border-radius: 15px;
+	height: 35px;
+	
+}
+
+#jf_edit_wrap p {
+	float: left;
+	position: relative;
+	font-size: 24px;
+	font-weight: 900;
+	color: #999;
+	height: 35px;
+	line-height: 35px;
+	margin: 0 10px;
+}
+
+.jf_edit_pwo {
+	border: 1px solid #999;
+}
+
+.jf_edit_pw {
+	border: 1px solid #91c38e;
+	margin-right: 10px;
+}
+
+.jf_edit_pwc {
+	border: 1px solid #91c38e;
+}
+
+.jf_edit_pw_incorrect {
+	float: left;
+    font-size: 12px;
+    color: red;
+    margin: 20px 0 0 3px;
+}
+
+.jf_edit_pw_correct {
+	display: none;
+	
+	float: left;
+    font-size: 12px;
+    color: #91c38e;
+    margin: 20px 0 0 3px;
+}
+
+.jfe_edit_pw {
+	margin: 25px 0 0 5px;
+}
+
+#join_form_pimg_edit {
+	float: left;
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	margin: 5px;
+	border-radius: 60px;
+}
+
+
+
+

@@ -78,7 +78,7 @@ function dropdown() {
   <a href="post_main.jsp">포스팅</a>
   <a href="noti.jsp">알림</a>
   <a href="dm.jsp">메세지</a>
-  <a href="infor.jsp">채용정보</a>
+  <a href="info.jsp">채용정보</a>
   <a href="index.jsp#logout">로그아웃</a>
 </div>
 

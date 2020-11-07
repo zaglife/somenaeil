@@ -12,28 +12,34 @@
 </head>
 <body>
 
-<div class="login_main">
-  <div id="ser_top">
+<div id="pw_ser_main">
+  <div id="pw_ser_top">
     <div id="id_pw">
-      <a href="id_ser.jsp" id="pw_id_ser">아이디찾기</a>
+      <a id="pw_id_ser" href="id_ser.jsp">아이디찾기</a>
       <a id="pw_pw_ser">비밀번호찾기</a>
     </div>
   </div>
-  <div id="ser_body">
-    <div id="ser_body_center">
-    <div id="ser_id">
+  
+  <div id="id_pw_body">
+  
+    <p id="pw_ser_text">회원가입시 입력한 이메일 인증 필요</p>
+
+    <div class="id_pw_input">
       <p>아이디</p>
-      <input type='text' id="name_te_pw" placeholder="somenaeil"></div>
-    <div id="ser_mail_pw">
+      <input type='text' placeholder="썸네일">
+    </div>
+    <div class="id_pw_input">
       <p>이메일 주소</p>
-      <input type='text' id="mail_te_pw" placeholder="예)id@somenaeil.net">
-      <a href="pw_ser_clear.jsp" id="mail_in">메일 확인</a>
+      <input type='text' placeholder="예)id@somenaeil.net">
     </div>
+
+    <a id="id_ser_bt" href="pw_ser_clear.jsp">메일 확인</a>
+
+    <div id="pw_ser_bottom">
+      
+      <p id="pw_ser_text2">메일 확인 버튼을 누르시면 입력하신 이메일 주소로 임시 비밀번호가 전송됩니다.</p>
     </div>
-    <div id="ser_bt">
-      <p id="bt_te1">회원가입시 입력한 이메일 인증 필요</p>
-      <p id="bt_te2">메일 확인 버튼을 누르시면 입력하신 이메일 주소로 임시 비밀번호가 전송됩니다.</p>
-    </div>
+    
   </div>
 </div>
 

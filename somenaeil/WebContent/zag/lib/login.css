@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-.login_main {
+/**********login.jsp**********/
+
+#login_main {
     margin-top: 150px;
     width: 600px;
     height: auto;
@@ -8,40 +10,32 @@
     position: relative;
     transform: translate(-50%, 0);
 }
-#ser{
-	width: 300px;
-    height: 20px;
-    left: 12px;
-    position: relative;
-    border: 1px solid lawngreen;
-    border-radius: 30px;
-    outline: none;
-}
-#login_title{
-        background: #888;
-    width: 100%;
-    position: relative
-    }
-#login_title_text{
-	  FONT-WEIGHT: 900;
-    float: left;
-    background: white;
-    position: relative;
-    width: 540px;
-    font-size: 28px;
-    text-align: center;
-    border-bottom: 1px dashed #555;
-    padding: 30px;
+
+#login_title {
+	position: relative;
+	background: #888;
+	width: 100%;
 }
 
-
-#login_body{ 	
-    width: 100%;
-    float: left;
-    position: relative;
+#login_title_text {
+	float: left;
+	position: relative;
+	width: 540px;
+	padding: 30px;
+	font-size: 28px;
+	font-weight: 900;
+	text-align: center;
+	border-bottom: 1px dashed #555;
+	background: white;
 }
 
-#body_text{
+#login_body {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+#login_body_text {
 	position: relative;
     float: left;
     left: 50%;
@@ -49,19 +43,27 @@
     margin: 35px 0;
     width: 350px;
 }
-#body_text_left{
+
+#lb_text_left {
 	float: left;
 	width:250px;
 }
-#body_text_left input{
+
+#lb_text_left input {
 	width: 220px;
 	height: 25px;
 	margin: 5px;
 	padding: 5px 10px;
 	border-radius: 10px;
-	border:1px solid #777;
+	border:1px solid #999;
 }
-#login_bt{
+
+#lb_text_left input::placeholder {
+	color: #aaa;
+	text-align: center;
+}
+
+#login_bt {
 	float: left;
 	position: relative;
 	width: 85px;
@@ -76,26 +78,20 @@
     font-weight: 900;
 }
 
-#login_id{
-	border-radius:6px;
-	
-}
-#password{
-	border-radius:6px;
-	
-}
-#body_bt{
+#lb_bt {
 	float: left;
 	width: 100%;
 }
-#body_bt p{
+
+#lb_bt p {
 	float: left;
 	margin: 5px 0 0 2px;
 	height: 20px;
     line-height: 17px;
     font-size: 13px;
-}   
-#login_ing{
+}
+
+#login_ing {
 	float: left;
 	margin: 5px 0 0 5px;
 	border: 1px solid #fff;
@@ -104,16 +100,13 @@
     height: 15px;
 }
 
-#body_bt_right{
+#lb_bt_right {
 	float: right;
-	margin: 5px 20px 0 0;
-	color: blue;
+	margin: 5px 11px 0 0;
 	font-size: 13px;
 }
 
-
-
-#sns_login{
+#login_sns_wrap {
     float: left;
     position: relative;
     text-align: center;
@@ -121,48 +114,48 @@
     transform: translate(-50%, 0);
     margin-bottom: 20px;
 }
-#sns_text{
+
+#login_sns_text {
 	font-size: 22px;
     font-weight: 500;
     margin: 10px 0;
 }
-.sns_box{
+
+.login_sns_box {
 	float: left;
     position: relative;
     margin: 10px 20px;
 }
-.sns_box a {
+
+.login_sns_box a {
 	float: left;
 	width: 64px;
 	height: 64px;
 }
-.sns_box p{
+.login_sns_box p {
 	font-size: 14px;
 	margin-top: 70px;
 }
 
-#body_text_left input::placeholder {
-	color: #aaa;
-	text-align: center;
-	
-}
-
-#login_bot{
+#login_bottom {
     width: 600px;
     text-align: center;
     border-top: 1px dashed;
     float: left;
     position: relative;
 }
-#bot_text{
+
+#login_bottom_text {
 	margin-top: 44px;
     font-weight: 500;
     font-size: 13px;
 }
-#newjoin{
+
+#login_join_btn {
 	margin-top: 15px;
 }
-#login_join_btn{
+
+#login_join_btn a {
     float: left;
     position: relative;
     left: 50%;
@@ -176,3 +169,374 @@
     border: 1px solid royalblue;
     color: royalblue;
 }
+
+/**********id_ser.jsp**********/
+/**********pw_ser.jsp**********/
+
+#id_ser_main,
+#pw_ser_main {
+	left: 50%;
+    height: auto;
+    margin-top: 200px;
+    width: 600px;
+    position: relative;
+    transform: translate(-50%,0);
+}
+
+#id_ser_top,
+#pw_ser_top {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 50px;
+	left: 50%;
+	margin-bottom: 25px;
+	padding-bottom: 30px;
+    transform: translate(-50%, 0);
+    border-bottom: 1px dashed #555;
+}
+
+#id_pw {
+	float: left;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#id_pw a {
+	float: left;
+	position: relative;
+	width: 120px;
+	height: 30px;
+	font-weight: 600;
+	margin: 0px 10px 15px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: #999;
+}
+
+#id_id_ser{
+	border: 1px solid #999;
+	background: #fff;
+	cursor: default;
+}
+
+#id_pw_ser{
+    border: 1px solid #91c38E;
+    background: #edf8e6;
+    cursor: pointer;
+}
+
+#pw_id_ser{
+	border: 1px solid #91c38E;
+	background: #edf8e6;
+	cursor: pointer;
+}
+
+#pw_pw_ser{
+    border: 1px solid #999;
+    background: #fff;
+    cursor: default;
+}
+
+#id_id_ser:hover{
+	opacity: 1 !important;
+	color: #999;
+}
+
+#pw_pw_ser:hover{
+	opacity: 1 !important;
+	color: #999;
+}
+
+#id_pw_body{
+	float: left;
+	width: 100%;
+	position: relative;
+    border-bottom: 1px dashed #555;
+    padding-bottom: 20px;
+}
+
+#id_ser_text,
+#pw_ser_text{
+	font-size: 13px;
+    font-weight: 900;
+    margin: 20px 0;
+    text-align: center;
+}
+
+#pw_ser_text2 {
+	color: #555;
+	font-size: 12px;
+	margin: 10px 0 20px;
+}
+
+.id_pw_input {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.id_pw_input p {
+	float: left;
+	position: relative;
+	width: 80px;
+	height: 20px;
+	margin: 10px 0;
+	text-align: right;
+	font-size: 14px;
+	font-weight: 900;
+	line-height: 21px;
+}
+
+.id_pw_input input {
+	float: left;
+	position: relative;
+	width: 200px;
+	height: 20px;
+	margin: 0 0 5px 10px;
+	font-size: 14px;
+	border: 1px solid #999;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+#id_ser_bt,
+#pw_ser_bt {
+	clear: both;
+	float: left;
+	position: relative;
+    margin: 10px 0 20px;
+    padding: 10px 30px; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    
+    border: 1px solid #91c38E;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 900;
+    background: #edf8e6;
+    
+}
+
+#pw_ser_bottom {
+	clear: both;
+	float: left;
+	position: relative;
+	left: 50%;
+	margin-bottom: 10px;
+	transform: translate(-50%, 0);
+	text-align: center;
+}
+
+/**********id_ser_clear.jsp**********/
+
+#id_clear_wrap,
+#pw_clear_wrap {
+	float: left;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 600px;
+	height: 250px;
+	transform: translate(-50%, -50%);
+	border-top: 1px dashed #999;
+	border-bottom: 1px dashed #999;
+}
+
+#id_clear_p1 {
+	font-size: 26px;
+	font-weight: 900;
+	text-align: center;
+	margin: 60px 0 10px;
+}
+
+#id_clear_p2 {
+	font-size: 18px;
+	text-align: center;
+}
+
+#id_clear_bt {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 20px;
+}
+
+#id_clear_bt a {
+	float: left;
+	position: relative;
+	width: 120px;
+	height: 30px;
+	font-weight: 600;
+	margin: 0px 10px 15px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: #999;
+	
+	border: 1px solid #91c38E;
+    background: #edf8e6;
+}
+
+/**********pw_ser_clear.jsp**********/
+
+#pw_clear_wrap p {
+	text-align: center;
+}
+
+#pw_clear_p1 {
+	font-size: 26px;
+	font-weight: 900;
+	margin-top: 40px;
+}
+
+#pw_clear_p2{
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+#pw_clear_p3{
+	font-size: 14px;
+	font-weight: 900;
+	margin: 30px 0;
+}
+
+#pw_clear_wrap a {
+	float: left;
+	position: relative;
+	width: 120px;
+	height: 30px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	font-weight: 600;
+	margin: 0px 10px 15px;
+	padding: 0 20px;
+	border-radius: 10px;
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+	color: #999;
+	border: 1px solid #91c38E;
+	background: #edf8e6;
+}
+
+/**********pw_ser_clear.jsp**********/
+
+#pw_ch_main {
+	float: left;
+	position: absolute;
+	width: 540px;
+	height: auto;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: -20px;
+}
+
+#pw_ch_top {
+	text-align: center;
+}
+
+#pw_ch_top p {
+	font-size: 26px;
+    font-weight: 900;
+}
+
+#pw_ch_p{
+	float: left;
+    position: relative;
+    margin: 60px 0 10px;
+}
+
+#pw_ch_p p {
+	float: left;
+	position: relative;
+}
+
+#pw_ch_p p:first-child {
+    margin-right: 5px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#pw_ch_p p:last-child {
+	font-size: 11px;
+    color: #999;
+    margin: 8px 0 11px 0px;
+}
+
+#pw_ch_input{
+	float: left;
+    position: relative;
+}
+
+#pw_ch1{
+	clear: left;
+	float: left;
+	position: relative;
+	width: 140px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid #777;
+    padding: 8px 10px;
+}
+
+#pw_ch1_gt {
+	float: left;
+	position: relative;
+	font-size: 26px;
+	font-weight: 900;
+	color: #999;
+	height: 40px;
+	line-height: 36px;
+	margin: 0 10px;
+}
+
+#pw_ch2{
+	width: 140px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid #91c38e;
+    padding: 8px 10px;
+    margin-right: 10px;
+}
+
+#pw_ch3{
+    width: 140px;
+    height: 20px;
+    border-radius: 10px;
+    border: 1px solid #91c38e;
+    padding: 8px 10px;
+}
+
+#pw_ch_btn {
+	clear: both;
+	float: left;
+	position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+#pw_ch_btn a {
+	float: left;
+	position: relative;
+	width: 80px;
+	height: 30px;
+	padding: 0 20px;
+	line-height: 30px;
+	border-radius: 10px;
+	border: 1px solid #91c38e;
+	background: #edf8e6;
+	font-size: 14px;
+	font-weight: 900;
+	color: #999;
+}
+

@@ -51,8 +51,6 @@
     
   </div>
   
-  
-  
   <div id="join_form_open">
   
     <p class="join_form_tt">공개 정보</p>
@@ -75,8 +73,6 @@
     <p class="join_form_exp jfe_comment2">(0/100)</p>
     
   </div>
-  
-  
   
   <div id="join_form_end">
     <button id="join_form_cancle" onclick="location.href='login.jsp'">취소</button>

@@ -41,13 +41,16 @@
     
     
     <p class="join_form_sub_tt">비밀번호</p>
-    <input type="password" placeholder="현재 비밀번호" class="jf_input jf_pwo">
-    <input type="password" placeholder="변경할 비밀번호" class="jf_input jf_pw">
-    <input type="password" placeholder="비밀번호 확인" class="jf_input jf_pwc">
-    <span class="jf_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
-    <span class="jf_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
-    <p class="join_form_exp jfe_pw">*영문, 숫자 조합 8글자 이상</p>
-    
+    <p class="join_form_exp jfe_edit_pw">*영문, 숫자 조합 8글자 이상</p>
+    <div id="jf_edit_wrap">
+      <input type="password" placeholder="현재 비밀번호" class="jf_input jf_edit_pwo">
+      <p>&gt;</p>
+      <input type="password" placeholder="변경할 비밀번호" class="jf_input jf_edit_pw">
+      <input type="password" placeholder="비밀번호 확인" class="jf_input jf_edit_pwc">
+      <span class="jf_edit_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
+      <span class="jf_edit_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
+    </div>
+
   </div>
   
   
@@ -58,6 +61,7 @@
     
     <p class="join_form_sub_tt">프로필 사진</p>
     <div id="join_form_pimg">
+      <img id="join_form_pimg_edit" src="img/profile02.jpg">
       <div id="join_form_pimg_back"><a href="#upload"><img src="img/setting_w_20.png"></a></div>
       <!-- input type file이 css 스타일링 적용이 잘 안됨, a태그로 대체 가능한지 여쭤보기 -->
       <a href="#upload" id="join_form_pimg_btn">업로드</a>

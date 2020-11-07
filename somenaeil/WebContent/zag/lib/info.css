@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.infor_main{
+.info_main{
     margin-top: 150px;
     width: 600px;
     height: auto;
@@ -47,10 +47,10 @@
 
 
 /****고객센터 main start****/
-#infor_body{
+#info_body{
 	width: 330px;
 }
-#infor_bt{
+#info_bt{
     border-bottom: 1px dashed #555;
     float: left;
     position: relative;
@@ -60,7 +60,7 @@
     font-weight: 900;
     padding-bottom: 10px;
 }
-#infor_bt a{
+#info_bt a{
 	margin: 0;
     float: right;
 }
@@ -92,7 +92,7 @@
 
 
 /****고객센터 정보 start****/
-#infor_moon{
+#info_moon{
 	width: 250px;
     float: right;
     position: relative;
