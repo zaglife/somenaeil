@@ -1,17 +1,38 @@
 @charset "UTF-8";
 
-#pop_wrap {
+/*******popup 버튼 start*******/
+.post_pop_hide {
+	display: none;
+}
+
+.post_pop_close {
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0);
+}
+
+.post_file a,
+.pop_cls_bt a {
+	cursor: pointer;
+}
+
+.post_code_hide {
+	display: none;
+}
+/*******popup 버튼 end*******/
+
+.pop_wrap {
 	float: left;
 	position: fixed;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 0, 0, .7);
 	z-index: 999;
-
-	display: none;
 }
 
-#pop_cls_bt a {
+.pop_cls_bt a {
 	float: right;
 	margin: 10px 15px 0 0;
 	width: 20px;
@@ -19,11 +40,11 @@
 	transition: all .2s ease-in;
 }
 
-#pop_cls_bt a:hover {
+.pop_cls_bt a:hover {
 	transform: rotate(90deg);
 }
 
-#pop_center {
+.pop_center {
 	float: left;
 	position: relative;
 	left: 50%;
@@ -36,7 +57,7 @@
 	transform: translate(-50%, -50%);
 }
 
-#pop_des {
+.pop_des {
 	width: 100%;
 	line-height: 30px;
 	margin: 60px 0 20px 0;
@@ -44,7 +65,7 @@
 	text-align: center;
 }
 
-#pop_des p {
+.pop_des p {
 	float: left;
 	position: relative;
 	width: auto;
@@ -419,7 +440,6 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 #ct_set input {
 	float: left;
 	width: 50px;
-	height: 18px;
 	padding: 5px;
 
 	border: 1px solid black;

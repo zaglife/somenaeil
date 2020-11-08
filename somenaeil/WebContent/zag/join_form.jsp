@@ -21,7 +21,7 @@
     
     <div class="join_form_sub_tt"><p>이름</p><div id="jf_name_back"></div></div>
     <input type="text" placeholder="썸내일" class="jf_input jf_name">
-    <p class="join_form_exp jfe_name">*이름 변경 불가</p>
+    <p class="join_form_exp jfe_name">*이름 변경 불가, 아이디찾기시 필요</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
     
@@ -66,6 +66,7 @@
     <p class="join_form_sub_tt">닉네임</p>
     <input type="text" placeholder="nickname" class="jf_input jf_nick">
     <p class="join_form_exp jfe_nick">*한글 8자, 영문 16자 내외</p>
+    <p class="join_form_exp jfe_nick_match">&lt;사용중인 닉네임입니다&gt;</p>
 
     <p class="join_form_sub_tt">프로필 한줄 소개 내용</p>
     <input type="text" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">

@@ -1,6 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
+<script>
+var popCt= 1;
+
+function postPopCt() {
+	if(popCt == 1) {
+		$('#post_pop_ct').removeClass('post_pop_hide');
+		++popCt;
+	}else if(popCt == 2) {
+		$('#post_pop_ct').addClass('post_pop_hide');
+		popCt= 1;
+	}
+}
+
+var popGh= 1;
+
+function postPopGh() {
+	if(popGh == 1) {
+		$('#post_pop_gh').removeClass('post_pop_hide');
+		++popGh;
+	}else if(popGh == 2) {
+		$('#post_pop_gh').addClass('post_pop_hide');
+		popGh= 1;
+	}
+}
+
+var popVote= 1;
+
+function postPopVote() {
+	if(popVote == 1) {
+		$('#post_code_cont').removeClass('post_pop_hide');
+		++popVote;
+	}else if(popVote == 2) {
+		$('#post_code_cont').addClass('post_pop_hide');
+		popVote= 1;
+	}
+}
+
+var sc_temp= 1;
+
+function showCode() {
+	if(sc_temp == 1) {
+		$('#post_code_cont').removeClass('post_code_hide');
+		++sc_temp;
+	}else if(sc_temp == 2) {
+		$('#post_code_cont').addClass('post_code_hide');
+		sc_temp= 1;
+	}
+}
+</script>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,10 +117,10 @@
   	    </div>
   	  </div>
   	  <div class="post_tcate_part">
-  	    <div class="post_file"><a href="#"><img src="img/post_table_20.png"></a></div>
-  	    <div class="post_file"><a href="#"><img src="img/post_graph_20.png"></a></div>
-  	    <div class="post_file"><a href="#"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><a href="#"><img src="img/post_code_20.png"></a></div>
+  	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
+  	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
+  	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
+  	    <div class="post_file"><a onclick="showCode()"><img src="img/post_code_20.png"></a></div>
       </div>
     </div>
     <div id="post_write">
@@ -78,9 +128,10 @@
 	
 	  
 	
-	  <!-- 영상 embed 기능 display none -->
-	  <div id="post_code_cont">
-	    <div class="post_code_li">1</div>
+	  <!-- text입력부분 소스코드 display none -->
+	  <div id="post_code_cont" class="post_code_hide">
+	    <div id="post_code_scroll">
+        <div class="post_code_li">1</div>
 	    <div class="post_code_li">2</div>
 	    <div class="post_code_li">3</div>
 	    <div class="post_code_li">4</div>
@@ -95,6 +146,9 @@
 	    <div class="post_code_li">13</div>
 	    <div class="post_code_li">14</div>
 	    <div class="post_code_li">15</div>
+	    </div>
+	    <span class="post_code_li_last"></span>
+	    
 	  </div>
 	
     </div>
@@ -125,10 +179,12 @@
 
 
 
-<jsp:include page="popup_gh.jsp"/>
-<!--jsp:include page="popup_ct.jsp"/-->
-<!--jsp:include page="popup_gh.jsp" /-->
-<!--jsp:include page="popup_vote.jsp" /-->
+<jsp:include page="popup_ct.jsp" />
+<jsp:include page="popup_gh.jsp" />
+<jsp:include page="popup_vote.jsp" />
+
+
+
 
 
 <jsp:include page="top.jsp" />

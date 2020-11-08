@@ -214,7 +214,6 @@
 
 /**** text입력부분 소스코드 start ****/
 #post_code_cont{
-	display:none;
 	clear: both;
 	float: left;
 	position: relative;
@@ -226,18 +225,34 @@
 	border: 2px solid #999;
 	border-radius: 20px;
 	
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+#post_code_cont::-webkit-scrollbar {
+
+}
+
+#post_code_scroll {
+	float: left;
+	position: absolute;
+	width: 830px;
+	height: 252px;
+	margin: 10px 0;
+	padding: 0 10px;
+	
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
-#post_code_cont::-webkit-scrollbar{
+#post_code_scroll::-webkit-scrollbar{
 	width: 8px;
 	margin-right: 10px;
 }
-#post_code_cont::-webkit-scrollbar-thumb{
+#post_code_scroll::-webkit-scrollbar-thumb{
 	background: #777;
 	border-radius: 10px;
 }
-#post_code_cont::-webkit-scrollbar-track{
+#post_code_scroll::-webkit-scrollbar-track{
 	background: rgba(255,255,255,0);
 	border-radius: 10px;
 	border-left: 3px solid transparent;
@@ -246,13 +261,22 @@
 
 
 .post_code_li{
-	width: 820px;
+	width: 790px;
 	height: 22px;
 	padding: 10px 15px;
 	border-bottom: 1px dashed #999;
 }
+
+.post_code_li_last {
+	float: left;
+	position:relative;
+	width: 790px;
+	height: 22px;
+}
+
 #post_code_cont div:last-child{
 	border-bottom: 0 !important;
+	padding-bottom: 22px;
 }
 #post_code_cont div:nth-child(2n){
 	background: rgba(0, 0, 0, .05);

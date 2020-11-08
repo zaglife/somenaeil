@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<div id='pop_wrap'>
-<div id='pop_center'>
-  <div id="pop_cls_bt">
-    <a href="#"><img src="img/btn_close_20.png"></a>
+
+<div class='pop_wrap post_pop_hide' id="post_pop_ct">
+<a class="post_pop_close" onclick="postPopCt()"></a>
+<div class='pop_center'>
+  <div class="pop_cls_bt">
+    <a onclick="postPopCt()"><img src="img/btn_close_20.png"></a>
   </div> 
-  <div id='pop_des'>
+  <div class='pop_des'>
     <div class="pop_des_line"></div>
   	<p>표를 작성해 주세요</p>
   </div>

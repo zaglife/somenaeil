@@ -265,6 +265,10 @@
 	margin-right: 30px;
 }
 .jfe_nick { margin: 15px 0 0 5px; }
+.jfe_nick_match {
+	color: #d25f5f;
+	margin: -3px 0 0 -134px;
+}
 
 .jf_pwo {
 	clear: left;
@@ -313,7 +317,7 @@
 .jf_pw_incorrect {
 	float: left;
     font-size: 12px;
-    color: red;
+    color: #d25f5f;
     margin: 25px 0 0 3px;
 }
 
@@ -490,7 +494,7 @@
 .jf_edit_pw_incorrect {
 	float: left;
     font-size: 12px;
-    color: red;
+    color: #d25f5f;
     margin: 20px 0 0 3px;
 }
 
