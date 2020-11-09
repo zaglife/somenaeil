@@ -30,10 +30,10 @@ var popVote= 1;
 
 function postPopVote() {
 	if(popVote == 1) {
-		$('#post_code_cont').removeClass('post_pop_hide');
+		$('#post_pop_vote').removeClass('post_pop_hide');
 		++popVote;
 	}else if(popVote == 2) {
-		$('#post_code_cont').addClass('post_pop_hide');
+		$('#post_pop_vote').addClass('post_pop_hide');
 		popVote= 1;
 	}
 }

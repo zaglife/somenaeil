@@ -10,8 +10,7 @@
 </head>
 
 <body>
-	<!-- 탑 네비 메뉴 페이지 -->
-	<jsp:include page="top.jsp" />
+
 
 	<!-- 포스팅 내용 -->
 	<div class="article_wrap">
@@ -121,7 +120,8 @@
 		</div>
 	</div>
 	
-	<jsp:include page="totop.jsp" />
+	
+	
 	
 	<!-- js script -->
 	<script>
@@ -208,4 +208,10 @@
 			}
 		})
 	</script>
+	
+	
+	<jsp:include page="top.jsp" />
+	<jsp:include page="totop.jsp" />
+	<jsp:include page="nav.jsp" />
+	
 </body>
