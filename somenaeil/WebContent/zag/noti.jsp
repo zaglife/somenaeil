@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +36,14 @@
   <!-- "noti_basic.jsp" -->
   <!-- 페이지 2.스크랩 전체 알림페이지 -->
   <!-- "noti_scrap.jsp" -->
-  <jsp:include page="noti_basic.jsp" />
+<%--   <c:choose> --%>
+<%--     <c:when test="${param.state= scrap }"> --%>
+      <jsp:include page="noti_scrap.jsp" />
+<%--     </c:when> --%>
+<%--     <c:otherwise> --%>
+<%--       <jsp:include page="noti_basic.jsp" /> --%>
+<%--     </c:otherwise> --%>
+<%--   </c:choose> --%>
 
 </div>
 

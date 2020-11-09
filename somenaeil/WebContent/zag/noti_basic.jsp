@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<div id="noti_scrap_all"><p>+전체 92개의 스크랩</p></div>
+<div id="noti_scrap_all"><a href="noti.jsp?state=scrap"><p>+전체 92개의 스크랩</p></a></div>
 
 <div id="noti_cont_wrap">
   <div class="noti_border">

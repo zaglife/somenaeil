@@ -41,6 +41,9 @@
     <a href="#veri" id="join_form_email_btn">인증메일</a>
     <p class="join_form_exp jfe_email">*이메일 주소로 수신된 링크 인증 필수</p>
     
+    <div class="join_form_sub_tt"><p>아이디</p><div id="jf_id_back"></div></div>
+    <input type="text" placeholder="id" class="jf_input jf_id">
+    <p class="join_form_exp jfe_id">*아이디 변경 불가</p>
     
     <p class="join_form_sub_tt">비밀번호</p>
     <input type="password" placeholder="비밀번호" class="jf_input jf_pw">

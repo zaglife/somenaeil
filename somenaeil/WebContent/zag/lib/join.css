@@ -248,6 +248,14 @@
     margin: 1px 0 0 7px;
 }
 
+.jf_id {
+	width: 120px;
+	border: 0;
+	font-size: 20px;
+	font-weight: 900;
+	margin: 10px;
+}
+
 .join_form_exp {
 	float: left;
 	font-size: 12px;
@@ -269,6 +277,7 @@
 	color: #d25f5f;
 	margin: -3px 0 0 -134px;
 }
+.jfe_id { margin-top: 27px; }
 
 .jf_pwo {
 	clear: left;
@@ -451,6 +460,15 @@
     height: 15px;
     background: #edf8e6;
     margin: 84px 0 0 53px;
+}
+
+#jf_id_back {
+	float: left;
+	position: absolute;
+	width: 120px;
+	height: 15px;
+	background: #edf8e6;
+	margin: -14px 0 0 54px;
 }
 
 /**********join_edit.jsp**********/
