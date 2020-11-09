@@ -93,8 +93,10 @@
 	text-align: center;
 }
 
-#vot_title input::placeholder, .vot_cont_t input::placeholder, #gh_data input::placeholder,
-	.ct_cell input::placeholder {
+#vot_title input::placeholder,
+.vot_cont_t input::placeholder,
+#gh_data input::placeholder,
+.ct_cell input::placeholder {
 	color: #aaa;
 	text-align: center;
 }

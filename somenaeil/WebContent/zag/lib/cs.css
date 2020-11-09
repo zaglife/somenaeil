@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-.gosen_main{
+.cs_main {
 	float: left;
     position: relative;
     width: 650px;
@@ -9,62 +9,87 @@
 	left: 50%;
     transform: translate(-50%,0);
 }
-#g_top{
+
+#cs_top {
     width: 650px;
 	border-bottom: 1px dashed;
     font-size: 27px;
     font-weight: 900;
     text-align: center;
 }
-#g_top p{
+
+#cs_top p {
 	margin: 0 0 30px 0;
 }
-#g_body{
+
+#cs_body {
 	 width:100%;
 	 margin: 30px 0 20px 0;
 }
-.gosen_te{
+
+.cs_article_last {
+	border: 0 !important;
+}
+
+.cs_article {
 	width: 650px;
-    height:28px;
-    margin: 12px 0 0 0;
-    border-bottom: 1px solid black;
+	height: auto;
+	line-height: 29px;
+	padding: 7px 0;
 	font-size: 14px;
-    font-weight: normal;
+	font-weight: 100;
+	border-bottom: 1px solid #999;
+
 }
-.gosen a{
-    float: left;
-    position: relative;    
+
+.cs_article a {
+	cursor: pointer;
 }
-.gosen_tf{
+
+.cs_cont {
 	width: 630px;
     height: auto;
-    margin: 0 0 30px;
-    padding: 20px 10px;
-    border-bottom: 1px dashed #333;
-    font-size: 14px;
+    padding: 30px 10px;
+    border-top: 1px dashed #999;
+    font-size: 15px;
     font-weight: normal;
-    line-height: 24px;
+    color: #555;
+    line-height: 28px;
     word-break: keep-all;
+    overflow: hidden;
+    
+    transition: all .2s;
 }
-.gosen_te_f{
-	border:0;
+
+.cs_cont p {
+	color: #555;
 }
-#g_bt{
+
+.cs_hide {
+	height: 0 !important;
+	padding: 0 10px !important;
+	border: 0 !important;
+}
+
+#cs_bottom {
     float: left;
     position: relative;
     text-align: center;
 	left: 50%;
     transform: translate(-50%, 0);
 }
-#g_n{
+
+#cs_page {
 	margin: 0 0 12px 0;
     font-size: 13px;
     font-weight: 900;
 }
-#g_n a{
+
+#cs_page a {
 	margin:7px;
 }
-#g_ser input{
+
+#cs_search input {
 	width: 186px;
 	height: 30px;
     margin-top: 10px;
@@ -73,7 +98,7 @@
     border-radius: 30px;
 }
 
-#g_ser img {
+#cs_search img {
 	float: left;
 	position: absolute;
 	left: 0;
@@ -81,7 +106,7 @@
 }
 
 /****고객센터 하단 번호 start****/
-#moon{
+#cs_footer {
 	float: left;
     position: relative;
     width: 100%;
@@ -92,63 +117,32 @@
     background: #edf8e6;
     text-align: center;
 }
-#m_t1{
+
+
+#cs_footer p:nth-child(1) {
 	font-size: 18px;
     font-weight: 900;
     margin-top: 20px;
 }
-#m_t2{
+#cs_footer p:nth-child(2) {
     font-size: 12px;
     color: #333;
     margin: 5px 0 10px;
 }
-#m_t3{
-    margin: -14px 0 0 0;
-	font-size: 13px;
-    font-weight: 700;
-}
-#m_t4{
+#cs_footer p:nth-child(3) {
     margin: 20px 0 0px 0;
-	font-size: 28px;
+	font-size: 30px;
     font-weight: 900;
     color: darkgreen;
 }
-#mt_1{
+#cs_footer p:nth-child(4) {
     margin: 0px 0 15px 0px;
     font-size: 16px;
     font-weight: 800;
 	color: forestgreen;
 }
-#mt_2{
+#cs_footer p:nth-child(5) {
 	margin: 20px 0 15px 0px;
 	font-size: 12px;
 }
 /****고객센터 하단 번호 end****/
-
-/****고객센터 클릭시 드롭다운 start****/
-#gosen_tecl{
-    padding: 18px 60px 26px 3px;
-    border-bottom: 1px solid black;
-    font-size: 13px;
-    font-weight: 500;
-}
-#bt{
-    float: left;
-    position: relative;
-    margin-top: 21px;
-    left: 50%;
-    border: 1px solid black;
-	border-radius: 50%;
-}
-
-/****고객센터 클릭시 드롭다운 end****/
-
-
-
-
-
-
-
-
-
-

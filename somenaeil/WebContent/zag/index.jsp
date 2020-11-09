@@ -26,9 +26,6 @@
 </head>
 <body>
 
-
-
-
 <!--jsp:include page="content.jsp" /-->
 <!--jsp:include page="search.jsp" /-->
 

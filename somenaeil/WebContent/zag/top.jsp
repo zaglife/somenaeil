@@ -4,46 +4,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script>
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('#top_wrap').outerHeight();
-
-$(window).scroll(function(event){
-	didScroll = true;
-});
-
-setInterval(function() {
-	if (didScroll) {
-		hasScrolled();
-		didScroll = false;
-	}
-}, 250);
-
-function hasScrolled() {
-	var st = $(this).scrollTop();
-
-	if(Math.abs(lastScrollTop - st) <= delta) { return; }
-
-	if (st > lastScrollTop && st > navbarHeight){
-		// show
+$( window ).scroll( function() {
+	if ( $( this ).scrollTop() > 200 ) {
 		$('#top_wrap').addClass('sc_down');
 		$('#top_search_cate').addClass('tsc_down');
 		$('#top_search input').addClass('tsi_down');
 		$('#top_search a').addClass('tsa_down');
 		$('#nav_top').addClass('btn_show');
 	} else {
-		// hide
-		if(st + $(window).height() < $(document).height()) {
-			$('#top_wrap').removeClass('sc_down');
-			$('#top_search_cate').removeClass('tsc_down');
-			$('#top_search input').removeClass('tsi_down');
-			$('#top_search a').removeClass('tsa_down');
-			$('#nav_top').removeClass('btn_show');
-		}
+		$('#top_wrap').removeClass('sc_down');
+		$('#top_search_cate').removeClass('tsc_down');
+		$('#top_search input').removeClass('tsi_down');
+		$('#top_search a').removeClass('tsa_down');
+		$('#nav_top').removeClass('btn_show');
 	}
-	lastScrollTop = st;
-}
+} );
+
+$( '#nav_top' ).click( function() {
+	$( 'html, body' ).animate( { scrollTop : 0 }, 400 );
+	return false;
+} );
 
 var drop= 1;
 
@@ -82,7 +62,7 @@ function dropdown() {
     </div>
   </c:when>
   <c:otherwise>
-    <div class="dropdown">
+    <div class="dropdown d_hide">
       <a href="login.jsp">로그인</a>
       <a href="join.jsp">회원가입</a>
     </div>

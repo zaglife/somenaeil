@@ -1,6 +1,98 @@
 @charset "UTF-8";
 
-#job_click{
+/********job start********/
+#job_main {
+	float: left;
+	position: relative;
+    margin-top: 150px;
+    width: 650px;
+    height: auto;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#job_top {
+	border-bottom: 1px dashed;
+    width: 650px;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 900;
+}
+
+#job_top p {
+	margin: 0 0 30px 0;
+}
+
+#job_body {
+	float: left;
+	width:100%;
+	margin: 30px 0 20px 0;
+}
+
+#job_body div:last-child {
+	border: 0 !important;
+}
+
+.job_go {
+	float: left;
+	position: relative;
+    width: 650px;
+    height: auto;
+    line-height: 29px;
+    padding: 7px 0;
+    font-size: 14px;
+    font-weight: 100;
+    border-bottom: 1px solid #999;
+}
+
+
+
+.job_go a {
+    float: left;
+    position: relative;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.job_go p {
+	float: right;
+}
+
+#job_bt {
+	left: 50%;
+    float: left;
+    position: relative;
+    text-align: center;
+    transform: translate(-50%, 0);
+}
+
+#job_page {
+	margin: 0 0 12px 0;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+#job_page a {
+	margin:7px;
+}
+
+#job_search input {
+	height: 42px;
+    margin-top: 10px;
+    padding: 5px 40px 5px 20px;
+    border: 1px solid #999;
+    border-radius: 30px;
+}
+
+#job_search img {
+	float: left;
+	position: absolute;
+	left: 0;
+	margin: 21px 0 0 193px;
+}
+
+/********job click(popup) start********/
+#job_click {
 	background: rgba(0,0,0,0.7);
 	width:100%;
 	height:100%;
@@ -12,102 +104,15 @@
 	display: none;
 }
 
-.j_inf_main{
-	float: left;
-	position: relative;
-    margin-top: 150px;
-    width: 650px;
-    height: auto;
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-#j_top{
-	border-bottom: 1px dashed;
-    width: 650px;
-    text-align: center;
-    font-size: 27px;
-    font-weight: 900;
-}
-#j_top p{
-	margin: 0 0 30px 0;
-}
-#j_body{
-	margin: 30px 0 20px 0;
-	width:100%;
-}
-#j_body div:last-child {
-	border: 0 !important;
-}
-
-.job_go{
-	font-size: 14px;
-    font-weight: normal;
-    border-bottom: 1px solid black;
-    margin: 12px 0 0 0;
-    height:28px
-}
-.job_go a{
-    float: left;
-    position: relative;
-    margin-left: 30px;
-    cursor: pointer;
-}
-.job_go p{
-	float: right;
-}
-
-
-
-#j_bt{
-	left: 50%;
-    float: left;
-    position: relative;
-    text-align: center;
-    transform: translate(-50%, 0);
-}
-#j_n{
-	margin: 0 0 12px 0;
-    font-size: 13px;
-    font-weight: 900;
-}
-#j_n a{
-	margin:7px;
-}
-
-#j_ser input{
-	height: 42px;
-    margin-top: 10px;
-    padding: 5px 40px 5px 20px;
-    border: 1px solid #999;
-    border-radius: 30px;
-}
-
-#j_ser img {
-	float: left;
-	position: absolute;
-	left: 0;
-	margin: 21px 0 0 193px;
-}
-
-#j_sc{
+.job_click_close {
 	float: left;
 	position: absolute;
 	width: 100%;
-	height: 20px;
-	bottom: 0;
-    margin: 20px 0 0 0;
-}
-#j_sc p{
-	font-size: 12px !important;
-	font-weight: 100 !important;
-    text-align: center;
-    background: transparent !important;
-    margin-top: -5px !important;
-    color: #555 !important;
+	height: 100%;
+	background: rgba(255, 255, 255, 0);
 }
 
-#j_cl{
+#job_click_top {
 	float: left;
     position: fixed;
     width: 550px;
@@ -119,30 +124,68 @@
     transform: translate(-50%, -50%);
 }
 
-
-
-
-#cl_top{
-	width: 400px;
-    border-bottom: 1px dashed;
-    float: left;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-    margin: 30px 0 0 0;
+.job_click_bt {
+	float: right;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: 0;
+	margin: 10px 15px 0 0;
 }
-#cl_top_te1{
+
+.job_click_bt a {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	
+	transition: all .2s ease-in;
+}
+
+.job_click_bt a:hover {
+	transform: rotate(90deg);
+}
+
+.job_click_bt a img {
+	width: 100%;
+	height: auto;
+}
+
+#job_click_title {
+	float: left;
+	position: relative;
+	width: 400px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 30px 0 0 0;
+	border-bottom: 1px dashed #777;
+}
+
+#job_click_title_exp1 {
 	font-size: 15px;
     font-weight: 500;
     margin-top: 10px;
 }
-#cl_top_te2{
+
+#job_click_title_exp2 {
 	margin: 10px 0;
     font-size: 21px;
     font-weight: 900;
     text-align: center;
 }
-#cl_body{
+
+#job_click_title_date {
+	float: right;
+	position: absolute;
+	right: 0;
+	margin: 5px 0 20px 0;
+	font-size: 13px;
+}
+
+
+    
+#job_click_body {
 	width: 400px;
     text-align: center;
     float: left;
@@ -150,35 +193,27 @@
     left: 50%;
     transform: translate(-50%, 0);
     height: 250px;
+    padding-top: 30px;
 }
-#cl_body_p{
-	text-align: right;
-	margin: 5px 0 20px 0;
-	font-size: 13px;
-}
-#cl_bo1{
+
+#job_click_part {
 	text-align: left;
 }
-#cl_bo1_te1{
+
+.job_click_part_title {
 	font-size: 15px;
     font-weight: 900;
     margin: 12px 0 0 0;
-}
-#cl_bo2{
-	margin-top: 15px;
-	text-align: left;
-}
-#cl_elig{
-	font-size: 15px;
-	font-weight: 900;
-	margin-top: 5px;
-}
-.cl_p{
-	font-size: 14px;
-	margin: 5px 0;
+    text-align: left;
 }
 
-#cl_bt {
+.job_click_part_p {
+	font-size: 14px;
+	margin: 5px 0;
+	text-align: left;
+}
+
+#job_click_bottom {
     float: left;
 	position: absolute;
 	text-align: center;
@@ -186,7 +221,8 @@
 	height: 160px;
 	bottom: 0;
 }
-#cl_bt p {
+
+#job_click_bottom p {
 	float: left;
 	position: relative;
 	width: auto;
@@ -197,10 +233,9 @@
 	margin: -11px 0 0 0;
     font-size: 16px;
     font-weight: 900;
-	
 }
 
-#cl_bt_line {
+#job_click_line {
 	float: left;
     position: absolute;
     width: 550px;
@@ -211,17 +246,16 @@
     border-bottom: 1px dashed #999;
 }
 
-#cl_bt_center{
+#job_click_bottom_center {
 	float: left;
 	position: absolute;
 	min-width: 312px;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, -50%);
-	
 }
 
-.cl_bt_link {
+.jcb_link {
 	float: left;
 	position: relative;
 	width: 80px;
@@ -234,6 +268,11 @@
 	color: #fff;
 	cursor: pointer;
 }
+
+.jcb_link:hover {
+	opacity: 0.8;
+}
+
 .cl_sri {
 	border: 2px solid #686188;
 	background: #4c4666;
@@ -247,6 +286,21 @@
 	background: #596ca4;
 }
 
-.cl_bt_link:hover {
-	opacity: 0.8;
+#job_click_exp {
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 20px;
+	bottom: 0;
+    margin-top: 20px;
 }
+
+#job_click_exp p {
+	font-size: 12px !important;
+	font-weight: 100 !important;
+    text-align: center;
+    background: transparent !important;
+    margin-top: -5px !important;
+    color: #555 !important;
+}
+

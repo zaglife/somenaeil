@@ -62,6 +62,8 @@ function showCode() {
 
 </head>
 <body>
+<jsp:include page="top.jsp" />
+
 
 <div id="post_wrap">
   
@@ -187,7 +189,7 @@ function showCode() {
 
 
 
-<jsp:include page="top.jsp" />
+
 <jsp:include page="totop.jsp" />
 
 
