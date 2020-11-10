@@ -49,6 +49,58 @@ function showCode() {
 		sc_temp= 1;
 	}
 }
+
+
+function cate_click(){
+	$('#cate_g').addClass('cate_select');
+	$('#cate_r').removeClass('cate_select');
+	$('#cate_q').removeClass('cate_select');
+	$('#post_hidden').addClass('post_cate_hidden');
+}
+
+function cate_click2(){
+	$('#cate_g').removeClass('cate_select');
+	$('#cate_r').addClass('cate_select');
+	$('#cate_q').removeClass('cate_select');
+	$('#post_hidden').removeClass('post_cate_hidden');
+}
+
+function cate_click3(){
+	$('#cate_g').removeClass('cate_select');
+	$('#cate_r').removeClass('cate_select');
+	$('#cate_q').addClass('cate_select');
+	$('#post_hidden').addClass('post_cate_hidden');
+}
+
+var like_temp= 1;
+
+function showlink() {
+	if(like_temp == 1) {
+		$('.post_link').addClass('post_link_hide');
+		$('.post_mov').removeClass('post_mov_hide');
+		++like_temp;
+	}else if(like_temp == 2) {
+		$('.post_link').removeClass('post_link_hide');
+		
+		like_temp= 1;
+	}
+}
+
+var mov_temp= 1;
+
+function showmov() {
+	if(mov_temp == 1) {
+		$('.post_mov').addClass('post_mov_hide');
+		$('.post_link').removeClass('post_link_hide');
+		++mov_temp;
+	}else if(mov_temp == 2) {
+		$('.post_mov').removeClass('post_mov_hide');
+		
+		mov_temp= 1;
+	}
+}
+
+
 </script>
    
 <!DOCTYPE html>
@@ -75,9 +127,9 @@ function showCode() {
   
   <!-- 카테고리 선택 시작 -->
   <div id="post_cont">
-    <div class="post_cate"><a href="#"><img src="img/cate_g_m.png"></a></div>
-    <div class="post_cate"><a href="#"><img src="img/cate_r_m.png"></a></div>
-    <div class="post_cate"><a href="#"><img src="img/cate_q_m.png"></a></div>
+    <div class="post_cate" id="cate_g"><a href="#" onclick="cate_click()"><img src="img/cate_g_m.png"  ></a></div>
+    <div class="post_cate" id="cate_r"><a href="#" onclick="cate_click2()"><img src="img/cate_r_m.png" onclick="cate_click()"></a></div>
+    <div class="post_cate" id="cate_q"><a href="#" onclick="cate_click3()"><img src="img/cate_q_m.png" onclick="cate_click()"></a></div>
     <p>*카테고리 필수 선택 </p>
     <div id="post_cate_exp">
       <img src="img/post_q_20.png">
@@ -97,11 +149,11 @@ function showCode() {
   	    <div class="post_tcate"><a href="#"><img src="img/post_s_20.png"></a></div>
   	    <div class="post_tcate"><a href="#"><img src="img/post_c_20.png"></a></div>
   	  </div>
-  	  <div class="post_tcate_part tcate_side">
+  	  <div class="post_tcate_part">
   	    <div class="post_file">
-  	      <a href="#"><img src="img/post_link_20.png"></a>
+  	      <a href="#" onclick="showlink()"><img src="img/post_link_20.png"></a>
   	      <!-- 링크 기능 display none -->
-  	      <div id="post_link_wrap">	
+  	      <div id="post_link_wrap" class="post_link">
   	      	<input type="text" placeholder="링크명" id='lk_text'>
   	        <input type="text" value="http://" id='lk'>
   	        <button id='lk_bt'>+</button>	       
@@ -109,16 +161,16 @@ function showCode() {
   	    </div>
   	    <div class="post_file"><a href="#"><img src="img/post_pic_20.png"></a></div>
   	    <div class="post_file">
-  	      <a href="#"><img src="img/post_vid_20.png"></a>
+  	      <a href="#" onclick="showmov()"><img src="img/post_vid_20.png"></a>
   	      <!-- 영상 embed 기능 display none -->
-  	      <div id="post_embed_wrap">	
+  	      <div id="post_embed_wrap" class="post_mov">	
   	      	<p id='post_embed_ti'>영상주소</p>
   	        <input type="text" value="http://" id='embed'>
   	        <button id='embed_bt'>+</button>	       
   	      </div>
   	    </div>
   	  </div>
-  	  <div class="post_tcate_part">
+  	  <div class="post_tcate_part" id="post_hidden">
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
