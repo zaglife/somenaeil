@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <div id="user_follower" class="user_popup_wrap user_follower_hide">
+<a onclick="userFollowerPop()"></a>
   <div class="user_popup_center">
     <div id="user_popup_top_space"></div>
     <div id="user_popup_top">팔로워</div>

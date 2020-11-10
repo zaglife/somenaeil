@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 
 <div id="user_follow" class="user_popup_wrap user_follow_hide">
+<a onclick="userFollowPop()"></a>
   <div class="user_popup_center">
     <div id="user_popup_top_space"></div>
-    <div id="user_popup_top">팔로우</div>
+    <div id="user_popup_top">팔로우</div><a onclick="userFollowPop()"></a>
     <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowPop()"></div>
     
     <div id="user_popup_scroll">
