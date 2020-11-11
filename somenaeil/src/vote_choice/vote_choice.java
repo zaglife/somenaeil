@@ -6,8 +6,6 @@ public class vote_choice {
 	private int cnt;
 	private String nick;
 	
-	
-	
 	public String getNick() {
 		return nick;
 	}

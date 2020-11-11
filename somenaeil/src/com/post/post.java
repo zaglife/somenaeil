@@ -1,5 +1,7 @@
 package com.post;
 
+import java.util.Calendar;
+
 public class post {
 	private int num;
 	private String nick;
@@ -8,9 +10,6 @@ public class post {
 	private int scrap_cnt;
 	private Calendar time;
 	private String hash;
-	
-	
-	
 	
 	public int getNum() {
 		return num;

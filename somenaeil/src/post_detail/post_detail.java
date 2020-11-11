@@ -6,8 +6,6 @@ public class post_detail {
 	private int type;
 	private String context;
 	
-	
-	
 	public int getNum() {
 		return num;
 	}
