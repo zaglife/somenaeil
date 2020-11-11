@@ -54,3 +54,46 @@ title varchar2(200) not null,
 context varchar2(4000) not null,
 time date default sysdate
 );
+
+
+/*********  포스트 post *********/
+create table post(
+num number(4) primary key not null,
+nick varchar2(28) not null,
+cate varchar2(2) not null,
+nick varchar2(20) not null,
+view_cnt number(100) default 0
+scrap_cnt number(100) default  0,
+time date default sysdate,
+hash varchar2(120) 
+);
+
+/********* 포스트 post_detail *********/
+create table post_detail(
+num number(4) primary key not null,
+post_fk number(4) not null,
+type number(4) not null,
+context varchar2(4000) not null
+);
+
+/********* 투표 vote *********/
+create table vote(
+num number(4) primary key not null,
+nick varchar2(20) not null,
+title varchar2(200) not null,
+start_date date default sysdate,
+end_date date default sysdate+1,
+multi_choice number(1) not null,
+hidden_vote number(1) not null,
+voting_stat number(1) not null 
+);
+
+
+/********* 투표 vote_choice *********/
+create table vote_choice(
+num number(4) primary key not null,
+choice varchar2(800) not null,
+cnt number(4) not null,
+nick varchar2(800) not null
+);
+
