@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+.cs_main {
+	float: left;
+    position: relative;
+    width: 650px;
+    height: auto;
+    margin-top: 150px;
+	left: 50%;
+    transform: translate(-50%,0);
+}
+
+#cs_top {
+    width: 650px;
+	border-bottom: 1px dashed;
+    font-size: 27px;
+    font-weight: 900;
+    text-align: center;
+}
+
+#cs_top p {
+	margin: 0 0 30px 0;
+}
+
+#cs_body {
+	 width:100%;
+	 margin: 30px 0 20px 0;
+}
+
+.cs_article_last {
+	border: 0 !important;
+}
+
+.cs_article {
+	width: 650px;
+	height: auto;
+	line-height: 29px;
+	padding: 7px 0;
+	font-size: 14px;
+	font-weight: 100;
+	border-bottom: 1px solid #999;
+
+}
+
+.cs_article a {
+	cursor: pointer;
+}
+
+.cs_cont {
+	width: 630px;
+    height: auto;
+    padding: 30px 10px;
+    border-top: 1px dashed #999;
+    font-size: 15px;
+    font-weight: normal;
+    color: #555;
+    line-height: 28px;
+    word-break: keep-all;
+    overflow: hidden;
+    
+    transition: all .2s;
+}
+
+.cs_cont p {
+	color: #555;
+}
+
+.cs_hide {
+	height: 0 !important;
+	padding: 0 10px !important;
+	border: 0 !important;
+}
+
+#cs_bottom {
+    float: left;
+    position: relative;
+    text-align: center;
+	left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#cs_page {
+	margin: 0 0 12px 0;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+#cs_page a {
+	margin:7px;
+}
+
+#cs_search input {
+	width: 186px;
+	height: 30px;
+    margin-top: 10px;
+    padding: 5px 20px;
+    border: 1px solid #999;
+    border-radius: 30px;
+}
+
+#cs_search img {
+	float: left;
+	position: absolute;
+	left: 0;
+	margin: 21px 0 0 193px;
+}
+
+/****고객센터 하단 번호 start****/
+#cs_footer {
+	float: left;
+    position: relative;
+    width: 100%;
+    margin-top: 70px;
+    padding: 10px 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: #edf8e6;
+    text-align: center;
+}
+
+
+#cs_footer p:nth-child(1) {
+	font-size: 18px;
+    font-weight: 900;
+    margin-top: 20px;
+}
+#cs_footer p:nth-child(2) {
+    font-size: 12px;
+    color: #333;
+    margin: 5px 0 10px;
+}
+#cs_footer p:nth-child(3) {
+    margin: 20px 0 0px 0;
+	font-size: 30px;
+    font-weight: 900;
+    color: darkgreen;
+}
+#cs_footer p:nth-child(4) {
+    margin: 0px 0 15px 0px;
+    font-size: 16px;
+    font-weight: 800;
+	color: forestgreen;
+}
+#cs_footer p:nth-child(5) {
+	margin: 20px 0 15px 0px;
+	font-size: 12px;
+}
+/****고객센터 하단 번호 end****/

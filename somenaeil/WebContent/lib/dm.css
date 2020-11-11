@@ -1,0 +1,526 @@
+@charset "UTF-8";
+
+#dm_wrap {
+	width: 100%;
+	margin-top: 120px; /* nav 영역  */
+}
+
+#dm_new_wrap {
+	float: left;
+	position: relative;
+	width: 900px;
+	padding: 10px 0;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #555;
+	
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.dm_new {
+	float: left;
+	position: relative;
+	width: 70px;
+	height: 70px;
+	
+	margin: 5px;
+	border: 4px solid #666;
+	border-radius: 15px;
+	
+	background: #666;
+}
+
+.dm_new img{
+	width: 100%;
+	height: auto;
+	border-radius: 11px;
+	
+	cursor: pointer;
+	
+	transform: scale(1, 1);
+	opacity: 1;
+	
+	transition: transform .2s ease, opacity .2s ease;
+	-webkit-transition: transform .2s ease, opacity .2s ease;
+}
+
+.dm_new img:hover{
+	opacity: .9;
+	transform: scale(1.03, 1.03);
+	border-radius: 14px;
+}
+
+
+
+.dm_new_icon {
+	float: right;
+	position: absolute;
+	width: 20px !important;
+	height: 20px !important;
+	
+	right: 0;
+	top: 0;
+	margin: -8px -8px 0 0;
+	border-radius: 0 !important;
+}
+
+#dm_manage {
+	float: right;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	
+	right: 0;
+	top: 50%;
+	margin-right: 5px;
+	transform: translate(0,-50%);
+	cursor: pointer;
+}
+
+#dm_manage img {
+	width: 100%;
+	height: auto;
+	transition: transform .2s ease;
+	-webkit-transition: transform .2s ease;
+}
+
+#dm_manage img:hover {
+	transform: rotate(45deg);
+}
+
+#dm_choose {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: auto;
+	text-align: center;
+	margin: 10px 0;
+	color: #999;
+	font-size: 13px;
+}
+
+#dm_cont {
+	clear: both;
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+/*************** dm 디폴트 페이지 ***************/
+
+#dm_d_wrap {
+	clear: both;
+	float: left;
+	position: relative;
+	width: 900px;
+	height: 650px;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#dm_d_wrap::before {
+	content: "";
+	float: left;
+	width: 900px;
+	height: 650px;
+	opacity: .4;
+	
+	background: url("../img/dm_back_l.png") no-repeat center center;
+	background-size: 40%;
+}
+
+#dm_d_cont {
+	float: left;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	margin-top: -40px;
+	text-align: center;
+}
+
+#dm_d_cont p:first-child {
+	width: auto;
+	color: #555;
+	text-align: center;
+	font-size: 40px;
+	font-family: 'paybooc-ExtraBold';
+}
+
+#dm_d_cont p:nth-child(2) {
+	width: auto;
+	margin-top: 5px;
+	color: #555;
+	text-align: center;
+	font-size: 17px;
+}
+
+#dm_d_cont button {
+	float: left;
+	position: relative;
+	width: 130px;
+	height: 32px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 15px;
+	border: 2px solid #80ca7c;
+	border-radius: 10px;
+	
+	background: #edf8e6;
+	cursor: pointer;
+}
+
+/*************** dm 실시간 대화 페이지 ***************/
+
+#dm_c_wrap {
+	clear: both;
+	float: left;
+	position: relative;
+	width: 900px;
+	height: auto;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 20px;
+}
+
+#dm_c_left {
+	float: left;
+	position: relative;
+	width: 120px;
+	margin: 10px;
+}
+
+#dm_c_left img {
+	width: 112px;
+	height: auto;
+	border: 4px solid #91c38e;
+	border-radius: 20px;
+}
+
+#dm_c_left p {
+	clear: both;
+	text-align: center;
+	width: 112px;
+	padding: 4px;
+	
+	color: #555;
+	font-family: 'paybooc-ExtraBold';
+}
+
+#dm_c_left p a {
+	font-weight: 900;
+}
+
+#dm_c_right {
+	float: left;
+	position: relative;
+	width: 732px;
+	height: 550px;
+	margin: 10px;
+	padding-top: 20px;
+	border: 4px solid #91c38e;
+	border-radius: 28px;
+}
+
+#dm_c_list {
+	float: left;
+	position: relative;
+	width: 702px;
+	height: 480px;
+	padding-right: 8px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#dm_c_list::-webkit-scrollbar {
+	width: 5px;
+	margin-right: 5px;
+}
+#dm_c_list::-webkit-scrollbar-thumb {
+	background-color: #91c38e;
+	border-radius: 10px;
+}
+#dm_c_list::-webkit-scrollbar-track {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+
+#dm_cl_ct {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.dm_cl_btn {
+	float: left;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	margin: 5px;
+}
+
+.dm_cl_btn img {
+	width: 100% !important;
+	height: auto !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+
+.msg_wrap {
+	clear:both;
+	position: relative;
+	width: 660px;
+	display: inline; 
+}
+
+.msg_other {
+	float: left;
+	color: #333;
+	margin: 10px 20px;
+	padding: 45px 0 5px;
+	font-size: 16px;
+	background: url(../img/dm_other_s.png) no-repeat left top;
+}
+
+.msg_user {
+	float: right;
+	color: #333;
+	margin: 10px 20px;
+	padding: 45px 0 5px;
+	font-size: 16px;
+	background: url(../img/dm_me_s.png) no-repeat right top;
+}
+
+.msg_other p {
+	float: left;
+	margin: 10px 0;
+	text-align: left;
+}
+.msg_user p {
+	float: right;
+	margin: 10px 0;
+	text-align: right;
+}
+
+.msg_other p:nth-child(2n+1) {
+	clear: left;
+	margin-right: 10px;
+}
+.msg_user p:nth-child(2n+1) {
+	clear: right;
+	margin-left: 10px;
+}
+
+.msg_other p:nth-child(2n),
+.msg_user p:nth-child(2n) {
+	color: #777;
+	font-size: 12px;
+	line-height: 26px;
+}
+
+
+
+
+
+#dm_c_msg {
+	float: left;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-top: 1px dashed #91c38e;
+}
+
+#dm_c_msg input {
+	width: 688px;
+	height: 20px;
+	margin: 10px;
+	padding: 5px 10px;
+	
+	border: 2px solid #91c38e;
+	border-radius: 30px;
+}
+
+#dm_c_msg button {
+	float: left;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: 0;
+	bottom: 0;
+	margin: 0 22px 17px 0;
+	border: 0;
+
+	cursor: pointer;
+	background: url("../img/icon_send_20.png") no-repeat center center;
+	
+	transition: transform .2s;
+}
+
+#dm_c_msg button:hover {
+/* 	transform: rotate(-80deg); */
+}
+
+/*************** dm 실시간 대화 페이지 ***************/
+#dm_set_wrap {
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .7);
+}
+
+.dm_set_hide {
+	display: none;
+}
+
+#dm_set_close {
+	float: left;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba(0, 0, 0, 0);
+}
+
+.dm_set_center {
+	float: left;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 500px;
+	height: 500px;
+	transform: translate(-50%, -50%);
+	
+	border-radius: 25px;
+	background: #fff;
+}
+
+#dm_set_popup_top_space {
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 10px;
+	margin: 30px 0 20px 0;
+	padding-bottom: 19px;
+}
+
+#dm_set_popup {
+	float: left;
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 0;
+	font-size: 16px;
+	font-weight: 900;
+	color: #555;
+	text-align: center;
+	margin: 30px 0 20px 0;
+	padding-bottom: 19px;
+	border-bottom: 1px dashed #999;
+}
+
+#dm_set_popup_close {
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
+	margin: 30px;
+	cursor: pointer;
+}
+
+#dm_set_popup_close img {
+	width: 100%;
+	height: auto;
+	
+	transition: transform .2s;
+}
+
+#dm_set_popup_close img:hover {
+	transform: rotate(90deg);
+}
+
+#dm_set_popup_scroll {
+	width: 490px;
+	height: 400px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#dm_set_popup_scroll::-webkit-scrollbar {
+	width: 5px;
+	margin-right: 5px;
+}
+#dm_set_popup_scroll::-webkit-scrollbar-thumb {
+	background-color: #999;
+	border-radius: 10px;
+}
+#dm_set_popup_scroll::-webkit-scrollbar-track {
+	background-color: rgba(255, 255, 255, 0);
+	border-radius: 10px;
+}
+#dm_set_popup_cont {
+	float: left;
+	position: relative;
+	width: 400px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin: 10px 0;
+}
+
+.dm_set_popup_pimg {
+	float: left;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	margin: 5px 0;
+}
+
+.dm_set_popup_pimg img {
+	width: 100%;
+	height: auto;
+	border-radius: 30px;
+}
+
+.dm_set_popup_name {
+	float: left;
+	position: relative;
+	font-size: 13px;
+	font-weight: 900;
+	margin: 20px 0 3px 5px;
+}
+
+.dm_set_popup_comment {
+	float: left;
+	position: relative;
+	width: 310px;
+	font-size: 11px;
+	font-weight: 100;
+	color: #555;
+	margin-left: 5px;
+}
+
+.dm_set_popup_btn {
+	float: right;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(-10px, -50%);
+	transition: transform .2s;
+}
+
+.dm_set_popup_btn p {
+	font-size: 12px;
+	margin: 0 0 0 0;
+	color: #d25f5f;
+}
+
+
+
+.dm_set_popup_btn p:hover {
+	opacity: .7;
+	cursor: pointer;
+}
+
