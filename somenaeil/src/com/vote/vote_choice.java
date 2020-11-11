@@ -1,4 +1,4 @@
-package vote_choice;
+package com.vote;
 
 public class vote_choice {
 	private int num;
