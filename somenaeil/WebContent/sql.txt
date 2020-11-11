@@ -1,0 +1,56 @@
+
+/********* 멤버 member *********/
+create table member(
+num number(4) not null primary key,
+id varchar2(20) not null,
+pw varchar2(20) not null,
+name varchar2(20) not null,
+nick varchar2(20) not null,
+email varchar2(40) not null,
+cert number(1) not null,
+time date default sysdate,
+pimg varchar2(100),
+comt varchar2(100),
+follow varchar2(4000),
+follower varchar2(4000),
+scrap_list varchar2(4000),
+like_list varchar2(4000)
+);
+
+/********* 알림 noti *********/
+/********* (회원가입시 생성) *********/
+create table cs(
+num number(4) not null primary key,
+other varchar2(20) not null,
+type number(1) not null,
+time date default sysdate,
+scrap number(6)
+);
+
+/********* 메세지 dm *********/
+/********* (회원가입시 생성) *********/
+create table dm(
+num number(4) not null primary key,
+other varchar2(20) not null,
+context varchar2(4000) not null,
+time date default sysdate,
+cert number(1) not null
+);
+
+/********* 채용공고 job *********/
+create table job(
+num number(4) not null primary key,
+com varchar2(100) not null,
+title varchar2(200) not null,
+context varchar2(4000) not null,
+time date default sysdate,
+link varchar2(4000) not null
+);
+
+/********* 고객센터 cs *********/
+create table cs(
+num number(4) not null primary key,
+title varchar2(200) not null,
+context varchar2(4000) not null,
+time date default sysdate
+);
