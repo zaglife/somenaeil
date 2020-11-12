@@ -20,7 +20,7 @@
     <p class="join_form_tt">개인 정보</p>
     
     <div class="join_form_sub_tt"><p>이름</p><div id="jf_name_back"></div></div>
-    <input type="text" placeholder="썸내일" class="jf_input jf_name">
+    <input type="text" name="name" placeholder="썸내일" class="jf_input jf_name">
     <p class="join_form_exp jfe_name">*이름 변경 불가, 아이디찾기시 필요</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
