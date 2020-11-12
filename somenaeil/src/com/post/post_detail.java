@@ -1,4 +1,4 @@
-package post_detail;
+package com.post;
 
 public class post_detail {
 	private int num;
