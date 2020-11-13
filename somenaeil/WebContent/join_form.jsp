@@ -11,6 +11,8 @@
 </head>
 <body>
 
+<form method="post" action="join.do">
+<input type="hidden" name="part" value="join">
 <div id="join_form_wrap">
 
   <div id="join_form_title"><img src="img/logo_40.png"></div>
@@ -84,6 +86,7 @@
   </div>
 
 </div>
+</form>
 
 </body>
 </html>

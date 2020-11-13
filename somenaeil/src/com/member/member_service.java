@@ -30,32 +30,19 @@ public class member_service {
 	
 	public void join() {
 		
-//		String id= request.getParameter("id");
-//		String pw= request.getParameter("pw");
-//		String name= request.getParameter("name");
-//		String nick= request.getParameter("nick");
+		String id= request.getParameter("id");
+		String pw= request.getParameter("pw");
+		String name= request.getParameter("name");
+		String nick= request.getParameter("nick");
 		String email= request.getParameter("email");
-//		int cert= Integer.parseInt(request.getParameter("cert"));
-//		String pimg= request.getParameter("pimg");
-//		String comt= request.getParameter("comt");
+		int cert= Integer.parseInt(request.getParameter("cert"));
+		String pimg= request.getParameter("pimg");
+		String comt= request.getParameter("comt");
 		
 		// 이메일 주소 뒷부분 추가
 		email+= "@";
 		
-		member data= new member(
-				request.getParameter("id"),
-				request.getParameter("pw"),
-				request.getParameter("name"),
-				request.getParameter("nick"),
-				email,
-				Integer.parseInt(request.getParameter("cert")),
-				request.getParameter("pimg"),
-				request.getParameter("comt")
-				);
-		
 		member_dao md=new member_dao();
-		md.member_insert(data);
+		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
 	}
-	
-
 }

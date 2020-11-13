@@ -9,19 +9,24 @@ import java.sql.Statement;
 
 public class member_dao {
 	private Connection conn;
+	
 	public member_dao(){
 		try {
 			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
 		} catch(SQLException e){
+			e.printStackTrace();
 			System.out.println("member_dao - 실패");
 		}
 	}
 	
 	public member member_select(String id, String pw) {
 		String sql="select * from member where id='"+id+"' and pw='"+pw+"'";
+		Statement stmt=null;
+		ResultSet rs=null;
+		
 		try {
-			Statement stmt= conn.createStatement();
-			ResultSet rs= stmt.executeQuery(sql);
+			stmt= conn.createStatement();
+			rs= stmt.executeQuery(sql);
 				
 			if(rs.next()) {
 				member user= new member(
@@ -35,96 +40,51 @@ public class member_dao {
 					rs.getString("follow"),
 					rs.getString("follower"),
 					rs.getString("scrap_list"),
-					rs.getString("like_list")
-						);
+					rs.getString("like_list"));
 				rs.close();
 				stmt.close();
 				conn.close();
+				
 				return user;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("member_dao - 로그인 실패");
+			System.out.println("member_dao - DB 로그인 실패");
 		}
 		return null;
 	}
-
 	
-//	public void join(member data) throws SQLException { 
-//		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-//		PreparedStatement pt= null;
-//		
-//		try {
-//			pt= conn.prepareStatement(sql);
-//			pt.setInt(1, get_num("member", conn));
-//			pt.setString(2, data.getId());
-//			pt.setString(3, data.getPw());
-//			pt.setString(4, data.getName());
-//			pt.setString(5, data.getNick());
-//			pt.setString(6, data.getEmail());
-//			pt.setInt(7, data.getCert());
-//			pt.setString(8, data.getPimg());
-//			pt.setString(9, data.getComt());
-//			
-//			pt.executeUpdate();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			System.out.println("member_dao - 회원가입 sql 입력 실패");
-//		} finally {
-//			pt.close();
-//			conn.close();
-//		}
-//	}
-	
-	public void member_insert(member data) {
-		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		PreparedStatement pt= null;
+	public void member_insert(	String id,
+								String pw,
+								String name,
+								String nick,
+								String email,
+								int cert,
+								String pimg,
+								String comt) {
+		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
+		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		PreparedStatement ptmt= null;
 		
 		try {
-			pt= conn.prepareStatement(sql);
-			pt.setInt(1, get_num("member", conn));
-			pt.setString(2, data.getId());
-			pt.setString(3, data.getPw());
-			pt.setString(4, data.getName());
-			pt.setString(5, data.getNick());
-			pt.setString(6, data.getEmail());
-			pt.setInt(7, data.getCert());
-			pt.setString(8, data.getPimg());
-			pt.setString(9, data.getComt());
+			ptmt= conn.prepareStatement(sql);
+			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
+			ptmt.setString(2, id);
+			ptmt.setString(3, pw);
+			ptmt.setString(4, name);
+			ptmt.setString(5, nick);
+			ptmt.setString(6, email);
+			ptmt.setInt(7, cert);
+			ptmt.setString(8, pimg);
+			ptmt.setString(9, comt);
 			
-			pt.executeUpdate();
+			ptmt.executeUpdate();
 			
-			pt.close();
+			ptmt.close();
 			conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 회원가입 sql 입력 실패");
 		}
-		
 	}
-		
-	public static int get_num(String table, Connection conn) throws SQLException {
-		int num= 1;
-		
-		String sql= "select Max(num) as m from "+table;
-		Statement stmt= null;
-		ResultSet rs= null;
-		
-		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
-			if(rs.next()) {
-				num= rs.getInt("m")+1;
-			}
-			return num;
-		} catch(SQLException e) {
-			System.out.println("member_dao - num값 증가 실패");
-		}
-		
-		rs.close();
-		stmt.close();
-		
-		return num;
-	}
-	
 }
