@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 var popCt= 1;
 
@@ -50,28 +50,6 @@ function showCode() {
 	}
 }
 
-
-function cate_click(){
-	$('#cate_g').addClass('cate_select');
-	$('#cate_r').removeClass('cate_select');
-	$('#cate_q').removeClass('cate_select');
-	$('#post_hidden').addClass('post_cate_hidden');
-}
-
-function cate_click2(){
-	$('#cate_g').removeClass('cate_select');
-	$('#cate_r').addClass('cate_select');
-	$('#cate_q').removeClass('cate_select');
-	$('#post_hidden').removeClass('post_cate_hidden');
-}
-
-function cate_click3(){
-	$('#cate_g').removeClass('cate_select');
-	$('#cate_r').removeClass('cate_select');
-	$('#cate_q').addClass('cate_select');
-	$('#post_hidden').addClass('post_cate_hidden');
-}
-
 var like_temp= 1;
 
 function showlink() {
@@ -101,8 +79,19 @@ function showmov() {
 }
 
 
+
+function post_cate(num) {
+	if(num == 2){
+		$('#post_hidden').removeClass('post_cate_hidden');
+	}else{
+		$('#post_hidden').addClass('post_cate_hidden');
+	}	
+}
+
+
 </script>
-   
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,7 +105,8 @@ function showmov() {
 <body>
 <jsp:include page="top.jsp" />
 
-
+<form method="post" action="write.post">
+<input type="hidden" name="part" value="write">
 <div id="post_wrap">
   
   <!-- 타이틀 시작  -->
@@ -125,11 +115,31 @@ function showmov() {
   </div>
   <!--  타이틀 끝  -->
   
+  <!--     <a href="#" onclick="cate_click()"></a> -->
   <!-- 카테고리 선택 시작 -->
   <div id="post_cont">
-    <div class="post_cate" id="cate_g"><a href="#" onclick="cate_click()"><img src="img/cate_g_m.png"  ></a></div>
-    <div class="post_cate" id="cate_r"><a href="#" onclick="cate_click2()"><img src="img/cate_r_m.png" onclick="cate_click()"></a></div>
-    <div class="post_cate" id="cate_q"><a href="#" onclick="cate_click3()"><img src="img/cate_q_m.png" onclick="cate_click()"></a></div>
+    <div class="post_cate" id="cate_g">
+      <input type="radio" name="cate_btn" id="cate_g_btn" checked="checked">
+      <label for="cate_g_btn" onclick="post_cate(1)"></label>
+    </div>
+    
+    <div class="post_cate" id="cate_r">
+      <input type="radio" name="cate_btn" id="cate_r_btn">
+      <label for="cate_r_btn" onclick="post_cate(2)"></label>
+    </div>
+    
+    <div class="post_cate" id="cate_q">
+      <input type="radio" name="cate_btn" id="cate_q_btn">
+      <label for="cate_q_btn" onclick="post_cate(1)"></label>
+    </div>
+    
+    
+<!--     <div class="post_cate" id="cate_r"> -->
+<!--       <a href="#" onclick="cate_click2()"> -->
+
+<!--       </a> -->
+<!--     </div> -->
+<!--     <div class="post_cate" id="cate_q"><a href="#" onclick="cate_click3()"><img src="img/cate_q_m.png" onclick="cate_click()"></a></div> -->
     <p>*카테고리 필수 선택 </p>
     <div id="post_cate_exp">
       <img src="img/post_q_20.png">
@@ -170,7 +180,7 @@ function showmov() {
   	      </div>
   	    </div>
   	  </div>
-  	  <div class="post_tcate_part" id="post_hidden">
+  	  <div class="post_tcate_part post_cate_hidden" id="post_hidden">
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
@@ -244,6 +254,6 @@ function showmov() {
 
 <jsp:include page="totop.jsp" />
 
-
+</form>
 </body>
 </html>

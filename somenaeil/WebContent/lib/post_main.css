@@ -59,12 +59,6 @@ a:hovre{
 	
 	font-size: 31px;
 	font-weight: 900;
-	
-	opacity: .5;
-}
-
-.post_cate:hover {
-	opacity: 1;
 }
 
 #post_cate_exp{
@@ -83,6 +77,55 @@ a:hovre{
 #post_cate_exp:hover + #post_cate_exp_img{
 	display: block;
 }
+
+#cate_g_btn[type="radio"],
+#cate_r_btn[type="radio"],
+#cate_q_btn[type="radio"] { /* 실제 체크박스는 화면에서 숨김 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip:rect(0,0,0,0);
+	border: 0;
+}
+
+#cate_g input[type="radio"] + label,
+#cate_r input[type="radio"] + label,
+#cate_q input[type="radio"] + label {
+	float:left;
+	width:50px;
+	height:50px;
+	opacity: .5;
+	cursor: pointer;
+	background: url("../img/cate_g_m.png") no-repeat center center;
+}
+
+#cate_r input[type="radio"] + label {
+	float:left;
+	width:50px;
+	height:50px;
+	opacity: .5;
+	background: url("../img/cate_r_m.png") no-repeat center center;
+}
+
+#cate_q input[type="radio"] + label {
+	float:left;
+	width:50px;
+	height:50px;
+	opacity: .5;
+	background: url("../img/cate_q_m.png") no-repeat center center;
+} 
+
+#cate_g input[type="radio"]:checked + label,
+#cate_r input[type="radio"]:checked + label,
+#cate_q input[type="radio"]:checked + label {
+	opacity: 1;
+}
+
+
+
 /**** 게시판카테고리 post_cont end ****/
 
 
