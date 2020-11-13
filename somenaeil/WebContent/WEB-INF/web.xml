@@ -9,4 +9,55 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>connectionPool</servlet-name>
+  	<servlet-class>com.main.connection_pool</servlet-class>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  
+  <servlet>
+  	<servlet-name>mainControl</servlet-name>
+  	<servlet-class>com.main.main_control</servlet-class>
+  	<init-param>
+  		<param-name>ConfigFile</param-name>
+  		<param-value>\WEB-INF\main.properties</param-value>
+  	</init-param>
+  	<load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>mainControl</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>someControl</servlet-name>
+  	<servlet-class>com.some.some_control</servlet-class>
+  	<init-param>
+  		<param-name>ConfigFile</param-name>
+  		<param-value>\WEB-INF\some.properties</param-value>
+  	</init-param>
+  	<load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>someControl</servlet-name>
+  	<url-pattern>*.some</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>postControl</servlet-name>
+  	<servlet-class>com.post.post_control</servlet-class>
+  	<init-param>
+  		<param-name>ConfigFile</param-name>
+  		<param-value>\WEB-INF\post.properties</param-value>
+  	</init-param>
+  	<load-on-startup>4</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>postControl</servlet-name>
+  	<url-pattern>*.post</url-pattern>
+  </servlet-mapping>
 </web-app>
