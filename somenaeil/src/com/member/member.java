@@ -1,6 +1,7 @@
 package com.member;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class member {
 	private int num;
@@ -17,6 +18,43 @@ public class member {
 	private String follower;
 	private String scrap_list;
 	private String like_list;
+	
+	public member() { }
+	
+	// 로그인, 회원가입, 회원정보 수정
+	public member(	String id,
+					String pw,
+					String name,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt) {
+		this.id= id;
+		this.pw= pw;
+		this.name= name;
+		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
+	}
+
+	
+	// 팔로우, 팔로워 리스트
+	public member(	String nick,
+					String follow,
+					String follower,
+					String scrap_list,
+					String like_list) {
+		this.nick= nick;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+		this.like_list= like_list;
+	}
+	
+	
 	
 	public int getNum() {
 		return num;
