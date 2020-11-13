@@ -21,7 +21,7 @@ public class member {
 	
 	public member() { }
 	
-	// 로그인, 회원가입, 회원정보 수정
+	// 회원가입, 회원정보 수정
 	public member(	String id,
 					String pw,
 					String name,
@@ -39,21 +39,30 @@ public class member {
 		this.pimg= pimg;
 		this.comt= comt;
 	}
-
 	
-	// 팔로우, 팔로워 리스트
-	public member(	String nick,
+	
+	// 유저 페이지
+	public member(	String id,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt,
 					String follow,
 					String follower,
 					String scrap_list,
 					String like_list) {
+		this.id= id;
 		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
 		this.follow= follow;
 		this.follower= follower;
 		this.scrap_list= scrap_list;
 		this.like_list= like_list;
 	}
-	
 	
 	
 	public int getNum() {

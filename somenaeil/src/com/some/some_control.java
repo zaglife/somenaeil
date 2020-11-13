@@ -69,8 +69,7 @@ public class some_control extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri= request.getRequestURI();	// 현재 접속 주소(전체)
-		String p= request.getContextPath();		// 현재 프로젝트 이름
-		String cmd= uri.substring(p.length()+1);
+		String cmd= uri.substring(uri.lastIndexOf("/")+1);
 		
 		if(cmd != null) {
 			action(request, response, cmd);
