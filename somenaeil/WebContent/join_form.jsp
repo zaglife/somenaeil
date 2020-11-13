@@ -13,6 +13,12 @@
 
 <form method="post" action="join.do">
 <input type="hidden" name="part" value="join">
+
+<!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
+<!-- <input type="hidden" name="pimg" value="null"> -->
+<input type="hidden" name="cert" value="1">
+
+
 <div id="join_form_wrap">
 
   <div id="join_form_title"><img src="img/logo_40.png"></div>
@@ -26,8 +32,7 @@
     <p class="join_form_exp jfe_name">*이름 변경 불가, 아이디찾기시 필요</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
-    
-    <input type="text" placeholder="somenaeil" class="jf_input jf_email">
+    <input type="text" name="email" placeholder="somenaeil" class="jf_input jf_email">
     <p id="jf_email_at">@</p>
     <select id="jf_email_addr">
       <option>이메일</option>
@@ -44,11 +49,11 @@
     <p class="join_form_exp jfe_email">*이메일 주소로 수신된 링크 인증 필수</p>
     
     <div class="join_form_sub_tt"><p>아이디</p><div id="jf_id_back"></div></div>
-    <input type="text" placeholder="id" class="jf_input jf_id">
+    <input type="text" name="id" placeholder="id" class="jf_input jf_id">
     <p class="join_form_exp jfe_id">*아이디 변경 불가</p>
     
     <p class="join_form_sub_tt">비밀번호</p>
-    <input type="password" placeholder="비밀번호" class="jf_input jf_pw">
+    <input type="password" name="pw" placeholder="비밀번호" class="jf_input jf_pw">
     <input type="password" placeholder="비밀번호 확인" class="jf_input jf_pwc">
     <span class="jf_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
     <span class="jf_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
@@ -69,20 +74,20 @@
     </div>
     
     <p class="join_form_sub_tt">닉네임</p>
-    <input type="text" placeholder="nickname" class="jf_input jf_nick">
+    <input type="text" name="nick" placeholder="nickname" class="jf_input jf_nick">
     <p class="join_form_exp jfe_nick">*한글 8자, 영문 16자 내외</p>
     <p class="join_form_exp jfe_nick_match">&lt;사용중인 닉네임입니다&gt;</p>
 
     <p class="join_form_sub_tt">프로필 한줄 소개 내용</p>
-    <input type="text" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
+    <input type="text" name="comt" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
     <p class="join_form_exp jfe_comment1">*총 100byte 작성 가능 (한글 2btye, 영문 1byte)</p>
     <p class="join_form_exp jfe_comment2">(0/100)</p>
     
   </div>
   
   <div id="join_form_end">
-    <button id="join_form_cancle" onclick="location.href='login.jsp'">취소</button>
-    <button id="join_form_clear" onclick="location.href='join_clear.jsp'">회원가입</button>
+    <a href="index.jsp" id="join_form_cancle">취소</a>
+    <button id="join_form_clear">회원가입</button>
   </div>
 
 </div>

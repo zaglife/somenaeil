@@ -15,7 +15,7 @@ public class member_dao {
 			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
 		} catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("member_dao - 실패");
+			System.out.println("member_dao - member DB 커넥션 실패");
 		}
 	}
 	

@@ -61,7 +61,7 @@
     
     <div id="login_bottom">
 	  <div id="login_bottom_text">아직 회원이 아니신가요 ?</div> 
-	  <div id="login_join_btn"><a href="join.jsp">회원가입</a></div>
+	  <div id="login_join_btn"><a href="join.do">회원가입</a></div>
     </div>
   </div>
   
@@ -71,4 +71,4 @@
   
   
 </body>
-</html></html>
+</html>

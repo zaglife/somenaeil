@@ -64,7 +64,7 @@ function dropdown() {
   <c:otherwise>
     <div class="dropdown d_hide">
       <a href="login.jsp">로그인</a>
-      <a href="join.jsp">회원가입</a>
+      <a href="join.do">회원가입</a>
     </div>
   </c:otherwise>
 </c:choose>

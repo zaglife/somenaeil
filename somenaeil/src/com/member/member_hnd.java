@@ -7,14 +7,14 @@ import com.main.main_able;
 
 public class member_hnd implements main_able{
 
-	public String active(HttpServletRequest request,
-			HttpServletResponse response) {
+	public String active(HttpServletRequest request, HttpServletResponse response) {
 		
 		String part=request.getParameter("part");
-		if(part==null){
-			return "join.jsp";
+		
+		if(part == null){
+			return "join_form.jsp";
 		}else {
-			member_service ms=new member_service(request);
+			member_service ms= new member_service(request);
 			ms.join();
 			return "index.jsp";
 		}

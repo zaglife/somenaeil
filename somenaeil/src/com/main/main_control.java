@@ -55,7 +55,7 @@ public class main_control extends HttpServlet {
 				main_able hinst= (main_able)hclass.newInstance();
 				map.put(cmd, hinst);
 			} catch(ClassNotFoundException | InstantiationException | IllegalAccessException e ) {
-				System.out.println("main_able 인터페이스 - 핸들러 클래스 오류");
+				System.out.println("main_control - 인터페이스 오류");
 			}
 		}
 	}
@@ -64,9 +64,9 @@ public class main_control extends HttpServlet {
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String uri= request.getRequestURI();	// 현재 접속 주소(전체)
-		String p= request.getContextPath();		// 현재 프로젝트 이름
-		String cmd= uri.substring(p.length()+1);
+		String cmd= uri.substring(uri.lastIndexOf("/")+1);
 		
 		if(cmd != null) {
 			action(request, response, cmd);
@@ -79,30 +79,26 @@ public class main_control extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		action(request, response, "");
+		action(request, response, "index.do");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		action(request, response, "");
+		action(request, response, "join.do");
 	}
 	
 	protected void action(HttpServletRequest request, HttpServletResponse response, String cmd) throws ServletException, IOException {
 		main_able hd= map.get(cmd);
 		String view= null;
-		hd.active(request, response);
-		
 		view= hd.active(request, response);
-		if(view != null) {
-			RequestDispatcher dsp= request.getRequestDispatcher(view);
+		
+		if(view == null) {
+			RequestDispatcher dsp= request.getRequestDispatcher("index.jsp");
 			dsp.forward(request, response);	
 		} else {
-			response.sendRedirect("index.jsp");
+			response.sendRedirect(view);
 		}
 	}
-
 }
-
-

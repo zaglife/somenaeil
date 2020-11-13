@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 
 public class member_service {
 	private  HttpServletRequest request;
-			
+
+	public member_service() {}
 	public member_service(HttpServletRequest request) { 
 		this.request= request;
 	}
 	
 	public String login() {
-			String id=request.getParameter("login_id");
-			String pw=request.getParameter("login_pw");
-			member_dao md=new member_dao();
-			member user=md.member_select(id,pw);
+			String id= request.getParameter("id");
+			String pw= request.getParameter("pw");
+			member_dao md= new member_dao();
+			member user= md.member_select(id, pw);
 			
 			request.getSession().setAttribute("user", user);
-			if(user==null)
+			if(user == null)
 				return "fail";
 			
 			return null;
