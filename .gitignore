@@ -1,4 +1,5 @@
-
 *.prefs
-somenaeil/.classpath
-somenaeil/.settings
+# Eclipse project files
+.settings/
+.project
+.classpath
