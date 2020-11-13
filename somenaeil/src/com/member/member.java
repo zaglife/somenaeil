@@ -19,34 +19,43 @@ public class member {
 	private String scrap_list;
 	private String like_list;
 	
-	public member() { } 
-	public member(int num,String id,String pw,String name,String nick,String email,int cert,Date time,String pimg,String comt,String follow,String follower,String scrap_list,String like_list) {
-		this.num=num;
-		this.id=id;
-		this.pw=pw;
-		this.name=name;
-		this.nick=nick;
-		this.email=email;
-		this.cert=cert;
-		this.time=Calendar.getInstance();
-		this.time=setTime(time);
-		this.pimg=pimg;
-		this.comt=comt;
-		this.follow=follow;
-		this.follower=follower;
-		this.scrap_list=scrap_list;
-		this.like_list=like_list;
-	}	
-	public member(String i,String p,String n,String ni,String e,int c,String pi,String co) {
-		this.id=i;
-		this.pw=pi;
-		this.name=n;
-		this.nick=ni;
-		this.email=e;
-		this.cert=c;
-		this.pimg=pi;
-		this.comt=co;
+	public member() { }
+	
+	// 로그인, 회원가입, 회원정보 수정
+	public member(	String id,
+					String pw,
+					String name,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt) {
+		this.id= id;
+		this.pw= pw;
+		this.name= name;
+		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
 	}
+
+	
+	// 팔로우, 팔로워 리스트
+	public member(	String nick,
+					String follow,
+					String follower,
+					String scrap_list,
+					String like_list) {
+		this.nick= nick;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+		this.like_list= like_list;
+	}
+	
+	
+	
 	public int getNum() {
 		return num;
 	}

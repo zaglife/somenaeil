@@ -1,0 +1,108 @@
+package com.main;
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class main_control
+ */
+@WebServlet("/main_control")
+public class main_control extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	private Map<String, main_able> map= new HashMap<>();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public main_control() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		String iparam= config.getInitParameter("ConfigFile");
+		Properties prop= new Properties();
+		
+		// 파일 읽기
+		try(FileReader fs= new FileReader(iparam)) {
+			prop.load(fs);
+		} catch(IOException e) {
+			e.printStackTrace();
+			System.out.println("main_control - properties 파일 읽기 실패");
+		}
+		Iterator key= prop.keySet().iterator();
+		while(key.hasNext()) {
+			String cmd= (String)key.next();
+			String value= prop.getProperty(cmd);
+			try {
+				Class<?> hclass= Class.forName(value);
+				main_able hinst= (main_able)hclass.newInstance();
+				map.put(cmd, hinst);
+			} catch(ClassNotFoundException | InstantiationException | IllegalAccessException e ) {
+				System.out.println("main_able 인터페이스 - 핸들러 클래스 오류");
+			}
+		}
+	}
+
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uri= request.getRequestURI();	// 현재 접속 주소(전체)
+		String p= request.getContextPath();		// 현재 프로젝트 이름
+		String cmd= uri.substring(p.length()+1);
+		
+		if(cmd != null) {
+			action(request, response, cmd);
+		} else {
+			// 첫페이지
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		action(request, response, "");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		action(request, response, "");
+	}
+	
+	protected void action(HttpServletRequest request, HttpServletResponse response, String cmd) throws ServletException, IOException {
+		main_able hd= map.get(cmd);
+		String view= null;
+		hd.active(request, response);
+		
+		view= hd.active(request, response);
+		if(view != null) {
+			RequestDispatcher dsp= request.getRequestDispatcher(view);
+			dsp.forward(request, response);	
+		} else {
+			response.sendRedirect("index.jsp");
+		}
+	}
+
+}
+
+
