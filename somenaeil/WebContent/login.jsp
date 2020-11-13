@@ -24,8 +24,8 @@
 	  <div id="login_body_text">
 	  
 	    <div id="lb_text_left">
-		  <input type='text' placeholder="아이디"> 
-		  <input type='text' placeholder="••••">
+		  <input type='text' placeholder="아이디" id="login_id" name="login_id"> 
+		  <input type='text' placeholder="••••" id="login_pw" name="login_pw">
 	    </div>
 	    
 	    <a href="index.jsp?state=login" id="login_bt">로그인</a>

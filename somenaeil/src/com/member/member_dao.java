@@ -17,51 +17,29 @@ public class member_dao {
 		}
 	}
 	
-	public static int get_num(String table, Connection conn) throws SQLException {
-		int num= 1;
-		
-		String sql= "select Max(num) as m from "+table;
-		Statement stmt= null;
-		ResultSet rs= null;
-		
-		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
-			if(rs.next()) {
-				num= rs.getInt("m")+1;
-			}
-			return num;
-		} catch(SQLException e) {
-			System.out.println("member_dao - num값 증가 실패");
-		}
-		
-		rs.close();
-		stmt.close();
-		
-		return num;
-	}
-	
-	public member login(String id, String pw) {
+	public member member_select(String id, String pw) {
 		String sql="select * from member where id='"+id+"' and pw='"+pw+"'";
-			
-		Statement stmt= null;
-		ResultSet rs= null;
-			
 		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
+			Statement stmt= conn.createStatement();
+			ResultSet rs= stmt.executeQuery(sql);
 				
 			if(rs.next()) {
 				member user= new member(
 					rs.getString("id"),
-					rs.getString("pw"),
 					rs.getString("name"),
 					rs.getString("nick"),
 					rs.getString("email"),
 					rs.getInt("cert"),
 					rs.getString("pimg"),
-					rs.getString("comt")
-				);
+					rs.getString("comt"),
+					rs.getString("follow"),
+					rs.getString("follower"),
+					rs.getString("scrap_list"),
+					rs.getString("like_list")
+						);
+				rs.close();
+				stmt.close();
+				conn.close();
 				return user;
 			}
 		}catch(SQLException e) {
@@ -71,6 +49,7 @@ public class member_dao {
 		return null;
 	}
 
+	
 //	public void join(member data) throws SQLException { 
 //		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 //		PreparedStatement pt= null;
@@ -123,4 +102,29 @@ public class member_dao {
 		}
 		
 	}
+		
+	public static int get_num(String table, Connection conn) throws SQLException {
+		int num= 1;
+		
+		String sql= "select Max(num) as m from "+table;
+		Statement stmt= null;
+		ResultSet rs= null;
+		
+		try {
+			stmt= conn.createStatement();
+			rs= stmt.executeQuery(sql);
+			if(rs.next()) {
+				num= rs.getInt("m")+1;
+			}
+			return num;
+		} catch(SQLException e) {
+			System.out.println("member_dao - num값 증가 실패");
+		}
+		
+		rs.close();
+		stmt.close();
+		
+		return num;
+	}
+	
 }

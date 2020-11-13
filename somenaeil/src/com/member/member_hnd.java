@@ -16,8 +16,7 @@ public class member_hnd implements main_able{
 		}else {
 			member_service ms=new member_service(request);
 			ms.join();
+			return "index.jsp";
 		}
-			
-		return null;
 	}
 }

@@ -15,6 +15,19 @@ public class member_service {
 		this.request= request;
 	}
 	
+	public String login() {
+			String id=request.getParameter("login_id");
+			String pw=request.getParameter("login_pw");
+			member_dao md=new member_dao();
+			member user=md.member_select(id,pw);
+			
+			request.getSession().setAttribute("user", user);
+			if(user==null)
+				return "fail";
+			
+			return null;
+	}
+	
 	public void join() {
 		
 //		String id= request.getParameter("id");

@@ -53,7 +53,21 @@ public class member {
 		this.scrap_list= scrap_list;
 		this.like_list= like_list;
 	}
-	
+	//로그인시 불러오는 데이타
+	public member(
+			String id, String name, String nick, String email, int cert,String pimg, String comt, String follow,String follower,String scrap_list,String like_list) {
+		this.id=id;
+		this.name=name;
+		this.nick=nick;
+		this.email=email;
+		this.cert=cert;
+		this.pimg=pimg;
+		this.comt=comt;
+		this.follow=follow;
+		this.follower=follower;
+		this.scrap_list=scrap_list;
+		this.like_list=like_list;
+	}
 	
 	
 	public int getNum() {
