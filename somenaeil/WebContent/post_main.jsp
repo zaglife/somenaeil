@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+ 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>some, 내일</title>
+
+<jsp:include page="css.jsp" />
 <script>
 var popCt= 1;
 
@@ -78,8 +89,6 @@ function showmov() {
 	}
 }
 
-
-
 function post_cate(num) {
 	if(num == 2){
 		$('#post_hidden').removeClass('post_cate_hidden');
@@ -89,18 +98,31 @@ function post_cate(num) {
 }
 
 
+ //새로운 태그 만드는 작업 중요 !
+function more_hash() {
+	 
+	
+			// 히든 박스에 있는 요소들 찾기
+			var hidden_hash = $(".post_hash_hidden");
+			if (hidden_hash[0] != undefined) {
+				// 한 개씩 보여주기
+				jQuery(hidden_hash[0]).removeClass("post_hash_hidden");
+			} 
+			
+			
+			if ($(".post_hash_hidden").length == 0) {
+				$("#post_hashbt").remove();
+			}
+		}
+		// 댓글 개수 확인 후 
+		function check_hash() {
+			if (jQuery(hidden_hash[0]).length == 0) {
+				$(".post_hashbt").addClass("hash_btn");
+			}
+		}
+		
+		
 </script>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-
-<title>some, 내일</title>
-
-<jsp:include page="css.jsp" />
-
 </head>
 <body>
 <jsp:include page="top.jsp" />
@@ -222,10 +244,12 @@ function post_cate(num) {
   <!-- 바텀 시작 -->
   <div id="post_bottom">
     <div id="post_btm_hash">
-      <div class="post_hash"><input type="text" placeholder="#태그"></div>
-      <div class="post_hash"><input type="text" placeholder="#태그"></div>
-      <div class="post_hash"><input type="text" placeholder="#태그"></div>
-      <div id="post_hashbt"><button>추가</button></div>
+      <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
+      <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
+      <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
+      <div class="post_hash post_hash_hidden"><input type="text" placeholder="#태그" name="hash"></div>
+      <div class="post_hash post_hash_hidden"><input type="text" placeholder="#태그" name="hash"></div>
+      <div id="post_hashbt" ><button id="hash_btn" type="button" onclick="more_hash();">추가</button></div>
     </div>
 
     <!-- 게시판 파일업로드 input start -->

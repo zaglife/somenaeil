@@ -339,6 +339,9 @@ a:hovre{
 	height: 40px;
 	margin: 5px 10px 5px 0;
 }
+.post_hash_hidden{
+	display:none;
+}
 .post_hash input{
 	width: 118px;
     height: 38px;
