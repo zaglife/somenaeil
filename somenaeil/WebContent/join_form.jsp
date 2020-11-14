@@ -15,7 +15,7 @@
 <input type="hidden" name="part" value="join">
 
 <!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
-<!-- <input type="hidden" name="pimg" value="null"> -->
+<input type="hidden" name="pimg" value="null">
 <input type="hidden" name="cert" value="1">
 
 

@@ -8,14 +8,14 @@ import com.main.main_able;
 public class login_hnd implements main_able{
 	public String active(HttpServletRequest request, HttpServletResponse response) {
 		
-		String part=request.getParameter("part");
+		String part= request.getParameter("part");
 		
-		if(part==null) {
-			return  "login.jsp";
+		if(part == null) {
+			return "login.jsp";
 		}else {
-			member_service ms=new member_service(request);
+			member_service ms= new member_service(request);
 			
-			if(ms.login()==null) {
+			if(ms.login() == null) {
 				return "index.jsp";
 			}else {
 				request.getSession().setAttribute("fail", true);

@@ -1,11 +1,5 @@
 package com.member;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Calendar;
-
 import javax.servlet.http.HttpServletRequest;
 
 public class member_service {
@@ -17,16 +11,17 @@ public class member_service {
 	}
 	
 	public String login() {
-			String id= request.getParameter("id");
-			String pw= request.getParameter("pw");
-			member_dao md= new member_dao();
-			member user= md.member_select(id, pw);
+		String id= request.getParameter("id");
+		String pw= request.getParameter("pw");
+		
+		member_dao md= new member_dao();
+		member user= md.member_select(id, pw);
 			
-			request.getSession().setAttribute("user", user);
-			if(user == null)
-				return "fail";
+		request.getSession().setAttribute("user", user);
+		if(user == null)
+			return "fail";
 			
-			return null;
+		return null;
 	}
 	
 	public void join() {
@@ -42,6 +37,9 @@ public class member_service {
 		
 		// 이메일 주소 뒷부분 추가
 		email+= "@";
+		
+		// 회원가입 테스트를 위한 이메일 인증
+		cert= 1;
 		
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);

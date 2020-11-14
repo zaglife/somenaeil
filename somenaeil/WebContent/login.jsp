@@ -20,15 +20,17 @@
     </div>
     
     <!-- Login body -->
+    <form method="post" action="login.do">
+    <input type="hidden" name="part" value="login">
     <div id="login_body"> 
 	  <div id="login_body_text">
 	  
 	    <div id="lb_text_left">
-		  <input type='text' placeholder="아이디" id="login_id" name="login_id"> 
-		  <input type='text' placeholder="••••" id="login_pw" name="login_pw">
+		  <input type='text' placeholder="아이디" name="id"> 
+		  <input type='password' placeholder="••••" name="pw">
 	    </div>
 	    
-	    <a href="index.jsp?state=login" id="login_bt">로그인</a>
+	    <button id="login_bt">로그인</button>
 	    
 	    <div id="lb_bt">
 		  <input type="checkbox" id="login_ing">
@@ -40,6 +42,7 @@
 	    
 	  </div>
     </div>
+    </form>
     
     <!--  SNSLogin -->
     <div id="login_sns_wrap">

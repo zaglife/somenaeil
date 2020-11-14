@@ -86,7 +86,7 @@ public class main_control extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		action(request, response, "join.do");
+		action(request, response, "index.jsp");
 	}
 	
 	protected void action(HttpServletRequest request, HttpServletResponse response, String cmd) throws ServletException, IOException {
