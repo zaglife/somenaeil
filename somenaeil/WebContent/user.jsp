@@ -22,7 +22,7 @@
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick">nickname</div>
+      <div id="user_nick">${user.getNick() }</div>
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
         <a onclick="userFollowerPop()">팔로워 126</a>

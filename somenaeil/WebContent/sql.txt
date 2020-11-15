@@ -19,7 +19,7 @@ like_list varchar2(4000)
 
 /********* 알림 noti *********/
 /********* (회원가입시 생성) *********/
-create table cs(
+create table noti(
 num number(4) not null primary key,
 other varchar2(20) not null,
 type number(1) not null,
@@ -34,7 +34,7 @@ num number(4) not null primary key,
 other varchar2(20) not null,
 context varchar2(4000) not null,
 time date default sysdate,
-cert number(1) not null
+cert number(1)
 );
 
 /********* 채용공고 job *********/

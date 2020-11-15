@@ -43,5 +43,8 @@ public class member_service {
 		
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
+		
+		member user= md.member_select(id, pw);
+		request.getSession().setAttribute("user", user);
 	}
 }
