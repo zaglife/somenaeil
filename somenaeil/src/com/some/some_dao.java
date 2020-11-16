@@ -18,5 +18,5 @@ public class some_dao {
 	
 	// DB에서 유저 세션을 불러와서
 	// follow, follower, scrap, like, dm, noti 정보 받아서 사용
-
+	
 }
