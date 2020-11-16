@@ -1,7 +1,6 @@
 package com.member;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class member {
 	private int num;

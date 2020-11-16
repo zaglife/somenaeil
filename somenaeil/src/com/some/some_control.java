@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.some.some_able;
-
 /**
  * Servlet implementation class some_control
  */
@@ -38,11 +36,14 @@ public class some_control extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		String iparam= config.getInitParameter("ConfigFile");
+		String path= this.getClass().getResource("").getPath();
+		path= path.substring(0,	path.indexOf("classes"));
+		path+= config.getInitParameter("ConfigFile");
+		
 		Properties prop= new Properties();
 		
 		// 파일 읽기
-		try(FileReader fs= new FileReader(iparam)) {
+		try(FileReader fs= new FileReader(path)) {
 			prop.load(fs);
 		} catch(IOException e) {
 			System.out.println("some_control - properties 파일 읽기 실패");
