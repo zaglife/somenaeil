@@ -71,9 +71,10 @@ hash varchar2(120)
 /********* 포스트 post_detail *********/
 create table post_detail(
 num number(4) primary key not null,
-post_fk number(4) not null,
+post_num number(4) not null,
 type number(4) not null,
 context varchar2(4000) not null
+position number(4) not null
 );
 
 /********* 투표 vote *********/
@@ -96,4 +97,3 @@ choice varchar2(800) not null,
 cnt number(4) not null,
 nick varchar2(800) not null
 );
-

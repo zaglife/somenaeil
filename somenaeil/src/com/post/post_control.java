@@ -38,13 +38,18 @@ public class post_control extends HttpServlet {
 	 * @see Servlet#init(ServletConfig)
 	 */
 	public void init(ServletConfig config) throws ServletException {
-		String iparam = config.getInitParameter("ConfigFile");
+		// web root path 구하기
+		String path = this.getClass().getResource("").getPath();
+		path = path.substring(0, path.indexOf("classes"));
+		path += config.getInitParameter("ConfigFile");
+		
     	Properties prop = new Properties();
-    	try (FileReader fs = new FileReader(iparam)){
+    	try (FileReader fs = new FileReader(path)){
     		prop.load(fs);
+    		System.out.println("post.properties 파일 읽기 성공");
     	}catch(IOException e) {
     		e.printStackTrace();
-    		System.out.println("properties 파일 읽기 실패");
+    		System.out.println("post.properties 파일 읽기 실패");
     	}
     	Iterator key = prop.keySet().iterator();
     	while(key.hasNext()) {
