@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-html, body, div, span, a, p, button, input {
+html, body, div, span, a, p, button, input, textarea {
 	margin: 0;
 	padding: 0;
 	color: #333;

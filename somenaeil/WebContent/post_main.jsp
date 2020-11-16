@@ -12,122 +12,34 @@
 <title>some, 내일</title>
 
 <jsp:include page="css.jsp" />
-<script>
-var popCt= 1;
-
-function postPopCt() {
-	if(popCt == 1) {
-		$('#post_pop_ct').removeClass('post_pop_hide');
-		++popCt;
-	}else if(popCt == 2) {
-		$('#post_pop_ct').addClass('post_pop_hide');
-		popCt= 1;
-	}
-}
-
-var popGh= 1;
-
-function postPopGh() {
-	if(popGh == 1) {
-		$('#post_pop_gh').removeClass('post_pop_hide');
-		++popGh;
-	}else if(popGh == 2) {
-		$('#post_pop_gh').addClass('post_pop_hide');
-		popGh= 1;
-	}
-}
-
-var popVote= 1;
-
-function postPopVote() {
-	if(popVote == 1) {
-		$('#post_pop_vote').removeClass('post_pop_hide');
-		++popVote;
-	}else if(popVote == 2) {
-		$('#post_pop_vote').addClass('post_pop_hide');
-		popVote= 1;
-	}
-}
-
-var sc_temp= 1;
-
-function showCode() {
-	if(sc_temp == 1) {
-		$('#post_code_cont').removeClass('post_code_hide');
-		++sc_temp;
-	}else if(sc_temp == 2) {
-		$('#post_code_cont').addClass('post_code_hide');
-		sc_temp= 1;
-	}
-}
-
-var like_temp= 1;
-
-function showlink() {
-	if(like_temp == 1) {
-		$('.post_link').addClass('post_link_hide');
-		$('.post_mov').removeClass('post_mov_hide');
-		++like_temp;
-	}else if(like_temp == 2) {
-		$('.post_link').removeClass('post_link_hide');
-		
-		like_temp= 1;
-	}
-}
-
-var mov_temp= 1;
-
-function showmov() {
-	if(mov_temp == 1) {
-		$('.post_mov').addClass('post_mov_hide');
-		$('.post_link').removeClass('post_link_hide');
-		++mov_temp;
-	}else if(mov_temp == 2) {
-		$('.post_mov').removeClass('post_mov_hide');
-		
-		mov_temp= 1;
-	}
-}
-
-function post_cate(num) {
-	if(num == 2){
-		$('#post_hidden').removeClass('post_cate_hidden');
-	}else{
-		$('#post_hidden').addClass('post_cate_hidden');
-	}	
-}
-
-
- //새로운 태그 만드는 작업 중요 !
-function more_hash() {
-	 
-	
-			// 히든 박스에 있는 요소들 찾기
-			var hidden_hash = $(".post_hash_hidden");
-			if (hidden_hash[0] != undefined) {
-				// 한 개씩 보여주기
-				jQuery(hidden_hash[0]).removeClass("post_hash_hidden");
-			} 
-			
-			
-			if ($(".post_hash_hidden").length == 0) {
-				$("#post_hashbt").remove();
-			}
-		}
-		// 댓글 개수 확인 후 
-		function check_hash() {
-			if (jQuery(hidden_hash[0]).length == 0) {
-				$(".post_hashbt").addClass("hash_btn");
-			}
-		}
-		
-		
-</script>
+<script type="text/javascript" src="post_main.js"></script>
 </head>
 <body>
 <jsp:include page="top.jsp" />
 
-<form method="post" action="write.post">
+<c:choose>
+	<c:when test="${part== 'q' && part== 'a'}">
+	<script>
+		alert("qweqweqwe");
+		$('#post_hidden').addClass('post_cate_hidden');
+		var x = document.getElementById("cate_g_btn");
+		x.style.checked = "checked";        
+	</script>
+	</c:when>
+	<c:when test="${part== 'r'}">
+	<script>
+		$('#post_hidden').removeClass('post_cate_hidden');
+		var x = document.getElementById("cate_r_btn");
+		x.style.checked = "checked";        
+	</script>
+	</c:when>
+</c:choose>
+
+
+
+
+
+<form method="post" action="write.post" onsubmit="return false">
 <input type="hidden" name="part" value="write">
 <div id="post_wrap">
   
@@ -154,14 +66,6 @@ function more_hash() {
       <input type="radio" name="cate_btn" id="cate_q_btn">
       <label for="cate_q_btn" onclick="post_cate(1)"></label>
     </div>
-    
-    
-<!--     <div class="post_cate" id="cate_r"> -->
-<!--       <a href="#" onclick="cate_click2()"> -->
-
-<!--       </a> -->
-<!--     </div> -->
-<!--     <div class="post_cate" id="cate_q"><a href="#" onclick="cate_click3()"><img src="img/cate_q_m.png" onclick="cate_click()"></a></div> -->
     <p>*카테고리 필수 선택 </p>
     <div id="post_cate_exp">
       <img src="img/post_q_20.png">
@@ -188,7 +92,7 @@ function more_hash() {
   	      <div id="post_link_wrap" class="post_link">
   	      	<input type="text" placeholder="링크명" id='lk_text'>
   	        <input type="text" value="http://" id='lk'>
-  	        <button id='lk_bt'>+</button>	       
+  	        <button id='lk_bt' type="button">+</button>	       
   	      </div>
   	    </div>
   	    <div class="post_file"><a href="#"><img src="img/post_pic_20.png"></a></div>
@@ -198,7 +102,7 @@ function more_hash() {
   	      <div id="post_embed_wrap" class="post_mov">	
   	      	<p id='post_embed_ti'>영상주소</p>
   	        <input type="text" value="http://" id='embed'>
-  	        <button id='embed_bt'>+</button>	       
+  	        <button id='embed_bt' type="button">+</button>	       
   	      </div>
   	    </div>
   	  </div>
@@ -210,28 +114,28 @@ function more_hash() {
       </div>
     </div>
     <div id="post_write">
-      <p>글씨를 입력해주세요</p>
+      <textarea class="autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="글을 입력해주세요."></textarea>
 	
 	  
 	
 	  <!-- text입력부분 소스코드 display none -->
 	  <div id="post_code_cont" class="post_code_hide">
 	    <div id="post_code_scroll">
-        <div class="post_code_li">1</div>
-	    <div class="post_code_li">2</div>
-	    <div class="post_code_li">3</div>
-	    <div class="post_code_li">4</div>
-	    <div class="post_code_li">5</div>
-	    <div class="post_code_li">6</div>
-	    <div class="post_code_li">7</div>
-	    <div class="post_code_li">8</div>
-	    <div class="post_code_li">9</div>
-	    <div class="post_code_li">10</div>
-	    <div class="post_code_li">11</div>
-	    <div class="post_code_li">12</div>
-	    <div class="post_code_li">13</div>
-	    <div class="post_code_li">14</div>
-	    <div class="post_code_li">15</div>
+        <div class="post_code_li">1<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요." ></div>
+	    <div class="post_code_li post_hidden_code code_color">2<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">3<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">4<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">5<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">6<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">7<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">8<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">9<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">10<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">11<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">12<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">13<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">14<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">15<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
 	    </div>
 	    <span class="post_code_li_last"></span>
 	    
@@ -260,7 +164,7 @@ function more_hash() {
     </div>
     <!-- 게시판 파일업로드 input end -->
 
-    <div id="post_send"><button>올리기</button></div>
+    <div id="post_send"><button type="submit">올리기</button></div>
   </div>  
   <!-- 바텀 끝 -->
 </div>

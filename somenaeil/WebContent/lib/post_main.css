@@ -249,11 +249,19 @@ a:hovre{
 
 /**** text입력부분 start(post_mid) ****/
 #post_write{
-	height:250px;
+	height: auto;
 	clear: both;
 	padding: 20px;
 	min-height:350px;
 	font-size: 14px;
+}
+.autosize{
+	width: 100%;
+    min-height: 50px;
+    border: 0;
+    resize:none;
+    overflow:hidden;
+    font-size:14px;
 }
 /**** text입력부분 end(post_mid) ****/
 
@@ -263,7 +271,8 @@ a:hovre{
 	float: left;
 	position: relative;
 	width: 860px;
-	height: 252px;
+	height: auto;
+    min-height: 270px;
 	left: 50%;
 	transform: translate(-50%, 0);
 	margin: 20px 0;
@@ -311,7 +320,13 @@ a:hovre{
 	padding: 10px 15px;
 	border-bottom: 1px dashed #999;
 }
-
+.post_code_li input{
+	border: 0;
+    width: 95%;
+    height: 30px;
+    margin: 0 0 0 15px;
+}
+.code_color input{ background:rgba(0, 0, 0, .0);}
 .post_code_li_last {
 	float: left;
 	position:relative;
@@ -325,6 +340,10 @@ a:hovre{
 }
 #post_code_cont div:nth-child(2n){
 	background: rgba(0, 0, 0, .05);
+}
+
+.post_hidden_code{
+	display:none;
 }
 /**** text입력부분 소스코드 end ****/
 
