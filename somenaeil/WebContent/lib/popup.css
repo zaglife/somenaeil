@@ -313,6 +313,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	height: 35px;
 	line-height: 35px;
 	margin: 0 0 0 5px;
+	text-align:center;
 }
 
 .gh_rod {
