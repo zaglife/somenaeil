@@ -26,12 +26,14 @@
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
         <c:if test="${user != null }">
-        
+          ${com.some.some_service().other_data[0] }
         
           <a onclick="userFollowerPop()">팔로워 ${user.follow_num() }</a>
           <a onclick="userFollowPop()">팔로우 ${user.follower_num() }</a>
-          <p>게시글 52</p>
+          <p>게시글 512</p>
         </c:if>
+        
+        
         <c:if test="${user == null }">
           <a onclick="userFollowerPop()">팔로워 미확인</a>
           <a onclick="userFollowPop()">팔로우 미확인</a>

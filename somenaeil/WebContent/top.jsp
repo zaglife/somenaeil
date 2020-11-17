@@ -80,7 +80,7 @@ function dropdown() {
         
       </div>
     </div>
-    <a href="user.jsp?state=login" id="top_user_pimg"><img src="img/profile01.jpg"></a>
+    <a href="user.some?part=user" id="top_user_pimg"><img src="img/profile01.jpg"></a>
   </c:when>
   
   <%-- 로그인 전 --%>

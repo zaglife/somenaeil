@@ -88,6 +88,28 @@ public class member {
 		this.like_list= like_list;
 	}
 	
+	// 팔로우, 팔로워 리스트
+	public member(	String follow,
+					String follower) {
+		this.follow= follow;
+		this.follower= follower;
+	}
+	
+	// 다른 유저 정보 출력
+	public member(	String nick,
+					String pimg,
+					String comt,
+					String follow,
+					String follower,
+					String scrap_list	) {
+		this.nick= nick;
+		this.pimg= pimg;
+		this.comt= comt;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+	}
+	
 	public int follow_num() {
 		String[] followList= follow.split(":");
 		int followNum= followList.length;
