@@ -50,6 +50,7 @@ function dropdown() {
 </script>
 
 <c:choose>
+  <%-- 로그인 후 --%>
   <c:when test="${user != null }">
     <div class="dropdown d_hide">
       <a href="index.do">메인 페이지</a>
@@ -60,47 +61,63 @@ function dropdown() {
       <a href="info.jsp?state=login">채용정보</a>
       <a href="logout.do">로그아웃</a>
     </div>
+    
+    <div id="top_wrap">
+      <div id="top_logo">
+        <a href="index.jsp"><img src="img/logo_20.png"></a>
+      </div>
+  
+      <div id="top_search">
+        <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+        <input type="text" placeholder="검색">
+        <a href="#"><img src="img/btn_search01_20.png"></a>
+      </div>
+  
+      <div id="top_menu">
+        <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+        <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+        <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+        
+      </div>
+    </div>
+    <a href="user.jsp?state=login" id="top_user_pimg"><img src="img/profile01.jpg"></a>
   </c:when>
+  
+  <%-- 로그인 전 --%>
   <c:otherwise>
     <div class="dropdown d_hide">
       <a href="login.do">로그인</a>
       <a href="join.do">회원가입</a>
     </div>
+    
+    <div id="top_wrap">
+      <div id="top_logo">
+        <a href="index.jsp"><img src="img/logo_20.png"></a>
+      </div>
+  
+      <div id="top_search">
+        <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+        <input type="text" placeholder="검색">
+        <a href="#"><img src="img/btn_search01_20.png"></a>
+      </div>
+  
+      <div id="top_menu">
+        <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+        <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+        <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+        <a href="login.do" id="top_user_login"><img src="img/icon_profile_30.png"></a>
+      </div>
+    </div>
   </c:otherwise>
 </c:choose>
-<div id="top_wrap">
-
-  <div id="top_logo">
-    <a href="index.jsp"><img src="img/logo_20.png"></a>
-  </div>
-  
-  <div id="top_search">
-    <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
-    <input type="text" placeholder="검색">
-    <a href="#"><img src="img/btn_search01_20.png"></a>
-  </div>
-  
-  <div id="top_menu">
-    <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
-    <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
-    <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
-    
-    <c:if test="${user != null }">
-      <a href="user.jsp?state=login"><img src="img/profile01.jpg"></a>
-    </c:if>
-    <c:if test="${user == null }">
-      <a href="login.do"><img src="img/icon_profile_30.png"></a>
-    </c:if>
-  </div>
-
-</div>
 
 
 
 
 
 
-<!-- 로그인 확인 -->
+
+<!-- 로그인 확인 // 나중에 지우기 -->
 <c:if test="${user == null }">
   <div style="	float: left;
   				position: fixed;

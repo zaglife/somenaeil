@@ -18,6 +18,7 @@ public class member_service {
 		member user= md.member_select(id, pw);
 			
 		request.getSession().setAttribute("user", user);
+
 		if(user == null)
 			return "fail";
 			

@@ -25,9 +25,22 @@
       <div id="user_nick">${user.getNick() }</div>
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
-        <a onclick="userFollowerPop()">팔로워 126</a>
-        <a onclick="userFollowPop()">팔로우 98</a>
-        <p>게시글 52</p>
+        <c:if test="${user != null }">
+        
+<%--
+String[] fl_list= request.getParameter("follow").split(":");
+int followNum= fl_list.length;
+--%>
+        
+          <a onclick="userFollowerPop()">팔로워 <%--=followNum --%></a>
+<%--           <a onclick="userFollowPop()">팔로우 ${user.getFollowNum() }</a> --%>
+          <p>게시글 52</p>
+        </c:if>
+        <c:if test="${user == null }">
+          <a onclick="userFollowerPop()">팔로워 미확인</a>
+          <a onclick="userFollowPop()">팔로우 미확인</a>
+          <p>게시글 미확인</p>
+        </c:if>
       </div>
     </div>
     

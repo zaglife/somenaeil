@@ -1,5 +1,10 @@
 package com.some;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import javax.servlet.http.HttpServletRequest;
 
 public class some_service {
@@ -9,8 +14,7 @@ public class some_service {
 	public some_service(HttpServletRequest request) {
 		this.request= request;
 	}
-	
-	
+
 	// 유저페이지 정보 출력
 	public void some_user() {
 		String id= request.getParameter("id");
@@ -33,4 +37,7 @@ public class some_service {
 		// 게시물 4개 이상부터
 		// 예를들어 일반 2개, 리뷰 2개, 비율이 5:5 일때는 어떻게 처리 할 것인지 
 	}
+	
 }
+
+

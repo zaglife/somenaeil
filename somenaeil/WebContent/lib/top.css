@@ -115,6 +115,7 @@
 	right: 0;
 	top: 50%;
 	transform: translate(-25px, -50%);
+	margin-right: 50px;
 }
 
 #top_menu a,
@@ -124,11 +125,6 @@
 	width: 30px;
 	height: 30px;
 	margin: 10px;
-}
-
-#top_menu a img {
-	width: 100%;
-	height: auto;
 }
 
 #top_menu div:hover {
@@ -143,4 +139,35 @@
 
 .d_rotation {
 	transform: rotate(90deg) !important;
+}
+
+/* 탑 메뉴 - 로그인 후 프사 */
+#top_user_pimg {
+	position: fixed !important;
+	width: 55px !important;
+	height: 55px !important;
+	top: 0;
+	right: 0;
+	margin: 9px 10px 0 0 !important;
+	
+	border: 3px solid #555;
+	border-radius: 50px;
+	background: #555;
+	overflow: hidden;
+	z-index: 99;
+}
+
+#top_user_login {
+	position: absolute !important;
+	width: 30px !important;
+	height: 30px !important;
+	top: 0;
+	right: 0;
+	margin-right: -40px !important;
+}
+
+#top_user_pimg img,
+#top_user_login img {
+	width: 100%;
+	height: auto;
 }
