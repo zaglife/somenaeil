@@ -27,13 +27,9 @@
       <div id="user_info_follow">
         <c:if test="${user != null }">
         
-<%--
-String[] fl_list= request.getParameter("follow").split(":");
-int followNum= fl_list.length;
---%>
         
-          <a onclick="userFollowerPop()">팔로워 <%--=followNum --%></a>
-<%--           <a onclick="userFollowPop()">팔로우 ${user.getFollowNum() }</a> --%>
+          <a onclick="userFollowerPop()">팔로워 ${user.follow_num() }</a>
+          <a onclick="userFollowPop()">팔로우 ${user.follower_num() }</a>
           <p>게시글 52</p>
         </c:if>
         <c:if test="${user == null }">

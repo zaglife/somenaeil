@@ -88,6 +88,19 @@ public class member {
 		this.like_list= like_list;
 	}
 	
+	public int follow_num() {
+		String[] followList= follow.split(":");
+		int followNum= followList.length;
+		
+		return followNum;
+	}
+	
+	public int follower_num() {
+		String[] followerList= follower.split(":");
+		int followerNum= followerList.length;
+		
+		return followerNum;
+	}
 	
 	public int getNum() {
 		return num;
