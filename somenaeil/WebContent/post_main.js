@@ -41,6 +41,7 @@ function showCode() {
 	if(sc_temp == 1) {
 		$('#post_code_cont').removeClass('post_code_hide');
 		++sc_temp;
+		$("#post_write").append("<textarea class='autosize' onkeydown='resize(this)' onkeyup='resize(this)'></textarea>");
 	}else if(sc_temp == 2) {
 		$('#post_code_cont').addClass('post_code_hide');
 		sc_temp= 1;
@@ -113,29 +114,74 @@ function more_hash() {
 			  obj.style.height = (12+obj.scrollHeight)+"px";
 		}
 		
-		
-		
-		
-//		document.addEventListener('keydown', function(event) {
-//			  if (event.keyCode === 13) {
-//			    event.preventDefault();
-//			  };
-//			}, true);
-		
+
+		var code_i= 2;
 		function onKeyDown(){
 		     if(event.keyCode == 13){
-		    	 //TODO : 실행시킬 코드
-		    	 var hidden_code = $(".post_hidden_code");
-		    	 var code_li = $(".post_code_li");
-		    	 var i = 0;
-		    	 if (hidden_code[0] != undefined) {
-		    		 // 한 개씩 보여주기
-		    		 code_li[i++].focus();
-		    		 jQuery(hidden_code[0]).removeClass("post_hidden_code");
-		    		 
-		    	 } 
+		    	 if(code_i <= 20){
+		    		 var para = document.createElement("div");
+					 jQuery(para).addClass("post_code_li");
+					 document.getElementsByClassName("post_code_cont")[0].appendChild(para);
+					 
+					 var para2 = document.createElement("p");
+					 var p_text = document.createTextNode(code_i);
+					 para2.appendChild(p_text);
+					 
+					 document.getElementsByClassName("post_code_li")[code_i-1].appendChild(para2);
+					 
+					 var para3 = document.createElement("input");
+					 document.getElementsByClassName("post_code_li")[code_i-1].appendChild(para3);
+					 para3.focus();
+					 
+					 var at = document.createAttribute("type");
+					 at.value = "text";
+					 para3.setAttributeNode(at);
+					 var at = document.createAttribute("onkeydown");
+					 at.value = "onKeyDown();";
+					 para3.setAttributeNode(at);
+				
+					 ++code_i;
+					 
+		    	 }else
+		    		 alert("소스는 20줄까지 생성됩니다.");
+		    	 
+		    	 
+		    	 
 		     }
 		}
 
+		
+		var s_code_num = 1;
+		function s_code(){
+			if(s_code_num == 1){
+				var para = document.createElement("div");
+				jQuery(para).addClass("post_code_cont");
+				document.getElementById("post_write").appendChild(para);
+				
+				var para2 = document.querySelector(".post_code_cont");
+				para2.innerHTML= "<div class='post_code_li'><p>1</p><input type='text' onKeyDown='onKeyDown();'></div>";
+				
+				var para3 = document.createElement("textarea");
+				jQuery(para3).addClass("autosize");
+				document.getElementById("post_write").appendChild(para3);
+				
+				var at = document.createAttribute("onkeydown");
+				at.value = "resize(this);";
+				para3.setAttributeNode(at);
+				
+				var at = document.createAttribute("onkeydown");
+				at.value = "resize(this);";
+				para3.setAttributeNode(at);
+				
+				var at = document.createAttribute("id");
+				at.value = "text_cont";
+				para3.setAttributeNode(at);
+				s_code_num++;
+			}else{
+				$('.post_code_cont').remove();
+				$('#text_cont').remove();
+				s_code_num = 1;
+			}
+		}
 		
 		/* post_main script end */

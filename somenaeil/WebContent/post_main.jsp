@@ -110,7 +110,7 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><a onclick="showCode()"><img src="img/post_code_20.png"></a></div>
+  	    <div class="post_file"><a onclick="s_code()"><img src="img/post_code_20.png"></a></div>
       </div>
     </div>
     <div id="post_write">
@@ -119,27 +119,7 @@
 	  
 	
 	  <!-- text입력부분 소스코드 display none -->
-	  <div id="post_code_cont" class="post_code_hide">
-	    <div id="post_code_scroll">
-        <div class="post_code_li">1<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요." ></div>
-	    <div class="post_code_li post_hidden_code code_color">2<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">3<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">4<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">5<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">6<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">7<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">8<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">9<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">10<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">11<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">12<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">13<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code code_color">14<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    <div class="post_code_li post_hidden_code">15<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
-	    </div>
-	    <span class="post_code_li_last"></span>
-	    
-	  </div>
+
 	
     </div>
   </div>

@@ -1,0 +1,100 @@
+<div id="post_code_cont" class="post_code_hide">
+	    <div id="post_code_scroll">
+        <div class="post_code_li">1<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요." ></div>
+	    <div class="post_code_li post_hidden_code code_color">2<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">3<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">4<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">5<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">6<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">7<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">8<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">9<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">10<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">11<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">12<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">13<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code code_color">14<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    <div class="post_code_li post_hidden_code">15<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요."></div>
+	    </div>
+	    <span class="post_code_li_last"></span>
+	    
+	  </div>
+	
+	  
+#post_code_scroll {
+	float: left;
+	position: absolute;
+	width: 830px;
+	height: 252px;
+	margin: 10px 0;
+	padding: 0 10px;
+	
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#post_code_scroll::-webkit-scrollbar{
+	width: 8px;
+	margin-right: 10px;
+}
+#post_code_scroll::-webkit-scrollbar-thumb{
+	background: #777;
+	border-radius: 10px;
+}
+#post_code_scroll::-webkit-scrollbar-track{
+	background: rgba(255,255,255,0);
+	border-radius: 10px;
+	border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+}
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  <div id="post_code_cont">
+	    <div id="post_code_scroll">
+	    
+        <div class="post_code_li">1<input type="text" name="post_code" onKeyDown="onKeyDown();" placeholder="글을 입력해주세요." ></div>
+	   
+	    </div>
+	  </div>
+	  
+	  
+	  
+	  
+	  
+	  		     if(event.keyCode == 13){
+		    	 
+		    	 var para2 = document.querySelector(".post_code_cont");
+		    	 para2.innerHTML= "<div class='post_code_li'><p>"+code_i+"</p><input type='text' onKeyDown='onKeyDown();'></div>";
+		    	 
+		    	 ++code_i;
+		     }
+		}
+
+		
+		
+		function s_code(){
+			
+			var para = document.createElement("div");
+			jQuery(para).addClass("post_code_cont");
+			document.getElementById("post_write").appendChild(para);
+			
+			var para2 = document.querySelector(".post_code_cont");
+			
+//			var para3 = document.createElement("div");
+//			jQuery(para2).addClass("post_code_li");
+			para2.innerHTML= "<div class='post_code_li'><input type='text' onKeyDown='onKeyDown();'></div>";
+			
+			
+			
+		}
+	  
+	  
+	  
