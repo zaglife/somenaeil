@@ -1,10 +1,16 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.some.some_service"%>
+<%@page import="com.member.member"%>
+<%@page import="com.some.some_dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
+<%-- 
+	some_service ss = new some_service();
+	ArrayList<member> follow_list = ss.follow_list_split();
+--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +32,10 @@
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
         <c:if test="${user != null }">
-          ${com.some.some_service().other_data[0] }
+
+        
+        
+        
         
           <a onclick="userFollowerPop()">팔로워 ${user.follow_num() }</a>
           <a onclick="userFollowPop()">팔로우 ${user.follower_num() }</a>

@@ -6,12 +6,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.dm.dm;
 import com.noti.noti;
 
 public class member_dao {
 	private Connection conn;
+	private PreparedStatement ptmt;
+	private ResultSet rs;
+	
 	
 	public member_dao(){
 		try {
@@ -159,5 +163,90 @@ public class member_dao {
 			System.out.println("member_dao - 유저별 dm테이블 생성 실패");
 		}
 		
+	}
+	
+	
+
+	// DB에서 유저 세션을 불러와서
+	// follow, follower, scrap, like, dm, noti 정보 받아서 사용
+	/**
+	 * 해당 유저 데이터 추출
+	 * @param id
+	 * @return
+	 */
+	public member select_member(String id) {
+		String sql= "select * from member where id=?";
+
+		
+		member user = null;
+		try {
+			ptmt = conn.prepareStatement(sql);
+			ptmt.setString(1, id);
+			rs = ptmt.executeQuery();
+			
+			if(rs.next()) {
+				user= new member(
+					rs.getString("nick"),
+					rs.getString("pimg"),
+					rs.getString("comt"),
+					rs.getString("follow"),
+					rs.getString("follower"),
+					rs.getString("scrap_list"));
+				
+		}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("some_dao - 팔로우, 팔로워 리스트 불러오기 실패");
+		}
+		close();
+		return user;
+	}
+
+	
+	/**
+	 * 팔로우 리스트 추출
+	 * @param fl 팔로우 리스트 id
+	 * @return 팔로우 리스트
+	 */
+	public ArrayList<member> follow_other(String[] fl) {		
+		String sql= "select * from member where id='?'";
+		
+		ArrayList<member> other_data= new ArrayList<member>();
+		try {
+			for (int i=0; i<fl.length; i++) {
+				ptmt = conn.prepareStatement(sql);
+				ptmt.setString(1, fl[i]);
+				rs = ptmt.executeQuery();
+				
+				if (rs.next()) {
+					member temp = new member(
+							rs.getString("nick"),
+							rs.getString("pimg"),
+							rs.getString("comt"),
+							rs.getString("follow"),
+							rs.getString("follower"),
+							rs.getString("scrap_list"));
+					System.out.println(rs.getString("nick"));
+					other_data.add(temp);
+				}
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("some_service - 다른 유저 정보 불러오기 실패");
+		}
+		
+		close();
+		return other_data;
+	}
+	
+	private void close() {
+		
+		try {
+			if (rs != null) { rs.close(); rs = null; }
+			if (ptmt != null) { ptmt.close(); ptmt = null; }
+			if (conn != null) { conn.close(); conn = null; }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -21,39 +21,7 @@ public class some_service {
 	}
 
 	// follow 리스트 분리
-	public static ArrayList<member> other(String[] fl) {
-		
-		ArrayList<member> other_data= new ArrayList<member>();
-		
-		try {
-			Connection conn= DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
-			
-			for(int i=0; i<fl.length; i++) {
-				String sql= "select * from member where nick='"+fl[i]+"' order by desc";
-				Statement stmt= conn.createStatement();
-				ResultSet rs= stmt.executeQuery(sql);
-				
-				if(rs.next()) {
-					while(true) {
-						member temp= new member(
-							rs.getString("nick"),
-							rs.getString("pimg"),
-							rs.getString("comt"),
-							rs.getString("follow"),
-							rs.getString("follower"),
-							rs.getString("scrap_list")
-						);
-						other_data.add(temp);
-					}
-				}
-			}
-			return other_data;
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println("some_service - 다른 유저 정보 불러오기 실패");
-		}
-		return null;
-	}
+
 	
 	// follower 리스트 분리
 
@@ -62,6 +30,19 @@ public class some_service {
 	// follower 리스트 분리
 	// scrap 리스트 분리
 	// like 리스트 분리
+	
+	
+	public ArrayList<member> follow_list_split() {
+		member_dao md = new member_dao();
+		// 내 데이터
+		member my = md.select_member("some");
+		// 내 데이터의 팔로우 리스트 추출 및 가공
+		String[] my_follow_list = my.getFollow().split(":");
+		// 해당 팔로우들의 데이터리스트 리턴
+		ArrayList<member> result = md.follow_other(my_follow_list);
+		
+		return result;
+	}
 	
 }
 
