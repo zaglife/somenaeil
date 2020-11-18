@@ -46,6 +46,7 @@ public class some_control extends HttpServlet {
 		try(FileReader fs= new FileReader(path)) {
 			prop.load(fs);
 		} catch(IOException e) {
+			e.printStackTrace();
 			System.out.println("some_control - properties 파일 읽기 실패");
 		}
 		
@@ -60,7 +61,7 @@ public class some_control extends HttpServlet {
 				some_able hinst= (some_able)hclass.newInstance();
 				map.put(cmd, hinst);
 			} catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-				System.out.println("some_able - 인터페이스 핸들러 클래스 오류");
+				System.out.println("some_control - able 인터페이스 핸들러 클래스 오류");
 			}
 		}
 	}
