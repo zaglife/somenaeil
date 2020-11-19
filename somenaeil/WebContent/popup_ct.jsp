@@ -13,11 +13,11 @@
   </div>
   <div id='ct_top'>
     <div id='ct_set'>
-      <input type="text">
+      <input id="row" type="number" maxlength="1" oninput="maxLengthCheck(this)">
       <p>행</p>
-      <input type="text">
+      <input id="col" type="number" maxlength="1" oninput="maxLengthCheck(this)">
       <p>열</p>
-      <button id='ct_apply'>적용</button>
+      <button id='ct_apply' onclick="ct()">적용</button>
     </div>
     
     <div id='ct_exp'>*행과 열은 최대 6개까지 가능합니다.</div>
@@ -28,29 +28,6 @@
     </div>
   </div>
   <div id='ct_table'>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-  	
-  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-
-  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-
-  	<div class='ct_cell cb cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb cr'><input type='text' placeholder='데이터'></div>
   </div>
   <div id='ct_bottom'>
   	<button>저장</button>

@@ -114,10 +114,10 @@
 	font-size: 17px;
 	left: 50%;
 	transform: translate(-50%, 0);
+	z-index: 1;
 }
 
 .vot_cont_input {
-	float: left;
 	position: relative;
 	padding: 2px 20px;
 	margin: 5px 0;
@@ -136,7 +136,6 @@
 }
 
 .vot_cont_t {
-	float: left;
 	position: relative;
 	height: auto;
 	left: 50%;
@@ -436,8 +435,16 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	width: auto;
 	height: auto;
 	margin: 15px 0 5px;
-
+	
+	
 	font-size: 14px;
+}
+
+
+#ct_set input[type="number"]::-webkit-outer-spin-button,
+#ct_set input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 #ct_set input {

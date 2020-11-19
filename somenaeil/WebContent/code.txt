@@ -95,6 +95,54 @@
 			
 			
 		}
+		
+		
+		
+		
+		
+		<div id='ct_table'>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
+  	
+  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
+
+  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
+
+  	<div class='ct_cell cb cc'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
+  	<div class='ct_cell cb cr'><input type='text' placeholder='데이터'></div>
+  </div>
 	  
+	  
+	  
+	  if(before_row != row && before_col != col){
+				
+				for(var i = 1; i < row; i++){
+					for(var j = 1; j <= col; j++){
+						var para = document.createElement("div");
+						jQuery(para).addClass("ct_cell");
+						document.getElementById("ct_table").appendChild(para);
+						
+						var para2 = document.createElement("input");
+						document.getElementsByClassName("ct_cell")[k].appendChild(para2);
+						k++;
+					}
+				}				
+				alert("true");
+			}else{
+			}
 	  
 	  
