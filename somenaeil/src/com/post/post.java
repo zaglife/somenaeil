@@ -15,11 +15,6 @@ public class post {
 	private String hash;
 	private String context;
 	
-	// post_detail DB data
-//	private ArrayList<Integer> position;
-//	private ArrayList<Integer> type;
-//	private ArrayList<String> context;
-	
 	
 	public post(int num, String cate, String nick, Date time, String title, String context, String hash) {
 		this.num = num;
@@ -33,18 +28,6 @@ public class post {
 		this.context = context.replace("\r\n", "<br>");
 		this.hash = hash;
 	}
-	
-	/**
-	 * Post_detail DB 데이터를 자바빈 변수에 넣는 함수
-	 * @param position
-	 * @param type
-	 * @param context
-	 */
-//	public void setPostContent(ArrayList<Integer> position, ArrayList<Integer> type, ArrayList<String> context) {
-//		this.position = position;
-//		this.type = type;
-//		this.context = context;
-//	}
 
 	public int getNum() {
 		return num;
@@ -121,6 +104,4 @@ public class post {
 	public String getContext() {
 		return context;
 	}
-
-
 }

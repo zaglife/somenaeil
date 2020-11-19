@@ -15,7 +15,6 @@ public class vote_dao {
 		try {
 			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("vote DB 커넥션 실패");
 		}

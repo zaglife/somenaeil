@@ -53,26 +53,7 @@ public class post_dao {
 				pt = new post(rs.getInt("num"), rs.getString("cate"), rs.getString("nick"),
 							rs.getDate("time"), rs.getString("title"), rs.getString("context"),
 							rs.getString("hash"));
-				
-//				// SELECT post detail DB SQL  
-//				String sql2 = "SELECT position, type, context "
-//							+ "FROM post_detail "
-//							+ "WHERE post_num=?"
-//							+ "ORDER BY position ASC";
-//				pstmt = conn.prepareStatement(sql2);
-//				pstmt.setInt(1, pt.getNum());
-//				rs = pstmt.executeQuery();
-				
-//				// post detail DB를 post 객체에 추가
-//				ArrayList<Integer> position = new ArrayList<Integer>();
-//				ArrayList<Integer> type = new ArrayList<Integer>();
-//				ArrayList<String> context = new ArrayList<String>();
-//				while(rs.next()) {
-//					position.add(rs.getInt("position"));
-//					type.add(rs.getInt("type"));
-//					context.add(rs.getString("context"));
 //				}
-//				pt.setPostContent(position, type, context);
 			}
 			
 		}
