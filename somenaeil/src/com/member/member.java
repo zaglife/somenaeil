@@ -96,12 +96,14 @@ public class member {
 	}
 	
 	// 다른 유저 정보 출력
-	public member(	String nick,
+	public member(	String id,
+					String nick,
 					String pimg,
 					String comt,
 					String follow,
 					String follower,
 					String scrap_list	) {
+		this.id = id; 
 		this.nick= nick;
 		this.pimg= pimg;
 		this.comt= comt;
