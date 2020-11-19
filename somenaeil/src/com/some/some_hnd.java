@@ -20,6 +20,7 @@ public class some_hnd implements some_able {
 			view= "user.jsp";
 		} else if(part.equals("user")) {
 			other = md.select_member(id);
+//			request.setAttribute("part", "user");
 			view= "user.jsp";
 		}
 		

@@ -20,33 +20,6 @@ public class some_service {
 		this.request= request;
 	}
 
-	// follow 리스트 분리
-
-	
-	// follower 리스트 분리
-
-	
-//	ss.follower_list();
-	// follower 리스트 분리
-	// scrap 리스트 분리
-	// like 리스트 분리
-	
-	/**
-	 * 해당 유저의 팔로우 리스트를 추출
-	 * @return 해당 유저의 팔로우 리스트
-	 */
-	public ArrayList<member> follow_list(String id) {
-		member_dao md = new member_dao();
-		// 내 데이터
-		member my = md.select_member(id);
-		// 내 데이터의 팔로우 리스트 추출 및 가공
-		String[] my_follow_list = my.getFollow().split(":");
-		// 해당 팔로우들의 데이터리스트 리턴
-		ArrayList<member> result = md.follow_other(my_follow_list);
-		
-		return result;
-	}
-	
 }
 
 
