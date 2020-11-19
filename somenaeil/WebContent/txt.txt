@@ -1,0 +1,5 @@
+<c:set var="other" value="
+
+<%=new com.member.member_dao().select_member(request.getParameter(user)) %>
+
+" />

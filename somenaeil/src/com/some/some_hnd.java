@@ -16,6 +16,7 @@ public class some_hnd implements some_able {
 		String pw= request.getParameter("pw");
 		member_dao md = new member_dao();
 		member other = null;
+		
 		if(part == null) {
 			view= "user.jsp";
 		} else if(part.equals("user")) {
