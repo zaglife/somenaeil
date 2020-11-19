@@ -13,28 +13,38 @@ public class post {
 	private Calendar time;
 	private String title;
 	private String hash;
+	private String context;
 	
 	// post_detail DB data
-	private ArrayList<Integer> position;
-	private ArrayList<Integer> type;
-	private ArrayList<String> context;
+//	private ArrayList<Integer> position;
+//	private ArrayList<Integer> type;
+//	private ArrayList<String> context;
 	
 	
-	public post(int num, String cate, String nick, Date time, String title, String hash) {
+	public post(int num, String cate, String nick, Date time, String title, String context, String hash) {
 		this.num = num;
 		this.cate = cate;
 		this.nick = nick;
 		this.time = Calendar.getInstance();
 		this.time.setTime(time);
 		this.title = title;
+		// DB에서 엔터는 \n
+		// jsp에서 엔터는 <br>
+		this.context = context.replace("\r\n", "<br>");
 		this.hash = hash;
 	}
 	
-	public void setPostContent(ArrayList<Integer> position, ArrayList<Integer> type, ArrayList<String> context) {
-		this.position = position;
-		this.type = type;
-		this.context = context;
-	}
+	/**
+	 * Post_detail DB 데이터를 자바빈 변수에 넣는 함수
+	 * @param position
+	 * @param type
+	 * @param context
+	 */
+//	public void setPostContent(ArrayList<Integer> position, ArrayList<Integer> type, ArrayList<String> context) {
+//		this.position = position;
+//		this.type = type;
+//		this.context = context;
+//	}
 
 	public int getNum() {
 		return num;
@@ -99,34 +109,17 @@ public class post {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public ArrayList<Integer> getPosition() {
-		return position;
-	}
-
-	public void setPosition(ArrayList<Integer> position) {
-		this.position = position;
-	}
-
-	public ArrayList<Integer> getType() {
-		return type;
-	}
-
-	public void setType(ArrayList<Integer> type) {
-		this.type = type;
-	}
-
-	public ArrayList<String> getContext() {
-		return context;
-	}
-
-	public void setContext(ArrayList<String> context) {
-		this.context = context;
-	}
-	
 	
 	public String toString() {
 		return String.format("%d %s(%s)", num, title, nick);
+	}
+
+	public void setContext(String context) {
+		this.context = context;
+	}
+
+	public String getContext() {
+		return context;
 	}
 
 

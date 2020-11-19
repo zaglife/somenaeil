@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>제약바이오 60초 영상공모전</title>
@@ -10,8 +12,6 @@
 </head>
 
 <body>
-
-
 	<!-- 포스팅 내용 -->
 	<div class="article_wrap">
 		<div class="article">
@@ -25,11 +25,11 @@
 				</div>
 				<div class="article_info">
 					<div class="article_title">
-						제약바이오 60초 영상공모전
+						${post.title}
 					</div>
 					<div class="article_subinfo1">
 						<div class="article_auth">
-							<span class="user_id"><a href="user.jsp">gagip</a></span>
+							<span class="user_id"><a href="user.jsp">${post.nick}</a></span>
 							<span class="follow"> <img src="img/noti_follow_n_20.png"> </span>
 							<span class="dm"> <a href="dm.jsp"><img src="img/icon_dm_20.png"></a></span>
 						</div>
@@ -54,18 +54,12 @@
 			</div>
 			<!-- content (글, 이미지, 해시태그)-->
 			<div class="article_content">
-				<p>
-					제약바이오 60초 영상공모전 <br>
-					1등 상금이 500만원?! <br>
-					참가자격은 누구나 <br>
-					지원 가능한거 같은데요?? <br>
-					60초 안에 영상컨텐츠도 <br>
-					...
-				</p>
-				<img src="img/profile04.jpg">
+				${post.context}
+
 				<div class="article_hashTag">
-					<a class="hash" href="index.jsp#search">#제약바이오</a>
-					<a class="hash" href="index.jsp#search">#60초영상</a>
+					<c:forTokens items="${post.hash}" var="hash" delims=",">
+						<a class="hash" href="index.jsp#search">#${hash}</a>
+					</c:forTokens>
 				</div>
 			</div>
 			<!-- footer (댓글) -->

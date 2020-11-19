@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
 /**
  * post & vote 서블렛
  * @author gagip
@@ -31,7 +30,6 @@ public class post_control extends HttpServlet {
      */
     public post_control() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -99,11 +97,12 @@ public class post_control extends HttpServlet {
 		String view=null;
 		view = hd.active(request, response);		
 		
-		if(view!=null) {
+		if(view==null) {
 			RequestDispatcher dsp = request.getRequestDispatcher("index.jsp");
 			dsp.forward(request, response);
 		}else {
-			response.sendRedirect(view);
+			RequestDispatcher dsp = request.getRequestDispatcher(view);
+			dsp.forward(request, response);
 		}
 	}
 }
