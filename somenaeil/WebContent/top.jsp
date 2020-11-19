@@ -71,7 +71,7 @@ function dropdown() {
 <div id="top_wrap">
 
   <div id="top_logo">
-    <a href="index.jsp"><img src="img/logo_20.png"></a>
+    <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
   </div>
   
   <div id="top_search">

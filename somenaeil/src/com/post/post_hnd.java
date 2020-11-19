@@ -19,8 +19,13 @@ public class post_hnd implements post_able {
 		}
 		else {
 			switch(part) {
-			case "view":
-				view = ps.view(); break;
+			case "postDetail":
+				view = ps.postDetail(); break;
+			case "postList":
+				view = ps.postList(); break;
+			default:
+				System.out.println("조건에 부합하는 화면이 존재하지 않습니다");
+				view = "index.jsp";
 			}
 		}
 		
