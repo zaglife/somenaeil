@@ -518,6 +518,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #ct_table {
+	clear: both;
 	float: left;
 	position: relative;
 	width: auto;
@@ -534,16 +535,17 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	width: 82px;
 	padding: 8px;
 
-	border-top: 1px solid #777;
-	border-left: 1px solid #777;
-}
-
-#ct_table div:nth-child(n) {
+	border-right: 1px solid #777;
+	border-bottom: 1px solid #777;
 	background: rgba(255, 255, 255, 0);
 }
+.ct_cell_top { border-top: 1px solid #777; }
+.ct_cell_left { border-left: 1px solid #777; }
+.ct_cell_bottom { border-bottom: 0 !important; }
+.ct_cell_right { border-right: 0 !important; }
 
-#ct_table div:nth-child(2n) {
-	background: #edf8e6;
+.ct_cell_back {
+	background: #edf8e6 !important;
 }
 
 .cr {
@@ -569,6 +571,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #ct_bottom {
+	clear: both;
 	float: left;
 	position: relative;
 	width: 600px;

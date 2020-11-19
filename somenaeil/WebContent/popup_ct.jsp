@@ -25,6 +25,8 @@
       <div id="ct_ts_title">표스타일</div>
       <div class="ct_ts"><a href="#"><img src="img/post_table02_40.png"></a></div>
       <div class="ct_ts"><a href="#"><img src="img/post_table01_40.png"></a></div>
+      <input type="radio" name="table_style" value="ts_on" checked>
+      <input type="radio" name="table_style" value="ts_off">
     </div>
   </div>
   <div id='ct_table'>

@@ -265,19 +265,29 @@ function more_hash() {
 		
 		
 		// 표 만들기(미완성)
-		var before_row = 0;
-		var before_col = 0;
+		var before_row = -1;
+		var before_col = -1;
 		
 		function ct(){
 			var row = document.getElementById('row').value;
 			var col = document.getElementById('col').value;
 			var k = 0;
 			
-			if(before_row == row && before_col == col){
-				alert("바뀔 행과열이 없습니다.");
+			
+			if(row == 0 && col == 0){
+				alert("행과 열을 모두 입력해주세요.");
+				$('#row').focus();
+			}else if(row == 0){
+				alert("열을 입력해주세요.");
+				$('#row').focus();
+			}else if(col == 0){
+				alert("행을 입력해주세요.");
+				$('#col').focus();
+			}else if(before_row == row && before_col == col){
+				alert("바뀔 행과 열이 없습니다.");
 			}else{
-				for(var i = 1; i <= row; i++){
-					for(var j = 1; j <= col; j++){
+				for(var i = 1; i <= col; i++){
+					for(var j = 1; j <= row; j++){
 						var para = document.createElement("div");
 						jQuery(para).addClass("ct_cell");
 						document.getElementById("ct_table").appendChild(para);
@@ -285,14 +295,71 @@ function more_hash() {
 						var para2 = document.createElement("input");
 						document.getElementsByClassName("ct_cell")[k].appendChild(para2);
 						k++;
+						var at = document.createAttribute("placeholder");
+						at.value = "데이터";
+						para2.setAttributeNode(at);
 					}
 					var para = document.createElement("br");
 					document.getElementById("ct_table").appendChild(para);
-				}	
+				}
+				
+				var ct_style= document.getElementsByName("table_style");
+				var ct = document.querySelectorAll(".ct_cell");
+				
+				if(ct_style[0].checked) {
+					for(var i = 0; i < row; i++){
+						ct[i].className += " ct_cell_top";
+					}
+					for(var i = 1; i <= col; i++){
+						ct[(i-1)*row].className += " ct_cell_left";
+					}
+				} else if(ct_style[1].checked) {
+					for(var i = 0; i < row; i++){
+						ct[row*(col-1)+i].className += " ct_cell_bottom";
+					}
+					for(var i = 1; i <= col; i++){
+						ct[i*col-1].className += " ct_cell_right";
+					}
+				}
+				
+				
+				var ct_size = ct.length;
+				if(row % 2 == 0){
+					var k=0;
+					for(var i = 0; i < ct_size/2; i++){
+//						alert(k);
+						if(k < row/2) {
+							ct[i*2].className +=  " ct_cell_back";
+							k++;
+						} else if(row/2 < k) {
+							ct[i*2+1].className +=  " ct_cell_back";
+							k++;
+						} else if(k == ct_size/4 ) {
+							alert(k);
+							k= 0;
+						}
+					}
+				}else if(row % 2 == 1){
+					for(var i = 0; i < ct_size/2; i++){
+						alert(i*2);
+						ct[i*2].className +=  " ct_cell_back";
+					}
+				}
+
+				
+				
+//					
+//					
+
+
+				
+				
+
 			}
 			
 			before_row = row;
 			before_col = col;
+			
 			
 		}
 		
