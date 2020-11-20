@@ -119,6 +119,10 @@
     <div id="post_write">
       <textarea class="autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="글을 입력해주세요."></textarea>
 	
+
+
+
+
 	  
 	
 	  <!-- text입력부분 소스코드 display none -->

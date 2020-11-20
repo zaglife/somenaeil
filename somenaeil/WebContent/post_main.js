@@ -249,7 +249,6 @@ function more_hash() {
 				$("#data2_out").width(result2+'px');
 				$("#data3_out").width(result3+'px');
 				$("#data4_out").width(result4+'px');
-
 			}
 			
 			$("#g_data1").keyup(function(){
@@ -275,17 +274,7 @@ function more_hash() {
 				gh_calc();
 			});
 			
-			
-			
-			$("#g_data3").keyup(function(){
-				g3= $("#g_data3").val();
-				gh_calc();
-			});
-			
-			$("#g_data4").keyup(function(){
-				g4= $("#g_data4").val();
-				gh_calc();
-			});
+		
 			
 			
 
@@ -382,11 +371,21 @@ function more_hash() {
 						ct[(i-1)*row].className += " ct_cell_left";
 					}
 				} else if(ct_style[1].checked) {
-					for(var i = 0; i < row; i++){
-						ct[row*(col-1)+i].className += " ct_cell_bottom";
-					}
-					for(var i = 1; i <= col; i++){
-						ct[i*col-1].className += " ct_cell_right";
+					if(col == 1){
+						ct[(row-1)].className += " ct_cell_right";
+						for(var i = 1; i <= row; i++){				
+							ct[i-1].className += " ct_cell_bottom";
+						}
+					} else {
+						for(var i = 1; i <= col; i++){
+							ct[(i-1)*row].className += " ct_cell_left2";
+						}
+						for(var i = 0; i < row; i++){
+							ct[row*(col-1)+i].className += " ct_cell_bottom";
+						}
+						for(var i = 1; i <= col; i++){
+							ct[i*col-1].className += " ct_cell_right";
+						}
 					}
 				}
 				
@@ -402,13 +401,11 @@ function more_hash() {
 							ct[i*2+1].className +=  " ct_cell_back";
 							k++;
 						} else if(k == ct_size/4 ) {
-							alert(k);
 							k= 0;
 						}
 					}
 				}else if(row % 2 == 1){
 					for(var i = 0; i < ct_size/2; i++){
-						alert(i*2);
 						ct[i*2].className +=  " ct_cell_back";
 					}
 				}
@@ -492,6 +489,9 @@ function more_hash() {
 			var at = document.createAttribute("placeholder");
 			at.value = "데이터"+(gh_cnt+1);
 			para3.setAttributeNode(at);
+			var at = document.createAttribute("type");
+			at.value = "number";
+			para3.setAttributeNode(at);
 			document.getElementsByClassName("gh_dt")[gh_cnt].appendChild(para3);
 			
 			
@@ -511,6 +511,14 @@ function more_hash() {
 		function temporary(){
 			alert("현재 이 그래프타입은 준비중입니다.");
 		}
+		
+		
+
+
+
+		
+		
+		
 		
 		
 		

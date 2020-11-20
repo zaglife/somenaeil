@@ -355,6 +355,8 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	padding-top: 2px;
 }
 
+
+
 .gh_dt_vl{
 	margin: 0 0 0 4px !important;
 }
@@ -452,7 +454,8 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 
 
 #ct_set input[type="number"]::-webkit-outer-spin-button,
-#ct_set input[type="number"]::-webkit-inner-spin-button {
+#ct_set input[type="number"]::-webkit-inner-spin-button,
+.gh_dt input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -517,10 +520,59 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	height: 33px;
 }
 
-.ct_ts {
+#ct_ts {
 	float: right;
 	height: 35px;
 	margin: 5px;
+}
+/* #ct_ts input[id="ttta"] { */
+/* 	position: absolute; */
+/* 	width: 1px; */
+/* 	height: 1px; */
+/* 	padding: 0; */
+/* 	margin: -1px; */
+/* 	overflow: hidden; */
+/* 	clip:rect(0,0,0,0); */
+/* 	border: 0; */
+/* } */
+
+#ct_ts input[type="radio"] { /* 실제 체크박스는 화면에서 숨김 */
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip:rect(0,0,0,0);
+	border: 0;
+}
+
+#ct_ts label {
+	float: left;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	margin-top: 5px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+#table_style_on {
+	background: url("../img/post_table01_40.png") no-repeat center center;
+}
+
+#table_style_off {
+	background: url("../img/post_table02_40.png") no-repeat center center;
+}
+
+#ct_ts input[type="radio"] + label,
+#ct_ts input[type="radio"] + label {
+	opacity: .3;
+}
+
+#ct_ts input[type="radio"]:checked + label,
+#ct_ts input[type="radio"]:checked + label {
+	opacity: 1;
 }
 
 #ct_style div:nth-child(2) {
@@ -550,7 +602,8 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	background: rgba(255, 255, 255, 0);
 }
 .ct_cell_top { border-top: 1px solid #777; }
-.ct_cell_left { border-left: 1px solid #777; }
+.ct_cell_left { border-left: 1px solid #777; clear:both; }
+.ct_cell_left2 { clear:both; }
 .ct_cell_bottom { border-bottom: 0 !important; }
 .ct_cell_right { border-right: 0 !important; }
 

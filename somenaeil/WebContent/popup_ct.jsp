@@ -23,10 +23,15 @@
     <div id='ct_exp'>*행과 열은 최대 6개까지 가능합니다.</div>
     <div id='ct_style'>
       <div id="ct_ts_title">표스타일</div>
-      <div class="ct_ts"><a href="#"><img src="img/post_table02_40.png"></a></div>
-      <div class="ct_ts"><a href="#"><img src="img/post_table01_40.png"></a></div>
-      <input type="radio" name="table_style" value="ts_on" checked>
-      <input type="radio" name="table_style" value="ts_off">
+      <div id="ct_ts">
+        <input type="radio" name="table_style" id="ts_on" checked>
+        <label for="ts_on" id="table_style_on"></label>
+        
+        <input type="radio" name="table_style" id="ts_off">
+        <label for="ts_off" id="table_style_off"></label>
+      </div>
+      
+      
     </div>
   </div>
   <div id='ct_table'>
