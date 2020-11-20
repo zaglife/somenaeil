@@ -82,7 +82,7 @@ public class main_control extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		action(request, response, "index.do");
+		action(request, response, "index.jsp");
 	}
 
 	/**

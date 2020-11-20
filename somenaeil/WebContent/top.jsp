@@ -57,7 +57,7 @@ function dropdown() {
   <c:when test="${user != null }">
     <div class="dropdown d_hide">
       <a href="index.do">메인 페이지</a>
-      <a href="user.jsp?state=login">마이 페이지</a>
+      <a href="user.do?part=user&uid=some">마이 페이지</a>
       <a href="post_main.jsp?state=login">포스팅</a>
       <a href="noti.jsp?state=login">알림</a>
       <a href="dm.jsp?state=login">메세지</a>
@@ -83,7 +83,7 @@ function dropdown() {
         
       </div>
     </div>
-    <a href="user.some?state=${nick }" id="top_user_pimg"><img src="img/profile01.jpg"></a>
+    <a href="user.do?part=user&uid=some" id="top_user_pimg"><img src="img/profile01.jpg"></a>
   </c:when>
   
   <%-- 로그인 전 --%>

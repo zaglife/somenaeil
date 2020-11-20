@@ -9,11 +9,13 @@ public class login_hnd implements main_able{
 	public String active(HttpServletRequest request, HttpServletResponse response) {
 		
 		String part= request.getParameter("part");
-
+		String id= request.getParameter("id");
 		if(part == null) {
 			// 로그인 되어있는 경우
 			if(request.getSession().getAttribute("user")!=null) {
 				request.getSession().removeAttribute("user");
+				request.getSession().setAttribute("id", id);
+				
 				return null;
 			}
 			// 로그인이 안되어있는 경우

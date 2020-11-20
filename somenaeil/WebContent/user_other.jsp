@@ -7,6 +7,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,13 +25,13 @@
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick">${user.getNick() }</div>
-      <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
+      <div id="user_nick">${data.getNick() }</div>
+      <div id="user_ment">${data.getComt() }</div>
       <div id="user_info_follow">
       	
         <c:if test="${user != null }">
-          <a onclick="userFollowerPop()">팔로워 ${user.follow_num() }</a>
-          <a onclick="userFollowPop()">팔로우 ${user.follower_num() }</a>
+          <a onclick="userFollowerPop()">팔로워 ${data.follower_num() }</a>
+          <a onclick="userFollowPop()">팔로우 ${data.follow_num() } </a>
           <p>게시글 512</p>
         </c:if>
         
@@ -89,21 +90,6 @@
 <!-- 유저 팔로우 리스트 "user_follow.jsp" -->
 <jsp:include page="user_follower.jsp" />
 <jsp:include page="user_follow.jsp" />
-
-<c:if test='${state == "some02" }'>
-<div style="	background: rgba(0, 0, 0, 0.5);
- 				text-align: center;
- 				z-index: 999999;
- 				float: left;
- 				position: fixed;
- 				width: 100%;
- 				height: 100%;
- 				color: #fff;">
-				
-				
-				
-</div>
-</c:if>
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />

@@ -1,3 +1,5 @@
+<%@page import="com.member.member"%>
+<%@page import="com.member.member_dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -32,8 +34,8 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.some?part=user">some</a></div>
-        <div class="post_date">2019년 10월 2일</div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some">some</a></div>
+        <div class="post_date">2019년 10월 2일<br></div>
       </div>
       
     </div>
@@ -99,7 +101,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.some?state=some02">some02</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -171,7 +173,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -238,7 +240,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -307,7 +309,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -374,7 +376,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -446,7 +448,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -513,7 +515,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=${user.getId() }">some</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -580,7 +582,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -647,7 +649,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -719,7 +721,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -786,7 +788,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       

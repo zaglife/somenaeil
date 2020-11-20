@@ -8,11 +8,24 @@
 <%@page import="com.member.member_dao"%>
 <%@page import="com.member.member_service"%>
 
+<%
+	String uid = (String) session.getAttribute("uid");
+	System.out.println(uid);
+	member_dao md = new member_dao();
+	member my= md.member_read(uid);
+	request.setAttribute("my", my);
 
+	member_service ms = new member_service();
+	ArrayList<member> follow_list = ms.follow_list(my.getId());
+	request.setAttribute("follow_list", follow_list);
+	
+	
+	System.out.println();
+%>
 
 
 <div id="user_follow" class="user_popup_wrap user_follow_hide">
-<a onclick="userFollowPop()"></a>
+  <a onclick="userFollowPop()"></a>
   <div class="user_popup_center">
     <div id="user_popup_top_space"></div>
     <div id="user_popup_top">팔로우</div><a onclick="userFollowPop()"></a>
@@ -20,7 +33,7 @@
     
     <div id="user_popup_scroll">
 
-      <c:forEach items="${follow_list}" var="follow"  varStatus="temp">    
+      <c:forEach items="${follow_list }" var="follow"  varStatus="temp">    
       <div id="user_popup_cont">
         <div class="user_popup_pimg"><img src="img/profile01.jpg"></div>
         <div class="user_popup_name">${follow.getNick()}</div>
@@ -33,3 +46,4 @@
     
   </div>
 </div>
+

@@ -19,8 +19,10 @@ public class member_service {
 		
 		member_dao md= new member_dao();
 		member user= md.member_select(id, pw);
-			
+		
 		request.getSession().setAttribute("user", user);
+		request.getSession().setAttribute("id", user.getId());
+		
 
 		if(user == null)
 			return "fail";
@@ -29,7 +31,7 @@ public class member_service {
 	}
 	
 	public void join() {
-		
+		System.out.println("멤버서비스_조인");
 		String id= request.getParameter("id");
 		String pw= request.getParameter("pw");
 		String name= request.getParameter("name");
@@ -44,10 +46,10 @@ public class member_service {
 		
 		// 회원가입 테스트를 위한 이메일 인증
 		cert= 1;
-		
+		System.out.println("멤버서비스_조인_인서트 전");
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
-		
+		System.out.println("멤버서비스_조인_인서트 후");
 		member user= md.member_select(id, pw);
 		request.getSession().setAttribute("user", user);
 	}
@@ -59,12 +61,12 @@ public class member_service {
 	public ArrayList<member> follow_list(String id) {
 		member_dao md = new member_dao();
 		// 내 데이터
-		member my = md.select_member(id);
+		member my = md.member_read(id);
 		// 내 데이터의 팔로우 리스트 추출 및 가공
-		String[] my_follow_list = my.getFollow().split(":");
+		String[] follow_list = my.getFollow().split(":");
 		// 해당 팔로우들의 데이터리스트 리턴
-		ArrayList<member> result = md.follow_other(my_follow_list);
+		ArrayList<member> fl = md.follow_other(follow_list);
 		
-		return result;
+		return fl;
 	}
 }

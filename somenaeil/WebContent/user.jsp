@@ -90,21 +90,6 @@
 <jsp:include page="user_follower.jsp" />
 <jsp:include page="user_follow.jsp" />
 
-<c:if test='${state == "some02" }'>
-<div style="	background: rgba(0, 0, 0, 0.5);
- 				text-align: center;
- 				z-index: 999999;
- 				float: left;
- 				position: fixed;
- 				width: 100%;
- 				height: 100%;
- 				color: #fff;">
-				
-				
-				
-</div>
-</c:if>
-
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
 <jsp:include page="totop.jsp" />

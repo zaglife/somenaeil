@@ -69,10 +69,11 @@ public class member_dao {
 								int cert,
 								String pimg,
 								String comt	) {
+		System.out.println("멤버dao_인서트 1");
 		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
 		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptmt= null;
-		
+		System.out.println("멤버dao_인서트 2");
 		try {
 			ptmt= conn.prepareStatement(sql);
 			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
@@ -86,7 +87,7 @@ public class member_dao {
 			ptmt.setString(9, comt);
 			
 			ptmt.executeUpdate();
-			
+			System.out.println("멤버dao_인서트 3");
 			// 회원가입 후 noti, dm 테이블 입력
 			member_user_table(nick);
 			
@@ -174,10 +175,8 @@ public class member_dao {
 	 * @param id
 	 * @return 
 	 */
-	public member select_member(String id) {
+	public member member_read(String id) {
 		String sql= "select * from member where id=?";
-
-		System.out.println("member_dao - select_member 실행");
 		
 		member user = null;
 		try {
@@ -197,17 +196,9 @@ public class member_dao {
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("some_dao - 팔로우, 팔로워 리스트 불러오기 실패");
+			System.out.println("member_dao - 팔로우, 팔로워 리스트 불러오기 실패");
 		}
 		close();
-		
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getId());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getNick());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getPimg());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getComt());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getFollow());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getFollower());
-		System.out.println("member_dao - select_member 실행 결과 : "+user.getScrap_list());
 		
 		return user;
 	}
@@ -242,7 +233,7 @@ public class member_dao {
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("some_service - 다른 유저 정보 불러오기 실패");
+			System.out.println("member_dao - 다른 유저 정보 불러오기 실패");
 		}
 		close();
 		return other_data;
