@@ -41,7 +41,7 @@ function showCode() {
 	if(sc_temp == 1) {
 		$('#post_code_cont').removeClass('post_code_hide');
 		++sc_temp;
-		$("#post_write").append("<textarea class='autosize' onkeydown='resize(this)' onkeyup='resize(this)'></textarea>");
+		
 	}else if(sc_temp == 2) {
 		$('#post_code_cont').addClass('post_code_hide');
 		sc_temp= 1;
@@ -112,12 +112,6 @@ function more_hash() {
 	}
 }
 		
-//글쓰기 생성 
-function resize(obj) {
-	obj.style.height = "1px";
-	obj.style.height = (12+obj.scrollHeight)+"px";
-}
-		
 // 소스코드에서 enter시 소스코드가 한줄 생성되면서  커서도 같이 움직인다.
 var code_i= 2;
 function onKeyDown(){
@@ -150,48 +144,7 @@ function onKeyDown(){
 	}
 }
 
-var s_code_num = 1;
-function s_code(){
-	if(s_code_num == 1){
-		var para = document.createElement("div");
-		jQuery(para).addClass("post_code_cont");
-		document.getElementById("post_write").appendChild(para);
-				
-		var para2 = document.querySelector(".post_code_cont");
-		para2.innerHTML= "<div class='post_code_li'><p>1</p><input type='text' onKeyDown='onKeyDown();'></div>";
-				
-		var para3 = document.createElement("textarea");
-		jQuery(para3).addClass("autosize");
-		document.getElementById("post_write").appendChild(para3);
-				
-		var at = document.createAttribute("onkeydown");
-		at.value = "resize(this);";
-		para3.setAttributeNode(at);
-		
-		
-		var at = document.createAttribute("onkeydown");
-		at.value = "resize(this);";
-		para3.setAttributeNode(at);
-		
-		
-		
-		var at = document.createAttribute("id");
-		at.value = "text_cont";
-		para3.setAttributeNode(at);
-		
-		var at = document.createAttribute("class");
-		at.value = "autosize "+"tc_num"+s_code_num;
-		para3.setAttributeNode(at);
-		
-		s_code_num++;
 
-		
-	}else{
-		$('.post_code_cont').remove();
-		$('#text_cont').remove();
-		s_code_num = 1;
-	}
-}
 		
 // 그래프에 데이터명 입력시 실시간으로 이름이 입력된다.
 $(document).ready(function(){
@@ -493,20 +446,59 @@ function temporary(){
 	alert("현재 이 그래프타입은 준비중입니다.");
 }
 
-function insertText() {
-	var txtArea = document.getElementById('txtForm');
-	var txtValue = txtArea.value;
-	
-	var selectPos = txtArea.selectionStart; // 커서 위치 지정
-	var beforeTxt = txtValue.substring(0, selectPos); // 기존텍스트 ~ 커서시작점 까지의 문자
-	var afterTxt = txtValue.substring(txtArea.selectionEnd, txtValue.length); // 커서끝지점 ~ 기존텍스트 까지의 문자
-	var addTxt = document.getElementById('addInput').value; // 추가 입력 할 텍스트
-	
-	txtArea.value = beforeTxt + addTxt + afterTxt;
-	selectPos = selectPos + addTxt.length;
-	txtArea.selectionStart = selectPos; // 커서 시작점을 추가 삽입된 텍스트 이후로 지정
-	txtArea.selectionEnd = selectPos; // 커서 끝지점을 추가 삽입된 텍스트 이후로 지정
-	txtForm.focus();
-}
+
 	
 /* post_main script end */
+
+
+
+
+
+
+
+
+
+document.execCommand('styleWithCSS', false, true);
+document.execCommand('insertBrOnReturn', false, true);
+$(document).ready(function() {
+	$("#text").focus();
+	$('button').click(function(){
+		document.execCommand($(this).attr('id'), false, true);
+	});
+	$('#post_bold').click(function() {
+		document.execCommand('bold', false, true);
+	});
+	$('#selectAll').click(function() {
+		document.execCommand('selectAll', false, true);
+	});
+	$('#italic').click(function() {
+		document.execCommand('italic', false, true);
+	});
+	$("#underLine").click(function() {
+		document.execCommand('underLine', false, true);
+	});
+	$("#justifyLeft").click(function() {
+		document.execCommand('justifyLeft', false);
+	});
+	$("#justifyRight").click(function() {
+		document.execCommand('justifyRight', false);
+	});
+	$("#justifyCenter").click(function() {
+		document.execCommand('justifyCenter', false);
+	}); 
+	$('select').change(function(){
+		document.execCommand($(this).attr('id'), false, $(this).val());
+	});
+	$("#foreColor").change(function(){ 
+		document.execCommand('foreColor', false, $(this).val());
+	});
+	$("#hiliteColor").change(function(){
+		document.execCommand('hiliteColor', false, $(this).val());
+	});
+	$("#fontName").change(function(){
+		document.execCommand('fontName', false, $(this).val());
+	});
+	$("#fontSize").change(function(){
+		document.execCommand('fontSize', false, $(this).val());
+	});    
+});

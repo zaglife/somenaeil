@@ -11,8 +11,21 @@
 
 <title>some, 내일</title>
 
+<style>
+
+#post_bold {
+border: 0;
+background: #555;
+width: 20px;
+height: 20px;
+}
+
+</style>
+
+
+
 <jsp:include page="css.jsp" />
-<script type="text/javascript" src="post_main.js"></script>
+<script type="text/javascript" src="post_main_test.js"></script>
 </head>
 <body>
 <jsp:include page="top.jsp" />
@@ -79,7 +92,7 @@
   <div id="post_mid">
     <div id="post_mid_top">
   	  <div class="post_tcate_part">
-  	    <div class="post_tcate"><a href="#"><img src="img/post_b_20.png"></a></div>
+  	    <div class="post_tcate"><button id="post_bold"></button></div>
   	    <div class="post_tcate"><a href="#"><img src="img/post_i_20.png"></a></div>
   	    <div class="post_tcate"><a href="#"><img src="img/post_u_20.png"></a></div>
   	    <div class="post_tcate"><a href="#"><img src="img/post_s_20.png"></a></div>
@@ -113,12 +126,13 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><a onclick="s_code()"><img src="img/post_code_20.png"></a></div>
+  	    <div class="post_file"><a><img src="img/post_code_20.png"></a></div>
       </div>
     </div>
-    <div id="post_write">
-      <textarea id="txtForm" class="autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="글을 입력해주세요."></textarea>
-	
+    <div id="post_write" contenteditable="true">
+     
+
+
 
 	  <!-- text입력부분 소스코드 display none -->
 
