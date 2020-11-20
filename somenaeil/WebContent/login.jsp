@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:if test="${fail }">
+  <script>
+    alert("아이디 또는 비밀번호가 잘못되었습니다.");
+  </script>
+  <c:remove var="fail" scope="session" />
+</c:if>
+
 <!DOCTYPE html>
 <html>
 <head>

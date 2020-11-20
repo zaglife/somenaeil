@@ -10,26 +10,22 @@ public class member_hnd implements main_able{
 	public String active(HttpServletRequest request, HttpServletResponse response) {
 		
 		String part=request.getParameter("part");
-		System.out.println("member_hnd - "+part);
+		
+		member_service ms= new member_service(request);
+		String view= null;
 		
 		if(part == null) {
-			// 로그인 되어있는 경우
-			if(request.getSession().getAttribute("user")!=null) {
-				request.getSession().removeAttribute("user");
-				return null;
-			}
-			
-			// 로그인이 안되어있는 경우
-			return "login.jsp";
+			view= "join.jsp";
 		} else {
-			member_service ms= new member_service(request);
-			
-			if(ms.login() == null) {
-				return "index.jsp";
-			}else {
-				request.getSession().setAttribute("fail", true);
-				return "login.jsp";
+			switch(part) {
+			case "join" :
+				ms.join();
+				view= "index.jsp";
+				break;
+			case "b" :
+				break;
 			}
 		}
+		return view;
 	}
 }

@@ -21,7 +21,6 @@ public class member_service {
 		member user= md.member_select(id, pw);
 			
 		request.getSession().setAttribute("user", user);
-		System.out.println("member_service - login= "+user.getId());
 
 		if(user == null)
 			return "fail";
