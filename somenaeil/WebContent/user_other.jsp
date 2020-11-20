@@ -41,11 +41,11 @@
         </c:if>
       </div>
     </div>
-
-    <!-- 로그인시 본인 계정 -->
-    <div id="user_right">
-      <a href="join_edit.jsp"><img src="img/setting_20.png"></a>
-      <p>R 타입</p>
+    
+    <!-- 로그인시 다른 유저 계정 -->
+    <div id="other_right">
+      <a href="#" id="user_follow_btn_chg" class="user_follow_btn" onclick="FollowBtnChg()"></a>
+      <p>- 타입</p>
     </div>
 
   </div>
@@ -152,3 +152,7 @@ function FollowBtnChg() {
 	}
 }
 </script>
+
+
+
+
