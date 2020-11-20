@@ -32,7 +32,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.some?part=user">some</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -99,7 +99,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.jsp">gagip</a></div>
+        <div class="post_auth"><a href="user.some?state=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       

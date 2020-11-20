@@ -49,6 +49,9 @@ function dropdown() {
 }
 </script>
 
+
+
+
 <c:choose>
   <%-- 로그인 후 --%>
   <c:when test="${user != null }">
@@ -80,7 +83,7 @@ function dropdown() {
         
       </div>
     </div>
-    <a href="user.some?part=user" id="top_user_pimg"><img src="img/profile01.jpg"></a>
+    <a href="user.some?state=${nick }" id="top_user_pimg"><img src="img/profile01.jpg"></a>
   </c:when>
   
   <%-- 로그인 전 --%>

@@ -3,6 +3,7 @@ package com.member;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class member_service {
 	private  HttpServletRequest request;
@@ -20,6 +21,7 @@ public class member_service {
 		member user= md.member_select(id, pw);
 			
 		request.getSession().setAttribute("user", user);
+		System.out.println("member_service - login= "+user.getId());
 
 		if(user == null)
 			return "fail";

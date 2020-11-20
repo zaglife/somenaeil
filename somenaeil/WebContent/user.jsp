@@ -8,15 +8,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
-	member_dao md = new member_dao();
-	member my = md.select_member("some");
-	request.setAttribute("my", my);
-	
-	
-	member_service ms = new member_service();
-	ArrayList<member> follow_list = ms.follow_list(my.getId());
-	request.setAttribute("follow_list", follow_list);
+    session.setMaxInactiveInterval(20*60);
 %>
+
 
 <!DOCTYPE html>
 <html>
@@ -35,7 +29,7 @@
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick"> ${user.getNick() }</div>
+      <div id="user_nick">${user.getNick() }</div>
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
       	
@@ -105,8 +99,6 @@
 </c:choose>
 
 
-
-
 <div id="btm_space"></div>
 
 <!-- 유저 팔로워 리스트 "user_follower.jsp" -->
@@ -114,7 +106,20 @@
 <jsp:include page="user_follower.jsp" />
 <jsp:include page="user_follow.jsp" />
 
-
+<c:if test='${state == "some02" }'>
+<div style="	background: rgba(0, 0, 0, 0.5);
+ 				text-align: center;
+ 				z-index: 999999;
+ 				float: left;
+ 				position: fixed;
+ 				width: 100%;
+ 				height: 100%;
+ 				color: #fff;">
+				
+				
+				
+</div>
+</c:if>
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />

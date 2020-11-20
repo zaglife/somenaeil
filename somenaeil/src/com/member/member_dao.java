@@ -177,6 +177,7 @@ public class member_dao {
 	public member select_member(String id) {
 		String sql= "select * from member where id=?";
 
+		System.out.println("member_dao - select_member 실행");
 		
 		member user = null;
 		try {
@@ -199,6 +200,15 @@ public class member_dao {
 			System.out.println("some_dao - 팔로우, 팔로워 리스트 불러오기 실패");
 		}
 		close();
+		
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getId());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getNick());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getPimg());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getComt());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getFollow());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getFollower());
+		System.out.println("member_dao - select_member 실행 결과 : "+user.getScrap_list());
+		
 		return user;
 	}
 
