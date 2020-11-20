@@ -144,5 +144,50 @@
 				alert("true");
 			}else{
 			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			      <div class="gh">
+       <div class='gh_dt_name' id="out3"></div>
+		<div class='gh_rod'>
+          <div class='gh_cl3 cl_bl'></div>
+          <div class='gh_cl3 cl_bl'></div>
+        </div>
+      </div>
+      
+      <div class="gh">
+       <div class='gh_dt_name' id="out4"></div>
+		<div>
+          <div class='gh_cl4 cl_gr'></div>
+          <div class='gh_cl4 cl_gr'></div>
+        </div>
+      </div>
+      
+      
+      <div class='gh_dt'><input type="text" id="data3"class='gh_dt_ne' placeholder='데이터명3' size="5" maxlength="5"> <input type="text" class='gh_dt_vl' placeholder='데이터3'></div>
+      <div class='gh_dt'><input type="text" id="data4"class='gh_dt_ne' placeholder='데이터명4' size="5" maxlength="5"> <input type="text" class='gh_dt_vl' placeholder='데이터4'></div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 	  
 	  

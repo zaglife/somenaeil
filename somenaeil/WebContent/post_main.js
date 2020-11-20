@@ -197,11 +197,11 @@ function more_hash() {
 
 			// 1. #data 공간에서 keyup이라는 이벤트가 발생했을 때
 
-			$("#data").keyup(function(){
+			$("#g_name1").keyup(function(){
 
 				// 2. #out 공간에 #data의 내용이 출력된다.
 
-				$("#out").text($("#data").val());
+				$("#name1_out").text($("#g_name1").val());
 
 				// #out의 위치에 text로 데이터를 받는다.(setter)
 
@@ -211,8 +211,8 @@ function more_hash() {
 
 			});
 			
-			$("#data2").keyup(function(){
-				$("#out2").text($("#data2").val());
+			$("#g_name2").keyup(function(){
+				$("#name2_out").text($("#g_name2").val());
 			});
 			$("#data3").keyup(function(){
 				$("#out3").text($("#data3").val());
@@ -220,6 +220,54 @@ function more_hash() {
 			$("#data4").keyup(function(){
 				$("#out4").text($("#data4").val());
 			});
+
+			
+			
+			
+			
+			var g1 = 0;
+			var g2 = 0;
+			var g3 = 0;
+			var g4 = 0;
+			
+			function gh_calc() {
+				var g_all = (g1+g2+g3+g4);
+				
+				var result1 = g1 *100/g_all;
+				var result2 = g2 *100/g_all;
+				var result3 = g3 *100/g_all;
+				var result4 = g4 *100/g_all;
+				
+				alert(g1);
+				alert(result1);
+				alert(result2);
+				alert(g_all);
+				
+				$("#data1_out").width(result1+'px');
+				$("#data2_out").width(result2+'px');
+
+			}
+			
+			$("#g_data1").keyup(function(){
+				g1= $("#g_data1").val();
+				gh_calc();
+				
+				
+			});
+			
+			$("#g_data2").keyup(function(){
+				g2= $("#g_data2").val();
+				gh_calc();
+			
+				
+							});
+			
+			
+			function gh_calc2(gd) {
+				var gd2 = gd;
+			}
+			
+			
 
 		});
 
@@ -346,22 +394,19 @@ function more_hash() {
 					}
 				}
 
-				
-				
-//					
-//					
-
-
-				
-				
-
 			}
 			
 			before_row = row;
 			before_col = col;
 			
+		}
+		
+		function gh_calc(){
 			
 		}
+		
+		
+		
 		
 		
 		
