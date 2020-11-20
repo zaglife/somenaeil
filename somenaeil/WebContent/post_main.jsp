@@ -95,7 +95,10 @@
   	        <button id='lk_bt' type="button">+</button>	       
   	      </div>
   	    </div>
-  	    <div class="post_file"><a href="#"><img src="img/post_pic_20.png"></a></div>
+  	    <div class="post_file">
+  	      <input type="file" name="img_file" id="img_file">
+  	      <label for="img_file" id="img_file_label"></label>
+  	    </div>
   	    <div class="post_file">
   	      <a href="#" onclick="showmov()"><img src="img/post_vid_20.png"></a>
   	      <!-- 영상 embed 기능 display none -->

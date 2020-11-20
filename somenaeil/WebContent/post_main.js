@@ -190,6 +190,8 @@ function more_hash() {
 			}
 		}
 		
+		
+		
 		// 그래프에 데이터명 입력시 실시간으로 이름이 입력된다.
 		$(document).ready(function(){
 
@@ -214,14 +216,17 @@ function more_hash() {
 			$("#g_name2").keyup(function(){
 				$("#name2_out").text($("#g_name2").val());
 			});
-			$("#data3").keyup(function(){
-				$("#out3").text($("#data3").val());
+			
+			$(document).on('propertychange change keyup paste input', '#g_name3', function(){
+				$("#name3_out").text($("#g_name3").val());
 			});
-			$("#data4").keyup(function(){
-				$("#out4").text($("#data4").val());
+			
+			$(document).on('propertychange change keyup paste input', '#g_name4', function(){
+				$("#name4_out").text($("#g_name4").val());
 			});
 
 			
+
 			
 			
 			
@@ -231,20 +236,19 @@ function more_hash() {
 			var g4 = 0;
 			
 			function gh_calc() {
-				var g_all = (g1+g2+g3+g4);
+				var g_all = parseInt(g1)+parseInt(g2)+parseInt(g3)+parseInt(g4);
 				
-				var result1 = g1 *100/g_all;
-				var result2 = g2 *100/g_all;
-				var result3 = g3 *100/g_all;
-				var result4 = g4 *100/g_all;
 				
-				alert(g1);
-				alert(result1);
-				alert(result2);
-				alert(g_all);
+				var result1 = g1 *190/g_all;
+				var result2 = g2 *190/g_all;
+				var result3 = g3 *190/g_all;
+				var result4 = g4 *190/g_all;
+				
 				
 				$("#data1_out").width(result1+'px');
 				$("#data2_out").width(result2+'px');
+				$("#data3_out").width(result3+'px');
+				$("#data4_out").width(result4+'px');
 
 			}
 			
@@ -258,19 +262,35 @@ function more_hash() {
 			$("#g_data2").keyup(function(){
 				g2= $("#g_data2").val();
 				gh_calc();
-			
-				
-							});
+			});
 			
 			
-			function gh_calc2(gd) {
-				var gd2 = gd;
-			}
+			$(document).on('propertychange change keyup paste input', '#g_data3', function(){
+				g3= $("#g_data3").val();
+				gh_calc();
+			});
+			
+			$(document).on('propertychange change keyup paste input', '#g_data4', function(){
+				g4= $("#g_data4").val();
+				gh_calc();
+			});
+			
+			
+			
+			$("#g_data3").keyup(function(){
+				g3= $("#g_data3").val();
+				gh_calc();
+			});
+			
+			$("#g_data4").keyup(function(){
+				g4= $("#g_data4").val();
+				gh_calc();
+			});
 			
 			
 
 		});
-
+		
 		// 투표 추가버튼시 생성 6개째 생성시 alert띄우면서 버튼 사라진다.
 		var plus_cnt = 2;
 		function plus_vote(){
@@ -286,8 +306,8 @@ function more_hash() {
 				jQuery(para2).addClass("vot_cont_input");
 				
 				var at = document.createAttribute("type");
-				 at.value = "text";
-				 para2.setAttributeNode(at);
+				at.value = "text";
+				para2.setAttributeNode(at);
 				 
 				 var at = document.createAttribute("placeholder");
 				 at.value = ""+(plus_cnt+1)+"번째 투표 항목";
@@ -347,7 +367,7 @@ function more_hash() {
 						at.value = "데이터";
 						para2.setAttributeNode(at);
 					}
-					var para = document.createElement("br");
+					
 					document.getElementById("ct_table").appendChild(para);
 				}
 				
@@ -369,7 +389,6 @@ function more_hash() {
 						ct[i*col-1].className += " ct_cell_right";
 					}
 				}
-				
 				
 				var ct_size = ct.length;
 				if(row % 2 == 0){
@@ -395,17 +414,103 @@ function more_hash() {
 				}
 
 			}
-			
 			before_row = row;
 			before_col = col;
 			
 		}
 		
-		function gh_calc(){
+		
+		
+		
+		
+		
+		
+		
+		var gh_cnt = 2;
+		
+		function gh_plus(){
+			var para = document.createElement("div");
+			jQuery(para).addClass("gh");
+			document.getElementById("gh_d").appendChild(para);
 			
+			
+			
+			
+			var para2 = document.createElement("div");
+			jQuery(para2).addClass("gh_dt_name");
+			jQuery(para2).attr("id","name"+(gh_cnt+1)+"_out");
+			document.getElementsByClassName("gh")[gh_cnt].appendChild(para2);
+			
+			
+			
+			
+			var para3 = document.createElement("div");
+			jQuery(para3).addClass("gh_rod");
+			document.getElementsByClassName("gh")[gh_cnt].appendChild(para3);
+			
+			
+			
+			
+			var para4 = document.createElement("div");
+			jQuery(para4).addClass("gh_cl"+(gh_cnt+1));
+			if(gh_cnt == 2){
+				jQuery(para4).addClass("cl_bl");
+			}else{
+				jQuery(para4).addClass("cl_gr");
+			}
+			jQuery(para4).attr("id","data"+(gh_cnt+1)+"_out");
+			document.getElementsByClassName("gh_rod")[gh_cnt].appendChild(para4);
+			
+			
+			// 인풋 만들기
+			
+			var para = document.createElement("div");
+			jQuery(para).addClass("gh_dt");
+			document.getElementById("gh_data").appendChild(para);
+			
+			var para2 = document.createElement("input");
+			jQuery(para2).addClass("gh_dt_ne");
+			jQuery(para2).attr("id","g_name"+(gh_cnt+1));
+			var at = document.createAttribute("type");
+			at.value = "text";
+			para2.setAttributeNode(at);
+			var at = document.createAttribute("placeholder");
+			at.value = "데이터명"+(gh_cnt+1);
+			para2.setAttributeNode(at);
+			var at = document.createAttribute("size");
+			at.value = "5";
+			para2.setAttributeNode(at);
+			var at = document.createAttribute("maxlength");
+			at.value = "5";
+			para2.setAttributeNode(at);
+			document.getElementsByClassName("gh_dt")[gh_cnt].appendChild(para2);
+			
+			
+			var para3 = document.createElement("input");
+			jQuery(para3).addClass("gh_dt_vl");
+			jQuery(para3).attr("id","g_data"+(gh_cnt+1));
+			var at = document.createAttribute("placeholder");
+			at.value = "데이터"+(gh_cnt+1);
+			para3.setAttributeNode(at);
+			document.getElementsByClassName("gh_dt")[gh_cnt].appendChild(para3);
+			
+			
+			
+			
+			
+			
+			
+			if(gh_cnt == 3){
+				gh_cnt = 1;
+				alert("그래프는 4개까지만 생성됩니다.");
+				document.getElementById('gh_plus_bt').style.visibility='hidden';
+			}
+			gh_cnt++;
 		}
 		
-		
+		function temporary(){
+			alert("현재 이 그래프타입은 준비중입니다.");
+		}
 		
 		
 		

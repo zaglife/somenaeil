@@ -289,6 +289,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #gh_cont {
+	clear: both;
 	float: left;
 	position: relative;
 	height: 200px;
@@ -354,11 +355,15 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	padding-top: 2px;
 }
 
+.gh_dt_vl{
+	margin: 0 0 0 4px !important;
+}
+
 #gh_data {
 	float: left;
 	position: relative;
-	width: 300px;
-	height: 100%;
+	width: 362px;
+	height: auto;
 }
 
 .gh_dt {
@@ -367,7 +372,27 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 
 #gh_plus {
 	float: left;
+	position: absolute;
+	width: 60px;
+	height: 41px;
+	right: 0;
+	bottom: 0;
+}
+
+#gh_plus_bt {
+	float: right;
 	position: relative;
+	width: 60px;
+	height: 41px;
+	margin: 0;
+
+
+	background: #fff;
+	border: 1px solid black;
+	border-radius: 10px;
+	font-weight: 900;
+	font-size: 13px;
+	cursor: pointer;
 }
 
 .gh_dt_ne, .gh_dt_vl {
@@ -377,21 +402,6 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	border: 1px solid black;
 	border-radius: 10px;
 	text-align:center;
-}
-
-#gh_plus_bt {
-	float: left;
-	position: relative;
-	width: 60px;
-	height: 41px;
-	margin: 147px 0 0px 10px;
-
-	background: #fff;
-	border: 1px solid black;
-	border-radius: 10px;
-	font-weight: 900;
-	font-size: 13px;
-	cursor: pointer;
 }
 
 #gh_bt {

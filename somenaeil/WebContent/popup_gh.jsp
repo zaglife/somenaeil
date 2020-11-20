@@ -13,7 +13,7 @@
   </div>
   <div id='gh_cate'>
     <div class='gh_ty'><a href="#"><img src="img/btn_graph01_60.png"></a></div>
-    <div class='gh_ty'><a href="#"><img src="img/btn_graph02_60.png"></a></div>
+    <div class='gh_ty'><a href="#"><img src="img/btn_graph02_60.png" onclick="temporary()"></a></div>
   </div>
   <div id='gh_cont'>
     <div id='gh_d'>
@@ -21,7 +21,6 @@
        <div class='gh_dt_name' id="name1_out"></div>
 		<div class='gh_rod'>
           <div class='gh_cl1 cl_red' id="data1_out"></div>
-         
         </div>
       </div>
       
@@ -37,10 +36,11 @@
       
     </div>
     <div id='gh_data'>
-      <div class='gh_dt'><input type="text" id="g_name1" class='gh_dt_ne' placeholder='데이터명1' size="5" maxlength="5"> <input type="text" id="g_data1" class='gh_dt_vl' placeholder='데이터1'></div>
-      <div class='gh_dt'><input type="text" id="g_name2"class='gh_dt_ne' placeholder='데이터명2' size="5" maxlength="5"> <input type="text" id="g_data2" class='gh_dt_vl' placeholder='데이터2'></div>
+      <div class='gh_dt'><input type="text" id="g_name1" class='gh_dt_ne' placeholder='데이터명1' size="5" maxlength="5"><input type="text" id="g_data1" class='gh_dt_vl' placeholder='데이터1'></div>
+      <div class='gh_dt'><input type="text" id="g_name2"class='gh_dt_ne' placeholder='데이터명2' size="5" maxlength="5"><input type="text" id="g_data2" class='gh_dt_vl' placeholder='데이터2'></div>
+      <div id='gh_plus'><button id='gh_plus_bt' onclick="gh_plus()">추가</button></div>
     </div>
-    <div id='gh_plus'><button id='gh_plus_bt'>추가</button></div>
+    
   </div>
   <div id='gh_bt'><button>저장</button></div>
 </div>
