@@ -113,16 +113,18 @@ public class member {
 	}
 	
 	public int follow_num() {
+		int followNum= 0;
 		String[] followList= follow.split(":");
-		int followNum= followList.length;
-		
+		followNum= followList.length;
+
 		return followNum;
 	}
 	
 	public int follower_num() {
-		String[] followerList= follower.split(":");
-		int followerNum= followerList.length;
-		
+		int followerNum= 0;
+		String[] followerList= follow.split(":");
+		followerNum= followerList.length;
+
 		return followerNum;
 	}
 	

@@ -33,15 +33,22 @@ public class member_hnd implements main_able{
 				view= "index.jsp";
 				break;
 			case "user" :
-
-				if(id.equals(uid)) {
+				if(id == null) {
+					member data= md.member_read(uid);
+					request.getSession().setAttribute("data", data);
+					request.getSession().setAttribute("uid", data.getId());
+					view= "user_other.jsp";
+					System.out.println("member_hnd - <user>case if문 1번째");
+				}else if(id.equals(uid)) {
 					md.member_read(uid);
 					view= "user.jsp";
+					System.out.println("member_hnd - <user>case if문 2번째");
 				} else if(!id.equals(uid)) {
 					member data= md.member_read(uid);
 					request.getSession().setAttribute("data", data);
 					request.getSession().setAttribute("uid", data.getId());
 					view= "user_other.jsp";
+					System.out.println("member_hnd - <user>case if문 3번째");
 				}
 				break;
 			case "other" :

@@ -69,11 +69,9 @@ public class member_dao {
 								int cert,
 								String pimg,
 								String comt	) {
-		System.out.println("멤버dao_인서트 1");
 		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
 		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ptmt= null;
-		System.out.println("멤버dao_인서트 2");
 		try {
 			ptmt= conn.prepareStatement(sql);
 			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
@@ -87,7 +85,6 @@ public class member_dao {
 			ptmt.setString(9, comt);
 			
 			ptmt.executeUpdate();
-			System.out.println("멤버dao_인서트 3");
 			// 회원가입 후 noti, dm 테이블 입력
 			member_user_table(nick);
 			
@@ -209,10 +206,10 @@ public class member_dao {
 	 * @param fl 팔로우 리스트 id
 	 * @return 팔로우 리스트
 	 */
-	public ArrayList<member> follow_other(String[] fl) {		
+	public ArrayList<member> follow_other(String[] fl) {
 		String sql= "select * from member where id=?";
 		
-		ArrayList<member> other_data = new ArrayList<member>();
+		ArrayList<member> follow_temp = new ArrayList<member>();
 		try {
 			for (int i=0; i<fl.length; i++) {
 				ptmt = conn.prepareStatement(sql);
@@ -228,15 +225,50 @@ public class member_dao {
 							rs.getString("follow"),
 							rs.getString("follower"),
 							rs.getString("scrap_list"));
-					other_data.add(temp);
+					follow_temp.add(temp);
 				}
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("member_dao - 다른 유저 정보 불러오기 실패");
+			System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 		}
 		close();
-		return other_data;
+		return follow_temp;
+	}
+	
+	/**
+	 * 팔로워 리스트 추출
+	 * @param flw 팔로워 리스트 id
+	 * @return 팔로워 리스트
+	 */
+	public ArrayList<member> follower_other(String[] flw) {		
+		String sql= "select * from member where id=?";
+		
+		ArrayList<member> follower_temp= new ArrayList<member>();
+		try {
+			for (int i=0; i<flw.length; i++) {
+				ptmt = conn.prepareStatement(sql);
+				ptmt.setString(1, flw[i]);
+				rs = ptmt.executeQuery();
+				
+				if (rs.next()) {
+					member temp = new member(
+							rs.getString("id"),
+							rs.getString("nick"),
+							rs.getString("pimg"),
+							rs.getString("comt"),
+							rs.getString("follow"),
+							rs.getString("follower"),
+							rs.getString("scrap_list"));
+					follower_temp.add(temp);
+				}
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("member_dao - <팔로워 리스트> 다른 유저 정보 불러오기 실패");
+		}
+		close();
+		return follower_temp;
 	}
 	
 	private void close() {

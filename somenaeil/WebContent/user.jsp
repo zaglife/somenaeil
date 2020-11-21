@@ -1,11 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.member.member"%>
 <%@page import="com.member.member_dao"%>
 <%@page import="com.member.member_service"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+
+	String id= (String) session.getAttribute("id");
+	String uid= (String) session.getAttribute("uid");
+
+	if(id != null){
+		member_service ms= new member_service();
+		ArrayList<member> follow_list= ms.follow_list(id);
+		ArrayList<member> follower_list= ms.follower_list(id);
+		request.setAttribute("follow_list", follow_list);
+		request.setAttribute("follower_list", follower_list);
+		
+	}
+
+%>
 
 <!DOCTYPE html>
 <html>
@@ -27,18 +44,9 @@
       <div id="user_nick">${user.getNick() }</div>
       <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
       <div id="user_info_follow">
-      	
-        <c:if test="${user != null }">
-          <a onclick="userFollowerPop()">팔로워 ${user.follow_num() }</a>
-          <a onclick="userFollowPop()">팔로우 ${user.follower_num() }</a>
-          <p>게시글 512</p>
-        </c:if>
-        
-        <c:if test="${user == null }">
-          <a onclick="userFollowerPop()">팔로워 미확인</a>
-          <a onclick="userFollowPop()">팔로우 미확인</a>
-          <p>게시글 미확인</p>
-        </c:if>
+        <a onclick="userFollowerPop()">팔로워 ${follower_list.size() }</a>
+        <a onclick="userFollowPop()">팔로우 ${follow_list.size() }</a>
+        <p>게시글 512</p>
       </div>
     </div>
 
@@ -85,10 +93,101 @@
 
 <div id="btm_space"></div>
 
-<!-- 유저 팔로워 리스트 "user_follower.jsp" -->
-<!-- 유저 팔로우 리스트 "user_follow.jsp" -->
-<jsp:include page="user_follower.jsp" />
-<jsp:include page="user_follow.jsp" />
+
+<!-- 유저 팔로우 리스트 "user_follow.jsp" start -->
+<c:if test="${follow_list != null }">
+<div id="user_follow" class="user_popup_wrap user_follow_hide">
+  <a onclick="userFollowPop()"></a>
+  <div class="user_popup_center">
+    <div id="user_popup_top_space"></div>
+    <div id="user_popup_top">팔로우</div><a onclick="userFollowPop()"></a>
+    <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowPop()"></div>
+    
+    <div id="user_popup_scroll">
+
+      <c:forEach items="${follow_list }" var="follow"  varStatus="temp">    
+      <div id="user_popup_cont">
+        <div class="user_popup_pimg"><img src="img/profile01.jpg"></div>
+        <div class="user_popup_name">${follow.getNick() }</div>
+        <div class="user_popup_comment">${follow.getComt() }</div>
+        <div class="user_popup_btn"><img src="img/noti_follow_20.png"></div>
+      </div>
+      </c:forEach>
+
+    </div>
+  </div>
+</div>
+</c:if>
+
+<c:if test="${follow_list == null }">
+<div id="user_follow" class="user_popup_wrap user_follow_hide">
+<a onclick="userFollowPop()"></a>
+  <div class="user_popup_center">
+  
+    <div id="user_popup_top_space"></div>
+    <div id="user_popup_top">팔로우</div>
+    <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowPop()"></div>
+    
+    <div id="user_popup_scroll">
+
+      <p class="none_fl">팔로우가 없습니다.</p>
+      
+    </div>
+    
+  </div>
+</div>
+</c:if>
+<!-- 유저 팔로우 리스트 "user_follow.jsp" end -->
+
+
+<!-- 유저 팔로워 리스트 "user_follower.jsp" start -->
+<c:if test="${follower_list != null }">
+<div id="user_follower" class="user_popup_wrap user_follower_hide">
+<a onclick="userFollowerPop()"></a>
+  <div class="user_popup_center">
+  
+    <div id="user_popup_top_space"></div>
+    <div id="user_popup_top">팔로워</div>
+    <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowerPop()"></div>
+    
+    <div id="user_popup_scroll">
+
+      <c:forEach items="${follower_list }" var="follower"  varStatus="temp">
+      <div id="user_popup_cont">
+        <div class="user_popup_pimg"><img src="img/profile01.jpg"></div>
+        <div class="user_popup_name">${follower.getNick() }</div>
+        <div class="user_popup_comment">${follower.getComt() }</div>
+        <div class="user_popup_btn"><img src="img/noti_follow_20.png"></div>
+      </div>
+      </c:forEach>
+      
+    </div>
+    
+  </div>
+</div>
+</c:if>
+
+<c:if test="${follower_list == null }">
+<div id="user_follower" class="user_popup_wrap user_follower_hide">
+<a onclick="userFollowerPop()"></a>
+  <div class="user_popup_center">
+  
+    <div id="user_popup_top_space"></div>
+    <div id="user_popup_top">팔로워</div>
+    <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowerPop()"></div>
+    
+    <div id="user_popup_scroll">
+
+      <p class="none_fl">팔로워가 없습니다.</p>
+      
+    </div>
+    
+  </div>
+</div>
+</c:if>
+<!-- 유저 팔로워 리스트 "user_follower.jsp" end -->
+
+
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
