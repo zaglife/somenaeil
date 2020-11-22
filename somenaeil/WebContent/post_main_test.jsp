@@ -146,10 +146,10 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><button id="post_code" onclick="post_code()"><img src="img/post_code_20.png"></button></div>
+  	    <div class="post_file"><button id="pd" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
-    <div id="post_write" contenteditable="true">
+    <div class="post_write" contenteditable="true">
    
 	  <!-- text입력부분 소스코드 display none -->
 
@@ -190,13 +190,13 @@
 
 <script>
 $(function() {
-	  $(".basic").spectrum({
-	   flat: false,
-	   showInput: true,
-	   preferredFormat: "rgb",
-	   color: "#000000"
-	  });
-	 });
+	$(".basic").spectrum({
+		flat: false,
+		showInput: true,
+		preferredFormat: "rgb",
+		color: "#000000"
+	});
+});
 </script>
 
 

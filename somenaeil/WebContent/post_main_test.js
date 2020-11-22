@@ -443,7 +443,7 @@ function temporary(){
 document.execCommand('styleWithCSS', false, true);
 document.execCommand('insertBrOnReturn', false, true);
 $(document).ready(function() {
-	$("#post_write").focus();
+	$(".post_write").focus();
 	$('#post_bold').click(function() {
 		document.execCommand('bold', false, true);
 	});
@@ -487,10 +487,25 @@ $(document).ready(function() {
 });
 
 function post_code() {
-	var insert_code = "<div class='post_code_cont'>";
-	insert_code+= "<input type='text' class='post_cont_li'>";
-	insert_code+= "</div>"
 	
-	document.getElementById("post_write").innerHTML = insert_code;
 	
+	
+	
+	var insert_code= document.createElement('div');
+	insert_code.setAttribute("class", "post_code_cont");
+	
+	var post_write= document.querySelector('.post_write');
+	post_write.appendChild(insert_code);
+	
+	document.execCommand('copy');
+	
+//	code_target= document.querySelector('.post_write'); 
+//	code_target.create
+//	"<div class='post_code_content'>";
+//	insert_code+= "<div class='post_code_list'>";
+//	insert_code+= "</div></div>"
+	
+//	$(".post_write").append = insert_code;
+//	document.execCommand('innerHTML', false, insert_code);
+
 }

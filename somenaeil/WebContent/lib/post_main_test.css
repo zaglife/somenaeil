@@ -537,4 +537,45 @@ a:hovre{
 #post_color:hover {
 	opacity: 1 !important;
 }
+
+
+
+
+.post_write{
+	clear: both;
+	min-height:20px;
+	padding: 20px;
+	font-size: 14px;
+}
+
+.post_code_content{
+	clear: both;
+    float: left;
+    position: relative;
+    width: 750px;
+    height: auto;
+    padding: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin: 20px 0;
+    border: 2px solid #999;
+    border-radius: 20px;
+    overflow-x: hidden;
+}
+
+.post_code_content div:nth-child(2n) {
+	background: rgba(0, 0, 0, .05);
+}
+
+.post_code_content div:last-child {
+	border-bottom: 0;
+}
+
+.post_code_list{
+	width: 730px;
+    height: 20px;
+    line-height: 20px;
+    padding: 5px 10px;
+    border-bottom: 1px dashed #999;
+}
     
