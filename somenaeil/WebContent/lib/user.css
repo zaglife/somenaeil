@@ -378,24 +378,30 @@
 #login_alert p {
 	float: left;
 	width: 100%;
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 900;
 	text-align: center;
-	margin-top: 7px;
+	margin-top: 10px;
 }
 
-#login_alert button {
+#login_alert a {
 	float: left;
 	position: relative;
+	width: 37px;
+	height: 17px;
+	text-align: center;
 	left: 50%;
 	transform: translate(-50%, 0);
-	margin-top: 6px;
+	margin-top: 5px;
 	padding: 3px 10px;
+	font-size: 12px;
 	border: 1px solid #91c38E;
 	border-radius: 5px;
 	background: #edf8e6;
 }
 
+    
+    
 .none_fl {
 	float: left;
 	position: relative;

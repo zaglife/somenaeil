@@ -15,10 +15,10 @@
        <input type="text" placeholder="투표 타이틀" class="vot_title_input">
   </div>
   <div id='vot_cont'>
-    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="1.첫번째 투표 항목"></div>
-    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="2.두번째 투표 항목"></div>
-    <div id='vot_plus'><button>추가</button></div>
+    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="1번째 투표 항목"></div>
+    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="2번째 투표 항목"></div>
   </div>
+  <div id='vot_plus'><button onclick="plus_vote()">추가</button></div>
   <div id='vot_che'>
     <div class='vot_box'>
       <input type="checkbox" name='choice' class="vot_option" id="cb1">

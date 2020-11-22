@@ -460,6 +460,82 @@ a:hovre{
 	
 }
 .post_mov_hide{
-	visibility: inherit !important;
-	
+	visibility: inherit !important;	
 }
+
+/***** *****/
+
+.post_func_btn {
+	float: left;
+	position: relative;
+	width: 34px;
+	height: 34px;
+	background: rgba(255, 255, 255, 0);
+	border: 0;
+	margin: 0;
+}
+
+
+/***** 스타일 1번 *****
+.post_color_space {
+	margin-left: 13px !important;	
+}
+
+#post_color_picker {
+	float: left;
+	position: absolute;
+	margin: 10px 0 0 142px;
+	width: 14px;
+	height: 14px;
+	border-radius: 7px;
+	overflow: hidden;
+}
+
+#foreColor {
+	float: left;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	border: 0;
+	background: rgba(255,255,255,0);
+ 	opacity : 0;
+	margin: -25px;
+}
+***** 스타일 1번 *****/
+
+/***** 스타일 2번 *****/
+.post_color_space {
+	margin-left: 0 !important;	
+}
+
+#post_color_picker {
+	float: left;
+	position: absolute;
+	margin: 8px 0 0 142px;
+	width: 20px;
+	height: 17px;
+	border-radius: 0;
+	overflow: hidden;
+}
+
+#foreColor {
+	float: left;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	border: 0;
+	background: rgba(255,255,255,0);
+	opacity : 0;
+	margin: -25px;
+	cursor: pointer;
+}
+
+#post_color:hover {
+	opacity: 1 !important;
+}
+
+    

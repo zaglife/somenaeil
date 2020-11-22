@@ -10,11 +10,11 @@
 
 <%
 
-String id= (String) session.getAttribute("id");
-String uid= (String) session.getAttribute("uid");
-	
+	String id= (String) session.getAttribute("id");
+	String uid= (String) session.getAttribute("uid");
+	member_service ms= new member_service();
+
 	if(uid != null){
-		member_service ms= new member_service();
 		ArrayList<member> follow_list= ms.follow_list(uid);
 		ArrayList<member> follower_list= ms.follower_list(uid);
 		request.setAttribute("follow_list", follow_list);
@@ -60,7 +60,7 @@ String uid= (String) session.getAttribute("uid");
       <a href="#" id="user_follow_btn_chg" class="user_follow_btn" onclick="login_alert()"></a>
       <div id="login_alert" class="login_alert_opa login_alert_dis">
       <p>로그인이 필요한 서비스입니다.</p>
-      <button>로그인</button>
+      <a href="login.do">로그인</a>
       </div>
       </c:if>
       <p>- 타입</p>

@@ -12,14 +12,13 @@
 
 	String id= (String) session.getAttribute("id");
 	String uid= (String) session.getAttribute("uid");
-
+	member_service ms= new member_service();
+	
 	if(id != null){
-		member_service ms= new member_service();
 		ArrayList<member> follow_list= ms.follow_list(id);
 		ArrayList<member> follower_list= ms.follower_list(id);
 		request.setAttribute("follow_list", follow_list);
 		request.setAttribute("follower_list", follower_list);
-		
 	}
 
 %>

@@ -13,44 +13,28 @@
   </div>
   <div id='ct_top'>
     <div id='ct_set'>
-      <input type="text">
+      <input id="row" type="number" maxlength="1" oninput="maxLengthCheck(this)">
       <p>행</p>
-      <input type="text">
+      <input id="col" type="number" maxlength="1" oninput="maxLengthCheck(this)">
       <p>열</p>
-      <button id='ct_apply'>적용</button>
+      <button id='ct_apply' onclick="ct()">적용</button>
     </div>
     
     <div id='ct_exp'>*행과 열은 최대 6개까지 가능합니다.</div>
     <div id='ct_style'>
       <div id="ct_ts_title">표스타일</div>
-      <div class="ct_ts"><a href="#"><img src="img/post_table02_40.png"></a></div>
-      <div class="ct_ts"><a href="#"><img src="img/post_table01_40.png"></a></div>
+      <div id="ct_ts">
+        <input type="radio" name="table_style" id="ts_on" checked>
+        <label for="ts_on" id="table_style_on"></label>
+        
+        <input type="radio" name="table_style" id="ts_off">
+        <label for="ts_off" id="table_style_off"></label>
+      </div>
+      
+      
     </div>
   </div>
   <div id='ct_table'>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-  	
-  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-
-  	<div class='ct_cell cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cr'><input type='text' placeholder='데이터'></div>
-
-  	<div class='ct_cell cb cc'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb'><input type='text' placeholder='데이터'></div>
-  	<div class='ct_cell cb cr'><input type='text' placeholder='데이터'></div>
   </div>
   <div id='ct_bottom'>
   	<button>저장</button>
