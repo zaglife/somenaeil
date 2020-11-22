@@ -146,7 +146,7 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><a><img src="img/post_code_20.png"></a></div>
+  	    <div class="post_file"><button id="post_code" onclick="post_code()"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
     <div id="post_write" contenteditable="true">
