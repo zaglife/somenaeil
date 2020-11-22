@@ -6,7 +6,7 @@
 <meta charset="utf-8">
 <title>textarea form 커서 영역에 텍스트 추가 삽입하기</title>
 <style>
-#editContent {
+#post_write {
 	float: left;
 	position: relative;
 	width: 800px;
@@ -16,7 +16,7 @@
 	background:#fff;
 }
 
-#editContent div {
+#post_write div {
 	clear: both;
 	float: left;
 	position: relative;
@@ -80,10 +80,10 @@ function insertImg(){
 	insertNode.setAttribute("src","http://nuli.navercorp.com/upload/91f4ad04ae6539ab297de0b934ef03df.jpg")	// 생성한 img 에 src 경로 추가
 	range.insertNode(insertNode);
 	range.setStartAfter(insertNode);
-    document.getElementById("editContent").focus();
+    document.getElementById("post_write").focus();
 }
 
-function insertCode(){
+function post_code(){
     
 	var sel = window.getSelection();
 	var range = sel.getRangeAt(0);
@@ -106,7 +106,7 @@ function insertCode(){
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	
-	document.getElementById("editContent").appendChild(new_post_write);    
+	document.getElementById("post_write").appendChild(new_post_write);    
 }
 
 </script>
@@ -115,7 +115,7 @@ function insertCode(){
 <body style="background:#eee;">
     <p>하단 편집란에 글을 쓰고 이미지삽입 버튼을 클릭해보세요 (모던브라우저에서만 작동)</p>
     <input type="button" id="submitAdd" onclick="insertImg()" value="이미지삽입">
-    <input type="button" id="submitAdd2" onclick="insertCode()" value="이미지삽입">
-	<div id="editContent" contenteditable="true"></div>
+    <input type="button" id="submitAdd2" onclick="post_code()" value="이미지삽입">
+	<div id="post_write" contenteditable="true"></div>
 </body>
 

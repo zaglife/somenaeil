@@ -97,7 +97,7 @@
       <label for="cate_q_btn" onclick="post_cate(1)"></label>
     </div>
     <p>*카테고리 필수 선택 </p>
-    <div id="post_cate_exp">
+    <div id="post_cate_exp" onclick="enter()">
       <img src="img/post_q_20.png">
     </div>
     <div id='post_cate_exp_img'><img src="img/cate_exp_s.png"></div>
@@ -125,7 +125,7 @@
   	      <div id="post_link_wrap" class="post_link">
   	      	<input type="text" placeholder="링크명" id='lk_text'>
   	        <input type="text" value="http://" id='lk'>
-  	        <button id='lk_bt' type="button">+</button>
+  	        <button id='lk_bt' type="button" onclick="lk_bt_input()">+</button>
   	      </div>
   	    </div>
   	    <div class="post_file">
@@ -149,7 +149,7 @@
   	    <div class="post_file"><button id="pd" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
-    <div class="post_write" contenteditable="true">
+    <div id="post_write" contenteditable="true">
    
 	  <!-- text입력부분 소스코드 display none -->
 

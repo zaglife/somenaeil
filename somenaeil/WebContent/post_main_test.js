@@ -483,29 +483,47 @@ $(document).ready(function() {
 	$("#fontSize").change(function(){
 		document.execCommand('fontSize', false, $(this).val());
 	});
-
 });
 
-function post_code() {
+function post_code(){
+	var insertNode= document.createElement('div');
+	jQuery(insertNode).addClass("post_code_content");
+	insertNode.setAttribute("contenteditable","true");
 	
+	var post_code_cont= document.createElement('div');
+	jQuery(post_code_cont).addClass("post_code_list");
 	
+//	insertNode.appendChild(post_code_cont);
 	
+	var new_post_write= document.createElement('div');
+	jQuery(new_post_write).addClass("new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
 	
-	var insert_code= document.createElement('div');
-	insert_code.setAttribute("class", "post_code_cont");
-	
-	var post_write= document.querySelector('.post_write');
-	post_write.appendChild(insert_code);
-	
-	document.execCommand('copy');
-	
-//	code_target= document.querySelector('.post_write'); 
-//	code_target.create
-//	"<div class='post_code_content'>";
-//	insert_code+= "<div class='post_code_list'>";
-//	insert_code+= "</div></div>"
-	
-//	$(".post_write").append = insert_code;
-//	document.execCommand('innerHTML', false, insert_code);
+	document.getElementById("post_write").appendChild(insertNode);   
+	insertNode.append(post_code_cont);
+	document.getElementById("post_write").appendChild(new_post_write);   
+}
 
+function lk_bt_input() {
+	var insertNode = document.createElement('a');
+	
+	var lk= $('#lk').val();
+	var lk_text= $('#lk_text').val();
+	if(!lk_text || lk_text == "") {
+		lk_text= $('#lk').val();
+	}else if(lk_text != null) {
+		lk_text= $('#lk_text').val();
+	}
+	
+	insertNode.innerText= lk_text; 
+	insertNode.setAttribute("href", lk);
+	insertNode.setAttribute("title", "포스팅 등록시 링크가 활성화 됩니다.");
+	jQuery(insertNode).addClass("link_inserted");
+	$("#post_write div:last").append(insertNode);
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	
+	document.getElementById("post_write").appendChild(new_post_write);   
 }
