@@ -493,15 +493,13 @@ function post_code(){
 	var post_code_cont= document.createElement('div');
 	jQuery(post_code_cont).addClass("post_code_list");
 	
-//	insertNode.appendChild(post_code_cont);
-	
 	var new_post_write= document.createElement('div');
 	jQuery(new_post_write).addClass("new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	
 	document.getElementById("post_write").appendChild(insertNode);   
 	insertNode.append(post_code_cont);
-	document.getElementById("post_write").appendChild(new_post_write);   
+	document.getElementById("post_write").appendChild(new_post_write);
 }
 
 function lk_bt_input() {
