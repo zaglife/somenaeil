@@ -120,8 +120,6 @@
       <textarea id="txtForm" class="autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="글을 입력해주세요."></textarea>
 	
 
-	  <!-- text입력부분 소스코드 display none -->
-
 	
     </div>
   </div>
@@ -145,7 +143,7 @@
     </div>
     <!-- 게시판 파일업로드 input end -->
 
-    <div id="post_send"><button type="submit">올리기</button></div>
+    <div id="post_send"><button onclick="submit()">올리기</button></div>
   </div>  
   <!-- 바텀 끝 -->
 </div>

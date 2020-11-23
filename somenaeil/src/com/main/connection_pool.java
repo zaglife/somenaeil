@@ -50,10 +50,8 @@ public class connection_pool extends HttpServlet{
 			PoolingDriver driver = (PoolingDriver)DriverManager.getDriver("jdbc:apache:commons:dbcp:");
 			driver.registerPool("somenaeil", conpool);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("커넥션 풀 실패");
 		}
-		
 	}
 }

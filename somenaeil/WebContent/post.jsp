@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
-	<title>제약바이오 60초 영상공모전</title>
+	<title>${post.title}</title>
 	<jsp:include page="css.jsp" />
 </head>
 
 <body>
-
-
 	<!-- 포스팅 내용 -->
 	<div class="article_wrap">
 		<div class="article">
@@ -25,20 +25,20 @@
 				</div>
 				<div class="article_info">
 					<div class="article_title">
-						제약바이오 60초 영상공모전
+						${post.title}
 					</div>
 					<div class="article_subinfo1">
 						<div class="article_auth">
-							<span class="user_id"><a href="user.jsp">gagip</a></span>
+							<span class="user_id"><a href="user.jsp">${post.nick}</a></span>
 							<span class="follow"> <img src="img/noti_follow_n_20.png"> </span>
 							<span class="dm"> <a href="dm.jsp"><img src="img/icon_dm_20.png"></a></span>
 						</div>
 						<div class="article_icon">
 							<span class="like">
-								<img src="img/noti_like_n_20.png"> <span>1</span>
+								<img src="img/noti_like_n_20.png"> <span>${post.like_cnt}</span>
 							</span>
 							<span class="scrap">
-								<img src="img/noti_scrap_n_20.png"><span>5</span>
+								<img src="img/noti_scrap_n_20.png"><span>${post.scrap_cnt}</span>
 							</span>
 						</div>
 					</div>
@@ -48,25 +48,21 @@
 							<span class="uesr_follow">팔로우 <span>98</span></span>
 
 						</div>
-						<div class="article_date">2019년 10월 2일</div>
+						<div class="article_date">${post.time}</div>
 					</div>
 				</div>
 			</div>
 			<!-- content (글, 이미지, 해시태그)-->
 			<div class="article_content">
-				<p>
-					제약바이오 60초 영상공모전 <br>
-					1등 상금이 500만원?! <br>
-					참가자격은 누구나 <br>
-					지원 가능한거 같은데요?? <br>
-					60초 안에 영상컨텐츠도 <br>
-					...
-				</p>
-				<img src="img/profile04.jpg">
+			
+				${post.context}
+
 				<div class="article_hashTag">
-					<a class="hash" href="index.jsp#search">#제약바이오</a>
-					<a class="hash" href="index.jsp#search">#60초영상</a>
+					<c:forTokens items="${post.hash}" var="hash" delims=",">
+						<a class="hash" href="index.jsp#search">#${hash}</a>
+					</c:forTokens>
 				</div>
+				
 			</div>
 			<!-- footer (댓글) -->
 			<div class="article_footer">
@@ -112,7 +108,7 @@
 					<a><img src="img/btn_more_20.png" onclick="more_comment();"></a>
 				</div>
 				<div class="input_comment">
-					<div class="comment_id">gagip</div>
+					<div class="comment_id">${post.nick}</div>
 					<input class="comment_context" type="text" placeholder="댓글을 입력하세요">
 					<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력">
 				</div>

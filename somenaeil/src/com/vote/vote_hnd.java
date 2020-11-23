@@ -9,7 +9,6 @@ public class vote_hnd implements post_able{
 
 	@Override
 	public String active(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

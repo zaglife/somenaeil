@@ -263,6 +263,11 @@ $(document).ready(function(){
 		g4= $("#g_data4").val();
 		gh_calc();
 	});
+	
+	
+	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
+	var jbHtml = $( '#post_write' ).html();
+    alert( jbHtml );
 
 });
 		
@@ -509,4 +514,8 @@ function insertText() {
 	txtForm.focus();
 }
 	
+
+function submit(){
+	alert("실행");
+}
 /* post_main script end */

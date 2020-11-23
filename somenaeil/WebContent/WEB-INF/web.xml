@@ -22,7 +22,7 @@
   	<servlet-class>com.main.main_control</servlet-class>
   	<init-param>
   		<param-name>ConfigFile</param-name>
-  		<param-value>\WEB-INF\main.properties</param-value>
+  		<param-value>main.properties</param-value>
   	</init-param>
   	<load-on-startup>2</load-on-startup>
   </servlet>
@@ -37,7 +37,7 @@
   	<servlet-class>com.some.some_control</servlet-class>
   	<init-param>
   		<param-name>ConfigFile</param-name>
-  		<param-value>\WEB-INF\some.properties</param-value>
+  		<param-value>some.properties</param-value>
   	</init-param>
   	<load-on-startup>3</load-on-startup>
   </servlet>
@@ -52,7 +52,7 @@
   	<servlet-class>com.post.post_control</servlet-class>
   	<init-param>
   		<param-name>ConfigFile</param-name>
-  		<param-value>\WEB-INF\post.properties</param-value>
+  		<param-value>post.properties</param-value>
   	</init-param>
   	<load-on-startup>4</load-on-startup>
   </servlet>

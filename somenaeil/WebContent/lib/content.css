@@ -16,13 +16,14 @@
 	margin: 0 40px;
 }
 
-.current {
+a.current {
 	border-bottom: 3px solid green;
 }
 
 
 /* tab_content */
 .tab_content {
+	/*display: none;*/
 	clear: both;
 	float: left;
 	position: relative;
@@ -32,6 +33,9 @@
 	margin-top: 20px;
 }
 
+.tab_content.current {
+	display: inherit;
+}
 
 /* post */
 .post {
@@ -148,6 +152,7 @@
 	font-size: 16px;
 	color: #555;
 	line-height: 28px;
+	padding: 10px 50px;
 }
 
 
