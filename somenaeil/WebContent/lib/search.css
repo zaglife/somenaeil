@@ -29,12 +29,14 @@
 	border: 1px solid #777;
 }
 
-.sc_focus {
+
+.search_menu.current {
 	border: 1px solid #91c38e !important;
 }
 
 
 #search_wrap {
+	display: inherit;
 	clear: both;
 	float: left;
 	position: relative;
@@ -68,3 +70,4 @@
 	top: 0;
 	margin: 12px 0 0 54px;
 }
+

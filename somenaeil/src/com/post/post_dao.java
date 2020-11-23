@@ -71,43 +71,44 @@ public class post_dao {
 	
 	/**
 	 * 검색결과에 따른 post List 호출
-	 * @param optList 검색 옵션들 <String:검색옵션, Object:검색조건>
+	 * @param cate 게시글 카테고리 (G, R, Q)
+	 * @param condition 검색 키워드
 	 */
-	public ArrayList<post> getPostList(HashMap<String, Object> optList) {
-		String opt = (String)optList.get("opt");				// 검색 옵션
-        String condition = (String)optList.get("condition");	// 검색 조건
+	public ArrayList<post> getPostList(String cate, String condition) {
+		cate = cate != null ? cate : "";
 		
 		ArrayList<post> postList = new ArrayList<post>();
 		
 		try {
 			
-			// 검색 옵션 설정 X
-			if (opt == null) {
+			// 검색 키워드 존재하지 않으므로 전체 리스트 보여주기
+			if (condition == null) {
 				String sql =  "SELECT ROWNUM as rnum, data.* FROM "	// rnum을 포함한 data를 가지고 와라
 							+ "		(SELECT * FROM post "			// num 내림차순으로 정렬된 데이터를 data라고 하자
-							+ "			ORDER BY num DESC) data ";
+							+ "			ORDER BY num DESC) data "
+							+ "WHERE cate LIKE ?";					// 게시글 카테고리
 				
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+cate+"%");
 				rs = pstmt.executeQuery();
 			}
-			// 제목으로 검색
-			else if (opt.equals("sTitle")) {
+			// 검색 키워드 존재
+			else {
+				String sql =  "SELECT ROWNUM as rnum, data.* FROM "	// rnum을 포함한 data를 가지고 와라
+						+ "		(SELECT * FROM post "
+						+ "			WHERE cate LIKE ? "
+						+ "			AND (title LIKE ? "
+						+ "				OR context LIKE ? "
+						+ "				OR hash LIKE ?)"			
+						+ "			ORDER BY num DESC) data ";		// 검색에 만족하는 데이터를 data라고 하자
 				
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+cate+"%");
+				pstmt.setString(2, "%"+condition+"%");
+				pstmt.setString(3, "%"+condition+"%");
+				pstmt.setString(4, "%"+condition+"%");
+				rs = pstmt.executeQuery();
 			}
-			// 내용으로 검색
-			else if (opt.equals("sContext")) {	
-				
-			}
-			// 해시태그로 검색
-			else if (opt.equals("sHash")) {
-				
-			}
-			// 글쓴이로 검색
-			else if (opt.equals("sNick")) {
-				
-			}
-			
-			
 			// DB 결과를 post에 넣은 뒤, list에 추가
 			while (rs.next()) {
 				post pt = new post();

@@ -4,45 +4,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<script>
-	// TODO tab 기능 -> 상단바 상호작용
-	$(document).ready(function(){
-		var tab_id = $(this).attr("data-tab");
-		
-		$("#main_menu_center a").removeClass("current");
-		$(".tab_content").removeClass("current");
-		
-		$(this).addClass("current");
-		$("#"+tab_id).addClass("current");
-	})
-	
-	// TODO post 보이게 만들기
-</script>
 
 <!-- 분류 탭  -->
 <div id="main_menu_wrap">
   <div id="main_menu_center">
-    <a href="#" class="main_menu current" data-tab="all" >A전체</a>
-    <a href="#" class="main_menu" data-tab="general">G일반</a>
-    <a href="#" class="main_menu" data-tab="review">R리뷰</a>
-    <a href="#" class="main_menu" data-tab="qna">Q질문</a>
-    <a href="#" style="display:none;">S스크랩</a>
-    <div id="main_menu_focus"></div>
+    <a class="main_menu current" data-tab="all" href="read.post?part=postList">A전체</a>
+    <a class="main_menu" data-tab="general" href="read.post?part=postList&cate=G">G일반</a>
+    <a class="main_menu" data-tab="review" href="read.post?part=postList&cate=R">R리뷰</a>
+    <a class="main_menu" data-tab="qna" href="read.post?part=postList&cate=Q">Q질문</a>
+    <a style="display:none;" >S스크랩</a>
   </div>
 </div>
   
   
 <!-- 포스팅 내용 -->
-<div id="all" class="tab_content current">
-
-  <!-- post start -->
+<div class="tab_content">
+<!-- post start -->
   <c:forEach items="${postList}" var="post">
-  	<div class="post">	  
+  	<div class="post ${post.cate}">	  
 	    <!-- post_header start -->
 	    <div class="post_header">
 	    
 	      <div class="post_header_thumb">
-	      	<!-- 글 카테고리 아이콘 -->
+	      	<!-- 게시글 카테고리 아이콘 -->
 	      	<c:choose>
 	      		<c:when test="${post.cate=='G'}">
 	      			<img class="tab_thumb" src="img/cate_g_s.png">
@@ -83,7 +67,7 @@
 	    
 	      <div class="post_footer_hashTag">
 					<c:forTokens items="${post.hash}" var="hash" delims=",">
-						<a class="hash" href="index.jsp#search">#${hash}</a>
+						<a class="hash" href="search.post?part=search&condition=${hash}">#${hash}</a>
 					</c:forTokens>
 	      </div>
 	      
@@ -106,6 +90,7 @@
   
   
   
+  <!-- TODO 이미지 포스트 템플릿 작성 -->
   <!-- post start -->
   <div class="post">
   
@@ -170,18 +155,10 @@
   <!-- post end -->
   
   
+  
 
 </div>
 <!-- 포스팅 내용 끝 -->
 
-<div id="general" class="tab_content">
 
-</div>
-
-<div id="review" class="tab_content">
-
-</div>
-
-<div id="qna" class="tab_content">
-
-</div>
+<script src="lib/js/content.js"></script>

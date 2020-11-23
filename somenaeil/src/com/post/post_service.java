@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
  * @author gagip
@@ -43,27 +45,24 @@ public class post_service {
 	 */
 	public String postList() {
 		// 검색 옵션 파라미터 값 불러오기
-		String opt = request.getParameter("opt");
+		String cate = request.getParameter("cate");
 		String condition = request.getParameter("condition");
-		
-		// dao에 보낼 검색 옵션
-		HashMap<String, Object> optList = new HashMap<String, Object>();
-		optList.put("opt", opt);
-		optList.put("condition", condition);
 		
 		// DB에 접근하여 결과값을 post List에 전달
 		post_dao dao = new post_dao();
-		ArrayList<post> postList = dao.getPostList(optList);
+		ArrayList<post> postList = dao.getPostList(cate, condition);
 		
 		// 결과 값을 request에 전달
 		request.setAttribute("postList", postList);
 		
 		// 파라미터 URL 작성
 		String subURL = "";
-		if (opt != null && condition != null) {
-			subURL += String.format("opt=%s&condition=%s", opt, condition);
-		}
+		if (!subURL.endsWith("?")) subURL += "&";
+		subURL += String.format("cate=%s&condition=%s", cate, condition);
+		
 		
 		return "index.jsp?" + subURL;
 	}
+	
+
 }

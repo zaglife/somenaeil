@@ -47,6 +47,7 @@ function dropdown() {
 		drop= 1;
 	}
 }
+
 </script>
 
 <c:choose>
@@ -74,11 +75,16 @@ function dropdown() {
     <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
   </div>
   
-  <div id="top_search">
-    <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
-    <input type="text" placeholder="검색">
-    <a href="#"><img src="img/btn_search01_20.png"></a>
-  </div>
+  <form action="search.post" method="get">
+	  <div id="top_search">
+	    <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+	    <!-- <input type="hidden" name="cate" value="G">  -->
+	    <input type="hidden" name="part" value="search">
+	    <input type="hidden" name="opt" value="sTitle">
+	    <input type="text" name="condition" placeholder="검색">
+	    <button type="submit"><img src="img/btn_search01_20.png"></button>
+	  </div>
+  </form>
   
   <div id="top_menu">
     <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
