@@ -98,6 +98,7 @@ public class member {
 	// 다른 유저 정보 출력
 	public member(	String id,
 					String nick,
+					String email,
 					String pimg,
 					String comt,
 					String follow,
@@ -105,6 +106,7 @@ public class member {
 					String scrap_list	) {
 		this.id = id; 
 		this.nick= nick;
+		this.email= email;
 		this.pimg= pimg;
 		this.comt= comt;
 		this.follow= follow;

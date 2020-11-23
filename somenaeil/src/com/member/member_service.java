@@ -36,18 +36,41 @@ public class member_service {
 		String name= request.getParameter("name");
 		String nick= request.getParameter("nick");
 		String email= request.getParameter("email");
+		String addr= request.getParameter("addr");
 		int cert= Integer.parseInt(request.getParameter("cert"));
 		String pimg= request.getParameter("pimg");
 		String comt= request.getParameter("comt");
 		
 		// 이메일 주소 뒷부분 추가
-		email+= "@";
-		
+		email+= "@"+addr;
 		// 회원가입 테스트를 위한 이메일 인증
 		cert= 1;
+		
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
 		member user= md.member_select(id, pw);
+		request.getSession().setAttribute("user", user);
+	}
+	
+	public void update() {
+		String pw= request.getParameter("pw");
+		String nick= request.getParameter("nick");
+		String email= request.getParameter("email");
+		String addr= request.getParameter("addr");
+		// 회원가입 테스트를 위한 이메일 인증
+		int cert= 1;
+		String pimg= request.getParameter("pimg");
+		String comt= request.getParameter("comt");
+		
+		String id= ((member)request.getSession().getAttribute("user")).getId();
+		
+		// 이메일 주소 뒷부분 추가
+		email+= "@"+addr;
+		
+		
+		member_dao md=new member_dao();
+		member user= md.member_update(id, pw, nick, email, cert, pimg, comt);
+		
 		request.getSession().setAttribute("user", user);
 	}
 	

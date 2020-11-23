@@ -13,9 +13,6 @@ import com.noti.noti;
 
 public class member_dao {
 	private Connection conn;
-	private PreparedStatement ptmt;
-	private ResultSet rs;
-	
 	
 	public member_dao(){
 		try {
@@ -28,13 +25,10 @@ public class member_dao {
 	
 	public member member_select(String id, String pw) {
 		String sql= "select * from member where id='"+id+"' and pw='"+pw+"'";
-		Statement stmt= null;
-		ResultSet rs= null;
 		
-		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
-				
+		try(	Statement st= conn.createStatement();
+				ResultSet rs= st.executeQuery(sql)) {
+
 			if(rs.next()) {
 				member user= new member(
 					rs.getString("id"),
@@ -48,9 +42,6 @@ public class member_dao {
 					rs.getString("follower"),
 					rs.getString("scrap_list"),
 					rs.getString("like_list"));
-				rs.close();
-				stmt.close();
-				conn.close();
 				
 				return user;
 			}
@@ -71,9 +62,8 @@ public class member_dao {
 								String comt	) {
 		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
 		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		PreparedStatement ptmt= null;
-		try {
-			ptmt= conn.prepareStatement(sql);
+
+		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
 			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
 			ptmt.setString(2, id);
 			ptmt.setString(3, pw);
@@ -87,15 +77,44 @@ public class member_dao {
 			ptmt.executeUpdate();
 			// 회원가입 후 noti, dm 테이블 입력
 			member_user_table(nick);
-			
-			ptmt.close();
-			conn.close();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 회원가입 sql 입력 실패");
 		}
+	}
+	
+	public member member_update(	String id,
+									String pw,
+									String nick,
+									String email,
+									int cert,
+									String pimg,
+									String comt	) {
+		if(pw == "") {
+			String sql= "select pw from member where id='"+id+"'";
+
+			try(	Statement stmt= conn.createStatement();
+					ResultSet rs= stmt.executeQuery(sql)) {
+				if(rs.next()) {
+					pw= rs.getString("pw");
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("member_dao - 회원정보수정 중 비밀번호 조회 실패");
+			}
+		}
+		String sql= "update member set pw='"+pw+"', nick='"+nick+"',";
+		sql+= " email='"+email+"', cert='"+cert+"', pimg='"+pimg+"',";
+		sql+= " comt='"+comt+"' where id='"+id+"'";
 		
-		
+		try(Statement stmt= conn.createStatement()) {
+			stmt.executeUpdate(sql);			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 회원정보수정 실패");
+		}
+		return member_select(id, pw);
 	}
 
 	public void member_user_table(String nick) {
@@ -107,13 +126,8 @@ public class member_dao {
 		sql+= "time date default sysdate, ";
 		sql+= "scrap number(6))";
 		
-		Statement stmt= null;
-		ResultSet rs= null;
-		
-		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
-			
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
 			if(rs.next()) {
 				noti nt= new noti(
 					rs.getInt("num"),
@@ -121,9 +135,6 @@ public class member_dao {
 					rs.getInt("type"),
 					rs.getDate("time"),
 					rs.getInt("scrap"));
-				rs.close();
-				stmt.close();
-				conn.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -138,13 +149,8 @@ public class member_dao {
 		sql+= "time date default sysdate, ";
 		sql+= "cert number(1))";
 		
-		stmt= null;
-		rs= null;
-		
-		try {
-			stmt= conn.createStatement();
-			rs= stmt.executeQuery(sql);
-			
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
 			if(rs.next()) {
 				dm dm= new dm(
 					rs.getInt("num"),
@@ -152,15 +158,11 @@ public class member_dao {
 					rs.getString("context"),
 					rs.getDate("time"),
 					rs.getInt("cert"));
-				rs.close();
-				stmt.close();
-				conn.close();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 유저별 dm테이블 생성 실패");
 		}
-		
 	}
 	
 	
@@ -176,15 +178,14 @@ public class member_dao {
 		String sql= "select * from member where id=?";
 		
 		member user = null;
-		try {
-			ptmt = conn.prepareStatement(sql);
+		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
 			ptmt.setString(1, id);
-			rs = ptmt.executeQuery();
-			
+			ResultSet rs= ptmt.executeQuery();
 			if(rs.next()) {
 				user= new member(
 					rs.getString("id"),
 					rs.getString("nick"),
+					rs.getString("email"),
 					rs.getString("pimg"),
 					rs.getString("comt"),
 					rs.getString("follow"),
@@ -195,8 +196,6 @@ public class member_dao {
 			e.printStackTrace();
 			System.out.println("member_dao - 팔로우, 팔로워 리스트 불러오기 실패");
 		}
-		close();
-		
 		return user;
 	}
 
@@ -208,18 +207,19 @@ public class member_dao {
 	 */
 	public ArrayList<member> follow_other(String[] fl) {
 		String sql= "select * from member where id=?";
-		
 		ArrayList<member> follow_temp = new ArrayList<member>();
-		try {
+		
+		try(	PreparedStatement ptmt= conn.prepareStatement(sql);
+				ResultSet rs= ptmt.executeQuery()) {
+			
 			for (int i=0; i<fl.length; i++) {
-				ptmt = conn.prepareStatement(sql);
 				ptmt.setString(1, fl[i]);
-				rs = ptmt.executeQuery();
 				
 				if (rs.next()) {
 					member temp = new member(
 							rs.getString("id"),
 							rs.getString("nick"),
+							rs.getString("email"),
 							rs.getString("pimg"),
 							rs.getString("comt"),
 							rs.getString("follow"),
@@ -232,7 +232,6 @@ public class member_dao {
 			e.printStackTrace();
 			System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 		}
-		close();
 		return follow_temp;
 	}
 	
@@ -245,16 +244,17 @@ public class member_dao {
 		String sql= "select * from member where id=?";
 		
 		ArrayList<member> follower_temp= new ArrayList<member>();
-		try {
+		try(	PreparedStatement ptmt= conn.prepareStatement(sql);
+				ResultSet rs= ptmt.executeQuery()) {
+			
 			for (int i=0; i<flw.length; i++) {
-				ptmt = conn.prepareStatement(sql);
 				ptmt.setString(1, flw[i]);
-				rs = ptmt.executeQuery();
 				
 				if (rs.next()) {
 					member temp = new member(
 							rs.getString("id"),
 							rs.getString("nick"),
+							rs.getString("email"),
 							rs.getString("pimg"),
 							rs.getString("comt"),
 							rs.getString("follow"),
@@ -267,16 +267,6 @@ public class member_dao {
 			e.printStackTrace();
 			System.out.println("member_dao - <팔로워 리스트> 다른 유저 정보 불러오기 실패");
 		}
-		close();
 		return follower_temp;
-	}
-	
-	private void close() {
-		try {
-			if (rs != null) { rs.close(); rs = null; }
-			if (ptmt != null) { ptmt.close(); ptmt = null; }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }

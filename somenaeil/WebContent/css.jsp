@@ -3,8 +3,11 @@
 
 <link rel="stylesheet" type="text/css" href="lib/somenaeil_fonts.css">
 <link rel="stylesheet" type="text/css" href="lib/common.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script src="http://code.jquery.com/jquery-1.12.0.min.js" ></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="post_main.js"></script>
 
 <link rel="stylesheet" href="lib/index.css">
 <link rel="stylesheet" href="lib/content.css">
@@ -20,8 +23,14 @@
 <link rel="stylesheet" href="lib/popup.css">
 <link rel="stylesheet" href="lib/post.css">
 
+
+
 <link rel="stylesheet" href="lib/join.css">
 <link rel="stylesheet" href="lib/login.css">
 <link rel="stylesheet" href="lib/cs.css">
 <link rel="stylesheet" href="lib/job.css">
 <link rel="stylesheet" href="lib/info.css">
+
+<%-- 스펙트럼 --%>
+<script src="lib/spectrum.js"></script>
+<link rel="stylesheet" href="lib/spectrum.css">

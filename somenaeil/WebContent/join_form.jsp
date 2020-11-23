@@ -34,7 +34,7 @@
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
     <input type="text" name="email" placeholder="somenaeil" class="jf_input jf_email">
     <p id="jf_email_at">@</p>
-    <select id="jf_email_addr">
+    <select id="jf_email_addr" name="addr">
       <option>이메일</option>
       <option value="naver.com" selected>naver.com</option>
       <option value="gmail.com">gmail.com</option>

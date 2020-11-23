@@ -32,6 +32,13 @@ public class member_hnd implements main_able{
 				ms.join();
 				view= "index.jsp";
 				break;
+			case "info" :
+				request.setAttribute("pg", "join_edit.jsp");
+				break;
+			case "update" :
+				ms.update();
+				view= "user.jsp";
+				break;
 			case "user" :
 				if(id == null) {
 					member data= md.member_read(uid);
