@@ -39,13 +39,14 @@
 
 
 
-<form method="post" action="write.post" onsubmit="return false">
-<input type="hidden" name="part" value="write">
+<form id="form" method="get" action="write.post">
+<input type="hidden" name="part" value="writer">
+<input id="context" type="hidden" name="context" value="s">
 <div id="post_wrap">
   
   <!-- 타이틀 시작  -->
   <div id="post_title">
-    <input type="text" placeholder="제목">
+    <input type="text" placeholder="제목" id="title">
   </div>
   <!--  타이틀 끝  -->
   
@@ -53,17 +54,17 @@
   <!-- 카테고리 선택 시작 -->
   <div id="post_cont">
     <div class="post_cate" id="cate_g">
-      <input type="radio" name="cate_btn" id="cate_g_btn" checked="checked">
+      <input type="radio" name="cate_btn" id="cate_g_btn" checked="checked" value="g">
       <label for="cate_g_btn" onclick="post_cate(1)"></label>
     </div>
     
     <div class="post_cate" id="cate_r">
-      <input type="radio" name="cate_btn" id="cate_r_btn">
+      <input type="radio" name="cate_btn" id="cate_r_btn" value="r">
       <label for="cate_r_btn" onclick="post_cate(2)"></label>
     </div>
     
     <div class="post_cate" id="cate_q">
-      <input type="radio" name="cate_btn" id="cate_q_btn">
+      <input type="radio" name="cate_btn" id="cate_q_btn" value="q">
       <label for="cate_q_btn" onclick="post_cate(1)"></label>
     </div>
     <p>*카테고리 필수 선택 </p>
@@ -143,7 +144,7 @@
     </div>
     <!-- 게시판 파일업로드 input end -->
 
-    <div id="post_send"><button onclick="submit()">올리기</button></div>
+    <div id="post_send"><button onclick="submit2();">올리기</button></div>
   </div>  
   <!-- 바텀 끝 -->
 </div>

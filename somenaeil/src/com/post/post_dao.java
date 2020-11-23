@@ -145,4 +145,11 @@ public class post_dao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	
+	public void add() {
+		String sql = "insert into post ";
+		
+	}
 }

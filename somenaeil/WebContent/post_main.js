@@ -265,9 +265,7 @@ $(document).ready(function(){
 	});
 	
 	
-	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
-	var jbHtml = $( '#post_write' ).html();
-    alert( jbHtml );
+	
 
 });
 		
@@ -515,7 +513,28 @@ function insertText() {
 }
 	
 
-function submit(){
-	alert("실행");
+function submit1(){
+	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
+	var jbHtml = $('#post_write').html();
+	
+	var f = document.getElementById("form");
+	
+	var i = document.createElement("input"); // input 엘리멘트 생성 
+	i.setAttribute("type","hidden"); // type 속성을 hidden으로 설정
+	i.setAttribute("name","content"); // name 속성을 'm_nickname'으로 설정 
+	i.setAttribute("value",jbHtml); // value 속성을 neilong에 담겨있는 값으로 설정 
+	f.appendChild(i); // form 엘리멘트에 input 엘리멘트 추가 
+
+	f.submit();
+	
 }
+
+function submit2(){
+	var context = $("#post_write").html();
+	
+	$("#context").val(context);
+	var f = document.getElementById("form");
+	f.submit();
+}
+
 /* post_main script end */

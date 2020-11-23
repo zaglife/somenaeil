@@ -66,4 +66,17 @@ public class post_service {
 		
 		return "index.jsp?" + subURL;
 	}
+	
+	public String add() {
+		String title = request.getParameter("title");
+		String cate = request.getParameter("cate_btn");
+		String content = request.getParameter("content");
+		String[] hash = request.getParameterValues("hash");
+		
+		String context = request.getParameter("context");
+		post_dao pd = new post_dao();
+//		pd.add(title, cate, content, hash);		
+		
+		return "";
+	}
 }
