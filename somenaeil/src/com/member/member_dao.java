@@ -206,33 +206,34 @@ public class member_dao {
 	 * @return 팔로우 리스트
 	 */
 	public ArrayList<member> follow_other(String[] fl) {
-		String sql= "select * from member where id=?";
-		ArrayList<member> follow_temp = new ArrayList<member>();
+		ArrayList<member> data = new ArrayList<member>();
 		
-		try(	PreparedStatement ptmt= conn.prepareStatement(sql);
-				ResultSet rs= ptmt.executeQuery()) {
-			
-			for (int i=0; i<fl.length; i++) {
-				ptmt.setString(1, fl[i]);
-				
-				if (rs.next()) {
-					member temp = new member(
+		for(int i=0; i<fl.length; i++) {
+			String sql= "select * from member where id='"+fl[i]+"'";
+			try(	Statement stmt= conn.createStatement();
+					ResultSet rs= stmt.executeQuery(sql)) {
+				if(rs.next()) {
+					member follow_temp= new member(
 							rs.getString("id"),
+							rs.getString("name"),
 							rs.getString("nick"),
 							rs.getString("email"),
+							rs.getInt("cert"),
 							rs.getString("pimg"),
 							rs.getString("comt"),
 							rs.getString("follow"),
 							rs.getString("follower"),
-							rs.getString("scrap_list"));
-					follow_temp.add(temp);
+							rs.getString("scrap_list"),
+							rs.getString("like_list"));
+					data.add(follow_temp);
+					
 				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 		}
-		return follow_temp;
+		return data;
 	}
 	
 	/**
@@ -240,33 +241,34 @@ public class member_dao {
 	 * @param flw 팔로워 리스트 id
 	 * @return 팔로워 리스트
 	 */
-	public ArrayList<member> follower_other(String[] flw) {		
-		String sql= "select * from member where id=?";
+	public ArrayList<member> follower_other(String[] flw) {	
+		ArrayList<member> data = new ArrayList<member>();
 		
-		ArrayList<member> follower_temp= new ArrayList<member>();
-		try(	PreparedStatement ptmt= conn.prepareStatement(sql);
-				ResultSet rs= ptmt.executeQuery()) {
-			
-			for (int i=0; i<flw.length; i++) {
-				ptmt.setString(1, flw[i]);
-				
-				if (rs.next()) {
-					member temp = new member(
+		for(int i=0; i<flw.length; i++) {
+			String sql= "select * from member where id='"+flw[i]+"'";
+			try(	Statement stmt= conn.createStatement();
+					ResultSet rs= stmt.executeQuery(sql)) {
+				if(rs.next()) {
+					member follower_temp= new member(
 							rs.getString("id"),
+							rs.getString("name"),
 							rs.getString("nick"),
 							rs.getString("email"),
+							rs.getInt("cert"),
 							rs.getString("pimg"),
 							rs.getString("comt"),
 							rs.getString("follow"),
 							rs.getString("follower"),
-							rs.getString("scrap_list"));
-					follower_temp.add(temp);
+							rs.getString("scrap_list"),
+							rs.getString("like_list"));
+					data.add(follower_temp);
+					
 				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+				System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("member_dao - <팔로워 리스트> 다른 유저 정보 불러오기 실패");
 		}
-		return follower_temp;
+		return data;
 	}
 }

@@ -19,9 +19,6 @@
 		ArrayList<member> follower_list= ms.follower_list(uid);
 		request.setAttribute("follow_list", follow_list);
 		request.setAttribute("follower_list", follower_list);
-		
-		System.out.println("user_other.jsp - follower_list.size()="+follower_list.size());
-		System.out.println("user_other.jsp - follower_list.size()="+follow_list.size());
 	}
 	
 %>
