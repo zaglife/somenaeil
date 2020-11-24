@@ -70,10 +70,7 @@ public class post_service {
 	}
 	
 	public String add() {
-		
-		member md = new member("name");
-		request.getSession().setAttribute("user", md);
-		
+				
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
 		String title = request.getParameter("title");
 		String cate = request.getParameter("cate_btn");
