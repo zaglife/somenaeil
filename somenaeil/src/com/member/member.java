@@ -18,6 +18,11 @@ public class member {
 	private String scrap_list;
 	private String like_list;
 	
+	public member(String name) {
+		this.name = name;
+	}
+	
+	
 	public int getNum() {
 		return num;
 	}

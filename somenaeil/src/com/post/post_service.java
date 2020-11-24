@@ -5,6 +5,8 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.member.member;
+
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
  * @author gagip
@@ -68,14 +70,26 @@ public class post_service {
 	}
 	
 	public String add() {
+		
+		member md = new member("name");
+		request.getSession().setAttribute("user", md);
+		
+		String writer = ((member)request.getSession().getAttribute("user")).getName();
 		String title = request.getParameter("title");
 		String cate = request.getParameter("cate_btn");
 		String content = request.getParameter("content");
-		String[] hash = request.getParameterValues("hash");
+		String[] temp = request.getParameterValues("hash");
+		String hash = "";
+		if(temp != null) {
+			for(int i = 0; i < temp.length; i++) {
+				hash += temp[i];
+			}
+			hash += temp[temp.length-1];
+		}
 		
 		String context = request.getParameter("context");
 		post_dao pd = new post_dao();
-//		pd.add(title, cate, content, hash);		
+		pd.add(writer, title, cate, context, hash);		
 		
 		return "";
 	}

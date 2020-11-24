@@ -529,6 +529,7 @@ function submit1(){
 	
 }
 
+//이 경우 내용이 아직 안들어감 (해결 방안 찾던지 해야될듯하다)
 function submit2(){
 	var context = $("#post_write").html();
 	

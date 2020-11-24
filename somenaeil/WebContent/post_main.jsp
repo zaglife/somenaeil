@@ -46,7 +46,7 @@
   
   <!-- 타이틀 시작  -->
   <div id="post_title">
-    <input type="text" placeholder="제목" id="title">
+    <input type="text" placeholder="제목" name="title">
   </div>
   <!--  타이틀 끝  -->
   
@@ -118,8 +118,8 @@
       </div>
     </div>
     <div id="post_write">
-      <textarea id="txtForm" class="autosize" onkeydown="resize(this)" onkeyup="resize(this)" placeholder="글을 입력해주세요."></textarea>
-	
+     
+	  <div id="post_write" contenteditable="true">
 
 	
     </div>

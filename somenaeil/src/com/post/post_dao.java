@@ -148,8 +148,25 @@ public class post_dao {
 	
 	
 	
-	public void add() {
-		String sql = "insert into post ";
+	public void add(String writer, String title, String cate, String content, String hash) {
+		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt) values(?,?,?,?,?,sysdate,?,?,?,?)";
+		System.out.println(sql);
+		try(PreparedStatement pt = conn.prepareStatement(sql)){
+			pt.setInt(1, mytag.db_lib.get_num("post", conn));
+			pt.setString(2, cate);
+			pt.setString(3, writer);
+			pt.setInt(4, 0);
+			pt.setInt(5, 0);			
+			pt.setString(6,hash);
+			pt.setString(7,title);
+			pt.setString(8,content);
+			pt.setInt(9,0);
+			pt.executeUpdate();
+			System.out.println("저장성공");
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("글쓰기 DB저장 오류");
+		}
 		
 	}
 }
