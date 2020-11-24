@@ -13,12 +13,15 @@
 	String id= (String) session.getAttribute("id");
 	String uid= (String) session.getAttribute("uid");
 	member_service ms= new member_service();
-
+	
 	if(uid != null){
 		ArrayList<member> follow_list= ms.follow_list(uid);
 		ArrayList<member> follower_list= ms.follower_list(uid);
 		request.setAttribute("follow_list", follow_list);
 		request.setAttribute("follower_list", follower_list);
+		
+		System.out.println("user_other.jsp - follower_list.size()="+follower_list.size());
+		System.out.println("user_other.jsp - follower_list.size()="+follow_list.size());
 	}
 	
 %>

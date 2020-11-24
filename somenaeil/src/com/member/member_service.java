@@ -86,7 +86,7 @@ public class member_service {
 		String[] follow_list = my.getFollow().split(":");
 		// 해당 팔로우들의 데이터리스트 리턴
 		ArrayList<member> fl = md.follow_other(follow_list);
-		
+
 		return fl;
 	}
 	

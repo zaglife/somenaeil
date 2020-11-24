@@ -11,6 +11,9 @@ member_dao md= new member_dao();
 member data= md.member_read(id);
 
 String[] email= data.getEmail().split("@");
+
+System.out.println("join_edit - email[0] = "+email[0]);
+
 String naver= "";
 String gmail= "";
 String daum= "";
@@ -63,8 +66,7 @@ if(email.length == 2) {
     <p class="join_form_exp jfe_name">*이름 변경 불가</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
-${user.getEmail() }
-    <input type="text" name="email" value="" placeholder="" class="jf_input jf_email">
+    <input type="text" name="email" value="<%=email[0] %>" placeholder="" class="jf_input jf_email">
     <p id="jf_email_at">@</p>
     <select id="jf_email_addr" name="addr">
       <option>이메일</option>
@@ -113,11 +115,11 @@ ${user.getEmail() }
     </div>
     
     <p class="join_form_sub_tt">닉네임</p>
-    <input type="text" name="nick" placeholder="nickname" class="jf_input jf_nick">
+    <input type="text" name="nick" value="${user.getNick() }" placeholder="nickname" class="jf_input jf_nick">
     <p class="join_form_exp jfe_nick">*한글 8자, 영문 16자 내외</p>
 
     <p class="join_form_sub_tt">프로필 한줄 소개 내용</p>
-    <input type="text" name="comt" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
+    <input type="text" name="comt" value="${user.getComt() }" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
     <p class="join_form_exp jfe_comment1">*총 100byte 작성 가능 (한글 2btye, 영문 1byte)</p>
     <p class="join_form_exp jfe_comment2">(0/100)</p>
     

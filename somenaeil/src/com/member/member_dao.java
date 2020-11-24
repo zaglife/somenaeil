@@ -194,7 +194,7 @@ public class member_dao {
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("member_dao - 팔로우, 팔로워 리스트 불러오기 실패");
+			System.out.println("member_dao - 멤버정보 불러오기 실패");
 		}
 		return user;
 	}
