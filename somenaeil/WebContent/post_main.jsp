@@ -56,17 +56,17 @@
   <!-- 카테고리 선택 시작 -->
   <div id="post_cont">
     <div class="post_cate" id="cate_g">
-      <input type="radio" name="cate_btn" id="cate_g_btn" checked="checked" value="g">
+      <input type="radio" name="cate_btn" id="cate_g_btn" checked="checked" value="G">
       <label for="cate_g_btn" onclick="post_cate(1)"></label>
     </div>
     
     <div class="post_cate" id="cate_r">
-      <input type="radio" name="cate_btn" id="cate_r_btn" value="r">
+      <input type="radio" name="cate_btn" id="cate_r_btn" value="R">
       <label for="cate_r_btn" onclick="post_cate(2)"></label>
     </div>
     
     <div class="post_cate" id="cate_q">
-      <input type="radio" name="cate_btn" id="cate_q_btn" value="q">
+      <input type="radio" name="cate_btn" id="cate_q_btn" value="Q">
       <label for="cate_q_btn" onclick="post_cate(1)"></label>
     </div>
     <p>*카테고리 필수 선택 </p>
@@ -82,11 +82,11 @@
   <div id="post_mid">
     <div id="post_mid_top">
   	  <div class="post_tcate_part">
-  	    <div class="post_tcate"><button id="post_bold" class="post_func_btn"><img src="img/post_b_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_italic" class="post_func_btn"><img src="img/post_i_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_underline" class="post_func_btn"><img src="img/post_u_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_strike" class="post_func_btn"><img src="img/post_s_20.png"></button></div>
-  	    <div class="post_tcate post_color_space"><button id="post_color" class="post_func_btn"><img src="img/post_c_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_bold" type="button" class="post_func_btn"><img src="img/post_b_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_italic" type="button" class="post_func_btn"><img src="img/post_i_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_underline" type="button" class="post_func_btn"><img src="img/post_u_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_strike" type="button" class="post_func_btn"><img src="img/post_s_20.png"></button></div>
+  	    <div class="post_tcate post_color_space"><button id="post_color" type="button" class="post_func_btn"><img src="img/post_c_20.png"></button></div>
   	    <div id="post_color_picker">
   	      <input type="color" name="color" id="foreColor">
   	    </div>
@@ -119,7 +119,7 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><button id="pd" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
+  	    <div class="post_file"><button id="pd" type="button" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
     <div id="post_write">
