@@ -53,7 +53,13 @@
     
     <div id="other_right">
       <c:if test="${user != null }">
-      <a href="user.do" id="user_follow_btn_chg" class="user_follow_btn" onclick="FollowBtnChg()"></a>
+      <form method="get" action="user.do">
+      <input type="hidden" name="part" value="fl_update">
+      <input type="hidden" name="follow" value="fl">
+      <input type="hidden" name="id" value="<%=id %>">
+      <input type="hidden" name="uid" value="${data.getId() }">
+      <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
+      </form>
       </c:if>
       
       <c:if test="${user == null }">

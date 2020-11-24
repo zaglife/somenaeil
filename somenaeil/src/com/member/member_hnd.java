@@ -58,7 +58,20 @@ public class member_hnd implements main_able{
 					System.out.println("member_hnd - <user>case if문 3번째");
 				}
 				break;
-			case "other" :
+			case "fl_update" :
+				System.out.println("member_hnd - <fl_update>case");
+				String follow= request.getParameter("follow");
+				String my_id= request.getParameter("id");
+				
+				member data= md.member_read(uid);
+
+				String other_id= data.getId();
+				String other_follow= data.getFollow();
+				md.fl_update(my_id, other_id, other_follow, follow);
+				
+				view= "user_other.jsp";
+				// 다시 팔로우 요청한 대상의 user_other페이지로 이동하게 해줘야함
+				
 				break;
 			}
 		}

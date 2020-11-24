@@ -87,10 +87,6 @@ public class member_service {
 		// 해당 팔로우들의 데이터리스트 리턴
 		ArrayList<member> fl = md.follow_other(follow_list);
 		
-		
-
-		System.out.println("member_service - fl.size = "+fl.size());
-		
 		return fl;
 	}
 	

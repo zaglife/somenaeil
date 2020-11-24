@@ -107,21 +107,8 @@
 	transform: rotate(45deg);
 }
 
-#user_follow_btn_chg {
-	width: 20px;
-	height: 20px;
-}
-
-.user_follow_btn:hover,
-.user_unfollow_btn:hover {
+.user_follow_btn:hover .user_follow_btn img {
 	transform: scale(1.1);
-}
-
-.user_follow_btn {
-	background: url("../img/noti_follow_n_20.png") no-repeat center center;
-}
-.user_unfollow_btn {
-	background: url("../img/noti_follow_20.png") no-repeat center center;
 }
 
 #user_follow a,

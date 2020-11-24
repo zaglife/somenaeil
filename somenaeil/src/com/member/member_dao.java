@@ -271,4 +271,48 @@ public class member_dao {
 		}
 		return data;
 	}
+	
+	public void fl_update(	String my_id,
+							String other_id,
+							String other_follow,
+							String type) {
+		String temp= "";
+		String sql= "";
+		if(type.equals("fl")) {
+			System.out.println("member_dao - fl="+type);
+			
+			other_follow+= ":"+my_id;
+			sql= "update member set follower='"+other_follow+"' where id='"+other_id+"'";
+			
+			System.out.println("member_dao - sql="+sql);
+		} else if(type.equals("un")) {
+			System.out.println("member_dao - fl="+type);
+			
+			String[] f_list= other_follow.split(":");
+			for(int i=0; i<f_list.length; i++) {
+				if(f_list[i] != my_id) {
+					temp+= f_list[i]+":";
+				}else if(f_list[i] == my_id) break;
+			}
+			temp= temp.substring(0, temp.length()-1);
+			sql= "update member set follower='"+temp+"' where id='"+other_id+"'";
+			
+			System.out.println("member_dao - fl="+sql);
+		} else {
+			System.out.println("member_dao - fl= if문 문제");
+		}
+		
+		try(Statement st= conn.createStatement()) {
+			st.executeUpdate(sql);
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 팔로우 업데이트 실패");
+		}
+		
+		
+		
+		// 대상 팔로워 리스트에 업데이트 성공
+		// 내 팔로우 리스트에 대상 아이디 추가
+		
+	}
 }
