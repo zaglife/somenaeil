@@ -14,13 +14,16 @@
 	String uid= (String) session.getAttribute("uid");
 	member_service ms= new member_service();
 	
-	if(id != null){
-		ArrayList<member> follow_list= ms.follow_list(id);
-		ArrayList<member> follower_list= ms.follower_list(id);
+	if(uid != null){
+		ArrayList<member> follow_list= ms.follow_list(uid);
+		ArrayList<member> follower_list= ms.follower_list(uid);
 		request.setAttribute("follow_list", follow_list);
 		request.setAttribute("follower_list", follower_list);
+		
+		System.out.println("user_other.jsp - follower_list.size()="+follower_list.size());
+		System.out.println("user_other.jsp - follower_list.size()="+follow_list.size());
 	}
-
+	
 %>
 
 <!DOCTYPE html>
@@ -35,24 +38,35 @@
 </head>
 <body>
 
+
+<c:if test="${data != null }">
 <div id="user_wrap">
   <div id="user_top">
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick">${user.getNick() }</div>
-      <div id="user_ment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
+      <div id="user_nick">${data.getNick() }</div>
+      <div id="user_ment">${data.getComt() }</div>
       <div id="user_info_follow">
         <a onclick="userFollowerPop()">팔로워 ${follower_list.size() }</a>
         <a onclick="userFollowPop()">팔로우 ${follow_list.size() }</a>
         <p>게시글 512</p>
       </div>
     </div>
-
-    <!-- 로그인시 본인 계정 -->
-    <div id="user_right">
-      <a href="join_edit.jsp"><img src="img/setting_20.png"></a>
-      <p>R 타입</p>
+    
+    <div id="other_right">
+      <c:if test="${user != null }">
+      <a href="user.do" id="user_follow_btn_chg" class="user_follow_btn" onclick="FollowBtnChg()"></a>
+      </c:if>
+      
+      <c:if test="${user == null }">
+      <a href="#" id="user_follow_btn_chg" class="user_follow_btn" onclick="login_alert()"></a>
+      <div id="login_alert" class="login_alert_opa login_alert_dis">
+      <p>로그인이 필요한 서비스입니다.</p>
+      <a href="login.do">로그인</a>
+      </div>
+      </c:if>
+      <p>- 타입</p>
     </div>
 
   </div>
@@ -88,6 +102,7 @@
     <jsp:include page="user_cont.jsp" />
   </c:otherwise>
 </c:choose>
+</c:if>
 
 
 <div id="btm_space"></div>
@@ -234,4 +249,22 @@ function FollowBtnChg() {
 		followBtn= 1;
 	}
 }
+
+function login_alert() {
+	$('#login_alert').removeClass('login_alert_dis');
+	setTimeout(function() {
+		$('#login_alert').removeClass('login_alert_opa');
+	}, 1);
+	
+	setTimeout(function() {
+		$('#login_alert').addClass('login_alert_opa');
+	}, 3000);
+	setTimeout(function() {
+		$('#login_alert').addClass('login_alert_dis');
+	}, 3100);
+}
 </script>
+
+
+
+

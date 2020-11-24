@@ -49,42 +49,110 @@ function dropdown() {
 }
 </script>
 
+
+
+
 <c:choose>
-  <c:when test="${param.state == 'login' }">
+  <%-- 로그인 후 --%>
+  <c:when test="${user != null }">
     <div class="dropdown d_hide">
-      <a href="index.jsp?state=login">메인 페이지</a>
-      <a href="user.jsp?state=login">마이 페이지</a>
+      <a href="index.do">메인 페이지</a>
+      <a href="user.do?part=user&uid=some">마이 페이지</a>
       <a href="post_main.jsp?state=login">포스팅</a>
       <a href="noti.jsp?state=login">알림</a>
       <a href="dm.jsp?state=login">메세지</a>
       <a href="info.jsp?state=login">채용정보</a>
-      <a href="index.jsp">로그아웃</a>
+      <a href="logout.do">로그아웃</a>
     </div>
+    
+    <div id="top_wrap">
+      <div id="top_logo">
+        <a href="index.jsp"><img src="img/logo_20.png"></a>
+      </div>
+  
+      <div id="top_search">
+        <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+        <input type="text" placeholder="검색">
+        <a href="#"><img src="img/btn_search01_20.png"></a>
+      </div>
+  
+      <div id="top_menu">
+        <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+        <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+        <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+        
+      </div>
+    </div>
+    <a href="user.do?part=user&uid=some" id="top_user_pimg"><img src="img/profile01.jpg"></a>
   </c:when>
+  
+  <%-- 로그인 전 --%>
   <c:otherwise>
     <div class="dropdown d_hide">
-      <a href="login.jsp">로그인</a>
-      <a href="join.jsp">회원가입</a>
+      <a href="login.do">로그인</a>
+      <a href="join.do">회원가입</a>
+    </div>
+    
+    <div id="top_wrap">
+      <div id="top_logo">
+        <a href="index.jsp"><img src="img/logo_20.png"></a>
+      </div>
+  
+      <div id="top_search">
+        <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+        <input type="text" placeholder="검색">
+        <a href="#"><img src="img/btn_search01_20.png"></a>
+      </div>
+  
+      <div id="top_menu">
+        <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+        <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+        <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+        <a href="login.do" id="top_user_login"><img src="img/icon_profile_30.png"></a>
+      </div>
     </div>
   </c:otherwise>
 </c:choose>
-<div id="top_wrap">
 
-  <div id="top_logo">
-    <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
-  </div>
-  
-  <div id="top_search">
-    <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
-    <input type="text" placeholder="검색">
-    <a href="#"><img src="img/btn_search01_20.png"></a>
-  </div>
-  
-  <div id="top_menu">
-    <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
-    <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
-    <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
-    <a href="login.jsp"><img src="img/icon_profile_30.png"></a>
-  </div>
 
-</div>
+
+
+
+
+
+<!-- 로그인 확인 // 나중에 지우기 -->
+<c:if test="${user == null }">
+  <div style="	float: left;
+  				position: fixed;
+  				width: 100px;
+  				height: 100px;
+  				color: #fff;
+  				text-align: center;
+  				line-height: 100px;
+  				font-size: 16px;
+  				font-weight: 900;
+  				background: #d23a3a;
+  				left: 0;
+  				bottom: 0;
+  				margin: 10px;
+  				border-radius: 100px;
+  				z-index: 99999;	 ">로그인 전</div>
+</c:if>
+
+<c:if test="${user != null }">
+  <div style="	float: left;
+  				position: fixed;
+  				width: 100px;
+  				height: 100px;
+  				color: #fff;
+  				text-align: center;
+  				line-height: 100px;
+  				font-size: 16px;
+  				font-weight: 900;
+  				background: #3db551;
+  				left: 0;
+  				bottom: 0;
+  				margin: 10px;
+  				border-radius: 100px;
+  				z-index: 99999; 	">로그인 성공</div>
+</c:if>

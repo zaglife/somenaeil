@@ -15,6 +15,7 @@
 <script type="text/javascript" src="post_main.js"></script>
 </head>
 <body>
+
 <jsp:include page="top.jsp" />
 
 <c:choose>
@@ -69,7 +70,7 @@
       <label for="cate_q_btn" onclick="post_cate(1)"></label>
     </div>
     <p>*카테고리 필수 선택 </p>
-    <div id="post_cate_exp">
+    <div id="post_cate_exp" onclick="enter()">
       <img src="img/post_q_20.png">
     </div>
     <div id='post_cate_exp_img'><img src="img/cate_exp_s.png"></div>
@@ -81,11 +82,14 @@
   <div id="post_mid">
     <div id="post_mid_top">
   	  <div class="post_tcate_part">
-  	    <div class="post_tcate"><a href="#"><img src="img/post_b_20.png"></a></div>
-  	    <div class="post_tcate"><a href="#"><img src="img/post_i_20.png"></a></div>
-  	    <div class="post_tcate"><a href="#"><img src="img/post_u_20.png"></a></div>
-  	    <div class="post_tcate"><a href="#"><img src="img/post_s_20.png"></a></div>
-  	    <div class="post_tcate"><a href="#"><img src="img/post_c_20.png"></a></div>
+  	    <div class="post_tcate"><button id="post_bold" class="post_func_btn"><img src="img/post_b_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_italic" class="post_func_btn"><img src="img/post_i_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_underline" class="post_func_btn"><img src="img/post_u_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_strike" class="post_func_btn"><img src="img/post_s_20.png"></button></div>
+  	    <div class="post_tcate post_color_space"><button id="post_color" class="post_func_btn"><img src="img/post_c_20.png"></button></div>
+  	    <div id="post_color_picker">
+  	      <input type="color" name="color" id="foreColor">
+  	    </div>
   	  </div>
   	  <div class="post_tcate_part">
   	    <div class="post_file">
@@ -94,7 +98,7 @@
   	      <div id="post_link_wrap" class="post_link">
   	      	<input type="text" placeholder="링크명" id='lk_text'>
   	        <input type="text" value="http://" id='lk'>
-  	        <button id='lk_bt' type="button">+</button>	       
+  	        <button id='lk_bt' type="button" onclick="lk_bt_input()">+</button>
   	      </div>
   	    </div>
   	    <div class="post_file">
@@ -115,12 +119,14 @@
   	    <div class="post_file"><a onclick="postPopCt()"><img src="img/post_table_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopGh()"><img src="img/post_graph_20.png"></a></div>
   	    <div class="post_file"><a onclick="postPopVote()"><img src="img/post_vote_20.png"></a></div>
-  	    <div class="post_file"><a onclick="s_code()"><img src="img/post_code_20.png"></a></div>
+  	    <div class="post_file"><button id="pd" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
     <div id="post_write">
 	  <div id="post_write1" contenteditable="true"></div>
-	</div>
+	  <!-- text입력부분 소스코드 display none -->
+
+    </div>
   </div>
   
   
@@ -155,7 +161,16 @@
 
 
 
-
+<script>
+$(function() {
+	$(".basic").spectrum({
+		flat: false,
+		showInput: true,
+		preferredFormat: "rgb",
+		color: "#000000"
+	});
+});
+</script>
 
 
 <jsp:include page="totop.jsp" />

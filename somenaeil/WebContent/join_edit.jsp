@@ -1,5 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@page import="com.member.member" %>
+<%@page import="com.member.member_dao" %>
+
+<%
+
+String id= (String) session.getAttribute("id");
+member_dao md= new member_dao();
+member data= md.member_read(id);
+
+String[] email= data.getEmail().split("@");
+
+System.out.println("join_edit - email[0] = "+email[0]);
+
+String naver= "";
+String gmail= "";
+String daum= "";
+String hanmail= "";;
+String nate= "";
+String empas= "";
+String yahoo= "";
+String hotmail=  "";
+	
+	
+if(email.length == 2) {
+	if(email[1].equals("naver.com")) naver= "selected";
+	else if(email[1].equals("gmail.com")) gmail= "selected";
+	else if(email[1].equals("daum.net")) daum= "selected";
+	else if(email[1].equals("hanmail.net")) hanmail= "selected";
+	else if(email[1].equals("nate.com")) nate= "selected";
+	else if(email[1].equals("empas.com")) empas= "selected";
+	else if(email[1].equals("yahoo.com")) yahoo= "selected";
+	else if(email[1].equals("hotmail.com")) hotmail= "selected";
+}
+	
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +48,13 @@
 </head>
 <body>
 
+<form method="post" action="join.do">
+<input type="hidden" name="part" value="update">
+
+<!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
+<input type="hidden" name="pimg" value="null">
+<input type="hidden" name="cert" value="1">
+
 <div id="join_form_wrap">
 
   <div id="join_form_private">
@@ -18,35 +62,34 @@
     <p class="join_form_tt">개인 정보</p>
     
     <div class="join_form_sub_tt"><p>이름</p><div id="jf_name_back"></div></div>
-    <input type="text" readonly value="썸내일" class="jf_input jf_name">
+    <input type="text" readonly value="${user.getName() }" class="jf_input jf_name">
     <p class="join_form_exp jfe_name">*이름 변경 불가</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
-    
-    <input type="text" placeholder="somenaeil" class="jf_input jf_email">
+    <input type="text" name="email" value="<%=email[0] %>" placeholder="" class="jf_input jf_email">
     <p id="jf_email_at">@</p>
-    <select id="jf_email_addr">
+    <select id="jf_email_addr" name="addr">
       <option>이메일</option>
-      <option value="naver.com" selected>naver.com</option>
-      <option value="gmail.com">gmail.com</option>
-      <option value="daum.net">daum.net</option>
-      <option value="hanmail.net">hanmail.net</option>
-      <option value="nate.com">nate.com</option>
-      <option value="empas.com">empas.com</option>
-      <option value="yahoo.co.kr">yahoo.co.kr</option>
-      <option value="hotmail.com">hotmail.com</option>
+      <option value="naver" <%=naver %>>naver.com</option>
+      <option value="gmail.com" <%=gmail %>>gmail.com</option>
+      <option value="daum.net" <%=daum %>>daum.net</option>
+      <option value="hanmail.net" <%=hanmail %>>hanmail.net</option>
+      <option value="nate.com" <%=nate %>>nate.com</option>
+      <option value="empas.com" <%=empas %>>empas.com</option>
+      <option value="yahoo.co.kr" <%=yahoo %>>yahoo.co.kr</option>
+      <option value="hotmail.com" <%=hotmail %>>hotmail.com</option>
     </select>
     <a href="#veri" id="join_form_email_btn">인증메일</a>
     <p class="join_form_exp jfe_email">*이메일 주소로 수신된 링크 인증 필수</p>
     
     <div class="join_form_sub_tt"><p>아이디</p><div id="jf_id_back"></div></div>
-    <input type="text" readonly value="id" class="jf_input jf_id">
+    <input type="text" readonly value="${user.getId() }" class="jf_input jf_id">
     <p class="join_form_exp jfe_id">*아이디 변경 불가</p>
     
     <p class="join_form_sub_tt">비밀번호</p>
     <p class="join_form_exp jfe_edit_pw">*영문, 숫자 조합 8글자 이상</p>
     <div id="jf_edit_wrap">
-      <input type="password" placeholder="현재 비밀번호" class="jf_input jf_edit_pwo">
+      <input type="password" name="pw" placeholder="현재 비밀번호" class="jf_input jf_edit_pwo">
       <p>&gt;</p>
       <input type="password" placeholder="변경할 비밀번호" class="jf_input jf_edit_pw">
       <input type="password" placeholder="비밀번호 확인" class="jf_input jf_edit_pwc">
@@ -72,24 +115,23 @@
     </div>
     
     <p class="join_form_sub_tt">닉네임</p>
-    <input type="text" placeholder="nickname" class="jf_input jf_nick">
+    <input type="text" name="nick" value="${user.getNick() }" placeholder="nickname" class="jf_input jf_nick">
     <p class="join_form_exp jfe_nick">*한글 8자, 영문 16자 내외</p>
 
     <p class="join_form_sub_tt">프로필 한줄 소개 내용</p>
-    <input type="text" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
+    <input type="text" name="comt" value="${user.getComt() }" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
     <p class="join_form_exp jfe_comment1">*총 100byte 작성 가능 (한글 2btye, 영문 1byte)</p>
     <p class="join_form_exp jfe_comment2">(0/100)</p>
     
   </div>
   
-  
-  
   <div id="join_form_end">
-    <button id="join_form_cancle">취소</button>
-    <button id="join_form_clear" onclick="window.history.back()">변경</button>
+    <button id="join_form_cancle" onclick="pre()">취소</button>
+    <button id="join_form_clear">수정</button>
   </div>
 
 </div>
+</form>
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />

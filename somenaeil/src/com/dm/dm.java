@@ -1,13 +1,26 @@
 package com.dm;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class dm {
 	private int num;
 	private String other;
 	private String context;
-	private Calendar time;
+	private Date time;
 	private int cert;
+	
+	public dm() {}
+	public dm(	int num,
+				String other,
+				String context,
+				Date time,
+				int cert	) {
+		this.num= num;
+		this.other= other;
+		this.context= context;
+		this.time= time;
+		this.cert= cert;
+	}
 	
 	public int getNum() {
 		return num;
@@ -27,10 +40,10 @@ public class dm {
 	public void setContext(String context) {
 		this.context = context;
 	}
-	public Calendar getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(Calendar time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 	public int getCert() {

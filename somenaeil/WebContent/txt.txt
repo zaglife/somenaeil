@@ -1,0 +1,173 @@
+<c:set var="other" value="
+
+<%=new com.member.member_dao().select_member(request.getParameter(user)) %>
+
+" />
+
+
+
+
+
+
+
+
+
+
+< user.jsp >
+
+<%
+	member_dao md = new member_dao();
+	member my = md.select_member("some");
+	request.setAttribute("my", my);
+	
+	
+	member_service ms = new member_service();
+	ArrayList<member> follow_list = ms.follow_list(my.getId());
+	request.setAttribute("follow_list", follow_list);
+%>
+
+
+
+
+
+
+< user_follow.jsp >
+
+<!-- test -->
+<!-- 해당 구문은 service에 넣을 것 -->
+<!-- some_service의 'some'이 하는 역할이 명확하지 않습니다.
+	만약 some이 관할하는 역할이 dm, noti라면,
+	아래 구문은 member변수에서도 충분히 다룰 수 있으니 'some'이 아닌 'member'에 넣으면 어떨까싶네요.
+	(= some_service -> memeber_service)
+	따라서 충분히 some이 하는 역할을 엄밀히 정의한 후, 팔로우 리스트를 some에 넣을지 member에 넣을지
+-->
+<!-- ss.follow_list() 메소드 이름가지고는 의미를 충분히 전달하지 못하므로 네이밍 필요 
+	여담으로 메소드는 보통 동사가 먼저 옵니다 st. (getObject, toString, setObject, insertObject, saveFile, etc.) 
+	
+	추천 네이밍
+	1. getFollowList()
+	2. selectFollowList()
+	3. loadFollowList()
+-->
+<%
+	member_dao md = new member_dao();
+	member my = md.select_member("some");
+	request.setAttribute("my", my);
+	
+	
+	member_service ms = new member_service();
+	ArrayList<member> follow_list = ms.follow_list(my.getId());
+	request.setAttribute("follow_list", follow_list);
+%>
+<!-- test end -->
+
+        <!-- test 지우셔도 됩니다-->
+<%--         <c:forEach items="${follow_list}" var="follow"  varStatus="temp"> --%>
+<%--         	${temp.count} --%>
+<%--         	${follow.getId()} --%>
+<%--         	${follow.getNick()} --%>
+<%--         	${follow.getPimg()}<br> --%>
+<%--         </c:forEach> --%>
+        <!-- test end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+< user.jsp > state 확인
+
+<c:if test="${state == some }">
+<div style="	background: rgba(0, 0, 0, 0.5);
+ 				text-align: center;
+ 				z-index: 999999;
+ 				float: left;
+ 				position: fixed;
+ 				width: 100%;
+ 				height: 100%;
+ 				color: #fff;">
+				
+				
+				
+</div>
+</c:if>
+
+
+
+
+
+
+
+
+
+< some_hnd >
+데이터 수정 전
+
+package com.some;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.member.member;
+import com.member.member_dao;
+
+public class some_hnd implements some_able {
+	
+	public String active(HttpServletRequest request, HttpServletResponse response) {
+		String view= null;
+		String part= request.getParameter("part");
+		
+		String id= request.getParameter("id");
+		String pw= request.getParameter("pw");
+		
+		member_dao md = new member_dao();
+		member other = null;
+		
+		if(part == null) {
+			view= "user.jsp";
+			
+			System.out.println("some_hnd - part == null");
+			
+		} else if(part.equals("user")) {
+			other = md.select_member(id);
+			view= "user.jsp";
+			
+			System.out.println("some_hnd - part equals user");
+			System.out.println("some_hnd - "+part.equals("user"));
+			System.out.println("some_hnd - "+other);
+			
+		}
+		
+		return view;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

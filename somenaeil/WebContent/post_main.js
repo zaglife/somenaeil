@@ -41,7 +41,7 @@ function showCode() {
 	if(sc_temp == 1) {
 		$('#post_code_cont').removeClass('post_code_hide');
 		++sc_temp;
-		$("#post_write").append("<textarea class='autosize' onkeydown='resize(this)' onkeyup='resize(this)'></textarea>");
+
 	}else if(sc_temp == 2) {
 		$('#post_code_cont').addClass('post_code_hide');
 		sc_temp= 1;
@@ -71,7 +71,6 @@ function showmov() {
 		++mov_temp;
 	}else if(mov_temp == 2) {
 		$('.post_mov').removeClass('post_mov_hide');
-		
 		mov_temp= 1;
 	}
 }
@@ -81,22 +80,22 @@ function post_cate(num) {
 		$('#post_hidden').removeClass('post_cate_hidden');
 	}else{
 		$('#post_hidden').addClass('post_cate_hidden');
-	}	
+	} 
 }
 
 
 // 해시태그 만드는 법 
 var hash_cnt = 3;
 function more_hash() {
-	 
+	
 	var para = document.createElement("div");
 	jQuery(para).addClass("post_hash");
 	document.getElementById("post_btm_hash").appendChild(para);
-		
+	
 	var para2 = document.createElement("input");
 	document.getElementsByClassName("post_hash")[hash_cnt].appendChild(para2);
 	hash_cnt++;
-		
+	
 	var at = document.createAttribute("type");
 	at.value = "text";
 	para2.setAttributeNode(at);
@@ -106,18 +105,11 @@ function more_hash() {
 	var at = document.createAttribute("placeholder");
 	at.value = "#태그";
 	para2.setAttributeNode(at);
-		
 	if(hash_cnt == 5){
 		document.getElementById('post_hashbt').style.display='none'
 	}
 }
-		
-//글쓰기 생성 
-function resize(obj) {
-	obj.style.height = "1px";
-	obj.style.height = (12+obj.scrollHeight)+"px";
-}
-		
+
 // 소스코드에서 enter시 소스코드가 한줄 생성되면서  커서도 같이 움직인다.
 var code_i= 2;
 function onKeyDown(){
@@ -126,17 +118,17 @@ function onKeyDown(){
 			var para = document.createElement("div");
 			jQuery(para).addClass("post_code_li");
 			document.getElementsByClassName("post_code_cont")[0].appendChild(para);
-					 
+			
 			var para2 = document.createElement("p");
 			var p_text = document.createTextNode(code_i);
 			para2.appendChild(p_text);
-					 
+			
 			document.getElementsByClassName("post_code_li")[code_i-1].appendChild(para2);
-					 
+			
 			var para3 = document.createElement("input");
 			document.getElementsByClassName("post_code_li")[code_i-1].appendChild(para3);
 			para3.focus();
-					 
+			
 			var at = document.createAttribute("type");
 			at.value = "text";
 			para3.setAttributeNode(at);
@@ -145,51 +137,10 @@ function onKeyDown(){
 			para3.setAttributeNode(at);
 				
 			++code_i;
-					 
 		}else alert("소스는 20줄까지 생성됩니다.");
 	}
 }
 
-var s_code_num = 1;
-function s_code(){
-	if(s_code_num == 1){
-		var para = document.createElement("div");
-		jQuery(para).addClass("post_code_cont");
-		document.getElementById("post_write").appendChild(para);
-				
-		var para2 = document.querySelector(".post_code_cont");
-		para2.innerHTML= "<div class='post_code_li'><p>1</p><input type='text' onKeyDown='onKeyDown();'></div>";
-				
-		var para3 = document.createElement("textarea");
-		jQuery(para3).addClass("autosize");
-		document.getElementById("post_write").appendChild(para3);
-				
-		var at = document.createAttribute("onkeydown");
-		at.value = "resize(this);";
-		para3.setAttributeNode(at);
-		
-		var at = document.createAttribute("onkeydown");
-		at.value = "resize(this);";
-		para3.setAttributeNode(at);
-		
-		var at = document.createAttribute("id");
-		at.value = "text_cont";
-		para3.setAttributeNode(at);
-		
-		var at = document.createAttribute("class");
-		at.value = "autosize "+"tc_num"+s_code_num;
-		para3.setAttributeNode(at);
-		
-		s_code_num++;
-
-		
-	}else{
-		$('.post_code_cont').remove();
-		$('#text_cont').remove();
-		s_code_num = 1;
-	}
-}
-		
 // 그래프에 데이터명 입력시 실시간으로 이름이 입력된다.
 $(document).ready(function(){
 	// 입력란에 입력을 하면 입력내용에 내용이 출력
@@ -208,7 +159,6 @@ $(document).ready(function(){
 
 		// 메서드 괄호 안에 아무것도 없으면 getter, 파라미터가 있으면 setter이다.
 	});
-			
 	$("#g_name2").keyup(function(){
 		$("#name2_out").text($("#g_name2").val());
 	});
@@ -225,7 +175,6 @@ $(document).ready(function(){
 	var g2 = 0;
 	var g3 = 0;
 	var g4 = 0;
-			
 	function gh_calc() {
 		var g_all = parseInt(g1)+parseInt(g2)+parseInt(g3)+parseInt(g4);
 		
@@ -240,12 +189,10 @@ $(document).ready(function(){
 		$("#data3_out").width(result3+'px');
 		$("#data4_out").width(result4+'px');
 	}
-				
 	$("#g_data1").keyup(function(){
 		g1= $("#g_data1").val();
 		gh_calc();
 	});
-			
 	$("#g_data2").keyup(function(){
 		g2= $("#g_data2").val();
 		gh_calc();
@@ -255,17 +202,13 @@ $(document).ready(function(){
 		g3= $("#g_data3").val();
 		gh_calc();
 	});
-			
 	$(document).on('propertychange change keyup paste input', '#g_data4', function(){
 		g4= $("#g_data4").val();
 		gh_calc();
 	});
-	
-	
-	
 
 });
-		
+
 // 투표 추가버튼시 생성 6개째 생성시 alert띄우면서 버튼 사라진다.
 var plus_cnt = 2;
 function plus_vote(){
@@ -300,17 +243,14 @@ function plus_vote(){
 			document.getElementById('vot_plus').style.display='none';
 		}
 	}
-	
 }
-		
-		
+
 function maxLengthCheck(object){
 	if (object.value.length > object.maxLength){
-      object.value = object.value.slice(0, object.maxLength);
+    		  object.value = object.value.slice(0, object.maxLength);
 	}    
 }
-		
-		
+
 // 표 만들기(미완성)
 var before_row = -1;
 var before_col = -1;
@@ -319,8 +259,6 @@ function ct(){
 	var row = document.getElementById('row').value;
 	var col = document.getElementById('col').value;
 	var k = 0;
-			
-			
 	if(row == 0 && col == 0){
 		alert("행과 열을 모두 입력해주세요.");
 		$('#row').focus();
@@ -349,7 +287,6 @@ function ct(){
 			
 			document.getElementById("ct_table").appendChild(para);
 		}
-				
 		var ct_style= document.getElementsByName("table_style");
 		var ct = document.querySelectorAll(".ct_cell");
 		
@@ -363,7 +300,7 @@ function ct(){
 		} else if(ct_style[1].checked) {
 			if(col == 1){
 				ct[(row-1)].className += " ct_cell_right";
-				for(var i = 1; i <= row; i++){				
+				for(var i = 1; i <= row; i++){
 					ct[i-1].className += " ct_cell_bottom";
 				}
 			} else {
@@ -378,12 +315,10 @@ function ct(){
 				}
 			}
 		}
-				
 		var ct_size = ct.length;
 		if(row % 2 == 0){
 			var k=0;
 			for(var i = 0; i < ct_size/2; i++){
-//				alert(k);
 				if(k < row/2) {
 					ct[i*2].className +=  " ct_cell_back";
 					k++;
@@ -399,20 +334,11 @@ function ct(){
 				ct[i*2].className +=  " ct_cell_back";
 			}
 		}
-
 	}
 	before_row = row;
 	before_col = col;
-			
 }
-		
-		
-		
-		
-		
-		
-// 팝업 그래프 작업
-		
+
 var gh_cnt = 2;
 
 function gh_plus(){
@@ -434,10 +360,6 @@ function gh_plus(){
 	var para3 = document.createElement("div");
 	jQuery(para3).addClass("gh_rod");
 	document.getElementsByClassName("gh")[gh_cnt].appendChild(para3);
-			
-			
-			
-			
 	var para4 = document.createElement("div");
 	jQuery(para4).addClass("gh_cl"+(gh_cnt+1));
 	if(gh_cnt == 2){
@@ -447,8 +369,6 @@ function gh_plus(){
 	}
 	jQuery(para4).attr("id","data"+(gh_cnt+1)+"_out");
 	document.getElementsByClassName("gh_rod")[gh_cnt].appendChild(para4);
-			
-			
 	// 인풋 만들기
 	
 	var para = document.createElement("div");
@@ -484,7 +404,6 @@ function gh_plus(){
 	para3.setAttributeNode(at);
 	document.getElementsByClassName("gh_dt")[gh_cnt].appendChild(para3);
 
-			
 	if(gh_cnt == 3){
 		gh_cnt = 1;
 		alert("그래프는 4개까지만 생성됩니다.");
@@ -548,3 +467,100 @@ function submit2(){
 }
 
 /* post_main script end */
+
+
+/* post_main script end */
+
+
+
+
+
+
+
+
+
+document.execCommand('styleWithCSS', false, true);
+document.execCommand('insertBrOnReturn', false, true);
+$(document).ready(function() {
+	$(".post_write").focus();
+	$('#post_bold').click(function() {
+		document.execCommand('bold', false, true);
+	});
+	$('#selectAll').click(function() {
+		document.execCommand('selectAll', false, true);
+	});
+	$('#post_italic').click(function() {
+		document.execCommand('italic', false, true);
+	});
+	$("#post_underline").click(function() {
+		document.execCommand('underLine', false, true);
+	});
+	$("#post_strike").click(function() {
+		document.execCommand('strikeThrough', false, true);
+	});
+	$("#justifyLeft").click(function() {
+		document.execCommand('justifyLeft', false);
+	});
+	$("#justifyRight").click(function() {
+		document.execCommand('justifyRight', false);
+	});
+	$("#justifyCenter").click(function() {
+		document.execCommand('justifyCenter', false);
+	});
+	$('select').change(function(){
+		document.execCommand($(this).attr('id'), false, $(this).val());
+	});
+	$("#foreColor").change(function(){
+		document.execCommand('foreColor', false, $(this).val());
+	});
+	$("#hiliteColor").change(function(){
+		document.execCommand('hiliteColor', false, $(this).val());
+	});
+	$("#fontName").change(function(){
+		document.execCommand('fontName', false, $(this).val());
+	});
+	$("#fontSize").change(function(){
+		document.execCommand('fontSize', false, $(this).val());
+	});
+});
+
+function post_code(){
+	var insertNode= document.createElement('div');
+	jQuery(insertNode).addClass("post_code_content");
+	insertNode.setAttribute("contenteditable","true");
+	
+	var post_code_cont= document.createElement('div');
+	jQuery(post_code_cont).addClass("post_code_list");
+	
+	var new_post_write= document.createElement('div');
+	jQuery(new_post_write).addClass("new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	
+	document.getElementById("post_write").appendChild(insertNode);   
+	insertNode.append(post_code_cont);
+	document.getElementById("post_write").appendChild(new_post_write);
+}
+
+function lk_bt_input() {
+	var insertNode = document.createElement('a');
+	
+	var lk= $('#lk').val();
+	var lk_text= $('#lk_text').val();
+	if(!lk_text || lk_text == "") {
+		lk_text= $('#lk').val();
+	}else if(lk_text != null) {
+		lk_text= $('#lk_text').val();
+	}
+	
+	insertNode.innerText= lk_text; 
+	insertNode.setAttribute("href", lk);
+	insertNode.setAttribute("title", "포스팅 등록시 링크가 활성화 됩니다.");
+	jQuery(insertNode).addClass("link_inserted");
+	$("#post_write div:last").append(insertNode);
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	
+	document.getElementById("post_write").appendChild(new_post_write);   
+}

@@ -18,10 +18,117 @@ public class member {
 	private String scrap_list;
 	private String like_list;
 	
-	public member(String name) {
-		this.name = name;
+	public member() { }
+	
+	// 회원가입, 회원정보 수정
+	public member(	String id,
+					String pw,
+					String name,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt) {
+		this.id= id;
+		this.pw= pw;
+		this.name= name;
+		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
 	}
 	
+	
+	// 유저 페이지
+	public member(	String id,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt,
+					String follow,
+					String follower,
+					String scrap_list,
+					String like_list) {
+		this.id= id;
+		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+		this.like_list= like_list;
+	}
+	
+	// 로그인
+	public member(	String id,
+					String name,
+					String nick,
+					String email,
+					int cert,
+					String pimg,
+					String comt,
+					String follow,
+					String follower,
+					String scrap_list,
+					String like_list) {
+		this.id= id;
+		this.name= name;
+		this.nick= nick;
+		this.email= email;
+		this.cert= cert;
+		this.pimg= pimg;
+		this.comt= comt;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+		this.like_list= like_list;
+	}
+	
+	// 팔로우, 팔로워 리스트
+	public member(	String follow,
+					String follower) {
+		this.follow= follow;
+		this.follower= follower;
+	}
+	
+	// 다른 유저 정보 출력
+	public member(	String id,
+					String nick,
+					String email,
+					String pimg,
+					String comt,
+					String follow,
+					String follower,
+					String scrap_list	) {
+		this.id = id; 
+		this.nick= nick;
+		this.email= email;
+		this.pimg= pimg;
+		this.comt= comt;
+		this.follow= follow;
+		this.follower= follower;
+		this.scrap_list= scrap_list;
+	}
+	
+	public int follow_num() {
+		int followNum= 0;
+		String[] followList= follow.split(":");
+		followNum= followList.length;
+
+		return followNum;
+	}
+	
+	public int follower_num() {
+		int followerNum= 0;
+		String[] followerList= follow.split(":");
+		followerNum= followerList.length;
+
+		return followerNum;
+	}
 	
 	public int getNum() {
 		return num;

@@ -17,6 +17,7 @@
   <div id='vot_cont'>
     <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="1번째 투표 항목" name="items"></div>
     <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="2번째 투표 항목" name="items"></div>
+
   </div>
   <div id='vot_plus'><button onclick="plus_vote()">추가</button></div>
   <div id='vot_che'>
