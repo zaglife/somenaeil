@@ -1,7 +1,9 @@
+if (sessionStorage.getItem("searchTab") == null)
+  sessionStorage.setItem("searchTab", "all");
+
 // 초기화
 $(document).ready(function(){
-  if (sessionStorage.getItem("searchTab") == null)
-    sessionStorage.setItem("searchTab", "all");
+
   var tab_id = sessionStorage.getItem("searchTab");
 
   $("#search_cate_center a").removeClass("current");
@@ -14,27 +16,6 @@ $("#search_cate_center a").on("click", function(){
   
 	$("#search_cate_center a").removeClass("current");
   $(this).addClass("current");
-  
-  if (tab_id="all") {
-    $(".post G").css("display", "inherit")
-    $(".post R").css("display", "inherit");
-    $(".post Q").css("display", "inherit");
-  }
-  else if (tab_id=="general") {
-    $(".post G").css("display", "inherit")
-    $(".post R").css("display", "none");
-    $(".post Q").css("display", "none");
-  }
-  else if (tab_id="review") {
-    $(".post G").css("display", "none")
-    $(".post R").css("display", "inherit");
-    $(".post Q").css("display", "none");
-  }
-  else if (tab_id="qna") {
-    $(".post G").css("display", "none")
-    $(".post R").css("display", "none");
-    $(".post Q").css("display", "inherit");
-  }
   
   sessionStorage.setItem("searchTab", tab_id);
 })

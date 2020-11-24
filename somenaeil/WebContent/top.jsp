@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 
 <script>
 $( window ).scroll( function() {
@@ -75,12 +76,30 @@ function dropdown() {
     <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
   </div>
   
-  <form action="search.post" method="get">
+  <form action="search.post" method="get" accept-charset="UTF-8">
 	  <div id="top_search">
-	    <div id="top_search_cate"><img src="img/cate_a_35.png"></div>
+			<div id="top_search_cate">
+				<label>
+					<input type="radio" name="cate" class="cate select_cate">
+					<img src="img/cate_a_35.png">
+				</label>
+				<div id="hidden_cate" class="d_hide">
+				<label>
+					<input type="radio" name="cate" value="G" class="cate">
+					<img src="img/cate_g_35.png">
+				</label>
+				<label>
+					<input type="radio" name="cate" value="R" class="cate">
+					<img src="img/cate_r_35.png">
+				</label>
+				<label>
+					<input type="radio" name="cate" value="Q" class="cate">
+					<img src="img/cate_q_35.png">
+				</label>
+			</div>
+			</div>
 	    <!-- <input type="hidden" name="cate" value="G">  -->
 	    <input type="hidden" name="part" value="search">
-	    <input type="hidden" name="opt" value="sTitle">
 	    <input type="text" name="condition" placeholder="검색">
 	    <button type="submit"><img src="img/btn_search01_20.png"></button>
 	  </div>
@@ -94,3 +113,5 @@ function dropdown() {
   </div>
 
 </div>
+
+<script src="lib/js/top.js"></script>

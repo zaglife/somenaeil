@@ -1,7 +1,8 @@
+if (sessionStorage.getItem("menuTab") == null)
+    sessionStorage.setItem("menuTab", "all");
+    
 // 초기화
 $(document).ready(function(){
-  if (sessionStorage.getItem("menuTab") == null)
-    sessionStorage.setItem("menuTab", "all");
   var tab_id = sessionStorage.getItem("menuTab");
 
   $("#main_menu_center a").removeClass("current");
@@ -10,34 +11,12 @@ $(document).ready(function(){
 
 
 // 메뉴(A,G,R,Q) 탭 기능
-$("#main_menu_center a").on("click", function(){
+$(".main_menu").on("click", function(){
   var tab_id = $(this).attr("data-tab");
-  
   
 	$("#main_menu_center a").removeClass("current");
 	$(this).addClass("current");
 
-  if (tab_id="all") {
-    $(".post G").css("display", "inherit")
-    $(".post R").css("display", "inherit");
-    $(".post Q").css("display", "inherit");
-  }
-  else if (tab_id=="general") {
-    $(".post G").css("display", "inherit")
-    $(".post R").css("display", "none");
-    $(".post Q").css("display", "none");
-  }
-  else if (tab_id="review") {
-    $(".post G").css("display", "none")
-    $(".post R").css("display", "inherit");
-    $(".post Q").css("display", "none");
-  }
-  else if (tab_id="qna") {
-    $(".post G").css("display", "none")
-    $(".post R").css("display", "none");
-    $(".post Q").css("display", "inherit");
-  }
-  
   sessionStorage.setItem("menuTab", tab_id);
 })
 

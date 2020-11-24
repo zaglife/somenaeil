@@ -14,9 +14,7 @@
 </head>
 <body>
 
-<!--jsp:include page="content.jsp" /-->
-<!--jsp:include page="search.jsp" /-->
-
+<jsp:include page="top.jsp" />
 
 <c:if test="${param.part == 'search'}">
 	<jsp:include page="search.jsp"/>
@@ -27,7 +25,7 @@
 
 <div id="btm_space"></div>
 
-<jsp:include page="top.jsp" />
+
 <jsp:include page="bottom.jsp" />
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />

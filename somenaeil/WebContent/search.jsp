@@ -2,17 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
+
 <div id="search_cate_wrap">
   <div id="search_cate_center">
-    <a href="#" class="search_menu current" data-tabl="all">A전체</a>
-    <a href="#" class="search_menu" data-tabl="general">G일반</a>
-    <a href="#" class="search_menu" data-tabl="review">R리뷰</a>
-    <a href="#" class="search_menu" data-tabl="qna">Q질문</a>
+    <a href="search.post?part=search&condition=${param.condition}" class="search_menu current" data-tabl="all">A전체</a>
+    <a href="search.post?part=search&condition=${param.condition}&cate=G" class="search_menu" data-tabl="general">G일반</a>
+    <a href="search.post?part=search&condition=${param.condition}&cate=R" class="search_menu" data-tabl="review">R리뷰</a>
+    <a href="search.post?part=search&condition=${param.condition}&cate=Q" class="search_menu" data-tabl="qna">Q질문</a>
   </div>
 </div>
 
-
-<div id="search_warp">  
+<div id="search_result">"<b>${param.condition}</b>" 검색 결과 화면입니다</div>
+<div id="search_wrap">  
  <!-- post start -->
  <c:forEach items="${postList}" var="post">
  	<div class="post">	  
@@ -82,3 +83,6 @@
   <!-- post end -->
  </c:forEach>
 </div>
+
+
+<script src="lib/js/search.js"></script>
