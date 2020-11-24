@@ -86,9 +86,14 @@ public class post_service {
 			}
 			hash += temp[temp.length-1];
 		}
-		
 		String context = request.getParameter("context");
+		String vote_chk = request.getParameter("vote");
+		
 		post_dao pd = new post_dao();
+		
+		if(vote_chk.equals("true")) { // vote_chk에 true가 들어가 있을시 실행 (투표를 만들었는지 안만들었는지 확인한다)
+			pd.voteadd(); // 확인했을 경우 DB작업하도록 메소드 실행
+		}
 		pd.add(writer, title, cate, context, hash);		
 		
 		return "";

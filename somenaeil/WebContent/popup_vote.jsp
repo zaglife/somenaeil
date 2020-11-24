@@ -15,8 +15,8 @@
        <input type="text" placeholder="투표 타이틀" class="vot_title_input">
   </div>
   <div id='vot_cont'>
-    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="1번째 투표 항목"></div>
-    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="2번째 투표 항목"></div>
+    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="1번째 투표 항목" name="items"></div>
+    <div class='vot_cont_t'><input type="text" class="vot_cont_input" placeholder="2번째 투표 항목" name="items"></div>
   </div>
   <div id='vot_plus'><button onclick="plus_vote()">추가</button></div>
   <div id='vot_che'>
@@ -48,7 +48,7 @@
     <div id="vot_exp">*투표 작성일 기준 최대 +9일 24시간 설정가능합니다.</div>
   </div>
   <div id='vot_send'>
-    <button id='vot_send_bt'>저장</button>
+    <button id='vot_send_bt' onclick="vote_cnt()">저장</button>
   </div>
 </div>
 </div>

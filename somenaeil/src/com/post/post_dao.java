@@ -147,7 +147,7 @@ public class post_dao {
 	}
 	
 	
-	
+	// post DB에 연결 작업
 	public void add(String writer, String title, String cate, String content, String hash) {
 		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt) values(?,?,?,?,?,sysdate,?,?,?,?)";
 		System.out.println(sql);
@@ -167,6 +167,12 @@ public class post_dao {
 			e.printStackTrace();
 			System.out.println("글쓰기 DB저장 오류");
 		}
+	}
+	
+	
+	// vote DB에 연결작업 
+	public void voteadd() {
 		
 	}
+	
 }

@@ -168,12 +168,9 @@ function s_code(){
 		at.value = "resize(this);";
 		para3.setAttributeNode(at);
 		
-		
 		var at = document.createAttribute("onkeydown");
 		at.value = "resize(this);";
 		para3.setAttributeNode(at);
-		
-		
 		
 		var at = document.createAttribute("id");
 		at.value = "text_cont";
@@ -285,6 +282,10 @@ function plus_vote(){
 		
 		var at = document.createAttribute("type");
 		at.value = "text";
+		para2.setAttributeNode(at);
+		
+		var at = document.createAttribute("name");
+		at.value = "items"; 
 		para2.setAttributeNode(at);
 		 
 		 var at = document.createAttribute("placeholder");
@@ -410,7 +411,7 @@ function ct(){
 		
 		
 		
-		
+// 팝업 그래프 작업
 		
 var gh_cnt = 2;
 
@@ -513,6 +514,14 @@ function insertText() {
 }
 	
 
+
+function vote_cnt(){
+	$("#vote").val("true");
+	
+}
+
+
+
 function submit1(){
 	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
 	var jbHtml = $('#post_write').html();
@@ -529,7 +538,7 @@ function submit1(){
 	
 }
 
-//이 경우 내용이 아직 안들어감 (해결 방안 찾던지 해야될듯하다)
+//이 경우 내용이 아직 안들어감 (해결 방안 찾던지 해야될듯하다) (해결)
 function submit2(){
 	var context = $("#post_write").html();
 	
