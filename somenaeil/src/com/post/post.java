@@ -3,6 +3,10 @@ package com.post;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
 /**
  * post Bean
@@ -129,20 +133,51 @@ public class post {
 		this.like_cnt = like_cnt;
 	}
 	
-	
+	/**
+	 * 검색 결과 화면에 간단하게 보여줄 게시글 요약
+	 * @return
+	 */
 	public String getSummaryContext() {
 		String ctxt = context;
+		boolean hasThumb = ctxt.contains("<img");	// 썸네일 여부
+		
 		// 태그 제거 정규표현식
-		ctxt = ctxt.replaceAll("<(\\/)?([\\w\\d])+"
-							+ "(\\s)?([\\w]+=\\\"[\\w\\d./]*\\\")?>", "")
+		ctxt = ctxt.replaceAll("<(\\/)?[\\w\\d]+(\\s[\\w\\d-./]+"
+						+ "(=\"[\\w\\d-./]+\")?)*(\\/)?>", "")
 					.trim();
 		
-		// 100 글자가 넘어가면 자르기
-		if (ctxt.length() > 100) {
-			ctxt = ctxt.substring(0, 97);
+		// 긴 글씨 처리
+		if (hasThumb && ctxt.length() > 50) {
+			ctxt = ctxt.substring(0,47);
+			ctxt += "...";
+		}
+		else if (!hasThumb && ctxt.length() > 100) {
+			ctxt = ctxt.substring(0,97);
 			ctxt += "...";
 		}
 		
+		
 		return ctxt;
+	}
+	
+	/**
+	 * 게시글의 썸네일 태그 추출
+	 * @author gagip
+	 * @return
+	 */
+	public String getThumbnail() {
+		String ctxt = context;
+		String thumbnailTag = null;
+		
+		Pattern patten = Pattern.compile("<img((\\s)*[\\w\\d-]*(=\"[\\w\\d/.-]+\")*)*>");
+		Matcher matcher = patten.matcher(ctxt);
+		
+		while (matcher.find()) {
+			if (matcher.group() == null) break;
+			
+			thumbnailTag = matcher.group();
+		}
+		
+		return thumbnailTag;
 	}
 }

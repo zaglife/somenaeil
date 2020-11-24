@@ -141,6 +141,7 @@
 	transform: rotate(90deg) !important;
 }
 
+
 /* 탑 메뉴 - 로그인 후 프사 */
 #top_user_pimg {
 	position: fixed !important;
@@ -170,4 +171,29 @@
 #top_user_login img {
 	width: 100%;
 	height: auto;
+}
+
+
+#hidden_cate {
+	border: 1px solid black;
+	background-color: #fff;
+	width:38px;
+}
+
+/* HIDE RADIO */
+input[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+input[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+input[type=radio]:checked + img {
+  outline: 2px solid #f00;
 }

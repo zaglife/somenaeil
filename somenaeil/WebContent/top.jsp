@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 
 <script>
 $( window ).scroll( function() {
@@ -47,6 +48,7 @@ function dropdown() {
 		drop= 1;
 	}
 }
+
 </script>
 
 
@@ -115,44 +117,46 @@ function dropdown() {
 </c:choose>
 
 
+  <div id="top_logo">
+    <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
+  </div>
+  
+  <form action="search.post" method="get" accept-charset="UTF-8">
+	  <div id="top_search">
+			<div id="top_search_cate">
+				<label>
+					<input type="radio" name="cate" class="cate select_cate">
+					<img src="img/cate_a_35.png">
+				</label>
+				<div id="hidden_cate" class="d_hide">
+				<label>
+					<input type="radio" name="cate" value="G" class="cate">
+					<img src="img/cate_g_35.png">
+				</label>
+				<label>
+					<input type="radio" name="cate" value="R" class="cate">
+					<img src="img/cate_r_35.png">
+				</label>
+				<label>
+					<input type="radio" name="cate" value="Q" class="cate">
+					<img src="img/cate_q_35.png">
+				</label>
+			</div>
+			</div>
+	    <!-- <input type="hidden" name="cate" value="G">  -->
+	    <input type="hidden" name="part" value="search">
+	    <input type="text" name="condition" placeholder="검색">
+	    <button type="submit"><img src="img/btn_search01_20.png"></button>
+	  </div>
+  </form>
+  
+  <div id="top_menu">
+    <a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+    <a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+    <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+    <a href="login.jsp"><img src="img/icon_profile_30.png"></a>
+  </div>
 
+</div>
 
-
-
-
-<!-- 로그인 확인 // 나중에 지우기 -->
-<c:if test="${user == null }">
-  <div style="	float: left;
-  				position: fixed;
-  				width: 100px;
-  				height: 100px;
-  				color: #fff;
-  				text-align: center;
-  				line-height: 100px;
-  				font-size: 16px;
-  				font-weight: 900;
-  				background: #d23a3a;
-  				left: 0;
-  				bottom: 0;
-  				margin: 10px;
-  				border-radius: 100px;
-  				z-index: 99999;	 ">로그인 전</div>
-</c:if>
-
-<c:if test="${user != null }">
-  <div style="	float: left;
-  				position: fixed;
-  				width: 100px;
-  				height: 100px;
-  				color: #fff;
-  				text-align: center;
-  				line-height: 100px;
-  				font-size: 16px;
-  				font-weight: 900;
-  				background: #3db551;
-  				left: 0;
-  				bottom: 0;
-  				margin: 10px;
-  				border-radius: 100px;
-  				z-index: 99999; 	">로그인 성공</div>
-</c:if>
+<script src="lib/js/top.js"></script>
