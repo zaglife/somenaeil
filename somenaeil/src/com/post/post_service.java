@@ -1,11 +1,14 @@
 package com.post;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+
 import com.member.member;
-import com.vote.vote_service;
+import com.reply.reply;
+import com.reply.reply_dao;
 
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
@@ -32,8 +35,13 @@ public class post_service {
 		post_dao dao = new post_dao();
 		post pt = dao.getPost(pageNum);
 		
-		// 가져온 post를 request에 전달
+		// 댓글 가져오기
+		reply_dao replyDAO = new reply_dao();
+		ArrayList<reply> replyList = replyDAO.getReplyList(pageNum);
+		
+		// 가져온 post와 댓글들을 request에 전달
 		request.setAttribute("post", pt);
+		request.setAttribute("replyList", replyList);
 		
 		return String.format("post.jsp?pageNum=%d", pageNum);
 	}
@@ -90,5 +98,37 @@ public class post_service {
 		pd.add(writer, title, cate, context, hash);		
 		
 		return null;
+	}
+	
+	
+	public boolean writeReply() {
+		// 파라미터 불러오기
+		String author = request.getParameter("author");
+		String context = request.getParameter("context");
+		try {
+			author = URLDecoder.decode(author, "UTF-8");
+			context = URLDecoder.decode(context, "utf-8");
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		int post_num = Integer.parseInt(request.getParameter("post_num"));
+		
+		// 댓글 인스턴스 생성
+		reply rep = new reply();
+		reply_dao replyDAO = new reply_dao();
+		
+		// DB 데이터 -> 인스턴스 변수
+		rep.setNum(replyDAO.getSeq());
+		rep.setPost_num(post_num);
+		rep.setAuthor(author);
+		rep.setContext(context);
+		
+		boolean result = replyDAO.insertReply(rep);
+		
+	
+		return result;		// ajax를 이용할 것이기 때문에 화면 이동 X
 	}
 }
