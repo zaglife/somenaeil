@@ -82,11 +82,11 @@
   <div id="post_mid">
     <div id="post_mid_top">
   	  <div class="post_tcate_part">
-  	    <div class="post_tcate"><button id="post_bold" type="button" class="post_func_btn"><img src="img/post_b_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_italic" type="button" class="post_func_btn"><img src="img/post_i_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_underline" type="button" class="post_func_btn"><img src="img/post_u_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_strike" type="button" class="post_func_btn"><img src="img/post_s_20.png"></button></div>
-  	    <div class="post_tcate post_color_space"><button id="post_color" type="button" class="post_func_btn"><img src="img/post_c_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_bold" class="post_func_btn" onclick="document.execCommand('bold')"><img src="img/post_b_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_italic" class="post_func_btn"onclick="document.execCommand('italic')"><img src="img/post_i_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_underline" type="button" class="post_func_btn"onclick="document.execCommand('underline')"><img src="img/post_u_20.png"></button></div>
+  	    <div class="post_tcate"><button id="post_strike" type="button" class="post_func_btn"onclick="document.execCommand('strikeThrough')"><img src="img/post_s_20.png"></button></div>
+  	    <div class="post_tcate post_color_space"><button id="post_color" type="button" class="post_func_btn" onclick="document.execCommand('color')"><img src="img/post_c_20.png"></button></div>
   	    <div id="post_color_picker">
   	      <input type="color" name="color" id="foreColor">
   	    </div>
@@ -122,7 +122,7 @@
   	    <div class="post_file"><button id="pd" type="button" onclick="post_code()" class="post_func_btn"><img src="img/post_code_20.png"></button></div>
       </div>
     </div>
-    <div id="post_write">
+    <div id="post_write" contenteditable="true">
 	  <div id="post_write1" contenteditable="true"></div>
 	  <!-- text입력부분 소스코드 display none -->
 
@@ -176,5 +176,6 @@ $(function() {
 <jsp:include page="totop.jsp" />
 
 </form>
+
 </body>
 </html>

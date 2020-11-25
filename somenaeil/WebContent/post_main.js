@@ -473,7 +473,10 @@ function submit2(){
 document.execCommand('styleWithCSS', false, true);
 document.execCommand('insertBrOnReturn', false, true);
 $(document).ready(function() {
-	$(".post_write").focus();
+	$("#post_write1").focus();
+    $('button').click(function(){
+        document.execCommand($(this).attr('id'), false, true);
+      });
 	$('#post_bold').click(function() {
 		document.execCommand('bold', false, true);
 	});
@@ -554,4 +557,15 @@ function lk_bt_input() {
 	new_post_write.setAttribute("contenteditable", "true");
 	
 	document.getElementById("post_write").appendChild(new_post_write);   
+}
+
+function post_in(){
+	var jbHtml = $('#ct_table').html();
+	
+	$('#post_pop_ct').addClass('post_pop_hide');
+	popCt= 1;
+	alert(jbHtml);
+	document.getElementById("post_write").appendChild(jbHtml); 
+	alert("성공");
+	
 }

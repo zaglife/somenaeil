@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import com.member.member;
+import com.vote.vote_service;
 
 /**
  * 요청한 post 데이터를 클라이언트에게 반환

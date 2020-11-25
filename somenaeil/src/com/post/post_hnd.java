@@ -3,6 +3,8 @@ package com.post;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vote.vote_service;
+
 public class post_hnd implements post_able {
 
 	@Override
@@ -24,6 +26,8 @@ public class post_hnd implements post_able {
 			case "postList":
 				view = ps.postList(); break;
 			case "writer" :
+				vote_service vs = new vote_service(request);
+				
 				view =ps.add(); break;
 			case "search":
 				view = ps.postList(); break;

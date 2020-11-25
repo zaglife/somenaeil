@@ -37,7 +37,7 @@
   <div id='ct_table'>
   </div>
   <div id='ct_bottom'>
-  	<button>저장</button>
+  	<button onclick="post_in()">저장</button>
   </div>
 </div>
 </div>
