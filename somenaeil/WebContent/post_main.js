@@ -171,6 +171,8 @@ $(document).ready(function(){
 		$("#name4_out").text($("#g_name4").val());
 	});
 
+	
+	// 그래프 실시간으로 바꾸기 
 	var g1 = 0;
 	var g2 = 0;
 	var g3 = 0;
@@ -189,6 +191,7 @@ $(document).ready(function(){
 		$("#data3_out").width(result3+'px');
 		$("#data4_out").width(result4+'px');
 	}
+	//해당 아이디를 가진 input이 keyup될때마다 그래프의 길이가 바뀐다. 
 	$("#g_data1").keyup(function(){
 		g1= $("#g_data1").val();
 		gh_calc();
@@ -197,7 +200,7 @@ $(document).ready(function(){
 		g2= $("#g_data2").val();
 		gh_calc();
 	});
-	
+	// 동적으로 생성된 input태그들은 on을 사용하여 이벤트가 발생하도록 해야된다.
 	$(document).on('propertychange change keyup paste input', '#g_data3', function(){
 		g3= $("#g_data3").val();
 		gh_calc();
@@ -211,38 +214,34 @@ $(document).ready(function(){
 
 // 투표 추가버튼시 생성 6개째 생성시 alert띄우면서 버튼 사라진다.
 var plus_cnt = 2;
-function plus_vote(){
+function plus_vote(){		
+	var para = document.createElement("div");
+	jQuery(para).addClass("vot_cont_t");
+	document.getElementById("vot_cont").appendChild(para);
 	
+	var para2 = document.createElement("input");
+	jQuery(para2).addClass("vot_cont_input");
+	
+	var at = document.createAttribute("type");
+	at.value = "text";
+	para2.setAttributeNode(at);
+	
+	var at = document.createAttribute("name");
+	at.value = "items"; 
+	para2.setAttributeNode(at);
+	 
+	 var at = document.createAttribute("placeholder");
+	 at.value = ""+(plus_cnt+1)+"번째 투표 항목";
+	 para2.setAttributeNode(at);
+	
+	document.getElementsByClassName("vot_cont_t")[plus_cnt].appendChild(para2);
+	
+	plus_cnt++;
 	if(plus_cnt > 5){
-		
-	}else {
-		var para = document.createElement("div");
-		jQuery(para).addClass("vot_cont_t");
-		document.getElementById("vot_cont").appendChild(para);
-		
-		var para2 = document.createElement("input");
-		jQuery(para2).addClass("vot_cont_input");
-		
-		var at = document.createAttribute("type");
-		at.value = "text";
-		para2.setAttributeNode(at);
-		
-		var at = document.createAttribute("name");
-		at.value = "items"; 
-		para2.setAttributeNode(at);
-		 
-		 var at = document.createAttribute("placeholder");
-		 at.value = ""+(plus_cnt+1)+"번째 투표 항목";
-		 para2.setAttributeNode(at);
-		
-		document.getElementsByClassName("vot_cont_t")[plus_cnt].appendChild(para2);
-		
-		plus_cnt++;
-		if(plus_cnt > 5){
-			alert("투표항목은 6개가 최대입니다.");
-			document.getElementById('vot_plus').style.display='none';
-		}
+		alert("투표항목은 6개가 최대입니다.");
+		document.getElementById('vot_plus').style.display='none';
 	}
+	
 }
 
 function maxLengthCheck(object){
@@ -251,7 +250,7 @@ function maxLengthCheck(object){
 	}    
 }
 
-// 표 만들기(미완성)
+// 표 만들기(완성)
 var before_row = -1;
 var before_col = -1;
 		
@@ -263,13 +262,11 @@ function ct(){
 		alert("행과 열을 모두 입력해주세요.");
 		$('#row').focus();
 	}else if(row == 0){
-		alert("열을 입력해주세요.");
+		alert("행을 입력해주세요.");
 		$('#row').focus();
 	}else if(col == 0){
-		alert("행을 입력해주세요.");
+		alert("열을 입력해주세요.");
 		$('#col').focus();
-	}else if(before_row == row && before_col == col){
-		alert("바뀔 행과 열이 없습니다.");
 	}else{
 		for(var i = 1; i <= col; i++){
 			for(var j = 1; j <= row; j++){
@@ -284,7 +281,6 @@ function ct(){
 				at.value = "데이터";
 				para2.setAttributeNode(at);
 			}
-			
 			document.getElementById("ct_table").appendChild(para);
 		}
 		var ct_style= document.getElementsByName("table_style");
@@ -315,30 +311,37 @@ function ct(){
 				}
 			}
 		}
-		var ct_size = ct.length;
-		if(row % 2 == 0){
-			var k=0;
-			for(var i = 0; i < ct_size/2; i++){
-				if(k < row/2) {
-					ct[i*2].className +=  " ct_cell_back";
-					k++;
-				} else if(row/2 < k) {
-					ct[i*2+1].className +=  " ct_cell_back";
-					k++;
-				} else if(k == ct_size/4 ) {
-					k= 0;
-				}
-			}
-		}else if(row % 2 == 1){
-			for(var i = 0; i < ct_size/2; i++){
-				ct[i*2].className +=  " ct_cell_back";
-			}
-		}
+		// 적용버튼 클릭시 적용버튼 hidden으로 바꿈
+		document.getElementById('ct_apply').style.visibility='hidden';
+		
+		
+//		배경색 입히기 		
+//		var ct_size = ct.length;
+//		if(row % 2 == 0){
+//			var k=0;
+//			for(var i = 0; i < ct_size/2; i++){
+//				if(k < row/2) {
+//					ct[i*2].className +=  " ct_cell_back";
+//					k++;
+//				} else if(row/2 < k) {
+//					ct[i*2+1].className +=  " ct_cell_back";
+//					k++;
+//				} else if(k == ct_size/4 ) {
+//					k= 0;
+//				}
+//			}
+//		}else if(row % 2 == 1){
+//			for(var i = 0; i < ct_size/2; i++){
+//				ct[i*2].className +=  " ct_cell_back";
+//			}
+//		}
 	}
 	before_row = row;
 	before_col = col;
 }
+// 표만들기 끝 
 
+// 그래프 추가 버튼 누를시 그래프 생성 
 var gh_cnt = 2;
 
 function gh_plus(){
@@ -346,17 +349,13 @@ function gh_plus(){
 	jQuery(para).addClass("gh");
 	document.getElementById("gh_d").appendChild(para);
 	
-	
-	
-	
+		
 	var para2 = document.createElement("div");
 	jQuery(para2).addClass("gh_dt_name");
 	jQuery(para2).attr("id","name"+(gh_cnt+1)+"_out");
 	document.getElementsByClassName("gh")[gh_cnt].appendChild(para2);
 	
-	
-	
-	
+		
 	var para3 = document.createElement("div");
 	jQuery(para3).addClass("gh_rod");
 	document.getElementsByClassName("gh")[gh_cnt].appendChild(para3);
@@ -416,6 +415,8 @@ function temporary(){
 	alert("현재 이 그래프타입은 준비중입니다.");
 }
 
+
+//봉규님 작업하신거
 function insertText() {
 	var txtArea = document.getElementById('txtForm');
 	var txtValue = txtArea.value;
@@ -433,14 +434,13 @@ function insertText() {
 }
 	
 
-
+// vote의 저장버튼 누를시 vote의아이디을 가진 input의 value값이 바뀐다.
 function vote_cnt(){
 	$("#vote").val("true");
-	
 }
 
 
-
+// 서버로 보낼때 방법 1 (문제점 : 인코딩 해야된다 ) 아직 방법을 찾진않았다.
 function submit1(){
 	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
 	var jbHtml = $('#post_write').html();
@@ -457,10 +457,11 @@ function submit1(){
 	
 }
 
-//이 경우 내용이 아직 안들어감 (해결 방안 찾던지 해야될듯하다) (해결)
+// 서버로 보낼때 방법 2 (문제점 : 야매방법이라고하심)(임시로 사용)
 function submit2(){
-	var context = $("#post_write").html();
 	
+	document.getElementById("post_write1").setAttribute("contenteditable","false");
+	var context = $("#post_write").html();
 	$("#context").val(context);
 	var f = document.getElementById("form");
 	f.submit();
@@ -468,17 +469,7 @@ function submit2(){
 
 /* post_main script end */
 
-
-/* post_main script end */
-
-
-
-
-
-
-
-
-
+// 이 밑에부터 봉규님 작업하신거
 document.execCommand('styleWithCSS', false, true);
 document.execCommand('insertBrOnReturn', false, true);
 $(document).ready(function() {

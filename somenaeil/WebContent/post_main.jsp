@@ -40,7 +40,7 @@
 
 
 
-<form id="form" method="get" action="write.post">
+<form id="form" method="get" action="write.post" onsubmit="return false">
 <input type="hidden" name="part" value="writer">
 <input id="context" type="hidden" name="context" value="s">
 <input type="hidden" name="vote" value="false">

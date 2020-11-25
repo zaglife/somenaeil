@@ -3,6 +3,7 @@
 
 <div class='pop_wrap post_pop_hide' id="post_pop_vote">
 <a class="post_pop_close" onclick="postPopVote()"></a>
+<input type="hidden" id="vote" name="vote" value="false">
 <div class='pop_center'>
   <div class="pop_cls_bt">
     <a onclick="postPopVote()"><img src="img/btn_close_20.png"></a>
@@ -22,28 +23,28 @@
   <div id='vot_plus'><button onclick="plus_vote()">추가</button></div>
   <div id='vot_che'>
     <div class='vot_box'>
-      <input type="checkbox" name='choice' class="vot_option" id="cb1">
+      <input type="checkbox" name='choice' class="vot_option" id="cb1" value="muit">
       <label for="cb1"></label>
       <p> 복수 선택 허용</p>
     </div>
     <div class='vot_box'>
-      <input type="checkbox" name='choice' class="vot_option" id="cb2">
+      <input type="checkbox" name='choice' class="vot_option" id="cb2" value="hidden">
       <label for="cb2"></label>
       <p> 무기명 투표</p>
     </div>
     <div class='vot_box'>
-      <input type="checkbox" name='choice' class="vot_option" id="cb3">
+      <input type="checkbox" name='choice' class="vot_option" id="cb3" value="stat">
       <label for="cb3"></label>
       <p> 투표 현황 보기</p>
     </div>
     
     <div class='vot_box'>
-      <input type="checkbox" name='choice' class="vot_option" id="cb4">
+      <input type="checkbox" name='choice' class="vot_option" id="cb4" value="date">
       <label for="cb4"></label>
       <p> 종료일 설정 +</p>
-      <input type="text" value="1" class="box">
+      <input type="text" value="1" class="box" name="day">
       <p>일 </p>
-      <input type="text" class="box">
+      <input type="text" class="box" name="hour">
       <p>시간</p> 
     </div>
     <div id="vot_exp">*투표 작성일 기준 최대 +9일 24시간 설정가능합니다.</div>

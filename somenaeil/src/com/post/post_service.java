@@ -88,6 +88,6 @@ public class post_service {
 		}
 		pd.add(writer, title, cate, context, hash);		
 		
-		return "";
+		return null;
 	}
 }
