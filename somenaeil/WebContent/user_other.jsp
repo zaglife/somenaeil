@@ -39,6 +39,7 @@
     <div id="other_right">
       <c:if test="${user != null }">
         <c:if test="${fl_check == 'no' }">
+        팔로우 중이 아님
           <form method="get" action="user.do">
           <input type="hidden" name="part" value="fl_update">
           <input type="hidden" name="follow" value="fl">
@@ -48,7 +49,7 @@
           </form>
         </c:if>
         <c:if test="${fl_check == 'fl' }">
-언팔
+팔로우 중임
         </c:if>
 
       

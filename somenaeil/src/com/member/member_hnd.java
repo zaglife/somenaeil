@@ -45,36 +45,29 @@ public class member_hnd implements main_able{
 					view= "user.jsp";
 				} else if(!id.equals(uid)) {
 					ms.user_other(id, uid);
+					String check= ms.fl_check(id, uid);
+					
+					System.out.println(check);
+					
 					view= "user_other.jsp";
 				} else if(id == null) {
 					ms.user_self(uid);
-					
-					member data= md.member_read(uid);
-					request.getSession().setAttribute("data", data);
-					request.getSession().setAttribute("uid", data.getId());
 					view= "user_other.jsp";
 				}
 				break;
 			case "fl_update" :
-
-				ms.user_other(id, uid);
-				
 				String follow= request.getParameter("follow");
 				String my_id= request.getParameter("id");
-
-				member data= md.member_read(uid);
-				String other_id= data.getId();
-				String other_follow= data.getFollow();
-				md.fl_update(my_id, other_id, other_follow, follow);
+				
+				ms.follow(id, uid, follow);
 				
 				if(follow.equals("fl")) {
-					System.out.println("fl");
+					request.setAttribute("follow", "no");
+					view= "user_other.jsp";
 				} else if(follow.equals("no")) {
-					System.out.println("no");
+					request.setAttribute("follow", "fl");
+					view= "user_other.jsp";
 				}
-				
-				view= "user_other.jsp";
-				// 다시 팔로우 요청한 대상의 user_other페이지로 이동하게 해줘야함
 				
 				break;
 			}
