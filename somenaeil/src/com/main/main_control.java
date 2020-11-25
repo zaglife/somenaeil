@@ -101,7 +101,11 @@ public class main_control extends HttpServlet {
 			RequestDispatcher dsp= request.getRequestDispatcher("index.jsp");
 			dsp.forward(request, response);	
 		} else {
-			response.sendRedirect(view);
+			// 수정 필요
+			RequestDispatcher dsp= request.getRequestDispatcher(view);
+			dsp.forward(request, response);	
+			// sendRedirect: request에 있는 요소들 다 삭제 = setAttribute() 무용지물
+//			response.sendRedirect(view);
 		}
 	}
 }

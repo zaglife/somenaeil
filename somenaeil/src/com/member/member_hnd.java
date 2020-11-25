@@ -40,34 +40,34 @@ public class member_hnd implements main_able{
 				view= "user.jsp";
 				break;
 			case "user" :
-				if(id == null) {
-					member data= md.member_read(uid);
-					request.getSession().setAttribute("data", data);
-					request.getSession().setAttribute("uid", data.getId());
-					view= "user_other.jsp";
-					System.out.println("member_hnd - <user>case if문 1번째");
-				}else if(id.equals(uid)) {
-					md.member_read(uid);
+				if(id.equals(uid)) {
+					ms.user_self(id);
 					view= "user.jsp";
-					System.out.println("member_hnd - <user>case if문 2번째");
 				} else if(!id.equals(uid)) {
+					ms.user_other(id, uid);
+					view= "user_other.jsp";
+				} else if(id == null) {
 					member data= md.member_read(uid);
 					request.getSession().setAttribute("data", data);
 					request.getSession().setAttribute("uid", data.getId());
 					view= "user_other.jsp";
-					System.out.println("member_hnd - <user>case if문 3번째");
 				}
 				break;
 			case "fl_update" :
-				System.out.println("member_hnd - <fl_update>case");
+				
 				String follow= request.getParameter("follow");
 				String my_id= request.getParameter("id");
-				
-				member data= md.member_read(uid);
 
+				member data= md.member_read(uid);
 				String other_id= data.getId();
 				String other_follow= data.getFollow();
 				md.fl_update(my_id, other_id, other_follow, follow);
+				
+				if(follow.equals("fl")) {
+					System.out.println("fl");
+				} else if(follow.equals("no")) {
+					System.out.println("no");
+				}
 				
 				view= "user_other.jsp";
 				// 다시 팔로우 요청한 대상의 user_other페이지로 이동하게 해줘야함

@@ -74,6 +74,32 @@ public class member_service {
 		request.getSession().setAttribute("user", user);
 	}
 	
+	public void user_self(String id) {
+		member_dao md= new member_dao();
+		md.member_read(id);
+	}
+	
+	public void user_other(String id, String uid) {
+		member_dao md= new member_dao();
+		member user= md.member_read(id);
+		member other= md.member_read(uid);
+
+		request.setAttribute("user", user);
+		request.setAttribute("other", other);
+		
+		String[] other_flw= other.getFollower().split(":");
+		
+		for(int i=0; i<other_flw.length; i++) {
+			if(other_flw[i] == user.getId()) {
+				request.setAttribute("fl_check", "fl");
+				break;
+			}else {
+				request.setAttribute("fl_check", "no");
+			}
+		}
+	}
+
+	
 	/**
 	 * 해당 유저의 팔로우 리스트를 추출
 	 * @return 해당 유저의 팔로우 리스트

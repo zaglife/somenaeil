@@ -10,8 +10,8 @@
 
 <%
 
-	String id= (String) session.getAttribute("id");
-	String uid= (String) session.getAttribute("uid");
+	String id= (String) request.getSession().getAttribute("id");
+	String uid= (String) request.getAttribute("uid");
 	member_service ms= new member_service();
 	
 	if(uid != null){
@@ -35,31 +35,40 @@
 </head>
 <body>
 
-
-<c:if test="${data != null }">
+<c:if test="${other != null }">
 <div id="user_wrap">
   <div id="user_top">
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick">${data.getNick() }</div>
-      <div id="user_ment">${data.getComt() }</div>
+      <div id="user_nick">${other.getNick() }</div>
+      <div id="user_ment">${other.getComt() }</div>
       <div id="user_info_follow">
         <a onclick="userFollowerPop()">팔로워 ${follower_list.size() }</a>
         <a onclick="userFollowPop()">팔로우 ${follow_list.size() }</a>
-        <p>게시글 512</p>
+        <p>게시글 52</p>${data.size() }
       </div>
     </div>
     
+
+    <!-- 여기부터 -->
+
     <div id="other_right">
       <c:if test="${user != null }">
-      <form method="get" action="user.do">
-      <input type="hidden" name="part" value="fl_update">
-      <input type="hidden" name="follow" value="fl">
-      <input type="hidden" name="id" value="<%=id %>">
-      <input type="hidden" name="uid" value="${data.getId() }">
-      <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
-      </form>
+        <c:if test="${fl_check == 'no' }">
+          <form method="get" action="user.do">
+          <input type="hidden" name="part" value="fl_update">
+          <input type="hidden" name="follow" value="fl">
+          <input type="hidden" name="id" value="${user.getId() }">
+          <input type="hidden" name="uid" value="">
+            <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
+          </form>
+        </c:if>
+        <c:if test="${fl_check == 'fl' }">
+언팔
+        </c:if>
+
+      
       </c:if>
       
       <c:if test="${user == null }">

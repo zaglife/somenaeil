@@ -192,11 +192,12 @@ public class member_dao {
 					rs.getString("follower"),
 					rs.getString("scrap_list"));
 			}
+			return user;
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 멤버정보 불러오기 실패");
 		}
-		return user;
+		return null;
 	}
 
 	
