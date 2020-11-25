@@ -47,6 +47,8 @@ public class member_hnd implements main_able{
 					ms.user_other(id, uid);
 					view= "user_other.jsp";
 				} else if(id == null) {
+					ms.user_self(uid);
+					
 					member data= md.member_read(uid);
 					request.getSession().setAttribute("data", data);
 					request.getSession().setAttribute("uid", data.getId());
@@ -54,6 +56,8 @@ public class member_hnd implements main_able{
 				}
 				break;
 			case "fl_update" :
+
+				ms.user_other(id, uid);
 				
 				String follow= request.getParameter("follow");
 				String my_id= request.getParameter("id");

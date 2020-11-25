@@ -303,6 +303,10 @@
 	margin: 20px 0 3px 5px;
 }
 
+.user_popup_name a {
+	position: relative !important;
+}
+
 .user_popup_comment {
 	float: left;
 	position: relative;
