@@ -664,3 +664,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	float: left;
 	position: relative;
 }
+
+#img_files{
+	visibility: hidden;
+}

@@ -101,16 +101,16 @@
   	      </div>
   	    </div>
   	    <div class="post_file">
-  	      <input type="file" name="img_file" id="img_file">
-  	      <label for="img_file" id="img_file_label"></label>
+  	      <input type="button" name="img_file" id="img_file" onclick="onclick=document.all.file.click()">
   	    </div>
   	    <div class="post_file">
   	      <a href="#" onclick="showmov()"><img src="img/post_vid_20.png"></a>
   	      <!-- 영상 embed 기능 display none -->
-  	      <div id="post_embed_wrap" class="post_mov">	
+  	      <div id="post_embed_wrap" class="post_mov">
+  	        <input type="hidden" id="post_em">	
   	      	<p id='post_embed_ti'>영상주소</p>
   	        <input type="text" value="http://" id='embed'>
-  	        <button id='embed_bt' type="button">+</button>	       
+  	        <button id='embed_bt' type="button" onclick="em_bt_input()">+</button>	       
   	      </div>
   	    </div>
   	  </div>
@@ -157,6 +157,9 @@
 <jsp:include page="popup_ct.jsp" />
 <jsp:include page="popup_gh.jsp" />
 <jsp:include page="popup_vote.jsp" />
+
+
+<input type="file" id="f11" name="f11" onchange="changeValue(this)"/>
 
 
 

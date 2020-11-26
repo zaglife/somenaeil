@@ -43,10 +43,7 @@ public class vote_service {
 				if(temp2[i].equals("muit")) 
 					muit = 1;
 				else if(temp2[i].equals("hidden")) {
-					hidden = 1;
-					
-					// 생각을 해보니 투표를 만들때는 detail table을 건들 필요가 없다 하지만 투표가 생성될때마다 회원이름_vote_detail이런식으로 생성되게하는건 
-					// 효율적인지 비효율적인지 궁금해졌다.
+					hidden = 1;				
 				}else if(temp2[i].equals("stat"))
 					stat = 1;
 				else if(temp2[i].equals("date")) {

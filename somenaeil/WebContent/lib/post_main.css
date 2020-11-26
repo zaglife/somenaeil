@@ -182,6 +182,7 @@ a:hovre{
     border: 2px solid #555;
     border-radius: 25px;
     margin: 38px 0 0px -23px;
+    z-index: 9999;
 }
 #post_embed_ti{
 	width: 80px;
@@ -379,6 +380,19 @@ a:hovre{
 	float: left;
 	clear: left;
 }
+
+#img_file{
+	float: left;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	margin: 7px;
+	background: url("../img/post_pic_20.png") no-repeat center center;
+	background-size: cover;
+	border :0;
+	cursor: pointer;
+}
+
 
 #img_file_label {
 	float: left;

@@ -563,6 +563,32 @@ function lk_bt_input() {
 	document.getElementById("post_write").appendChild(new_post_write);   
 }
 
+
+function em_bt_input() {
+	var insertNode = document.createElement('a');
+	
+	var em= $('#embed').val();
+	var post_em= $('#post_em').val();
+	if(!post_em || lk_text == "") {
+		post_em= $('#embed').val();
+	}else if(em_text != null) {
+		post_em= $('#post_em').val();
+	}
+	
+	insertNode.innerText= post_em; 
+	insertNode.setAttribute("href", embed);
+	insertNode.setAttribute("title", "포스팅 등록시 링크가 활성화 됩니다.");
+	jQuery(insertNode).addClass("link_inserted");
+	$("#post_write div:last").append(insertNode);
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	
+	document.getElementById("post_write").appendChild(new_post_write);   
+}
+
+
 function post_in(){
 	var jbHtml = $('#test').html();
 	
@@ -597,3 +623,65 @@ function post_in1(){
 	alert("성공");
 	
 }
+
+/*	window.onload= function(){
+	var url = decodeURIComponent(location.href);
+	var a = url.charAt(url.length-1);
+		
+	};*/
+var gfv_count = '1';
+/*
+function fn_addFile(){
+	
+
+
+	
+	
+	//var str = "<p><input type='file' name='file_"+(gfv_count++)+"' value='"+a+"'><a href='#this' class='btn' name='delete' >삭제</a></p>";
+	
+	
+	//$("#post_write").append(str);
+	
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	document.getElementById("post_write").appendChild(new_post_write); 
+	$("a[name='delete']").on("click", function(e){ //삭제 버튼
+	e.preventDefault();
+	fn_deleteFile($(this));
+	});
+}
+	*/
+
+function fn_deleteFile(obj){
+	obj.parent().remove();
+}
+
+
+
+
+function fn_addFile(){
+
+	$("img_file").click(function (e) {
+
+	e.preventDefault();
+
+	$('#f11').click();
+
+	});
+
+}
+
+    
+
+function changeValue(obj){
+    alert(obj.value);
+}
+
+
+
+
+
+
+
