@@ -11,11 +11,14 @@
     <div class="pop_des_line"></div>
   	<p>그래프 타입을 정해주세요</p>
   </div>
+  
+  
   <div id='gh_cate'>
     <div class='gh_ty'><a href="#"><img src="img/btn_graph01_60.png"></a></div>
     <div class='gh_ty'><a href="#"><img src="img/btn_graph02_60.png" onclick="temporary()"></a></div>
   </div>
   <div id='gh_cont'>
+  <div id="test2">
     <div id='gh_d'>
       <div class="gh">
        <div class='gh_dt_name' id="name1_out"></div>
@@ -31,6 +34,7 @@
           
         </div>
       </div>
+    </div>
       
 
       
@@ -42,7 +46,7 @@
     </div>
     
   </div>
-  <div id='gh_bt'><button>저장</button></div>
+  <div id='gh_bt'><button onclick="post_in1()">저장</button></div>
 </div>
 </div>
 

@@ -599,7 +599,7 @@ a:hovre{
 }
 
 #post_write div {
-	clear: both;
+	clear: both !important;
 	float: left;
 	position: relative;
 	width: 100%;

@@ -34,7 +34,9 @@
       
     </div>
   </div>
+  <div id="test">
   <div id='ct_table'>
+  </div>
   </div>
   <div id='ct_bottom'>
   	<button onclick="post_in()">저장</button>

@@ -20,12 +20,12 @@ public class vote_dao {
 			System.out.println("vote DB 커넥션 실패");
 		}
 	}
-	public void add(String nick, String title, String itmes, int muit, int stat, int hidden, int date, String day) {
+	public void add(String nick, String title, String items, int muit, int stat, int hidden, int date, String day) {
 		if(day != null) {
-			String sql2 = "insert into vote(num,nick,title,start_date,end_date,muitl_choice,hidden_vote,voting_stat, itme) values(?,?,?,sysdate,sysdate'"+day+"',?,?,?,?)";
+			String sql2 = "insert into vote(num,nick,title,start_date,end_date,multi_choice,hidden_vote,voting_stat, item) values(?,?,?,sysdate,sysdate+"+day+",?,?,?,?)";
 		}
-		String sql = "insert into vote(num,nick,title,start_date,end_date,muitl_choice,hidden_vote,voting_stat, itme) values(?,?,?,sysdate,sysdate+1,?,?,?,?)";
-		
+		String sql = "insert into vote(num,nick,title,start_date,end_date,multi_choice,hidden_vote,voting_stat, item) values(?,?,?,sysdate,sysdate+1,?,?,?,?)";
+
 		try(PreparedStatement pt = conn.prepareStatement(sql)){
 			pt.setInt(1, mytag.db_lib.get_num("vote", conn));
 			pt.setString(2, nick);
@@ -33,9 +33,9 @@ public class vote_dao {
 			pt.setInt(4, muit);
 			pt.setInt(5, hidden);
 			pt.setInt(6, stat);
-			pt.setString(7, itmes);
+			pt.setString(7, items);
 			pt.executeUpdate();
-		
+			System.out.println("vote 저징 성공");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

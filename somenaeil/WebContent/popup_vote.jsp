@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<form id="form" method="get" action="write.post" onsubmit="return false">
 <div class='pop_wrap post_pop_hide' id="post_pop_vote">
 <a class="post_pop_close" onclick="postPopVote()"></a>
-<input type="hidden" id="vote" name="vote" value="false">
+<input type="hidden" id="vote" name="vote" value="disable">
 <div class='pop_center'>
   <div class="pop_cls_bt">
     <a onclick="postPopVote()"><img src="img/btn_close_20.png"></a>
@@ -54,3 +54,4 @@
   </div>
 </div>
 </div>
+</form>

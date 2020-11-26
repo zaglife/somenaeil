@@ -299,35 +299,35 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 .gh {
-	width: 100%;
-	height: 45px;
-	margin: 2px 0px;
+	width: 100% !important;
+	height: 45px !important;
+	margin: 2px 0px !important;
 
 	font-size: 15px;
 }
 
 .gh_dt_name {
-	float: left;
-	position: relative;
-	width: 70px;
-	height: 35px;
-	line-height: 35px;
-	margin: 0 0 0 5px;
-	text-align:center;
+	float: left !important;
+	position: relative !important;
+	width: 70px !important;
+	height: 35px !important;
+	line-height: 35px !important;
+	margin: 0 0 0 5px !important;
+	text-align:center !important;
 }
 
 .gh_rod {
-	float: left;
-	position: relative;
-	width: 190px;
-	height: 35px;
+	float: left !important;
+	position: relative !important;
+	width: 190px !important;
+	height: 35px !important;
 }
 
 .gh_cl1, .gh_cl2, .gh_cl3, .gh_cl4 {
-	float: left;
+	float: left !important;
 	width: 19px;
-	height: 35px;
-	margin-left: -1px;
+	height: 35px !important;
+	margin-left: -1px !important;
 }
 
 .cl_red {
@@ -347,12 +347,12 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #gh_d {
-	float: left;
-	position: relative;
-	width: 277px;
-	height: 185px;
-	margin: 5px 15px 0 0;
-	padding-top: 2px;
+	float: left !important;
+	position: relative !important;
+	width: 277px !important;
+	height: auto  !important;
+	margin: 5px 15px 0 0 !important;
+	padding-top: 2px !important;
 }
 
 
@@ -576,34 +576,34 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #ct_style div:nth-child(2) {
-	clear: right;
+	clear: right !important;
 }
 
 #ct_table {
-	clear: both;
-	float: left;
-	position: relative;
-	width: auto;
-	height: auto;
-	margin: 30px 0 10px;
+	clear: both !important;
+	float: left !important;
+	position: relative !important;
+	width: auto !important;
+	height: auto !important;
+	margin: 30px 0 10px !important;
 
-	left: 50%;
-	transform: translate(-50%, 0px);
+	left: 50% !important;
+	transform: translate(-50%, 0px) !important;
 }
 
 .ct_cell {
-	float: left;
-	position: relative;
-	width: 82px;
-	padding: 8px;
+	float: left !important;
+	position: relative !important;
+	width: 82px !important;
+	padding: 8px !important;
 
 	border-right: 1px solid #777;
 	border-bottom: 1px solid #777;
 	background: rgba(255, 255, 255, 0);
 }
 .ct_cell_top { border-top: 1px solid #777; }
-.ct_cell_left { border-left: 1px solid #777; clear:both; }
-.ct_cell_left2 { clear:both; }
+.ct_cell_left { border-left: 1px solid #777; clear:both !important; }
+.ct_cell_left2 { clear:both !important; }
 .ct_cell_bottom { border-bottom: 0 !important; }
 .ct_cell_right { border-right: 0 !important; }
 
@@ -634,7 +634,7 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 }
 
 #ct_bottom {
-	clear: both;
+	clear: both !important;
 	float: left;
 	position: relative;
 	width: 600px;
@@ -658,4 +658,9 @@ input[id="cb1"]:checked+label, input[id="cb2"]:checked+label, input[id="cb3"]:ch
 	font-size: 15px;
 	font-weight: 600;
 	cursor: pointer;
+}
+
+#test2{
+	float: left;
+	position: relative;
 }

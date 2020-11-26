@@ -1,6 +1,5 @@
 package com.post;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 
@@ -77,24 +76,19 @@ public class post_service {
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
 		String title = request.getParameter("title");
 		String cate = request.getParameter("cate_btn");
-		String content = request.getParameter("content");
+		String content = request.getParameter("content"); // 서버로 보내는 방법1에서쓰임 
 		String[] temp = request.getParameterValues("hash");
 		String hash = "";
-		
 		if(temp != null) {
 			for(int i = 0; i < temp.length; i++) {
 				hash += temp[i];
 			}
 			hash += temp[temp.length-1];
 		}
+		
 		String context = request.getParameter("context");
-		String vote_chk = request.getParameter("vote");
-		
+
 		post_dao pd = new post_dao();
-		
-		if(vote_chk.equals("true")) { // vote_chk에 true가 들어가 있을시 실행 (투표를 만들었는지 안만들었는지 확인한다)
-			pd.voteadd(); // 확인했을 경우 DB작업하도록 메소드 실행
-		}
 		pd.add(writer, title, cate, context, hash);		
 		
 		return null;

@@ -19,16 +19,17 @@ public class vote_service {
 	public void add() {
 		String nick = ((member)request.getSession().getAttribute("user")).getName();
 		String title = request.getParameter("title");
-		String[] temp = request.getParameterValues("itmes");
+		String[] temp = request.getParameterValues("items");
 		
-		String itmes = "";
+		
+		String items = "";
 		if(temp != null) {
 			for (int i = 0; i < temp.length; i++) {
-				itmes+= temp[i];
+				items+= temp[i];
 			}
-			itmes += temp[temp.length-1];			
+			items += temp[temp.length-1];			
 		}
-		
+		vote_dao vd = new vote_dao();
 		
 		int muit = 0;
 		int hidden = 0;
@@ -41,9 +42,12 @@ public class vote_service {
 			for(int i = 0; i < temp2.length; i++) {
 				if(temp2[i].equals("muit")) 
 					muit = 1;
-				else if(temp2[i].equals("hidden"))
+				else if(temp2[i].equals("hidden")) {
 					hidden = 1;
-				else if(temp2[i].equals("stat"))
+					
+					// 생각을 해보니 투표를 만들때는 detail table을 건들 필요가 없다 하지만 투표가 생성될때마다 회원이름_vote_detail이런식으로 생성되게하는건 
+					// 효율적인지 비효율적인지 궁금해졌다.
+				}else if(temp2[i].equals("stat"))
 					stat = 1;
 				else if(temp2[i].equals("date")) {
 					date = 1;
@@ -53,8 +57,8 @@ public class vote_service {
 		}
 		
 		
-		vote_dao vd = new vote_dao();
-		vd.add(nick, title, itmes, muit, stat, hidden, date, day);
+		
+		vd.add(nick, title, items, muit, stat, hidden, date, day);
 		
 	}
 	

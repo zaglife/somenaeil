@@ -436,7 +436,9 @@ function insertText() {
 
 // vote의 저장버튼 누를시 vote의아이디을 가진 input의 value값이 바뀐다.
 function vote_cnt(){
-	$("#vote").val("true");
+	$("#vote").val("use");
+	$('#post_pop_vote').addClass('post_pop_hide');
+	popVote= 1;
 }
 
 
@@ -464,6 +466,8 @@ function submit2(){
 	var context = $("#post_write").html();
 	$("#context").val(context);
 	var f = document.getElementById("form");
+	
+	
 	f.submit();
 }
 
@@ -560,12 +564,36 @@ function lk_bt_input() {
 }
 
 function post_in(){
-	var jbHtml = $('#ct_table').html();
+	var jbHtml = $('#test').html();
 	
 	$('#post_pop_ct').addClass('post_pop_hide');
-	popCt= 1;
-	alert(jbHtml);
-	document.getElementById("post_write").appendChild(jbHtml); 
+	popCt= 1;;
+	var insertNode= document.createElement('div');
+	jQuery(insertNode).html(jbHtml);
+	document.getElementById("post_write").appendChild(insertNode); 
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	document.getElementById("post_write").appendChild(new_post_write); 
+	
+	alert("성공");
+	
+}
+
+function post_in1(){
+	var jbHtml = $('#test2').html();
+	
+	$('#post_pop_gh').addClass('post_pop_hide');
+	popGh= 1;
+	var insertNode= document.createElement('div');
+	jQuery(insertNode).html(jbHtml);
+	document.getElementById("post_write").appendChild(insertNode); 
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	document.getElementById("post_write").appendChild(new_post_write); 
+	
 	alert("성공");
 	
 }
