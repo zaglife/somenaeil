@@ -65,66 +65,53 @@
 				
 			</div>
 			<!-- footer (댓글) -->
-			<div class="article_footer">
+			<div id="article_footer">
+			<c:if test="${replyList != null}">
 				<div class="article_comment">
-				<c:if test="${replyList != null}">
-					<c:forEach items="${replyList}" var="reply">
+					<!-- 댓글 5개 보여주기 -->
+					<c:forEach items="${replyList}" var="reply" varStatus="cur" end="4">
 						<div class="comment_id"><a href="user.jsp">${reply.author}</a></div>
 						<div class="comment_context">${reply.context}</div>
 					</c:forEach>
-				</c:if>
-
+					
+					
 					<!-- more comment -->
 					<div class="comment_hidden">
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
-						<div class="comment_id"><a href="user.jsp">gkvw426</a></div>
-						<div class="comment_context">감사합니다</div>
+						<c:forEach items="${replyList}" var="reply" varStatus="cur" begin="5">
+							<div class="comment_id"><a href="user.jsp">${reply.author}</a></div>
+							<div class="comment_context">${reply.context}</div>
+						</c:forEach>
 					</div>
 				</div>
+					
+				<!-- 추가 댓글 보기 버튼 -->
 				<div class="btn_more_comment">
 					<a><img src="img/btn_more_20.png" onclick="more_comment();"></a>
 				</div>
-				<!-- 댓글 작성 -->
-				<div class="input_comment">
-					<form action="reply.post" method="post" name="comment_form" accept-charset="UTF-8">
-					<input type="hidden" name="part" value="reply">
-					<input type="hidden" name="author" value="${user.nick}">
-					<input type="hidden" name="post_num" value="${post.num}">
-					<input type="hidden" name="parent" value="">
-					<div class="comment_id">${user.nick}</div>
-					<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
-									required maxlength="400">
-					<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력"
-									onclick="writeCmt();">
-					</form>
-				</div>
+			</c:if>
+
+			<!-- 댓글 작성 -->
+			<div class="input_comment">
+				<form action="reply.post" method="post" name="comment_form" accept-charset="UTF-8">
+				<input type="hidden" name="part" value="reply">
+				<input type="hidden" name="author" value="${user.nick}">
+				<input type="hidden" name="post_num" value="${post.num}">
+				<input type="hidden" name="parent" value="">
+				<div class="comment_id">${user.nick}</div>
+				<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
+								required maxlength="400">
+				<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력"
+								onclick="writeCmt();">
+				</form>
 			</div>
 		</div>
 	</div>
+</div>
 	
 	
-	<jsp:include page="top.jsp" />
-	<jsp:include page="totop.jsp" />
-	<jsp:include page="nav.jsp" />
-	
-	<script src="lib/js/post.js"></script>
+<jsp:include page="top.jsp" />
+<jsp:include page="totop.jsp" />
+<jsp:include page="nav.jsp" />
+
+<script src="lib/js/post.js"></script>
 </body>

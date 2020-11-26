@@ -93,16 +93,20 @@ public class post_control extends HttpServlet {
 	}
 
 	protected void action(HttpServletRequest request, HttpServletResponse response, String cmd) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		post_able hd = map.get(cmd);
 		String view=null;
 		view = hd.active(request, response);		
 		
 		if(view==null) {
-			RequestDispatcher dsp = request.getRequestDispatcher("index.jsp");
-			dsp.forward(request, response);
+			response.sendRedirect("index.jsp");
 		}else {
-			RequestDispatcher dsp = request.getRequestDispatcher(view);
-			dsp.forward(request, response);
+			if (!view.contains("#")) {
+				RequestDispatcher dsp = request.getRequestDispatcher(view);
+				dsp.forward(request, response);
+			}
 		}
 	}
 }

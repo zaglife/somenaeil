@@ -78,21 +78,6 @@ $().ready(function(){
 })
 
 
-// httpRequest 객체 생성
-var httpRequest = null;
-function getXMLHttpRequest() {
-  var httpRequest = null;
-
-
-  if (window.XMLHttpRequest) {
-    httpRequest = new window.XMLHttpRequest();
-  }
-  // IE 6 이하 버전은 생략
-
-  return httpRequest;
-}
-
-
 // 댓글 등록
 function writeCmt() {
   var form = $("form[name='comment_form']")[0];
@@ -101,31 +86,29 @@ function writeCmt() {
   var post_num = form.post_num.value;
   var context = form.context.value;
 
-  // 댓글 내용이 없는 경우
+  // 필수 항목에 내용이 존재하지 않는 경우
   if(!context) {
-    alert("댓글 내용 입력해주세요");
+    alert("댓글 내용 입력해주세요.");
+    return false;
+  }
+  else if (!author) {
+    alert("로그인 후 댓글 쓰기가 가능합니다.");
     return false;
   }
   else {
     $.ajax({
-      type: "post",
+      type: "POST",
       url: "reply.post",
-      data: {"author": author, 
-            "post_num":post_num, 
-            "context": context},
+      data: {"author": encodeURIComponent(author), 
+            "post_num": post_num, 
+            "context": encodeURIComponent(context)},
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      onreadystatechange: checkFunc,
       success: function (data) {
-        alert("성공");
+        document.location.reload();
       },
       error:function(){
         alert("실패");
-      }
+      },
     });
   }
-}
-
-function checkFunc() {
-  if (httpRequest.readyState == 4)
-      document.location.reload();
 }

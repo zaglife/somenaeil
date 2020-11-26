@@ -95,7 +95,7 @@ public class post_service {
 	}
 	
 	
-	public boolean writeReply() {
+	public String writeReply() {
 		// 파라미터 불러오기
 		String author = request.getParameter("author");
 		String context = request.getParameter("context");
@@ -123,6 +123,6 @@ public class post_service {
 		boolean result = replyDAO.insertReply(rep);
 		
 	
-		return result;		// ajax를 이용할 것이기 때문에 화면 이동 X
+		return "#";		// ajax를 이용할 것이기 때문에 화면 이동 X
 	}
 }
