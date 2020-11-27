@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form id="form" method="get" action="write.post" onsubmit="return false">
+<form id="form" method="post" action="write.post" onsubmit="return false">
 <div class='pop_wrap post_pop_hide' id="post_pop_vote">
 <a class="post_pop_close" onclick="postPopVote()"></a>
 <input type="hidden" id="vote" name="vote" value="disable">

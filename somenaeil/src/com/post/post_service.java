@@ -2,10 +2,13 @@ package com.post;
 
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.member.member;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.reply.reply;
 import com.reply.reply_dao;
 
@@ -73,23 +76,55 @@ public class post_service {
 	
 	public String add() {
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
-		String title = request.getParameter("title");
-		String cate = request.getParameter("cate_btn");
-		String content = request.getParameter("content"); // 서버로 보내는 방법1에서쓰임 
-		String[] temp = request.getParameterValues("hash");
+		
+		String path = "C:\\Users\\BYTE-506\\Documents\\psj1\\web\\somenaeil\\somenaeil\\WebContent\\user_img";
+		int size = 10*1024*1024;
+		String title = null;
+		String cate = null;
+		String[] temp = null;
 		String hash = "";
-		if(temp != null) {
-			for(int i = 0; i < temp.length; i++) {
-				hash += temp[i];
+		String content = null;
+		String context = null;
+		String[] fname = new String[5];
+		String[] org = new String[5];
+		
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			
+			title = multi.getParameter("title");
+			cate = multi.getParameter("cate_btn");
+			System.out.println(cate);
+			content = multi.getParameter("content");
+			temp = multi.getParameterValues("hash");
+			
+			if(temp != null) {
+				for(int i = 0; i < temp.length; i++) {
+					hash += temp[i] +",";
+				}
+				hash += temp[temp.length-1];
 			}
-			hash += temp[temp.length-1];
+			context = multi.getParameter("context");
+			
+			Enumeration em = multi.getFileNames();
+			int i = 0;
+			while(em.hasMoreElements()) {
+				String file = (String)em.nextElement();
+				fname[i++] = multi.getFilesystemName(file);
+				
+			}
+			System.out.println("저장 성공");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("이미지 저장 실패");
 		}
 		
-		String context = request.getParameter("context");
-
-		post_dao pd = new post_dao();
-		pd.add(writer, title, cate, context, hash);		
 		
+		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
+		
+		post_dao pd = new post_dao();
+		pd.add(writer, title, cate, context, hash, filename);
+							
 		return null;
 	}
 	
