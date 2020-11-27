@@ -43,22 +43,40 @@ function dropdown() {
 }
 
 /////////////////////// author: gagip //////////////////////
-
-// 카테고리 체크 후 변화
-
-var active_hidden_cate = false;
-$(".select_cate").on("click", function(){
-  if (active_hidden_cate) {
-    $("#hidden_cate").addClass("d_hide");
-  }
-  else {
-    $("#hidden_cate").removeClass("d_hide");
-  }
-  active_hidden_cate = !active_hidden_cate;
+// 클릭시 카테고리 선택지 보여주기
+$("#cur_cate").on("click", function(){
+	console.log("카테고리 선택지");
+	$("#hidden_cate").removeClass("d_hide");
 })
 
 $(".cate").on("click", function(){
-  if ($(this).hasClass("select_cate")) {
-    $("")
-  }
+  if (!$(this).hasClass("select_cate")) {
+		// 이전 select_cate를 해당 클래스에 추가
+		$(".cate").removeClass("select_cate");
+		$(this).addClass("select_cate");
+		
+		// 선택된 카테고리가 상단에 보여준다
+		var select_cate = $(this).parent();		// label 태그까지 포함
+		var select_cate_input = select_cate.children("input");
+		var select_cate_img = select_cate.children("img");
+
+		// 해당 이미지로 보여준다
+		$("#cur_cate").attr("src", select_cate_img.attr("src"));
+		// 해당 이미지로 체크
+		$("input[type=radio]").removeAttr("checked");
+		select_cate_input.attr("checked", true);
+
+		// 선택지 닫기(실행 종료)
+		if (!$("#hidden_cate").hasClass("d_hide")) {
+			$("#hidden_cate").addClass("d_hide");
+		}
+	} 
+	else {
+		if (!$("#hidden_cate").hasClass("d_hide")) {
+			$("#hidden_cate").addClass("d_hide");
+		}
+		else {
+			$("#hidden_cate").removeClass("d_hide");
+		}
+	}
 })
