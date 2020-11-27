@@ -594,15 +594,16 @@ function post_in(){
 	
 	$('#post_pop_ct').addClass('post_pop_hide');
 	popCt= 1;;
+	
 	var insertNode= document.createElement('div');
 	jQuery(insertNode).html(jbHtml);
 	document.getElementById("post_write").appendChild(insertNode); 
+	
+	
 	var new_post_write= document.createElement('div');
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	document.getElementById("post_write").appendChild(new_post_write); 
-	
-	alert("성공");
 	
 }
 
@@ -611,6 +612,7 @@ function post_in1(){
 	
 	$('#post_pop_gh').addClass('post_pop_hide');
 	popGh= 1;
+	
 	var insertNode= document.createElement('div');
 	jQuery(insertNode).html(jbHtml);
 	document.getElementById("post_write").appendChild(insertNode); 
@@ -658,27 +660,25 @@ function fn_deleteFile(obj){
 
 
 var cnt = 0;
-
 function file_upload(){
-	var file = document.getElementsByName("file");
+	var file_id="file"+(cnt+1);
+	var file = document.getElementById(file_id);
 	if(cnt < 5){
-		document.all.file[cnt].click();
+		file.click();
 		cnt++;
 	}else {
 		alert("사진은 최대 5장까지 첨부가능합니다.");
 	}
 }
-
-
-
-
-
 // input 태그가 체인지이벤트가 발생될때 함수실행
 // 함수내용 이미지 생성 
 
 function add_img(){
+	
+	
 	// 이렇게 할시 fakepath 오류
-	var file = document.getElementsByName("file");
+	var file_id="file"+(cnt);
+	var file = document.getElementById(file_id);
 	
 	var para = document.createElement("div");
 	var at = document.createAttribute("width");
@@ -689,9 +689,8 @@ function add_img(){
 	
 	var para2 = document.createElement("img");
 	var at = document.createAttribute("src");
-	at.value = file[cnt-1].value;
+	at.value = file.value;
 	para2.setAttributeNode(at);
-	
 	var at = document.createAttribute("width");
 	at.value = "200px";
 	para2.setAttributeNode(at);
@@ -699,7 +698,6 @@ function add_img(){
 	var at = document.createAttribute("height");
 	at.value = "200px";
 	para2.setAttributeNode(at);
-	alert("file"+(cnt-1));
 	document.getElementsByClassName("file")[cnt-1].appendChild(para2);
 	
 	var new_post_write= document.createElement('div');
@@ -707,9 +705,5 @@ function add_img(){
 	new_post_write.setAttribute("contenteditable", "true");
 	document.getElementById("post_write").appendChild(new_post_write); 	
 
+	
 }
-
-
-$(document).ready(function(){
-
-});

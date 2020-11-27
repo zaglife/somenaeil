@@ -40,8 +40,8 @@
 
 
 
-<form id="form" method="get" action="write.post" onsubmit="return false">
-<input type="hidden" name="part" value="writer">
+<form id="form" method="post" action="write.post?part=writer" onsubmit="return false" enctype="multipart/form-data">
+
 <input id="context" type="hidden" name="context" value="s">
 <div id="post_wrap">
   
@@ -102,11 +102,11 @@
   	    </div>
   	    <div class="post_file" id="file_s">
   	      <input type="button" name="img_file" id="img_file" onclick="file_upload()">
-  	      <input type="file" id="file1" name="file" onchange="add_img()" class="hidden_file">
-		  <input type="file" id="file2" name="file" onchange="add_img()" class="hidden_file">
-  	      <input type="file" id="file3" name="file" onchange="add_img()" class="hidden_file">
-		  <input type="file" id="file4" name="file" onchange="add_img()" class="hidden_file">
-  	      <input type="file" id="file5" name="file" onchange="add_img()" class="hidden_file">
+  	     <input type="file" id="file1" name="file1" onchange='add_img()' class=hidden_file>
+		 <input type="file" id="file2" name="file2" onchange='add_img()' class=hidden_file>
+		 <input type="file" id="file3" name="file3" onchange='add_img()' class=hidden_file>
+		 <input type="file" id="file4" name="file4" onchange='add_img()' class=hidden_file>
+		 <input type="file" id="file5" name="file5" onchange='add_img()' class=hidden_file>		
   	    </div>
   	    <div class="post_file">
   	      <a href="#" onclick="showmov()"><img src="img/post_vid_20.png"></a>
@@ -129,7 +129,7 @@
     <div id="post_write" contenteditable="true">
 	  <div id="post_write1" contenteditable="true"></div>
 	  <!-- text입력부분 소스코드 display none -->
-
+	
     </div>
   </div>
   

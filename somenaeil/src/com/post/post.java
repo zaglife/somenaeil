@@ -142,8 +142,8 @@ public class post {
 		boolean hasThumb = ctxt.contains("<img");	// 썸네일 여부
 		
 		// 태그 제거 정규표현식
-		ctxt = ctxt.replaceAll("<(\\/)?[\\w\\d]+(\\s[\\w\\d-./]+"
-						+ "(=\"[\\w\\d-./]+\")?)*(\\/)?>", "")
+		ctxt = ctxt.replaceAll("<(\\/)?[\\w\\d]+((\\s[\\w\\d-./]+)"
+				+ "=(\"[\\w\\d-./\\\\:]*\")*)*(\\/)?>", "")
 					.trim();
 		
 		// 긴 글씨 처리
@@ -168,7 +168,7 @@ public class post {
 	public String getThumbnail() {
 		String ctxt = context;
 		String thumbnailTag = null;
-		
+		// <img src="user_img/${}.jpg"
 		Pattern patten = Pattern.compile("<img((\\s)*[\\w\\d-]*(=\"[\\w\\d/.-]+\")*)*>");
 		Matcher matcher = patten.matcher(ctxt);
 		

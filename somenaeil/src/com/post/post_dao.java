@@ -67,8 +67,6 @@ public class post_dao {
 	}
 	
 	
-	// TODO post List 호출
-	
 	/**
 	 * 검색결과에 따른 post List 호출
 	 * @param cate 게시글 카테고리 (G, R, Q)
@@ -149,9 +147,9 @@ public class post_dao {
 	
 	
 	// post DB에 연결 작업
-	public void add(String writer, String title, String cate, String content, String hash) {
-		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt) values(?,?,?,?,?,sysdate,?,?,?,?)";
-		System.out.println(sql);
+	public void add(String writer, String title, String cate, String content, String hash, String filename) {
+		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt, img) values(?,?,?,?,?,sysdate,?,?,?,?,?)";
+		
 		try(PreparedStatement pt = conn.prepareStatement(sql)){
 			pt.setInt(1, mytag.db_lib.get_num("post", conn));
 			pt.setString(2, cate);
@@ -162,7 +160,9 @@ public class post_dao {
 			pt.setString(7,title);
 			pt.setString(8,content);
 			pt.setInt(9,0);
+			pt.setString(10,filename);
 			pt.executeUpdate();
+			
 			System.out.println("저장성공");
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -171,9 +171,5 @@ public class post_dao {
 	}
 	
 	
-	// vote DB에 연결작업 
-	public void voteadd() {
-		
-	}
 	
 }

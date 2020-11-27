@@ -96,7 +96,6 @@
 				<input type="hidden" name="part" value="reply">
 				<input type="hidden" name="author" value="${user.nick}">
 				<input type="hidden" name="post_num" value="${post.num}">
-				<input type="hidden" name="parent" value="">
 				<div class="comment_id">${user.nick}</div>
 				<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
 								required maxlength="400">

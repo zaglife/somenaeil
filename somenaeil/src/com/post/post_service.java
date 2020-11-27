@@ -2,17 +2,20 @@ package com.post;
 
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
 import com.member.member;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.reply.reply;
 import com.reply.reply_dao;
+import com.vote.vote_dao;
 
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
  * @author gagip
- *
  */
 public class post_service {
 	private HttpServletRequest request;
@@ -74,23 +77,101 @@ public class post_service {
 	
 	public String add() {
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
-		String title = request.getParameter("title");
-		String cate = request.getParameter("cate_btn");
-		String content = request.getParameter("content"); // 서버로 보내는 방법1에서쓰임 
-		String[] temp = request.getParameterValues("hash");
-		String hash = "";
-		if(temp != null) {
-			for(int i = 0; i < temp.length; i++) {
-				hash += temp[i];
+		String path = request.getServletContext().getRealPath("/user_img");
+		int size = 10*1024*1024;
+		String post_title = null;
+		String post_cate = null;
+		String[] post_temp = null;
+		String post_hash = "";
+		String post_content = null;
+		String post_context = null;
+		String[] fname = new String[5];
+		String[] org = new String[5];
+		
+		
+		
+		
+		String vote_title = null;
+		String[] vote_temp = null;
+		String vote_items = "";
+		int vote_muit = 0;
+		int vote_hidden = 0;
+		int vote_stat = 0;
+		int vote_date = 0;
+		String vote_day = null;
+		String[] vote_temp2 = null;
+		String vote_chk = null;
+		
+		
+		
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			
+			post_title = multi.getParameter("title");
+			post_cate = multi.getParameter("cate_btn");
+			post_content = multi.getParameter("content");
+			post_temp = multi.getParameterValues("hash");
+			
+			if(post_temp != null) {
+				for(int i = 0; i < post_temp.length; i++) {
+					post_hash += post_temp[i] +",";
+				}
+				post_hash += post_temp[post_temp.length-1];
 			}
-			hash += temp[temp.length-1];
+			post_context = multi.getParameter("context");
+			
+			Enumeration em = multi.getFileNames();
+			int k = 0;
+			while(em.hasMoreElements()) {
+				String file = (String)em.nextElement();
+				fname[k++] = multi.getFilesystemName(file);
+				
+			}
+			
+			vote_chk = multi.getParameter("vote");
+			if(vote_chk.equals("use")) {
+				vote_title = multi.getParameter("title");
+				vote_temp = multi.getParameterValues("items");
+				
+				if(vote_temp != null) {
+					for(int i = 0; i < vote_temp.length; i++) {
+						vote_items += vote_temp[i] +",";
+					}
+					vote_items += vote_temp[vote_temp.length-1];
+				}
+				vote_temp2 = multi.getParameterValues("choice");
+				if(vote_temp2 != null) {
+					for(int i = 0; i < vote_temp2.length; i++) {
+						if(vote_temp2[i].equals("muit")) 
+							vote_muit = 1;
+						else if(vote_temp2[i].equals("hidden")) {
+							vote_hidden = 1;				
+						}else if(vote_temp2[i].equals("stat"))
+							vote_stat = 1;
+						else if(vote_temp2[i].equals("date")) {
+							vote_date = 1;
+							vote_day = multi.getParameter("day");
+						}
+					}
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("이미지 저장 실패");
 		}
 		
-		String context = request.getParameter("context");
-
-		post_dao pd = new post_dao();
-		pd.add(writer, title, cate, context, hash);		
 		
+		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
+		
+		post_dao pd = new post_dao();
+		pd.add(writer, post_title, post_cate, post_context, post_hash, filename);
+		
+		if(vote_chk.equals("use")) {
+			vote_dao vd = new vote_dao();
+			vd.add(writer, vote_title, vote_items, vote_muit, vote_stat, vote_hidden, vote_date, vote_day);
+		
+		}					
 		return null;
 	}
 	

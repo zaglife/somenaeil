@@ -33,14 +33,6 @@ public class post_hnd implements post_able {
 			case "post" :
 				view = "post_main.jsp"; break;
 			case "writer" :
-				vote_service vs = new vote_service(request);
-				String nick = ((member)request.getSession().getAttribute("user")).getName();
-				String vote_chk = request.getParameter("vote");
-				System.out.println(vote_chk);
-				if(vote_chk.equals("use")) { // vote_chk에 true가 들어가 있을시 실행 (투표를 만들었는지 안만들었는지 확인한다)
-					vs.add(); // 확인했을 경우 DB작업하도록 메소드 실행
-				}
-				
 				view = ps.add(); break;
 			case "search":
 				view = ps.postList(); break;
