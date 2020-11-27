@@ -21,11 +21,11 @@ public class member_hnd implements main_able{
 		String uid= request.getParameter("uid");
 		String id= (String)request.getSession().getAttribute("id");
 		
-		
 		String view= null;
 		
 		if(part == null) {
-			view= "join.jsp";
+			ms.user_self(uid);
+			view= "user_other.jsp";
 		} else {
 			switch(part) {
 			case "join" :
@@ -42,16 +42,11 @@ public class member_hnd implements main_able{
 			case "user" :
 				if(id.equals(uid)) {
 					ms.user_self(id);
+					ms.user_other(id, uid);
 					view= "user.jsp";
 				} else if(!id.equals(uid)) {
 					ms.user_other(id, uid);
 					String check= ms.fl_check(id, uid);
-					
-					System.out.println(check);
-					
-					view= "user_other.jsp";
-				} else if(id == null) {
-					ms.user_self(uid);
 					view= "user_other.jsp";
 				}
 				break;

@@ -76,14 +76,14 @@ public class member_service {
 	
 	public void user_self(String id) {
 		member_dao md= new member_dao();
-		md.member_read(id);
+		member data= md.member_read(id);
 	}
 	
 	public void user_other(String id, String uid) {
 		member_dao md= new member_dao();
 		member user= md.member_read(id);
 		member other= md.member_read(uid);
-
+		
 		request.setAttribute("user", user);
 		request.setAttribute("other", other);
 		
@@ -131,13 +131,9 @@ public class member_service {
 		member other= md.member_read(uid);
 		String other_follower= other.getFollower();
 		
-		System.out.println("member_service - follow= "+follow);
 		md.fl_update(id, uid, user_follow, other_follower, follow);
+		fl_check(id, uid);
 	}
-	
-	
-	
-	
 	
 	/**
 	 * 해당 유저의 팔로우 리스트를 추출

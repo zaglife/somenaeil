@@ -173,7 +173,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
+        <div class="post_auth"><a href="user.do?uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -240,7 +240,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
+        <div class="post_auth"><a href="user.do?uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -309,7 +309,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
+        <div class="post_auth"><a href="user.do?uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -376,7 +376,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
+        <div class="post_auth"><a href="user.do?uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -448,7 +448,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
+        <div class="post_auth"><a href="user.do?uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -515,7 +515,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=${user.getId() }">some</a></div>
+        <div class="post_auth"><a href="user.do?uid=some">some</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -582,7 +582,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some04">some04</a></div>
+        <div class="post_auth"><a href="user.do?uid=some04">some04</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -649,7 +649,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
+        <div class="post_auth"><a href="user.do?uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -721,7 +721,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some03">some03</a></div>
+        <div class="post_auth"><a href="user.do?uid=some03">some03</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       
@@ -788,7 +788,7 @@
       </div>
       
       <div class="post_info">
-        <div class="post_auth"><a href="user.do?part=user&uid=some02">some02</a></div>
+        <div class="post_auth"><a href="user.do?uid=some02">some02</a></div>
         <div class="post_date">2019년 10월 2일</div>
       </div>
       

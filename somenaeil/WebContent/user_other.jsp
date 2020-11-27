@@ -51,7 +51,6 @@
         <c:if test="${fl_check == 'fl' }">
 팔로우 중임
         </c:if>
-
       
       </c:if>
       
@@ -196,8 +195,6 @@
 </div>
 </c:if>
 <!-- 유저 팔로워 리스트 "user_follower.jsp" end -->
-
-
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
