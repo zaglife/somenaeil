@@ -38,7 +38,7 @@
     
     <div id="other_right">
       <c:if test="${user != null }">
-        <c:if test="${follow==null }">
+        <c:if test="${follow== 'no' }">
 팔로우 중이 아님
 
 ${follow }
@@ -52,9 +52,9 @@ ${follow }
             <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
           </form>
         </c:if>
-        <c:if test="${follow!=null }">
+        <c:if test="${follow== 'fl' }">
 팔로우 중임
-
+${follow }
           <form method="get" action="user.do">
           <input type="hidden" name="part" value="fl_update">
           <input type="hidden" name="follow" value="no">

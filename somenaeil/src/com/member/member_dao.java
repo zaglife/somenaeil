@@ -287,29 +287,16 @@ public class member_dao {
 		
 		// 대상 팔로워 리스트
 		if(type.equals("fl")) {
-			System.out.println("멤버dao - 팔로우 시작");
-			
 			other_follower+= ":"+my_id;
 			sql= "update member set follower='"+other_follower+"' where id='"+other_id+"'";
 			
 		} else if(type.equals("no")) {
-			System.out.println("멤버dao - 언팔로우 시작");
-			System.out.println("멤버dao - my_id= "+my_id);
-			
 			String[] f_list= other_follower.split(":");
 		
 			for(int i=0; i<f_list.length; i++) {
 				if(!f_list[i].equals(my_id)) 		temp+= f_list[i]+":";
 				else if(f_list[i].equals(my_id))	continue;
 			}
-			
-//			for(int i=0; i<f_list.length; i++) {
-//				if(f_list[i] == my_id)			continue;
-//				else if(f_list[i] != my_id) 	temp+= f_list[i]+":"; 
-//			}
-			
-			System.out.println("멤버dao - temp값= "+temp);
-			
 			temp= temp.substring(0, temp.length()-1);
 			sql= "update member set follower='"+temp+"' where id='"+other_id+"'";
 		}
@@ -324,17 +311,16 @@ public class member_dao {
 		
 		// 내 팔로우 리스트
 		if(type.equals("fl")) {
-			
+			temp= "";
 			user_follow+= ":"+other_id;
 			sql= "update member set follow='"+user_follow+"' where id='"+my_id+"'";
 			
-		} else if(type.equals("un")) {
+		} else if(type.equals("no")) {
 			String[] f_list= user_follow.split(":");
 			
-			// 여기 작업중!
 			for(int i=0; i<f_list.length; i++) {
-				if(!f_list[i].equals.other_id) 			temp+= f_list[i]+":";
-				else if(f_list[i] == other_id) 		break;
+				if(!f_list[i].equals(other_id)) 	temp+= f_list[i]+":";
+				else if(f_list[i].equals(other_id)) continue;
 			}	
 			
 			temp= temp.substring(0, temp.length()-1);

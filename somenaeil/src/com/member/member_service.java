@@ -126,31 +126,27 @@ public class member_service {
 		request.setAttribute("flw_list", flw_list);	// 팔로워 어레이리스트 객체
 	}
 
-	public String fl_check(String id, String uid) {
-		
-		String part=request.getParameter("part");
-		System.out.println("멤버 서비스 part= "+part);
-		
+	public void fl_check(String id, String uid) {
+		// 재료 넣기
+		String s = request.getParameter("ss");
+		// 요리 도구 넣기
 		member_dao md= new member_dao();
 		member user= md.member_read(id);
 		member other= md.member_read(uid);
 
-		
-		System.out.println("멤버 서비스 로그인 유저= "+user.getId());
-		
 		String[] other_flw= other.getFollower().split(":");
 		
+		String result = null;
+		
 		for(int i=0; i<other_flw.length; i++) {
-			System.out.println("\n멤버 서비스 / 포문 / "+i+"번째 리스트id= "+other_flw[i]+" / 내 아이디 ="+user.getId());
-			if(other_flw[i].equals(user.getId())) {
-				request.setAttribute("part", "user");
-				return "fl";
-			}else {
-				break;
-			}
+			if(other_flw[i].equals(user.getId())) result = "fl";
 		}
-		return "no";
+		if (result == null) result = "no"; 
+		
+		request.setAttribute("follow", result);
 	}
+	
+	
 	
 	public void follow(String id, String uid, String follow) {
 		user_other(id, uid);
