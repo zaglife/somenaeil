@@ -99,7 +99,7 @@ public class main_control extends HttpServlet {
 		
 		if(view == null) {
 			RequestDispatcher dsp= request.getRequestDispatcher("index.jsp");
-			dsp.forward(request, response);	
+			dsp.forward(request, response);
 		} else {
 			// 수정 필요
 			RequestDispatcher dsp= request.getRequestDispatcher(view);

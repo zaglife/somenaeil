@@ -74,46 +74,78 @@ public class member_service {
 		request.getSession().setAttribute("user", user);
 	}
 	
-	public void user_self(String id) {
+	public void user_self(String uid) {
 		member_dao md= new member_dao();
-		member data= md.member_read(id);
+		
+		String id= (String)request.getSession().getAttribute("id");
+		
+//		member user= md.member_read(uid);
+		member other= md.member_read(uid);
+		
+		request.setAttribute("other", other);	// 타겟 유저 멤버 객체
+		
+		String[] other_fl= other.getFollow().split(":");
+		String[] other_flw= other.getFollower().split(":");
+		for(int i=0; i< other_flw.length; i++) {
+			if(other_flw[i].equals(id)) {
+				request.setAttribute("follow", "yy");
+				break;
+			}
+			//나랑  팔로워 임
+		}
+		request.setAttribute("other_fl", other_fl);		// 타겟 유저 팔로우 리스트 배열
+		request.setAttribute("other_flw", other_flw);	// 타겟 유저 팔로워 리스트 배열
+		
+		ArrayList<member> fl_list= md.follow_other(other_fl);
+		ArrayList<member> flw_list= md.follower_other(other_flw);
+	
+		request.setAttribute("fl_list", fl_list);	// 팔로우 어레이리스트 객체
+		request.setAttribute("flw_list", flw_list);	// 팔로워 어레이리스트 객체
 	}
 	
+	
+	// 우선 사용 안하는 메소드
 	public void user_other(String id, String uid) {
 		member_dao md= new member_dao();
 		member user= md.member_read(id);
 		member other= md.member_read(uid);
 		
-		request.setAttribute("user", user);
-		request.setAttribute("other", other);
+		request.setAttribute("user", user);		// 로그인 유저 멤버 객체
+		request.setAttribute("other", other);	// 타겟 유저 멤버 객체
 		
 		String[] other_fl= other.getFollow().split(":");
 		String[] other_flw= other.getFollower().split(":");
 		
-		request.setAttribute("other_fl", other_fl);
-		request.setAttribute("other_flw", other_flw);
+		request.setAttribute("other_fl", other_fl);		// 타겟 유저 팔로우 리스트 배열
+		request.setAttribute("other_flw", other_flw);	// 타겟 유저 팔로워 리스트 배열
 		
 		ArrayList<member> fl_list= md.follow_other(other_fl);
 		ArrayList<member> flw_list= md.follower_other(other_flw);
 		
-		request.setAttribute("fl_list", fl_list);
-		request.setAttribute("flw_list", flw_list);
+		request.setAttribute("fl_list", fl_list);	// 팔로우 어레이리스트 객체
+		request.setAttribute("flw_list", flw_list);	// 팔로워 어레이리스트 객체
 	}
 
 	public String fl_check(String id, String uid) {
+		
+		String part=request.getParameter("part");
+		System.out.println("멤버 서비스 part= "+part);
+		
 		member_dao md= new member_dao();
 		member user= md.member_read(id);
 		member other= md.member_read(uid);
+
 		
-		String[] other_fl= other.getFollow().split(":");
+		System.out.println("멤버 서비스 로그인 유저= "+user.getId());
+		
 		String[] other_flw= other.getFollower().split(":");
 		
 		for(int i=0; i<other_flw.length; i++) {
-			if(other_flw[i] == user.getId()) {
-				request.setAttribute("fl_check", "fl");
+			System.out.println("\n멤버 서비스 / 포문 / "+i+"번째 리스트id= "+other_flw[i]+" / 내 아이디 ="+user.getId());
+			if(other_flw[i].equals(user.getId())) {
+				request.setAttribute("part", "user");
 				return "fl";
 			}else {
-				request.setAttribute("fl_check", "no");
 				break;
 			}
 		}

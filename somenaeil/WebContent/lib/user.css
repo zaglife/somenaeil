@@ -107,7 +107,11 @@
 	transform: rotate(45deg);
 }
 
-.user_follow_btn:hover .user_follow_btn img {
+.user_follow_btn {
+	transition: transform .2s ease;
+}
+
+.user_follow_btn:hover {
 	transform: scale(1.1);
 }
 

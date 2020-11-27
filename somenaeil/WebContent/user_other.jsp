@@ -38,8 +38,12 @@
     
     <div id="other_right">
       <c:if test="${user != null }">
-        <c:if test="${fl_check == 'no' }">
-        팔로우 중이 아님
+        <c:if test="${follow==null }">
+팔로우 중이 아님
+
+${follow }
+
+
           <form method="get" action="user.do">
           <input type="hidden" name="part" value="fl_update">
           <input type="hidden" name="follow" value="fl">
@@ -48,14 +52,22 @@
             <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
           </form>
         </c:if>
-        <c:if test="${fl_check == 'fl' }">
+        <c:if test="${follow!=null }">
 팔로우 중임
+
+          <form method="get" action="user.do">
+          <input type="hidden" name="part" value="fl_update">
+          <input type="hidden" name="follow" value="no">
+          <input type="hidden" name="id" value="${user.getId() }">
+          <input type="hidden" name="uid" value="${other.getId() }">
+            <button class="user_follow_btn"><img src="img/noti_follow_20.png"></button>
+          </form>
         </c:if>
       
       </c:if>
       
       <c:if test="${user == null }">
-      <a href="#" id="user_follow_btn_chg" class="user_follow_btn" onclick="login_alert()"></a>
+      <a href="#" id="user_follow_btn_chg" class="user_follow_btn" onclick="login_alert()"><img src="img/noti_follow_n_20.png"></a>
       <div id="login_alert" class="login_alert_opa login_alert_dis">
       <p>로그인이 필요한 서비스입니다.</p>
       <a href="login.do">로그인</a>
@@ -100,7 +112,7 @@
 </c:if>
 
 
-<div id="btm_space"></div>
+
 
 
 <!-- 유저 팔로우 리스트 "user_follow.jsp" start -->
@@ -200,6 +212,8 @@
 <jsp:include page="bottom.jsp" />
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />
+
+<div id="btm_space"></div>
 
 </body>
 </html>
