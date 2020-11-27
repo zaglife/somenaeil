@@ -320,6 +320,7 @@ public class member_dao {
 			e.printStackTrace();
 			System.out.println("member_dao - 대상 팔로워 업데이트 실패");
 		}
+	
 		
 		// 내 팔로우 리스트
 		if(type.equals("fl")) {
@@ -330,7 +331,7 @@ public class member_dao {
 		} else if(type.equals("un")) {
 			String[] f_list= user_follow.split(":");
 			
-			// 여기 작업중
+			// 여기 작업중!
 			for(int i=0; i<f_list.length; i++) {
 				if(!f_list[i].equals.other_id) 			temp+= f_list[i]+":";
 				else if(f_list[i] == other_id) 		break;
