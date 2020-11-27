@@ -34,7 +34,7 @@ public class post_hnd implements post_able {
 				view = "post_main.jsp"; break;
 			case "writer" :
 				vote_service vs = new vote_service(request);
-				String nick = ((member)request.getSession().getAttribute("user")).getName();
+				vs.add();
 				view = ps.add(); break;
 			case "search":
 				view = ps.postList(); break;

@@ -21,12 +21,12 @@ public class vote_service {
 	}
 
 	public void add() {
-		
+		vote_dao vd = new vote_dao();
 		
 		String nick = ((member)request.getSession().getAttribute("user")).getName();
 		
-		
-		String path = "\\user_img";
+		String vote_chk = null;
+		String path = "C:\\Users\\BYTE-506\\Documents\\psj1\\web\\somenaeil\\somenaeil\\WebContent\\user_img";
 		int size = 10*1024*1024;
 		String title = null;
 		String[] temp = null;
@@ -43,43 +43,52 @@ public class vote_service {
 		try {
 			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
-			title = multi.getParameter("title");
-			temp = request.getParameterValues("items");
-			if(temp != null) {
-				for(int i = 0; i < temp.length; i++) {
-					items += temp[i] +",";
+			vote_chk = multi.getParameter("vote");
+			if(vote_chk.equals("use")) {
+				title = multi.getParameter("title");
+				temp = request.getParameterValues("items");
+				if(temp != null) {
+					for(int i = 0; i < temp.length; i++) {
+						items += temp[i] +",";
+					}
+					items += temp[temp.length-1];
 				}
-				items += temp[temp.length-1];
-			}
-					
-			
-			temp2 = multi.getParameterValues("choice");
-			if(temp2 != null) {
-				for(int i = 0; i < temp2.length; i++) {
-					if(temp2[i].equals("muit")) 
-						muit = 1;
-					else if(temp2[i].equals("hidden")) {
-						hidden = 1;				
-					}else if(temp2[i].equals("stat"))
-						stat = 1;
-					else if(temp2[i].equals("date")) {
-						date = 1;
-						day = multi.getParameter("day");
+						
+				
+				temp2 = multi.getParameterValues("choice");
+				if(temp2 != null) {
+					for(int i = 0; i < temp2.length; i++) {
+						if(temp2[i].equals("muit")) 
+							muit = 1;
+						else if(temp2[i].equals("hidden")) {
+							hidden = 1;				
+						}else if(temp2[i].equals("stat"))
+							stat = 1;
+						else if(temp2[i].equals("date")) {
+							date = 1;
+							day = multi.getParameter("day");
+						}
 					}
 				}
+			
+			
 			}
+			
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("이미지 저장 실패");
+			System.out.println("투표 문제 실패");
 		}		
 		
-		vote_dao vd = new vote_dao();
-		vd.add(nick, title, items, muit, stat, hidden, date, day);
+		System.out.println(vote_chk);
+		if(vote_chk.equals("use")) {
+			vd.add(nick, title, items, muit, stat, hidden, date, day);
 		
 		}
 		
-		
 	}
+}
 	
 	
 	
