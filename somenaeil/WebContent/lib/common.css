@@ -94,7 +94,7 @@ select {
 	clear: both;
 	float: left;
 	position: relative;
-	width: 100px;
+	width: 100%;
 	height: 100px;
 }
 

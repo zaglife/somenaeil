@@ -2,29 +2,12 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.member.member"%>
 <%@page import="com.member.member_dao"%>
 <%@page import="com.member.member_service"%>
-
-<%
-
-	String id= (String) session.getAttribute("id");
-	String uid= (String) session.getAttribute("uid");
-	member_service ms= new member_service();
-	
-	if(uid != null){
-		ArrayList<member> follow_list= ms.follow_list(uid);
-		ArrayList<member> follower_list= ms.follower_list(uid);
-		request.setAttribute("follow_list", follow_list);
-		request.setAttribute("follower_list", follower_list);
-		
-		System.out.println("user_other.jsp - follower_list.size()="+follower_list.size());
-		System.out.println("user_other.jsp - follower_list.size()="+follow_list.size());
-	}
-	
-%>
 
 <!DOCTYPE html>
 <html>
@@ -38,25 +21,37 @@
 </head>
 <body>
 
-
-<c:if test="${data != null }">
+<c:if test="${other != null }">
 <div id="user_wrap">
   <div id="user_top">
   
     <div id="user_img"><img src="img/profile01.jpg"></div>
     <div id="user_info">
-      <div id="user_nick">${data.getNick() }</div>
-      <div id="user_ment">${data.getComt() }</div>
+      <div id="user_nick">${other.getNick() }</div>
+      <div id="user_ment">${other.getComt() }</div>
       <div id="user_info_follow">
-        <a onclick="userFollowerPop()">팔로워 ${follower_list.size() }</a>
-        <a onclick="userFollowPop()">팔로우 ${follow_list.size() }</a>
-        <p>게시글 512</p>
+        <a onclick="userFollowerPop()">팔로워 ${fn:length(other_flw) }</a>
+        <a onclick="userFollowPop()">팔로우 ${fn:length(other_fl) }</a>
+        <p>게시글 52</p>${data.size() }
       </div>
     </div>
     
     <div id="other_right">
       <c:if test="${user != null }">
-      <a href="user.do" id="user_follow_btn_chg" class="user_follow_btn" onclick="FollowBtnChg()"></a>
+        <c:if test="${fl_check == 'no' }">
+        팔로우 중이 아님
+          <form method="get" action="user.do">
+          <input type="hidden" name="part" value="fl_update">
+          <input type="hidden" name="follow" value="fl">
+          <input type="hidden" name="id" value="${user.getId() }">
+          <input type="hidden" name="uid" value="${other.getId() }">
+            <button class="user_follow_btn"><img src="img/noti_follow_n_20.png"></button>
+          </form>
+        </c:if>
+        <c:if test="${fl_check == 'fl' }">
+팔로우 중임
+        </c:if>
+      
       </c:if>
       
       <c:if test="${user == null }">
@@ -109,7 +104,7 @@
 
 
 <!-- 유저 팔로우 리스트 "user_follow.jsp" start -->
-<c:if test="${follow_list != null }">
+<c:if test="${fl_list != null }">
 <div id="user_follow" class="user_popup_wrap user_follow_hide">
   <a onclick="userFollowPop()"></a>
   <div class="user_popup_center">
@@ -119,10 +114,10 @@
     
     <div id="user_popup_scroll">
 
-      <c:forEach items="${follow_list }" var="follow"  varStatus="temp">    
+      <c:forEach items="${fl_list }" var="follow"  varStatus="temp">    
       <div id="user_popup_cont">
         <div class="user_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="user_popup_name">${follow.getNick() }</div>
+        <div class="user_popup_name"><a href="user.do?part=user&uid=${follow.getId() }">${follow.getNick() }</a></div>
         <div class="user_popup_comment">${follow.getComt() }</div>
         <div class="user_popup_btn"><img src="img/noti_follow_20.png"></div>
       </div>
@@ -133,7 +128,7 @@
 </div>
 </c:if>
 
-<c:if test="${follow_list == null }">
+<c:if test="${fl_list == null }">
 <div id="user_follow" class="user_popup_wrap user_follow_hide">
 <a onclick="userFollowPop()"></a>
   <div class="user_popup_center">
@@ -155,7 +150,7 @@
 
 
 <!-- 유저 팔로워 리스트 "user_follower.jsp" start -->
-<c:if test="${follower_list != null }">
+<c:if test="${flw_list != null }">
 <div id="user_follower" class="user_popup_wrap user_follower_hide">
 <a onclick="userFollowerPop()"></a>
   <div class="user_popup_center">
@@ -166,10 +161,10 @@
     
     <div id="user_popup_scroll">
 
-      <c:forEach items="${follower_list }" var="follower"  varStatus="temp">
+      <c:forEach items="${flw_list }" var="follower"  varStatus="temp">
       <div id="user_popup_cont">
         <div class="user_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="user_popup_name">${follower.getNick() }</div>
+        <div class="user_popup_name"><a href="user.do?part=user&uid=${follower.getId() }">${follower.getNick() }</a></div>
         <div class="user_popup_comment">${follower.getComt() }</div>
         <div class="user_popup_btn"><img src="img/noti_follow_20.png"></div>
       </div>
@@ -181,7 +176,7 @@
 </div>
 </c:if>
 
-<c:if test="${follower_list == null }">
+<c:if test="${flw_list == null }">
 <div id="user_follower" class="user_popup_wrap user_follower_hide">
 <a onclick="userFollowerPop()"></a>
   <div class="user_popup_center">
@@ -200,8 +195,6 @@
 </div>
 </c:if>
 <!-- 유저 팔로워 리스트 "user_follower.jsp" end -->
-
-
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />

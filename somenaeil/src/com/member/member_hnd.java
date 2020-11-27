@@ -21,11 +21,11 @@ public class member_hnd implements main_able{
 		String uid= request.getParameter("uid");
 		String id= (String)request.getSession().getAttribute("id");
 		
-		
 		String view= null;
 		
 		if(part == null) {
-			view= "join.jsp";
+			ms.user_self(uid);
+			view= "user_other.jsp";
 		} else {
 			switch(part) {
 			case "join" :
@@ -40,25 +40,30 @@ public class member_hnd implements main_able{
 				view= "user.jsp";
 				break;
 			case "user" :
-				if(id == null) {
-					member data= md.member_read(uid);
-					request.getSession().setAttribute("data", data);
-					request.getSession().setAttribute("uid", data.getId());
-					view= "user_other.jsp";
-					System.out.println("member_hnd - <user>case if문 1번째");
-				}else if(id.equals(uid)) {
-					md.member_read(uid);
+				if(id.equals(uid)) {
+					ms.user_self(id);
+					ms.user_other(id, uid);
 					view= "user.jsp";
-					System.out.println("member_hnd - <user>case if문 2번째");
 				} else if(!id.equals(uid)) {
-					member data= md.member_read(uid);
-					request.getSession().setAttribute("data", data);
-					request.getSession().setAttribute("uid", data.getId());
+					ms.user_other(id, uid);
+					String check= ms.fl_check(id, uid);
 					view= "user_other.jsp";
-					System.out.println("member_hnd - <user>case if문 3번째");
 				}
 				break;
-			case "other" :
+			case "fl_update" :
+				String follow= request.getParameter("follow");
+				String my_id= request.getParameter("id");
+				
+				ms.follow(id, uid, follow);
+				
+				if(follow.equals("fl")) {
+					request.setAttribute("follow", "no");
+					view= "user_other.jsp";
+				} else if(follow.equals("no")) {
+					request.setAttribute("follow", "fl");
+					view= "user_other.jsp";
+				}
+				
 				break;
 			}
 		}

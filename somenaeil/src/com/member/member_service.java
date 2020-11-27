@@ -74,6 +74,67 @@ public class member_service {
 		request.getSession().setAttribute("user", user);
 	}
 	
+	public void user_self(String id) {
+		member_dao md= new member_dao();
+		member data= md.member_read(id);
+	}
+	
+	public void user_other(String id, String uid) {
+		member_dao md= new member_dao();
+		member user= md.member_read(id);
+		member other= md.member_read(uid);
+		
+		request.setAttribute("user", user);
+		request.setAttribute("other", other);
+		
+		String[] other_fl= other.getFollow().split(":");
+		String[] other_flw= other.getFollower().split(":");
+		
+		request.setAttribute("other_fl", other_fl);
+		request.setAttribute("other_flw", other_flw);
+		
+		ArrayList<member> fl_list= md.follow_other(other_fl);
+		ArrayList<member> flw_list= md.follower_other(other_flw);
+		
+		request.setAttribute("fl_list", fl_list);
+		request.setAttribute("flw_list", flw_list);
+	}
+
+	public String fl_check(String id, String uid) {
+		member_dao md= new member_dao();
+		member user= md.member_read(id);
+		member other= md.member_read(uid);
+		
+		String[] other_fl= other.getFollow().split(":");
+		String[] other_flw= other.getFollower().split(":");
+		
+		for(int i=0; i<other_flw.length; i++) {
+			if(other_flw[i] == user.getId()) {
+				request.setAttribute("fl_check", "fl");
+				return "fl";
+			}else {
+				request.setAttribute("fl_check", "no");
+				break;
+			}
+		}
+		return "no";
+	}
+	
+	public void follow(String id, String uid, String follow) {
+		user_other(id, uid);
+		
+		member_dao md= new member_dao();
+		
+		member user= md.member_read(id);
+		String user_follow= user.getFollow();
+		
+		member other= md.member_read(uid);
+		String other_follower= other.getFollower();
+		
+		md.fl_update(id, uid, user_follow, other_follower, follow);
+		fl_check(id, uid);
+	}
+	
 	/**
 	 * 해당 유저의 팔로우 리스트를 추출
 	 * @return 해당 유저의 팔로우 리스트
@@ -86,7 +147,7 @@ public class member_service {
 		String[] follow_list = my.getFollow().split(":");
 		// 해당 팔로우들의 데이터리스트 리턴
 		ArrayList<member> fl = md.follow_other(follow_list);
-
+		
 		return fl;
 	}
 	
