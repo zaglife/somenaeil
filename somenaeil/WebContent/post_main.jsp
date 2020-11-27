@@ -100,8 +100,13 @@
   	        <button id='lk_bt' type="button" onclick="lk_bt_input()">+</button>
   	      </div>
   	    </div>
-  	    <div class="post_file">
-  	      <input type="button" name="img_file" id="img_file" onclick="onclick=document.all.file.click()">
+  	    <div class="post_file" id="file_s">
+  	      <input type="button" name="img_file" id="img_file" onclick="file_upload()">
+  	      <input type="file" id="file1" name="file" onchange="add_img()" class="hidden_file">
+		  <input type="file" id="file2" name="file" onchange="add_img()" class="hidden_file">
+  	      <input type="file" id="file3" name="file" onchange="add_img()" class="hidden_file">
+		  <input type="file" id="file4" name="file" onchange="add_img()" class="hidden_file">
+  	      <input type="file" id="file5" name="file" onchange="add_img()" class="hidden_file">
   	    </div>
   	    <div class="post_file">
   	      <a href="#" onclick="showmov()"><img src="img/post_vid_20.png"></a>
@@ -142,7 +147,7 @@
     <!-- 게시판 파일업로드 input start -->
     <div class="filebox"> 
       <label for="file">업로드</label> 
-      <input type="file" id="file"> 
+      <input type="file" id="files"> 
       <input class="upload-name" value="파일선택">
     </div>
     <!-- 게시판 파일업로드 input end -->
@@ -158,8 +163,6 @@
 <jsp:include page="popup_gh.jsp" />
 <jsp:include page="popup_vote.jsp" />
 
-
-<input type="file" id="f11" name="f11" onchange="changeValue(this)"/>
 
 
 

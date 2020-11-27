@@ -588,7 +588,7 @@ function em_bt_input() {
 	document.getElementById("post_write").appendChild(new_post_write);   
 }
 
-
+// popup post에 넣기
 function post_in(){
 	var jbHtml = $('#test').html();
 	
@@ -629,12 +629,9 @@ function post_in1(){
 	var a = url.charAt(url.length-1);
 		
 	};*/
-var gfv_count = '1';
+// var gfv_count = '1';
 /*
 function fn_addFile(){
-	
-
-
 	
 	
 	//var str = "<p><input type='file' name='file_"+(gfv_count++)+"' value='"+a+"'><a href='#this' class='btn' name='delete' >삭제</a></p>";
@@ -660,28 +657,59 @@ function fn_deleteFile(obj){
 
 
 
+var cnt = 0;
 
-function fn_addFile(){
-
-	$("img_file").click(function (e) {
-
-	e.preventDefault();
-
-	$('#f11').click();
-
-	});
-
-}
-
-    
-
-function changeValue(obj){
-    alert(obj.value);
+function file_upload(){
+	var file = document.getElementsByName("file");
+	if(cnt < 5){
+		document.all.file[cnt].click();
+		cnt++;
+	}else {
+		alert("사진은 최대 5장까지 첨부가능합니다.");
+	}
 }
 
 
 
 
 
+// input 태그가 체인지이벤트가 발생될때 함수실행
+// 함수내용 이미지 생성 
+
+function add_img(){
+	// 이렇게 할시 fakepath 오류
+	var file = document.getElementsByName("file");
+	
+	var para = document.createElement("div");
+	var at = document.createAttribute("width");
+	para.setAttributeNode(at);
+//	jQuery(para).attr("id","file"+(cnt-1));
+	jQuery(para).addClass("file");
+	document.getElementById("post_write").appendChild(para);
+	
+	var para2 = document.createElement("img");
+	var at = document.createAttribute("src");
+	at.value = file[cnt-1].value;
+	para2.setAttributeNode(at);
+	
+	var at = document.createAttribute("width");
+	at.value = "200px";
+	para2.setAttributeNode(at);
+	
+	var at = document.createAttribute("height");
+	at.value = "200px";
+	para2.setAttributeNode(at);
+	alert("file"+(cnt-1));
+	document.getElementsByClassName("file")[cnt-1].appendChild(para2);
+	
+	var new_post_write= document.createElement('div');
+	new_post_write.setAttribute("class", "new_post_write");
+	new_post_write.setAttribute("contenteditable", "true");
+	document.getElementById("post_write").appendChild(new_post_write); 	
+
+}
 
 
+$(document).ready(function(){
+
+});

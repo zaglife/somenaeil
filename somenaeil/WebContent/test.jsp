@@ -20,9 +20,7 @@ var file = document.getElementsByName("file");
 
 
 function aaaa(){
-	alert(file[cnt]);
 	document.all.file[cnt].click();
-	
 	cnt++;
 }
 
