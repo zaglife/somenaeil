@@ -594,9 +594,12 @@ function post_in(){
 	
 	$('#post_pop_ct').addClass('post_pop_hide');
 	popCt= 1;;
+	
 	var insertNode= document.createElement('div');
 	jQuery(insertNode).html(jbHtml);
 	document.getElementById("post_write").appendChild(insertNode); 
+	
+	
 	var new_post_write= document.createElement('div');
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
@@ -609,6 +612,7 @@ function post_in1(){
 	
 	$('#post_pop_gh').addClass('post_pop_hide');
 	popGh= 1;
+	
 	var insertNode= document.createElement('div');
 	jQuery(insertNode).html(jbHtml);
 	document.getElementById("post_write").appendChild(insertNode); 
@@ -694,9 +698,7 @@ function add_img(){
 	var at = document.createAttribute("height");
 	at.value = "200px";
 	para2.setAttributeNode(at);
-	//alert("file"+(cnt-1));
 	document.getElementsByClassName("file")[cnt-1].appendChild(para2);
-	//insertImg(file[cnt-1].value);
 	
 	var new_post_write= document.createElement('div');
 	new_post_write.setAttribute("class", "new_post_write");

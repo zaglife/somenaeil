@@ -11,6 +11,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.reply.reply;
 import com.reply.reply_dao;
+import com.vote.vote_dao;
 
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
@@ -76,44 +77,85 @@ public class post_service {
 	
 	public String add() {
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
-		
-		String path = "C:\\Users\\BYTE-506\\Documents\\psj1\\web\\somenaeil\\somenaeil\\WebContent\\user_img";
+		String path = request.getServletContext().getRealPath("/user_img");
 		int size = 10*1024*1024;
-		String title = null;
-		String cate = null;
-		String[] temp = null;
-		String hash = "";
-		String content = null;
-		String context = null;
+		String post_title = null;
+		String post_cate = null;
+		String[] post_temp = null;
+		String post_hash = "";
+		String post_content = null;
+		String post_context = null;
 		String[] fname = new String[5];
 		String[] org = new String[5];
+		
+		
+		
+		
+		String vote_title = null;
+		String[] vote_temp = null;
+		String vote_items = "";
+		int vote_muit = 0;
+		int vote_hidden = 0;
+		int vote_stat = 0;
+		int vote_date = 0;
+		String vote_day = null;
+		String[] vote_temp2 = null;
+		String vote_chk = null;
+		
+		
 		
 		
 		try {
 			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
-			title = multi.getParameter("title");
-			cate = multi.getParameter("cate_btn");
-			System.out.println(cate);
-			content = multi.getParameter("content");
-			temp = multi.getParameterValues("hash");
+			post_title = multi.getParameter("title");
+			post_cate = multi.getParameter("cate_btn");
+			post_content = multi.getParameter("content");
+			post_temp = multi.getParameterValues("hash");
 			
-			if(temp != null) {
-				for(int i = 0; i < temp.length; i++) {
-					hash += temp[i] +",";
+			if(post_temp != null) {
+				for(int i = 0; i < post_temp.length; i++) {
+					post_hash += post_temp[i] +",";
 				}
-				hash += temp[temp.length-1];
+				post_hash += post_temp[post_temp.length-1];
 			}
-			context = multi.getParameter("context");
+			post_context = multi.getParameter("context");
 			
 			Enumeration em = multi.getFileNames();
-			int i = 0;
+			int k = 0;
 			while(em.hasMoreElements()) {
 				String file = (String)em.nextElement();
-				fname[i++] = multi.getFilesystemName(file);
+				fname[k++] = multi.getFilesystemName(file);
 				
 			}
-			System.out.println("저장 성공");
+			
+			vote_chk = multi.getParameter("vote");
+			if(vote_chk.equals("use")) {
+				vote_title = multi.getParameter("title");
+				vote_temp = multi.getParameterValues("items");
+				
+				if(vote_temp != null) {
+					for(int i = 0; i < vote_temp.length; i++) {
+						vote_items += vote_temp[i] +",";
+					}
+					vote_items += vote_temp[vote_temp.length-1];
+				}
+				vote_temp2 = multi.getParameterValues("choice");
+				if(vote_temp2 != null) {
+					for(int i = 0; i < vote_temp2.length; i++) {
+						if(vote_temp2[i].equals("muit")) 
+							vote_muit = 1;
+						else if(vote_temp2[i].equals("hidden")) {
+							vote_hidden = 1;				
+						}else if(vote_temp2[i].equals("stat"))
+							vote_stat = 1;
+						else if(vote_temp2[i].equals("date")) {
+							vote_date = 1;
+							vote_day = multi.getParameter("day");
+						}
+					}
+				}
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			System.out.println("이미지 저장 실패");
@@ -123,8 +165,13 @@ public class post_service {
 		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
 		
 		post_dao pd = new post_dao();
-		pd.add(writer, title, cate, context, hash, filename);
-							
+		pd.add(writer, post_title, post_cate, post_context, post_hash, filename);
+		
+		if(vote_chk.equals("use")) {
+			vote_dao vd = new vote_dao();
+			vd.add(writer, vote_title, vote_items, vote_muit, vote_stat, vote_hidden, vote_date, vote_day);
+		
+		}					
 		return null;
 	}
 	

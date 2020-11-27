@@ -20,74 +20,7 @@ public class vote_service {
 		this.request=request;
 	}
 
-	public void add() {
-		vote_dao vd = new vote_dao();
-		
-		String nick = ((member)request.getSession().getAttribute("user")).getName();
-		
-		String vote_chk = null;
-		String path = "C:\\Users\\BYTE-506\\Documents\\psj1\\web\\somenaeil\\somenaeil\\WebContent\\user_img";
-		int size = 10*1024*1024;
-		String title = null;
-		String[] temp = null;
-		String items = "";
-		int muit = 0;
-		int hidden = 0;
-		int stat = 0;
-		int date = 0;
-		String day = null;
-		String[] temp2 = null;
-		
-		
-		
-		try {
-			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
-			
-			vote_chk = multi.getParameter("vote");
-			if(vote_chk.equals("use")) {
-				title = multi.getParameter("title");
-				temp = request.getParameterValues("items");
-				if(temp != null) {
-					for(int i = 0; i < temp.length; i++) {
-						items += temp[i] +",";
-					}
-					items += temp[temp.length-1];
-				}
-						
-				
-				temp2 = multi.getParameterValues("choice");
-				if(temp2 != null) {
-					for(int i = 0; i < temp2.length; i++) {
-						if(temp2[i].equals("muit")) 
-							muit = 1;
-						else if(temp2[i].equals("hidden")) {
-							hidden = 1;				
-						}else if(temp2[i].equals("stat"))
-							stat = 1;
-						else if(temp2[i].equals("date")) {
-							date = 1;
-							day = multi.getParameter("day");
-						}
-					}
-				}
-			
-			
-			}
-			
-			
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			System.out.println("투표 문제 실패");
-		}		
-		
-		System.out.println(vote_chk);
-		if(vote_chk.equals("use")) {
-			vd.add(nick, title, items, muit, stat, hidden, date, day);
-		
-		}
-		
-	}
+	
 }
 	
 	
