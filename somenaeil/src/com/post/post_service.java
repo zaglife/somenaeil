@@ -12,7 +12,6 @@ import com.reply.reply_dao;
 /**
  * 요청한 post 데이터를 클라이언트에게 반환
  * @author gagip
- *
  */
 public class post_service {
 	private HttpServletRequest request;

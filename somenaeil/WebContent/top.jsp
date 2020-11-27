@@ -9,7 +9,7 @@
 
 <!-- Logo -->
 <div id="top_logo">
-  <a href="read.post?part=postList"><img src="img/logo_20.png"></a>
+  <a href="index.jsp"><img src="img/logo_20.png"></a>
 </div>
 
 <!-- search bar -->

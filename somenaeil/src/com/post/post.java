@@ -168,7 +168,7 @@ public class post {
 	public String getThumbnail() {
 		String ctxt = context;
 		String thumbnailTag = null;
-		
+		// <img src="user_img/${}.jpg"
 		Pattern patten = Pattern.compile("<img((\\s)*[\\w\\d-]*(=\"[\\w\\d/.-]+\")*)*>");
 		Matcher matcher = patten.matcher(ctxt);
 		

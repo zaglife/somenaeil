@@ -1,3 +1,4 @@
+<%@page import="com.post.post_dao"%>
 <%@page import="com.member.member"%>
 <%@page import="com.member.member_dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -21,10 +22,15 @@
 <!-- 포스팅 내용 -->
 <div class="tab_content">
 
-	<!-- post start -->
+	<!-- index.jsp (파라미터 없이도 출력) -->
+	<c:if test="${part == null}">
+    <c:set var="postList" value="<%=new post_dao().getPostList(null, null)%>"/>
+  </c:if>
+  
   <c:forEach items="${postList}" var="post">
-  	<!-- 이미지 X 템플릿 -->
   	<c:if test="${post.getThumbnail()==null}">
+    <!-- 이미지 X 템플릿 -->
+    <!-- post start -->
   	<div class="post ${post.cate}">	  
 	    <!-- post_header start -->
 	    <div class="post_header">
@@ -51,7 +57,6 @@
 	        <div class="post_auth"><a href="user.jsp">${post.nick}</a></div>
 	        <div class="post_date">${post.time}</div>
 	      </div>
-	      
 	    </div>
 	    <!-- post_header end -->
 	    <!-- post_title start -->
@@ -92,8 +97,8 @@
 	  <!-- post end -->
 	  </c:if>
 	  
-	  <!-- 이미지 O 템플릿 -->
 	  <c:if test="${post.getThumbnail()!=null}">
+    <!-- 이미지 O 템플릿 -->
 	  <!-- post start -->
 	  <div class="post ${postList}_thumbnail">
 	    <!-- post_header start -->

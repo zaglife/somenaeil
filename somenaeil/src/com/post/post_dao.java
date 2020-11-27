@@ -67,8 +67,6 @@ public class post_dao {
 	}
 	
 	
-	// TODO post List 호출
-	
 	/**
 	 * 검색결과에 따른 post List 호출
 	 * @param cate 게시글 카테고리 (G, R, Q)
