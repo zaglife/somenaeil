@@ -23,6 +23,9 @@ public class cs_dao {
 	}
 	
 	public void cs_insert(String title, String cont) {
+		
+		cont = cont.replace("\r\n","<br>");
+		
 		String sql= "insert into cs(num, title, content) ";
 		sql+= "values(?, ?, ?)";
 		

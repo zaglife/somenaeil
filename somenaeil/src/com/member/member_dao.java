@@ -78,7 +78,7 @@ public class member_dao {
 			
 			ptmt.executeUpdate();
 			// 회원가입 후 noti, dm 테이블 입력
-			member_user_table(nick);
+			member_user_table(id);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,9 +119,9 @@ public class member_dao {
 		return member_select(id, pw);
 	}
 
-	public void member_user_table(String nick) {
+	public void member_user_table(String id) {
 		String sql= "create table ";
-		sql+= "noti_"+nick+"(";
+		sql+= "noti_"+id+"(";
 		sql+= "num number(4) not null primary key, ";
 		sql+= "other varchar2(20) not null, ";
 		sql+= "type number(1) not null, ";
@@ -144,7 +144,7 @@ public class member_dao {
 		}
 		
 		sql= "create table ";
-		sql+= "dm_"+nick+"(";
+		sql+= "dm_"+id+"(";
 		sql+= "num number(4) not null primary key, ";
 		sql+= "other varchar2(20) not null, ";
 		sql+= "context varchar2(4000) not null, ";

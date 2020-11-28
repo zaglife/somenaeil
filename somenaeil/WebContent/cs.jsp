@@ -46,17 +46,7 @@ $(document).ready(function(){
     </c:otherwise>
   </c:choose>
   
-            <c:if test="${list.getStartPage() > 10 }">
-            <a href="${m }.do?pnum=${list.getStartPage()-10 }">[이전]</a>
-          </c:if>
-          
-          <c:forEach var="pn" begin="${list.getStartPage() }" end="${list.getEndPage() }">
-            <a href="${m }.do?pnum=${pn }">[${pn }]</a>
-          </c:forEach>
-          
-          <c:if test="${list.getEndPage() < list.getTotalPage() }">
-            <a href="${m }.do?pnum=${list.getStartPage()+10 }">[다음]</a>
-          </c:if>
+
   
   
   
@@ -69,13 +59,19 @@ $(document).ready(function(){
   </div>
   <div id="cs_bottom">
     <div id="cs_page">
-      <a href="#"><</a>
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">></a>
+
+      <c:if test="${list.getStartPage() > 10 }">
+      <a href="${m }.do?pnum=${list.getStartPage()-10 }">&lt;</a>
+      </c:if>
+          
+      <c:forEach var="pn" begin="${list.getStartPage() }" end="${list.getEndPage() }">
+      <a href="${m }.do?pnum=${pn }">${pn }</a>
+      </c:forEach>
+          
+      <c:if test="${list.getEndPage() < list.getTotalPage() }">
+      <a href="${m }.do?pnum=${list.getStartPage()+10 }">&gt;</a>
+      </c:if>
+
     </div>
     <div id="cs_search">
       <input type="text" placeholder="고객센터검색">
