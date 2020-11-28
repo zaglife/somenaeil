@@ -28,4 +28,46 @@ public class cs_service {
 		
 		return cs_list;
 	}
+	
+	public void all_data(HttpServletRequest request) {
+		int page_num= 1;
+		int size= 10;
+		String num= request.getParameter("pnum");
+		
+		if(num != null) page_num= Integer.parseInt(num);
+		
+		cs_dao cd= new cs_dao();
+		int total= cd.select_count();
+		
+		ArrayList<cs> list= cd.all_select(
+			page_num == 1 ? 1 : (page_num-1)*10+1,
+			size
+		);
+		
+		cs_page board_page= new cs_page(total, page_num, size, list);
+		request.setAttribute("list", board_page);
+		System.out.println("cs_service 데이터 확인");
+		System.out.println("board_page의 total= "+board_page.getTotal());
+		System.out.println("board_page의 currentPage= "+board_page.getCurrentPage());
+		System.out.println("board_page의 totalPage= "+board_page.getTotalPage());
+		System.out.println("board_page의 startPage= "+board_page.getStartPage());
+		System.out.println("board_page의 endPage= "+board_page.getEndPage());
+		System.out.println("cs_service 데이터 확인 끝\n");
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

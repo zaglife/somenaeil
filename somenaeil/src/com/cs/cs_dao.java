@@ -39,6 +39,7 @@ public class cs_dao {
 		}
 	}
 	
+	// 사용안함
 	public ArrayList<cs> cs_output() {
 		ArrayList<cs> data= new ArrayList<cs>();
 		String sql= "select * from cs order by num desc";
@@ -59,5 +60,46 @@ public class cs_dao {
 			System.out.println("cs_dao - <고객센터> 모든 정보 불러오기 실패");
 		}
 		return null;
+	}
+	
+	public ArrayList<cs> all_select(int startRow, int size) {
+		String sql= "select * from (select row_number()";
+		sql+= " over(order by num desc) n, A.* from cs A order by num desc)";
+		sql+= " where n between "+startRow+" and "+(startRow+(size-1));
+		
+		System.out.println("cs_dao - sql= "+sql);
+		
+		ArrayList<cs> data= new ArrayList<cs>();
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			while(rs.next()) {
+				cs temp= new cs(
+						rs.getInt("num"),
+						rs.getString("title"),
+						rs.getString("content"),
+						rs.getDate("time"));
+				data.add(temp);
+			}
+			return data;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("cs_dao - all_select메소드 고객센터 DB작업 실패");
+		}
+		return null;
+	}
+	
+	public int select_count() {
+		String sql= "select count(*) from cs";
+		
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("cs_dao - 고객센터의 전체 게시글 수 불러오기 실패");
+		}
+		return 0;
 	}
 }

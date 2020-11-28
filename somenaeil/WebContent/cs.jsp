@@ -13,18 +13,16 @@
 <jsp:include page="css.jsp" />
 
 <script>
-var csTemp= 1;
 
-function csDown() {
-	if(csTemp == 1) {
-		$('.cs_cont').removeClass('cs_hide');
-		++csTemp;
-	}else if(csTemp == 2) {
-		$('.cs_cont').addClass('cs_hide');
-		csTemp= 1;
-	}
-}
-</script>
+$(document).ready(function(){
+
+  $(".cs_title").click(function(){
+    $(this).parent().children('div.cs_cont').toggleClass("cs_hide");
+  });
+
+});
+
+</script> 
 
 </head>
 <body> 
@@ -32,25 +30,42 @@ function csDown() {
 <div class="cs_main">
   <div id="cs_top"><p>고객센터</p></div>
   <div id="cs_body">
+
+  <c:choose>
+    <c:when test="${list.hasPage() }">
+    <c:forEach var="data" items="${list.getContent() }">
     <div class="cs_article">
-      <a onclick="csDown()">- 마감된 채용공고는 어떻게 확인할수있나요?</a>
-      <div class='cs_cont cs_hide'>
-        <p>
-썸,내일의 채용정보는 직접 회사의 구인요청에 의한 것이 아닌 타사이트의 채용정보를 링크와 함께 제공하는 서비스로, 마감된 채용정보의 내용을 확인하실 수 없습니다.<br>
-<br>
-추가적으로, 썸.내일의 채용정보는 채용공고의 마감일 기준으로 +2일이 지난 후에 삭제되므로 마감일이 지난 채용공고 중 추가 확인 가능한 게시글이 남아있을 수 있으므로, 채용정보 게시판에 검색해보시는걸 추천합니다
-        </p>
-      </div>
+      <div class="cs_title">${data.getTitle() }</div>
+      <div class='cs_cont cs_hide'><p>${data.getCont() }</p></div>
     </div>
+    </c:forEach>
+    </c:when>
+
+    <c:otherwise>
+    <p>등록된 게시글이 없습니다.</p>
+    </c:otherwise>
+  </c:choose>
+  
+            <c:if test="${list.getStartPage() > 10 }">
+            <a href="${m }.do?pnum=${list.getStartPage()-10 }">[이전]</a>
+          </c:if>
           
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
-    <div class="cs_article cs_article_last"><a href="#">- 마감된 채용공고는 어떻게 확인할수있나요?</a></div>
+          <c:forEach var="pn" begin="${list.getStartPage() }" end="${list.getEndPage() }">
+            <a href="${m }.do?pnum=${pn }">[${pn }]</a>
+          </c:forEach>
+          
+          <c:if test="${list.getEndPage() < list.getTotalPage() }">
+            <a href="${m }.do?pnum=${list.getStartPage()+10 }">[다음]</a>
+          </c:if>
+  
+  
+  
+  
+  
+  
+  
+
+
   </div>
   <div id="cs_bottom">
     <div id="cs_page">
@@ -69,15 +84,7 @@ function csDown() {
   </div>  
 </div>
 
-<p style="float:left;position:absolute;left:0;top:120px;">
-1234
 
-${cs_list.size() }
-<c:if test="${list != null }">
-34
-</c:if>
-
-</p>
 
 <div id="cs_footer">
   <p>썸,내일 고객센터</p>

@@ -15,14 +15,12 @@ public class cs_hnd implements main_able{
 		cs_service cs= new cs_service();
 		
 		String cs_part= request.getParameter("cs_part");
+		request.setAttribute("m", "cs");
+		
 		String view= null;
 		
-		System.out.println("cs_hnd 테스트 시작");
-		
-		
 		if(cs_part == null) {
-			ArrayList<cs> cs_list= cs.cs_all();
-			request.setAttribute("cs_list", cs_list);
+			cs.all_data(request);
 			view= "cs.jsp";
 		} else {
 			switch(cs_part) {
@@ -31,12 +29,9 @@ public class cs_hnd implements main_able{
 				view= "cs.jsp";
 				break;
 			case "cs_write" :
-				System.out.println("cs_hnd - cs_part = cs_write");
 				view= "cs_write.jsp";
 				break;
 			case "cs_update" :
-				System.out.println("cs_hnd - cs_part = cs_update");
-				
 				cs.cs_update(request);
 				view= "cs.jsp";
 				break;
