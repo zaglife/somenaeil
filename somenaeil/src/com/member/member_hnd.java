@@ -1,11 +1,7 @@
 package com.member;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.User;
 
 import com.main.main_able;
 
@@ -26,8 +22,9 @@ public class member_hnd implements main_able{
 		
 		System.out.println("멤버 핸들러 part= "+part);
 		if(part == null) {
-			view= "index.jsp";
-			if(uid!=null) {
+			if(uid == null) {
+				view= "join.jsp";				
+			}else if(uid != null) {
 				ms.user_self(uid);
 				follow= "no";
 				request.setAttribute("follow", follow);	// 비로그인시, 팔로우 버튼 클릭했을때 로그인 팝업

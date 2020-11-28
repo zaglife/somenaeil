@@ -162,7 +162,37 @@ public class some_hnd implements some_able {
 
 
 
+	public void member_insert(	String id,
+								String pw,
+								String name,
+								String nick,
+								String email,
+								int cert,
+								String pimg,
+								String comt	) {
+		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
+		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
+		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
+			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
+			ptmt.setString(2, id);
+			ptmt.setString(3, pw);
+			ptmt.setString(4, name);
+			ptmt.setString(5, nick);
+			ptmt.setString(6, email);
+			ptmt.setInt(7, cert);
+			ptmt.setString(8, pimg);
+			ptmt.setString(9, comt);
+			
+			ptmt.executeUpdate();
+			// 회원가입 후 noti, dm 테이블 입력
+			member_user_table(nick);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 회원가입 sql 입력 실패");
+		}
+	}
 
 
 

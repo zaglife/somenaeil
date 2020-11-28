@@ -1,12 +1,23 @@
 package com.cs;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class cs {
 	private int num;
-	private String other;
-	private int type;
-	private Calendar time;
+	private String title;
+	private String cont;
+	private Date time;
+	
+	public cs() {}
+	public cs(	int num,
+				String title,
+				String cont,
+				Date time) {
+		this.num= num;
+		this.title= title;
+		this.cont= cont;
+		this.time= time;
+	}
 	
 	public int getNum() {
 		return num;
@@ -14,22 +25,22 @@ public class cs {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getOther() {
-		return other;
+	public String getTitle() {
+		return title;
 	}
-	public void setOther(String other) {
-		this.other = other;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public int getType() {
-		return type;
+	public String getCont() {
+		return cont;
 	}
-	public void setType(int type) {
-		this.type = type;
+	public void setCont(String cont) {
+		this.cont = cont;
 	}
-	public Calendar getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(Calendar time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 }

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +68,16 @@ function csDown() {
     </div>
   </div>  
 </div>
+
+<p style="float:left;position:absolute;left:0;top:120px;">
+1234
+
+${cs_list.size() }
+<c:if test="${list != null }">
+34
+</c:if>
+
+</p>
 
 <div id="cs_footer">
   <p>썸,내일 고객센터</p>

@@ -76,7 +76,7 @@ public class post_service {
 	
 	
 	public String add() {
-		String writer = ((member)request.getSession().getAttribute("user")).getName();
+		String writer = ((member)request.getSession().getAttribute("user")).getId();
 		String path = request.getServletContext().getRealPath("/user_img");
 		int size = 10*1024*1024;
 		String post_title = null;

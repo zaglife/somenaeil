@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.cs.cs;
 import com.dm.dm;
 import com.noti.noti;
 
@@ -328,7 +329,6 @@ public class member_dao {
 		}
 		
 		try(Statement st= conn.createStatement()) {
-			System.out.println(sql);
 			st.executeUpdate(sql);
 		} catch(SQLException e) {
 			e.printStackTrace();

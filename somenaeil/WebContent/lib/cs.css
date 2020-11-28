@@ -146,3 +146,68 @@
 	font-size: 12px;
 }
 /****고객센터 하단 번호 end****/
+
+
+
+
+
+/***** 고객센터 글쓰기 *****/
+#cs_write_wrap {
+	float: left;
+	position: relative;
+	width: 650px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 120px;
+}
+
+#cs_write_title {
+	float: left;
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+#cs_write_title img {
+	width: auto;
+	height: 40px;
+	margin-bottom: 10px;
+}
+
+#cw_title {
+	width: 100%;
+	height: 30px;
+	margin-top: 30px;
+	font-size: 20px;
+	text-align: center;
+	border: 0;
+	box-shadow: inset 0px -12px 0 #edf8e6;
+}
+
+#cw_cont {
+	width: 600px;
+	height: 350px;
+	line-height: 30px;
+	margin-top: 20px;
+	padding: 20px;
+	font-size: 14px;
+	border: 5px solid #edf8e6;
+	border-radius: 20px;
+}
+    
+#cw_btn {
+	float: left;
+	position: relative;
+	width: 200px;
+	height: 40px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	margin-top: 20px;
+	border: 0;
+	border-radius: 10px;
+	background: #edf8e6;
+}
+    
+    

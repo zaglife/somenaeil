@@ -1,9 +1,7 @@
 package com.member;
 
 import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 public class member_service {
 	private  HttpServletRequest request;
