@@ -45,16 +45,7 @@ $(document).ready(function(){
     <p>등록된 게시글이 없습니다.</p>
     </c:otherwise>
   </c:choose>
-  
-
-  
-  
-  
-  
-  
-  
-  
-
+ 
 
   </div>
   <div id="cs_bottom">

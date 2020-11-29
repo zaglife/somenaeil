@@ -34,7 +34,7 @@
 .cs_article {
 	width: 650px;
 	height: auto;
-	line-height: 29px;
+	line-height: 30px;
 	font-size: 14px;
 	font-weight: 100;
 }
@@ -179,13 +179,19 @@
 }
 
 #cw_title {
-	width: 100%;
+	clear: both;
+	float: left;
+	position: relative;
+	width: 500px;
 	height: 30px;
+	left: 50%;
+	transform: translate(-50%, 0);
 	margin-top: 30px;
+	padding-bottom: 5px;
 	font-size: 20px;
 	text-align: center;
 	border: 0;
-	box-shadow: inset 0px -12px 0 #edf8e6;
+	border-bottom: 1px solid #999 !important;
 }
 
 #cw_cont {
@@ -195,7 +201,7 @@
 	margin-top: 20px;
 	padding: 20px;
 	font-size: 14px;
-	border: 5px solid #edf8e6;
+	border: 1px solid #999;
 	border-radius: 20px;
 }
     
@@ -207,7 +213,7 @@
 	left: 50%;
 	transform: translate(-50%, 0);
 	margin-top: 20px;
-	border: 0;
+	border: 1px solid #80ca7c;
 	border-radius: 10px;
 	background: #edf8e6;
 }

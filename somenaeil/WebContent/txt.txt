@@ -200,4 +200,52 @@ public class some_hnd implements some_able {
 
 
 
+<script>
+
+$(document).ready(function(){
+
+  $("button").click(function(){
+
+    alert("Background color = " + $("p").css("background-color"));
+
+  });
+
+});
+
+</script> 
+
+<p style="background-color:#0000ff">This is a paragraph.</p>
+
+<button>Return background-color of p</button>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+var csTemp= 1;
+
+function csDown(num) {
+	alert(num);
+	if(num == 1) {
+		alert(num+1);
+		alert(this.val());
+// 		$(this).next().removeClass('cs_hide');
+		$(this).parent().css({"height": "500px"});
+		++csTemp;
+	}else if(csTemp == 2) {
+		$(this).next().addClass('cs_hide');
+		csTemp= 1;
+	}
+}
+</script>
+
+
+
 

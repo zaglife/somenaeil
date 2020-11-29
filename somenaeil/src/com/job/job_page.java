@@ -1,19 +1,19 @@
-package com.cs;
+package com.job;
 
 import java.util.ArrayList;
 
-public class cs_page {
+public class job_page {
 	private int total;
 	private int currentPage;
-	private ArrayList<cs> content;
+	private ArrayList<job> content;
 	private int totalPage;
 	private int startPage;
 	private int endPage;
 	
-	public cs_page(	int total,
-					int currentPage,
-					int size,
-					ArrayList<cs> content) {
+	public job_page(	int total,
+						int currentPage,
+						int size,
+						ArrayList<job> content) {
 		this.total= total;
 		this.currentPage= currentPage;
 		this.content= content;
@@ -55,10 +55,10 @@ public class cs_page {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-	public ArrayList<cs> getContent() {
+	public ArrayList<job> getContent() {
 		return content;
 	}
-	public void setContent(ArrayList<cs> content) {
+	public void setContent(ArrayList<job> content) {
 		this.content = content;
 	}
 	public int getTotalPage() {

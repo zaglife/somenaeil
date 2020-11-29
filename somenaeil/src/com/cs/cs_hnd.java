@@ -1,12 +1,9 @@
 package com.cs;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.main.main_able;
-import com.member.member_service;
 
 public class cs_hnd implements main_able{
 
@@ -25,7 +22,7 @@ public class cs_hnd implements main_able{
 		} else {
 			switch(cs_part) {
 			case "cs_view" :
-				cs.cs_all();
+				cs.all_data(request);
 				view= "cs.jsp";
 				break;
 			case "cs_write" :
