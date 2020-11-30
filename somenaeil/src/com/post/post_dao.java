@@ -147,8 +147,8 @@ public class post_dao {
 	
 	
 	// post DB에 연결 작업
-	public void add(String writer, String title, String cate, String content, String hash, String filename) {
-		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt, img) values(?,?,?,?,?,sysdate,?,?,?,?,?)";
+	public void add(String writer, String title, String cate, String content, String hash, String filename, String id, int vote) {
+		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt, img, id, vote) values(?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
 		
 		try(PreparedStatement pt = conn.prepareStatement(sql)){
 			pt.setInt(1, mytag.db_lib.get_num("post", conn));
@@ -161,6 +161,8 @@ public class post_dao {
 			pt.setString(8,content);
 			pt.setInt(9,0);
 			pt.setString(10,filename);
+			pt.setString(11, id);
+			pt.setInt(12, vote);
 			pt.executeUpdate();
 			
 			System.out.println("저장성공");

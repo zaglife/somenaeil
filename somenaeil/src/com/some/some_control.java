@@ -90,8 +90,6 @@ public class some_control extends HttpServlet {
 			response.sendRedirect("index.jsp");
 		}else {
 			if (!view.contains("#")) {
-				if(request.getAttribute("chatlist")!=null)
-					System.out.println("c"+((ArrayList<chat>)request.getAttribute("chatlist")).get(0).getChatcontent());
 				RequestDispatcher dsp = request.getRequestDispatcher(view);
 				dsp.forward(request, response);
 			}

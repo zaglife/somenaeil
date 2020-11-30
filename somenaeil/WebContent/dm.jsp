@@ -76,9 +76,9 @@ function submitFunction(){
 			}
 		});
 	}
-	
-	
-	
+	//$("body").scrollTop($(document).height());
+	//$("#dm_c_list").scrollTop(0);
+	//$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
 	
 	function addChat(chatName, chatContnet,chatTime){
 		var formid = $("#formid").val();
@@ -104,7 +104,7 @@ function submitFunction(){
 				'</span>'
 				);
 		}
-		$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
+		
 	}
 	function getInfiniteChat(){
 		
@@ -127,6 +127,9 @@ function submitFunction(){
     
 
 <jsp:include page="css.jsp" />
+
+
+
 
 
 <input type="hidden" id="part" name="part" value="chatlist">
@@ -191,8 +194,8 @@ function submitFunction(){
     </div>
     
     <div id="dm_c_msg">
-    <form method="get" action="dm.some">
-    <input type="hidden" id="part" name="part" value="chatlist">
+    <form method="post" action="dm.some">
+    <input type="hidden" id="part" name="part" value="chatlist" >
     <input type="hidden" id="toid" name="toid" value="${toid }">
     <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
       <input type="text" id="chatcontent" name="chatcontent" placeholder="메세지를 입력하세요.">
@@ -218,10 +221,10 @@ ${result}
 </body>
 
 <script>
-//$(document).ready(function(){
-//	chatListFunction('ten');
-//	getInfiniteChat();
-//})
+$(document).ready(function(){
+//	
+	$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
+})
 
 </script>
 

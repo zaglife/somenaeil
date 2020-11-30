@@ -76,7 +76,9 @@ public class post_service {
 	
 	
 	public String add() {
-		String writer = ((member)request.getSession().getAttribute("user")).getId();
+		String writer = ((member)request.getSession().getAttribute("user")).getNick();
+		String id = ((member)request.getSession().getAttribute("user")).getId();
+		int vote = 0;
 		String path = request.getServletContext().getRealPath("/user_img");
 		int size = 10*1024*1024;
 		String post_title = null;
@@ -131,6 +133,7 @@ public class post_service {
 			
 			vote_chk = multi.getParameter("vote");
 			if(vote_chk.equals("use")) {
+				vote = 1;
 				vote_title = multi.getParameter("title");
 				vote_temp = multi.getParameterValues("items");
 				
@@ -165,7 +168,7 @@ public class post_service {
 		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
 		
 		post_dao pd = new post_dao();
-		pd.add(writer, post_title, post_cate, post_context, post_hash, filename);
+		pd.add(writer, post_title, post_cate, post_context, post_hash, filename, id, vote);
 		
 		if(vote_chk.equals("use")) {
 			vote_dao vd = new vote_dao();

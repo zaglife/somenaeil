@@ -21,7 +21,7 @@ public class dm_dao {
 	/////////////////////
 	public ArrayList<chat> getChatListById(String fromid, String toid){
 		ArrayList<chat> chatlist = null;
-		
+		 // chatID 순대로 가져오겠다.
 		String sql = "select * from chat where ((fromid = ? and toid = ?) or (fromid = ? and toid = ?)) order by chatID";
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
@@ -33,17 +33,16 @@ public class dm_dao {
 			ptmt.setString(3, toid);
 			ptmt.setString(4, fromid);
 			rs = ptmt.executeQuery();
-			
+			// rs에 담긴 내용을 모두 chat.java에 넣어주는 작업
 			while(rs.next()) {
 				if(chatlist==null)
-					chatlist = new ArrayList<chat>();
-				chat chat = new chat();
+					chatlist = new ArrayList<chat>(); // chatlist가 null이라면 ArrayList선언 
+				chat chat = new chat(); // chat을 선언해 담아주기위한 작업 dm완성될시 생성자 생성 예정 
 				chat.setChatID(rs.getInt("chatID"));
 				chat.setFromid(rs.getString("fromid"));
 				chat.setToid(rs.getString("toid"));
 				chat.setChatcontent(rs.getString("chatcontent").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
 				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
-				System.out.println(chatTime);
 				String timeType ="오전";
 				if(chatTime > 12) {
 					timeType = "오후";
@@ -74,7 +73,7 @@ public class dm_dao {
 	}
 	
 	
-	
+	// 선언 안해요
 	public ArrayList<chat> getChatListById(String fromid, String toid, String chatID){
 		ArrayList<chat> chatlist = null;
 		
@@ -98,7 +97,6 @@ public class dm_dao {
 				chat.setToid(rs.getString("toid").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
 				chat.setChatcontent(rs.getString("chatcontent").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
 				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
-				System.out.println(chatTime);
 				String timeType ="오전";
 				if(chatTime > 12) {
 					timeType = "오후";
@@ -129,7 +127,7 @@ public class dm_dao {
 	}
 	
 	
-	public ArrayList<chat> getChatListByRecent(String fromid, String toid, int number){
+	public ArrayList<chat> getChatListByRecent(String fromid, String toid){
 		ArrayList<chat> chatlist = null;
 		
 		String sql = "select * from chat where ((fromid = ? and toid = ?) or (fromid = ? and toid = ?)) and chatID > (select MAX(chatID) - ? from chat) order by chatTime";
@@ -142,7 +140,6 @@ public class dm_dao {
 			ptmt.setString(2, toid);
 			ptmt.setString(3, toid);
 			ptmt.setString(4, fromid);
-			ptmt.setInt(5, number);
 			rs = ptmt.executeQuery();
 			chatlist = new ArrayList<chat>();
 			while(rs.next()) {
@@ -182,9 +179,6 @@ public class dm_dao {
 	
 	
 	public int submit(String fromid, String toid, String chatcontent){
-		System.out.println(fromid);
-		System.out.println(toid);
-		System.out.println(chatcontent);
 		String sql = "insert into chat values(?, ?, ?, sysdate, ?)";
 		PreparedStatement ptmt = null;
 		ResultSet rs = null;
