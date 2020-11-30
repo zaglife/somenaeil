@@ -67,15 +67,15 @@ function submitFunction(){
 				part : part
 			},
 			success : function(data){
-				qwer();
+				//qwer();
 				
-				if(data == "")return ;
+			/* 	if(data == "")return ;
 				var parsed = JSON.parse(data); // 제이슨 형태로 파싱
 				var result = parsed.result;
 				for(var i = 0; i < result.lenght; i++){
 					addChat(result[i][0].value, result[i][2].value, result[i][3].value);
 				}
-				lastID = Number(parsed.last)
+				lastID = Number(parsed.last) */
 			}
 		});
 	}
@@ -106,21 +106,22 @@ function submitFunction(){
 		$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
 	}
 	function getInfiniteChat(){
+		
 		setInterval(function(){
-			chatListFunction(lastID);
+			chatListFunction($("#lastid").val());
 		}, 3000);
 	}
-	function qwer(){
-		alert(<%=request.getAttribute("chatlist")%>);
-		data = <%=request.getAttribute("chatlist")%>;
+<%-- 	function qwer(){
+		
+		alert(<=request.getAttribute("chatlist") %>);
+		data = <%=request.getAttribute("chatlist")>;
 		if(data == "")return ;
 		var parsed = JSON.parse(data); // 제이슨 형태로 파싱
 		var result = parsed.result;
 		for(var i = 0; i < result.lenght; i++){
 			addChat(result[i][0].value, result[i][2].value, result[i][3].value);
 		}
-		lastID = Number(parsed.last)
-	}
+	} --%>
 </script>
     
 <!DOCTYPE html>
@@ -136,8 +137,7 @@ function submitFunction(){
 <body>
 <input type="hidden" id="part" name="part" value="chatlist">
 <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
-<div id="dm_wrap">
-
+<div id="dm_wrap"> 
   <div id="dm_new_wrap">
     <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile01.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
     <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="dm_c_wrap">
   <div id="dm_c_left">
     <img src="img/profile01.jpg">
@@ -13,9 +13,23 @@
   </div>
   <div id="dm_c_right">
     <div id="dm_c_list">
-      
-     
-      
+      <c:if test="${chatlist != null }">
+		<input type="hidden" id="lastid" name="lastid" value="${chatlist.size() }">
+      	<c:forEach var="i" begin="0" end="${chatlist.size() }" step="1">
+		  <c:if test="${chatlist.get(i).getFromid().equals(user.getId()) }">
+		      <span class="msg_wrap msg_other">
+        		<p>${chatlist.get(i).getChatcontent() }</p>
+        		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
+      		  </span>      
+		  </c:if>
+		  <c:if test="${!chatlist.get(i).getFromid().equals(user.getId()) }">
+		      <span class="msg_wrap msg_other">
+        		<p>${chatlist.get(i).getChatcontent() }</p>
+        		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
+      		  </span>      
+		  </c:if>	
+      	</c:forEach>	
+      </c:if>
     </div>
     
     <div id="dm_c_msg">

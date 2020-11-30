@@ -97,6 +97,7 @@ public class dm_dao {
 				chat.setToid(rs.getString("toid").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
 				chat.setChatcontent(rs.getString("chatcontent").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
 				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
+				
 				System.out.println(chatTime);
 				String timeType ="오전";
 				if(chatTime > 12) {

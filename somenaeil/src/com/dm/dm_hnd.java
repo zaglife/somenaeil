@@ -2,6 +2,8 @@ package com.dm;
 
 
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,7 +21,7 @@ public class dm_hnd implements some_able{
 			view = ds.dm();
 		}
 		else if(part.equals("list")){
-			String chat = ds.dm_list();
+			ArrayList<chat> chat = ds.dm_list();
 			
 			request.setAttribute("chatlist", chat);
 		}

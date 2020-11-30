@@ -8,7 +8,24 @@ public class chat {
 	private String toid;
 	private String chatTime;
 	private String chatcontent;
+	private String lastID;
+//	
+//	public chat(int chatID, String fromid, String toid, String chatTime, String chatcotent) {
+//		this.chatID = chatID;
+//		this.fromid = fromid;
+//		this.toid = toid;
+//		this.chatTime = chatTime;
+//		this.chatcontent = chatcotent;
+//	}
+//	
 	
+	
+	public String getLastID() {
+		return lastID;
+	}
+	public void setLastID(String lastID) {
+		this.lastID = lastID;
+	}
 	public String getChatcontent() {
 		return chatcontent;
 	}

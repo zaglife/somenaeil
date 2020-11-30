@@ -40,7 +40,7 @@ public class dm_service {
 		return null;
 	}
 	
-	public String dm_list() {
+	public ArrayList<chat> dm_list() {
 		String fromid = ((member)request.getSession().getAttribute("user")).getId();
 		String toid = request.getParameter("toid");
 		String listType = request.getParameter("listType");
@@ -48,7 +48,7 @@ public class dm_service {
 		System.out.println(toid);
 		System.out.println(fromid);
 		if(fromid == null || fromid.equals("") || toid == null || toid.equals("") || listType == null || listType.equals("")) {
-			return "";
+			return null;
 		}else if(listType.equals("ten"))
 			try {
 				return getTen(URLDecoder.decode(fromid, "UTF-8"), URLDecoder.decode(toid, "UTF-8"));
@@ -68,39 +68,53 @@ public class dm_service {
 		return null;
 	}
 	
-	public String getTen(String fromid, String toid) {
+	public ArrayList<chat> getTen(String fromid, String toid) {
 		StringBuffer result = new StringBuffer();
 		result.append("{\"result\"\":[");
 		dm_dao dd = new dm_dao();
 		ArrayList<chat> chatlist = dd.getChatListByRecent(fromid, toid, 10); // 몇개씩 불러오겠냐
-		if(chatlist.size() == 0) return "";
-		for(int i = 0; i < chatlist.size(); i++) {
-			result.append("[{\"value\": \""+ chatlist.get(i).getFromid() + "\"},");
-			result.append("{\"value\": \""+ chatlist.get(i).getToid() + "\"},");
-			result.append("{\"value\": \""+ chatlist.get(i).getChatcontent() + "\"},");
-			result.append("{\"value\": \""	+ chatlist.get(i).getChatTime() + "\"}]");
-			if(i != chatlist.size() -1) result.append(",");
-		}
-		result.append("], \"last\":\"" + chatlist.get(chatlist.size()-1).getChatID() + "\"}");
-		return result.toString();
+		if(chatlist.size() == 0) return null;
+		System.out.println(chatlist);
+		return chatlist;
+		
+		
+//		for(int i = 0; i < chatlist.size(); i++) {
+//			result.append("[{\"value\": \""+ chatlist.get(i).getFromid() + "\"},");
+//			result.append("{\"value\": \""+ chatlist.get(i).getToid() + "\"},");
+//			result.append("{\"value\": \""+ chatlist.get(i).getChatcontent() + "\"},");
+//			result.append("{\"value\": \""	+ chatlist.get(i).getChatTime() + "\"}]");
+//			if(i != chatlist.size() -1) result.append(",");
+//		}
+//		result.append("], \"last\":\"" + chatlist.get(chatlist.size()-1).getChatID() + "\"}");
+//		return result.toString();
 	}
 	
-	public String getID(String fromid, String toid, String chatID) {
+	
+	
+	
+	
+	public ArrayList<chat> getID(String fromid, String toid, String chatID) {
 		StringBuffer result = new StringBuffer();
 		result.append("{\"result\":[");
 		dm_dao dd = new dm_dao();
 		ArrayList<chat> chatlist = dd.getChatListById(fromid, toid, chatID); // 몇개씩 불러오겠냐
-		if(chatlist.size() == 0) return "";
-		for(int i = 0; i < chatlist.size(); i++) {
-			result.append("[{\"value\": \""+ chatlist.get(i).getFromid() + "\"},");
-			result.append("{\"value\": \""+ chatlist.get(i).getToid() + "\"},");
-			result.append("{\"value\": \""+ chatlist.get(i).getChatcontent() + "\"},");
-			result.append("{\"value\": \""+ chatlist.get(i).getChatTime() + "\"}]");
-			if(i != chatlist.size() -1) result.append(",");
-		}
-		result.append("], \"last\":\"" + chatlist.get(chatlist.size()-1).getChatID() + "\"}");
+		if(chatlist.size() == 0) return null;
 		
-		return result.toString();
+		System.out.println(chatlist);
+		return chatlist;
+		
+		
+		
+//		for(int i = 0; i < chatlist.size(); i++) {
+//			result.append("[{\"value\": \""+ chatlist.get(i).getFromid() + "\"},");
+//			result.append("{\"value\": \""+ chatlist.get(i).getToid() + "\"},");
+//			result.append("{\"value\": \""+ chatlist.get(i).getChatcontent() + "\"},");
+//			result.append("{\"value\": \""+ chatlist.get(i).getChatTime() + "\"}]");
+//			if(i != chatlist.size() -1) result.append(",");
+//		}
+//		result.append("], \"last\":\"" + chatlist.get(chatlist.size()-1).getChatID() + "\"}");
+//		
+//		return result.toString();
 	}
 	
 }
