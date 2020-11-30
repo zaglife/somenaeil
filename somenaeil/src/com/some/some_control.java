@@ -2,6 +2,7 @@ package com.some;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.dm.chat;
 
 
 /**
@@ -82,12 +85,13 @@ public class some_control extends HttpServlet {
 		
 		some_able hd = map.get(cmd);
 		String view=null;
-		view = hd.active(request, response);		
-		
+		view = hd.active(request, response);
 		if(view==null) {
 			response.sendRedirect("index.jsp");
 		}else {
 			if (!view.contains("#")) {
+				if(request.getAttribute("chatlist")!=null)
+					System.out.println("c"+((ArrayList<chat>)request.getAttribute("chatlist")).get(0).getChatcontent());
 				RequestDispatcher dsp = request.getRequestDispatcher(view);
 				dsp.forward(request, response);
 			}

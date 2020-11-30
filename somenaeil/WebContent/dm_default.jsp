@@ -13,14 +13,17 @@
   </div>
   <div id="dm_c_right">
     <div id="dm_c_list">
+    asjhdgasdh
       <c:if test="${chatlist != null }">
+      asjhdgaslhd
 		<input type="hidden" id="lastid" name="lastid" value="${chatlist.size() }">
       	<c:forEach var="i" begin="0" end="${chatlist.size() }" step="1">
+      	ajksdhsakjdhsad
 		  <c:if test="${chatlist.get(i).getFromid().equals(user.getId()) }">
 		      <span class="msg_wrap msg_other">
         		<p>${chatlist.get(i).getChatcontent() }</p>
         		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
-      		  </span>      
+      		  </span>    
 		  </c:if>
 		  <c:if test="${!chatlist.get(i).getFromid().equals(user.getId()) }">
 		      <span class="msg_wrap msg_other">
