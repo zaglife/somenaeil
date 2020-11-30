@@ -157,27 +157,23 @@ function submitFunction(){
   </div>
   <div id="dm_c_right">
     <div id="dm_c_list">
-    	${result}
-    	<c:forEach var="chat" items="${chatlist}" varStatus="s">
-    		${s.index}
-    	</c:forEach>
       <c:if test="${chatlist != null }">
 		<input type="hidden" id="lastid" name="lastid" value="${chatlist.size() }">
 		<c:forEach var="chat" items="${chatlist}">
 		 <c:if test="${chat.getFromid().equals(user.getId()) }">
-		      <span class="msg_wrap msg_other">
+		      <span class="msg_wrap msg_user">
         		<p>${chat.getChatcontent() }</p>
-        		<p>${chat.getChatTime() } + 보냄</p>       			
+        		<p>${chat.getChatTime() }  보냄</p>       			
       		  </span>    
 		  </c:if>
 		  <c:if test="${!chat.getFromid().equals(user.getId()) }">
 		      <span class="msg_wrap msg_other">
         		<p>${chat.getChatcontent() }</p>
-        		<p>${chat.getChatTime() } + 보냄</p>       			
+        		<p>${chat.getChatTime() }  보냄</p>       			
       		  </span>      
 		  </c:if>	
 		</c:forEach>
-      	<c:forEach var="i" begin="0" end="${chatlist.size() -1}" step="1">
+   <%--    	<c:forEach var="i" begin="0" end="${chatlist.size() -1}" step="1">
 		  <c:if test="${chatlist.get(i).getFromid().equals(user.getId()) }">
 		      <span class="msg_wrap msg_other">
         		<p>${chatlist.get(i).getChatcontent() }</p>
@@ -190,7 +186,7 @@ function submitFunction(){
         		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
       		  </span>      
 		  </c:if>	
-      	</c:forEach>	
+      	</c:forEach> --%>	
       </c:if>
     </div>
     
