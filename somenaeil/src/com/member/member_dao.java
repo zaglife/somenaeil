@@ -1,35 +1,96 @@
 package com.member;
 
+import static com.common.DBUtil.*;
+
+import java.sql.Array;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import com.dm.dm;
-import com.noti.noti;
 
 public class member_dao {
 	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
 	
-	public member_dao(){
-		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
-		} catch(SQLException e){
-			e.printStackTrace();
-			System.out.println("member_dao - member DB 커넥션 실패");
-		}
+	private static member_dao instance;
+	
+	public member_dao(){}
+	
+	/**
+	 * 싱글턴 패턴
+	 * @return
+	 */
+	public static member_dao getInstance() {
+		if (instance == null)
+			instance = new member_dao();
+		return instance;
 	}
 	
-	public member member_select(String id, String pw) {
-		String sql= "select * from member where id='"+id+"' and pw='"+pw+"'";
+	public void setConnection(Connection conn) {
+		this.conn = conn;
+	}
+	
+	/**
+	 * 로그인 체크 여부
+	 * @author gagip
+	 * @param id 사용자 아이디
+	 * @param pw 사용자 비밀번호
+	 * @return 1:로그인성공, 0:비밀번호불일치, -1:존재하지않는아이디
+	 */
+	public int checkLogin(String id, String pw) {
+		String sql = "SELECT pw FROM member WHERE id=?";
 		
-		try(	Statement st= conn.createStatement();
-				ResultSet rs= st.executeQuery(sql)) {
-
+		String dbPW = null;			// DB에 있는 비밀번호
+		int result = -1;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				dbPW = rs.getString(1);
+				
+				if(dbPW.equals(pw))
+					result = 1;		// 아이디 & 비밀번호 일치
+				else
+					result = 0;		// 비밀번호 불일치
+			}
+			else {
+				result = -1;		// 존재하지 않는 아이디
+			}
+		} catch (Exception e) {
+			System.out.println("checkLogin 오류");
+			e.printStackTrace();
+		}
+		
+		close(rs);
+		close(pstmt);
+		return result;
+	}
+	
+	/**
+	 * Memeber DB에서 해당 유저 데이터 읽기 (SELECT)
+	 * @author gagip(수정)
+	 * @param id 아이디
+	 * @return 해당 id를 가진 유저 데이터 리턴
+	 */
+	public member selectMember(String id) {
+		String sql= "SELECT * FROM member WHERE id=?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
 				member user= new member(
 					rs.getString("id"),
@@ -48,291 +109,339 @@ public class member_dao {
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("member_dao - DB 로그인 실패");
+			System.out.println("member_dao - MEMBER 데이터 추출 실패");
 		}
+		
+		close(rs);
+		close(pstmt);
 		return null;
 	}
 	
-	public void member_insert(	String id,
-								String pw,
-								String name,
-								String nick,
-								String email,
-								int cert,
-								String pimg,
-								String comt	) {
-		String sql= "insert into member(num, id, pw, name, nick, email, cert, pimg, comt)";
-		sql+= " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
+	/**
+	 * Member DB 데이터 추가 (INSERT)
+	 * @author gagip(수정)
+	 * @param id 아이디
+	 * @param pw 비밀번호
+	 * @param name 이름
+	 * @param nick 닉네임
+	 * @param email 메일
+	 * @param cert 
+	 * @param pimg 프로필 이미지
+	 * @param comt 한 줄 소개
+	 */
+	public void insertMember(String id, String pw, String name, String nick,
+							String email, int cert, String pimg, String comt) {
+		
+		String sql= "INSERT INTO member(num, id, pw, name, nick, email, cert, pimg, comt) "
+					+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
-			ptmt.setInt(1, com.main.main_dao.get_num("member", conn));
-			ptmt.setString(2, id);
-			ptmt.setString(3, pw);
-			ptmt.setString(4, name);
-			ptmt.setString(5, nick);
-			ptmt.setString(6, email);
-			ptmt.setInt(7, cert);
-			ptmt.setString(8, pimg);
-			ptmt.setString(9, comt);
+		try {
+			// 자동 커밋을 false로
+			conn.setAutoCommit(false);
 			
-			ptmt.executeUpdate();
-			// 회원가입 후 noti, dm 테이블 입력
-			member_user_table(nick);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, getNum("member", conn));
+			pstmt.setString(2, id);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, name);
+			pstmt.setString(5, nick);
+			pstmt.setString(6, email);
+			pstmt.setInt(7, cert);
+			pstmt.setString(8, pimg);
+			pstmt.setString(9, comt);
+			
+			// 쿼리 실행
+			// 온전히 실행이 된 경우 
+			if (pstmt.executeUpdate() > 0) {
+				// 회원가입 후 noti, dm 테이블 입력
+				createUserTable(id);
+				
+				// 최종 커밋
+				commit(conn);
+			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
+			
+		} catch (Exception e) {
 			System.out.println("member_dao - 회원가입 sql 입력 실패");
-		}
+			e.printStackTrace();
+		} 
+		
+		close(pstmt);
 	}
 	
-	public member member_update(	String id,
-									String pw,
-									String nick,
-									String email,
-									int cert,
-									String pimg,
-									String comt	) {
-		if(pw == "") {
-			String sql= "select pw from member where id='"+id+"'";
-
-			try(	Statement stmt= conn.createStatement();
-					ResultSet rs= stmt.executeQuery(sql)) {
-				if(rs.next()) {
-					pw= rs.getString("pw");
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("member_dao - 회원정보수정 중 비밀번호 조회 실패");
-			}
-		}
-		String sql= "update member set pw='"+pw+"', nick='"+nick+"',";
-		sql+= " email='"+email+"', cert='"+cert+"', pimg='"+pimg+"',";
-		sql+= " comt='"+comt+"' where id='"+id+"'";
+	
+	/**
+	 * Member 데이터 수정 (UPDATE)
+	 * @author gagip(수정)
+	 * @param id
+	 * @param pw
+	 * @param nick
+	 * @param email
+	 * @param cert
+	 * @param pimg
+	 * @param comt
+	 * @return
+	 */
+	public boolean updateMember(String id, String nick, String email, 
+								int cert, String pimg, String comt) {
+		String sql = "UPDATE member SET nick=?, email=?, cert=?, pimg=?, comt=? "
+					+ "WHERE id=?";
+		boolean result = false;
 		
-		try(Statement stmt= conn.createStatement()) {
-			stmt.executeUpdate(sql);			
+		try	{
+			// 자동 커밋 off
+			conn.setAutoCommit(false);
+			
+			// sql 값 매핑
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, nick);
+			pstmt.setString(2, email);
+			pstmt.setInt(3, cert);
+			pstmt.setString(4, pimg);
+			pstmt.setString(5, comt);
+			pstmt.setString(6, id);
+			
+			if (pstmt.executeUpdate() > 0) {
+				commit(conn);
+				result = true;
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 회원정보수정 실패");
 		}
-		return member_select(id, pw);
+		
+		close(pstmt);
+		return result;
 	}
 
-	public void member_user_table(String nick) {
-		String sql= "create table ";
-		sql+= "noti_"+nick+"(";
-		sql+= "num number(4) not null primary key, ";
-		sql+= "other varchar2(20) not null, ";
-		sql+= "type number(1) not null, ";
-		sql+= "time date default sysdate, ";
-		sql+= "scrap number(6))";
+	public boolean updateMember(String id, String pw) {
+		String sql = "UPDATE member SET pw=? "
+				+ "WHERE id=?";
+	boolean result = false;
+	
+	try	{
+		// 자동 커밋 off
+		conn.setAutoCommit(false);
 		
-		try(	Statement stmt= conn.createStatement();
-				ResultSet rs= stmt.executeQuery(sql)) {
-			if(rs.next()) {
-				noti nt= new noti(
-					rs.getInt("num"),
-					rs.getString("other"),
-					rs.getInt("type"),
-					rs.getDate("time"),
-					rs.getInt("scrap"));
-			}
+		// sql 값 매핑
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, pw);
+		pstmt.setString(2, id);
+		
+		if (pstmt.executeUpdate() > 0) {
+			commit(conn);
+			result = true;
+		}
+	} catch(SQLException e) {
+		e.printStackTrace();
+		System.out.println("member_dao - 회원정보수정 실패");
+	}
+	
+	close(pstmt);
+	return result;
+	}
+	
+	/**
+	 * 유저 이름을 가진 DB 생성 (CREATE)
+	 * @author gagip(수정)
+	 * @param id 고유한 이름의 db가 저장되어야 하므로 nick보단 id
+	 */
+	public void createUserTable(String id) {
+		String sql = "CREATE TABLE noti_?("
+					+ "num NUMBER(4) NOT NULL PRIMARY KEY,"
+					+ "other VARCHAR2(20) NOT NULL,"
+					+ "type NUMBER(1) NOT NULL,"
+					+ "time DATE DEFAULT SYSDATE,"
+					+ "scrap NUMBER(6))";
+				
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate(); 	// CREATE 구문에서는 -1을 반환
+			
+			// TODO 중복 예외 처리
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 유저별 noti테이블 생성 실패");
 		}
 		
-		sql= "create table ";
-		sql+= "dm_"+nick+"(";
-		sql+= "num number(4) not null primary key, ";
-		sql+= "other varchar2(20) not null, ";
-		sql+= "context varchar2(4000) not null, ";
-		sql+= "time date default sysdate, ";
-		sql+= "cert number(1))";
+		close(pstmt);
+	}
+	
+	
+	/**
+	 * id 리스트에 만족하는 MemberList 추출
+	 * @author gagip(수정)
+	 * @param idList id 리스트
+	 * @return 해당 id를 가진 Member 리스트
+	 */
+	public ArrayList<member> selectMemberList(String[] idList) {
+		ArrayList<member> memberList = new ArrayList<member>();
 		
-		try(	Statement stmt= conn.createStatement();
-				ResultSet rs= stmt.executeQuery(sql)) {
-			if(rs.next()) {
-				dm dm= new dm(
-					rs.getInt("num"),
-					rs.getString("other"),
-					rs.getString("context"),
-					rs.getDate("time"),
-					rs.getInt("cert"));
+		// java에서 array를 DB에 보내기에 한계가 있기 때문에 스트림과 포맷팅을 이용
+		String sql = String.format("SELECT * FROM member WHERE id IN (%s)", 
+									Stream.of(idList)
+									.map(x -> "'"+x+"'")					// x를 문자열('x')로 변환
+									.collect(Collectors.joining(",")));		// 값들 사이에 반점(,)
+		
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				member member = new member(
+						rs.getString("id"),
+						rs.getString("name"),
+						rs.getString("nick"),
+						rs.getString("email"),
+						rs.getInt("cert"),
+						rs.getString("pimg"),
+						rs.getString("comt"),
+						rs.getString("follow"),
+						rs.getString("follower"),
+						rs.getString("scrap_list"),
+						rs.getString("like_list"));
+				
+				memberList.add(member);
 			}
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
-			System.out.println("member_dao - 유저별 dm테이블 생성 실패");
+			System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 		}
+		
+		close(rs);
+		close(pstmt);
+		return memberList;
+	}
+	
+	
+	/**
+	 * 해당 유저와 어떤 관계인지 확인
+	 * @author gagip
+	 * @param myId 자신의 아이디
+	 * @param targetId 상대방의 아이디
+	 * @return
+	 */
+	public String isFollow(String myId, String targetId) {
+		String sql = "SELECT follow, follower FROM member WHERE id=?";
+		
+		boolean follow = false;
+		boolean follower = false;
+		String result = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, myId);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				String followStr = rs.getString("follow");
+				String followerStr = rs.getString("follower");
+				
+				// follow와 follower에 해당 유저의 아이디가 있는지 확인한다.
+				if (followStr != null)
+					follow = Arrays.stream(followStr.split(":"))
+											.anyMatch(targetId::equals);
+				else
+					follow = false;
+				
+				if (followerStr != null)
+					follower = Arrays.stream(followerStr.split(":"))
+											.anyMatch(targetId::equals);
+				else
+					follower = false;
+			}
+			
+			// 특정 분류에 따라 타겟과의 관계를 정의
+			if (follow && follower) 		result = "follow4follow";
+			else if (!follow && follower)	result = "follower";
+			else if (follow && !follower) 	result = "follow";
+			else							result = "unfollow";
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close(rs);
+		close(pstmt);
+		return result;
+	}
+	
+	/**
+	 * follow 리스트 수정
+	 * @author gagip(수정)
+	 * @param myId
+	 * @param targetId
+	 * @param preRelation 타겟과의 이전 관계 (follow4follow, follower, follow, unfollow)
+	 */
+	public boolean updateFollow(String myId, String targetId, 
+							String myFollow, String targetFollower, String preRelation) {
+		String sql1 = "UPDATE member SET follow=? WHERE id=?";
+		String sql2 = "UPDATE member SET follower=? WHERE id=?";
+
+		boolean result = false;
+		
+		
+		
+		// myFollow와 targetFollower를 preRelation에 따라 수정할 필요성 있음
+		// "follow4follow"와 "follow" = my가 target을 follow 했다
+		if (preRelation == "follow4follow" || preRelation == "follow") {
+			myFollow = Stream.of(myFollow.split(":"))				// myFollow 배열을 스트림으로 변환 후
+							.filter(x -> !x.equals(targetId))					// myId를 제외한 모든 요소를 추출 후
+							.collect(Collectors.joining(":"));		// ":"를 구분자로 문자열 생성
+			targetFollower = Stream.of(targetFollower.split(":"))
+							.filter(x -> !x.equals(myId))
+							.collect(Collectors.joining(":"));
+		} else {
+			// myFollow에 정보가 없으면 해당 아이디만 넣으면 된다
+			if (myFollow == null)  myFollow = targetId;
+			// myFollow에 targetId를 넣은 후 문자열로 변환
+			else
+				myFollow = Stream.concat(Stream.of(myFollow.split(":")), Stream.of(targetId))
+												.collect(Collectors.joining(":"));
+			
+			
+			if (targetFollower == null) targetFollower = myId;
+			else
+				targetFollower = Stream.concat(Stream.of(targetFollower.split(":")), Stream.of(myId))
+												.collect(Collectors.joining(":"));
+		}
+		
+		try {
+			// 자동 커밋 off
+			conn.setAutoCommit(false);
+			
+			// 쿼리 값 매핑
+			pstmt = conn.prepareStatement(sql1);
+			pstmt.setString(1, myFollow);
+			pstmt.setString(2, myId);
+			
+			if (pstmt.executeUpdate() > 0)
+				commit(conn);
+			close(pstmt);
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1, targetFollower);
+			pstmt.setString(2, targetId);
+			
+			if (pstmt.executeUpdate() > 0)
+				commit(conn);
+			close(pstmt);
+
+			
+			result = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close(pstmt);
+		return result;
 	}
 	
 	
 
-	// DB에서 유저 세션을 불러와서
-	// follow, follower, scrap, like, dm, noti 정보 받아서 사용
-	/**
-	 * 해당 유저 데이터 추출
-	 * @param id
-	 * @return 
-	 */
-	public member member_read(String id) {
-		String sql= "select * from member where id=?";
-		
-		member user = null;
-		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
-			ptmt.setString(1, id);
-			ResultSet rs= ptmt.executeQuery();
-			if(rs.next()) {
-				user= new member(
-					rs.getString("id"),
-					rs.getString("nick"),
-					rs.getString("email"),
-					rs.getString("pimg"),
-					rs.getString("comt"),
-					rs.getString("follow"),
-					rs.getString("follower"),
-					rs.getString("scrap_list"));
-			}
-			
-			
-			
-			return user;
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println("member_dao - 멤버정보 불러오기 실패");
-		}
-		return null;
-	}
-
-	
-	/**
-	 * 팔로우 리스트 추출
-	 * @param fl 팔로우 리스트 id
-	 * @return 팔로우 리스트
-	 */
-	public ArrayList<member> follow_other(String[] fl) {
-		ArrayList<member> data = new ArrayList<member>();
-		
-		for(int i=0; i<fl.length; i++) {
-			String sql= "select * from member where id='"+fl[i]+"'";
-			try(	Statement stmt= conn.createStatement();
-					ResultSet rs= stmt.executeQuery(sql)) {
-				if(rs.next()) {
-					member follow_temp= new member(
-							rs.getString("id"),
-							rs.getString("name"),
-							rs.getString("nick"),
-							rs.getString("email"),
-							rs.getInt("cert"),
-							rs.getString("pimg"),
-							rs.getString("comt"),
-							rs.getString("follow"),
-							rs.getString("follower"),
-							rs.getString("scrap_list"),
-							rs.getString("like_list"));
-					data.add(follow_temp);
-					
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
-			}
-		}
-		return data;
-	}
-	
-	/**
-	 * 팔로워 리스트 추출
-	 * @param flw 팔로워 리스트 id
-	 * @return 팔로워 리스트
-	 */
-	public ArrayList<member> follower_other(String[] flw) {	
-		ArrayList<member> data = new ArrayList<member>();
-		
-		for(int i=0; i<flw.length; i++) {
-			String sql= "select * from member where id='"+flw[i]+"'";
-			try(	Statement stmt= conn.createStatement();
-					ResultSet rs= stmt.executeQuery(sql)) {
-				if(rs.next()) {
-					member follower_temp= new member(
-							rs.getString("id"),
-							rs.getString("name"),
-							rs.getString("nick"),
-							rs.getString("email"),
-							rs.getInt("cert"),
-							rs.getString("pimg"),
-							rs.getString("comt"),
-							rs.getString("follow"),
-							rs.getString("follower"),
-							rs.getString("scrap_list"),
-							rs.getString("like_list"));
-					data.add(follower_temp);
-					
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
-			}
-		}
-		return data;
-	}
-	
-	public void fl_update(	String my_id,
-							String other_id,
-							String user_follow,
-							String other_follower,
-							String type) {
-		String temp= "";
-		String sql= "";
-		
-		// 대상 팔로워 리스트
-		if(type.equals("fl")) {
-			other_follower+= ":"+my_id;
-			sql= "update member set follower='"+other_follower+"' where id='"+other_id+"'";
-			
-		} else if(type.equals("no")) {
-			String[] f_list= other_follower.split(":");
-		
-			for(int i=0; i<f_list.length; i++) {
-				if(!f_list[i].equals(my_id)) 		temp+= f_list[i]+":";
-				else if(f_list[i].equals(my_id))	continue;
-			}
-			temp= temp.substring(0, temp.length()-1);
-			sql= "update member set follower='"+temp+"' where id='"+other_id+"'";
-		}
-		
-		try(Statement st= conn.createStatement()) {
-			st.executeUpdate(sql);
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println("member_dao - 대상 팔로워 업데이트 실패");
-		}
-	
-		
-		// 내 팔로우 리스트
-		if(type.equals("fl")) {
-			temp= "";
-			user_follow+= ":"+other_id;
-			sql= "update member set follow='"+user_follow+"' where id='"+my_id+"'";
-			
-		} else if(type.equals("no")) {
-			String[] f_list= user_follow.split(":");
-			
-			for(int i=0; i<f_list.length; i++) {
-				if(!f_list[i].equals(other_id)) 	temp+= f_list[i]+":";
-				else if(f_list[i].equals(other_id)) continue;
-			}	
-			
-			temp= temp.substring(0, temp.length()-1);
-			sql= "update member set follow='"+temp+"' where id='"+my_id+"'";
-		}
-		
-		try(Statement st= conn.createStatement()) {
-			System.out.println(sql);
-			st.executeUpdate(sql);
-		} catch(SQLException e) {
-			e.printStackTrace();
-			System.out.println("member_dao - 내 팔로우 업데이트 실패");
-		}
-	}
 }

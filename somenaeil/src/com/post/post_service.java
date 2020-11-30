@@ -1,6 +1,9 @@
 package com.post;
 
+
+import static com.common.DBUtil.*;
 import java.net.URLDecoder;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -34,11 +37,17 @@ public class post_service {
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		
 		// 페이저 번호를 통해 DB에서 해당 포스트를 가지고 온다
-		post_dao dao = new post_dao();
-		post pt = dao.getPost(pageNum);
+		
+		Connection conn = getConnection();
+		
+		// 포스트 가져오기
+		post_dao postDAO = post_dao.getInstance();
+		postDAO.setConnection(conn);
+		post pt = postDAO.getPost(pageNum);
 		
 		// 댓글 가져오기
-		reply_dao replyDAO = new reply_dao();
+		reply_dao replyDAO = reply_dao.getInstance();
+		replyDAO.setConnection(conn);
 		ArrayList<reply> replyList = replyDAO.getReplyList(pageNum);
 		
 		// 가져온 post와 댓글들을 request에 전달
@@ -59,8 +68,10 @@ public class post_service {
 		String condition = request.getParameter("condition");
 		
 		// DB에 접근하여 결과값을 post List에 전달
-		post_dao dao = new post_dao();
-		ArrayList<post> postList = dao.getPostList(cate, condition);
+		Connection conn = getConnection();
+		post_dao postDAO = post_dao.getInstance();
+		postDAO.setConnection(conn);
+		ArrayList<post> postList = postDAO.getPostList(cate, condition);
 		
 		// 결과 값을 request에 전달
 		request.setAttribute("postList", postList);
@@ -77,6 +88,7 @@ public class post_service {
 	
 	public String add() {
 		String writer = ((member)request.getSession().getAttribute("user")).getName();
+		String writerId = ((member)request.getSession().getAttribute("user")).getId();
 		String path = request.getServletContext().getRealPath("/user_img");
 		int size = 10*1024*1024;
 		String post_title = null;
@@ -165,7 +177,7 @@ public class post_service {
 		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
 		
 		post_dao pd = new post_dao();
-		pd.add(writer, post_title, post_cate, post_context, post_hash, filename);
+		pd.add(writer, post_title, post_cate, post_context, post_hash, filename, writerId);
 		
 		if(vote_chk.equals("use")) {
 			vote_dao vd = new vote_dao();
@@ -176,6 +188,11 @@ public class post_service {
 	}
 	
 	
+	/**
+	 * 댓글 쓰기
+	 * @author gagip
+	 * @return
+	 */
 	public String writeReply() {
 		// 파라미터 불러오기
 		String author = request.getParameter("author");
@@ -192,11 +209,13 @@ public class post_service {
 		int post_num = Integer.parseInt(request.getParameter("post_num"));
 		
 		// 댓글 인스턴스 생성
+		Connection conn = getConnection();
+		reply_dao replyDAO = reply_dao.getInstance();
+		replyDAO.setConnection(conn);
 		reply rep = new reply();
-		reply_dao replyDAO = new reply_dao();
+		
 		
 		// DB 데이터 -> 인스턴스 변수
-		rep.setNum(replyDAO.getSeq());
 		rep.setPost_num(post_num);
 		rep.setAuthor(author);
 		rep.setContext(context);

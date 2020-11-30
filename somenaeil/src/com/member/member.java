@@ -214,4 +214,5 @@ public class member {
 	public void setLike_list(String like_list) {
 		this.like_list = like_list;
 	}
+	 
 }

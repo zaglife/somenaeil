@@ -1,43 +1,83 @@
 package com.member;
 
+
+import static com.common.DBUtil.*;
+
+import java.net.URLDecoder;
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.post.post;
+import com.post.post_dao;
+
 public class member_service {
 	private  HttpServletRequest request;
 
-	public member_service() {}
 	public member_service(HttpServletRequest request) { 
 		this.request= request;
 	}
 	
 	public String login() {
-		String id= request.getParameter("id");
-		String pw= request.getParameter("pw");
+		HttpSession session = request.getSession();
 		
-		member_dao md= new member_dao();
-		member user= md.member_select(id, pw);
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 		
-		request.getSession().setAttribute("user", user);
-		request.getSession().setAttribute("id", user.getId());
-		
+		// conn 연결 후 해당 연결
+		Connection conn = getConnection();
+		member_dao md = member_dao.getInstance();
+		md.setConnection(conn);
 
-		if(user == null)
-			return "fail";
+		int loginCheck = md.checkLogin(id, pw);	
+		String result = null;
+		
+		// 로그인 성공
+		if (loginCheck == 1) {
+			member sessionUesr = md.selectMember(id);
 			
+			session.setAttribute("sessionUser", sessionUesr);
+			session.setAttribute("sessionId", sessionUesr.getId());
+		}
+		else if (loginCheck == 0) {
+			request.setAttribute("fail", "0");
+			
+			result = "login.jsp";
+		}
+		else {
+			request.setAttribute("fail", "-1");
+			
+			result = "login.jsp";
+		}
+		
+		
+		close(conn);
+		return result;
+	}
+	
+	/**
+	 * 로그인 세션 삭제
+	 * @return
+	 */
+	public String logout() {
+		request.getSession().removeAttribute("sessionUser");
+		request.getSession().removeAttribute("sessionId");
+		
 		return null;
 	}
 	
-	public void join() {
-		String id= request.getParameter("id");
-		String pw= request.getParameter("pw");
-		String name= request.getParameter("name");
-		String nick= request.getParameter("nick");
-		String email= request.getParameter("email");
-		String addr= request.getParameter("addr");
-		int cert= Integer.parseInt(request.getParameter("cert"));
+	public String join() {
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		String name = request.getParameter("name");
+		String nick = request.getParameter("nick");
+		String email = request.getParameter("email");
+		String addr = request.getParameter("addr");
+		int cert = Integer.parseInt(request.getParameter("cert"));
 		String pimg= request.getParameter("pimg");
 		String comt= request.getParameter("comt");
 		
@@ -46,148 +86,123 @@ public class member_service {
 		// 회원가입 테스트를 위한 이메일 인증
 		cert= 1;
 		
-		member_dao md=new member_dao();
-		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
-		member user= md.member_select(id, pw);
-		request.getSession().setAttribute("user", user);
+		// DB 세팅
+		Connection conn = getConnection();
+		member_dao md = member_dao.getInstance();
+		md.setConnection(conn);
+		
+		// 회원가입
+		md.insertMember(id, pw, name, nick, email, cert, pimg, comt);
+				
+		close(conn);
+		return "login.jsp";
 	}
 	
-	public void update() {
-		String pw= request.getParameter("pw");
-		String nick= request.getParameter("nick");
-		String email= request.getParameter("email");
-		String addr= request.getParameter("addr");
-		// 회원가입 테스트를 위한 이메일 인증
-		int cert= 1;
-		String pimg= request.getParameter("pimg");
-		String comt= request.getParameter("comt");
+	public String user() {
 		
-		String id= ((member)request.getSession().getAttribute("user")).getId();
+		String userId = request.getParameter("userId");
+		String sessionId = (String) request.getSession().getAttribute("sessionId");
+		String cate = request.getParameter("cate");
 		
-		// 이메일 주소 뒷부분 추가
-		email+= "@"+addr;
+		member user = null;
+		ArrayList<member> followList = null;
+		ArrayList<member> followerList = null;
+		ArrayList<post> postList = null;
+		String isFollow = null;
 		
+		Connection conn = getConnection();
+		member_dao memberDAO = member_dao.getInstance();
+		memberDAO.setConnection(conn);
+		// 해당 유저가 쓴 포스트도 가져온다
+		post_dao postDAO = post_dao.getInstance();
+		postDAO.setConnection(conn);
 		
-		member_dao md=new member_dao();
-		member user= md.member_update(id, pw, nick, email, cert, pimg, comt);
-		
-		request.getSession().setAttribute("user", user);
-	}
-	
-	public void user_self(String uid) {
-		member_dao md= new member_dao();
-		
-		String id= (String)request.getSession().getAttribute("id");
-		
-//		member user= md.member_read(uid);
-		member other= md.member_read(uid);
-		
-		request.setAttribute("other", other);	// 타겟 유저 멤버 객체
-		
-		String[] other_fl= other.getFollow().split(":");
-		String[] other_flw= other.getFollower().split(":");
-		for(int i=0; i< other_flw.length; i++) {
-			if(other_flw[i].equals(id)) {
-				request.setAttribute("follow", "yy");
-				break;
-			}
-			//나랑  팔로워 임
+		user = memberDAO.selectMember(userId);
+		if (user != null) {
+			String follow = user.getFollow();
+			String follower = user.getFollower();
+			
+			// 팔로우 리스트 추출
+			if (follow != null)
+				followList = memberDAO.selectMemberList(follow.split(":"));
+			// 팔로워 리스트 추출
+			if (follower != null)
+				followerList = memberDAO.selectMemberList(follower.split(":"));
+			
+			isFollow = memberDAO.isFollow(sessionId, userId);
+			
+			// 포스트 리스트 추출
+			postList = postDAO.getPostList(userId);
+			
+			if (cate != null)
+				postList = (ArrayList<post>) postList.stream()
+										.filter(x -> x.getCate().equals(cate))
+										.collect(Collectors.toList());
 		}
-		request.setAttribute("other_fl", other_fl);		// 타겟 유저 팔로우 리스트 배열
-		request.setAttribute("other_flw", other_flw);	// 타겟 유저 팔로워 리스트 배열
 		
-		ArrayList<member> fl_list= md.follow_other(other_fl);
-		ArrayList<member> flw_list= md.follower_other(other_flw);
-	
-		request.setAttribute("fl_list", fl_list);	// 팔로우 어레이리스트 객체
-		request.setAttribute("flw_list", flw_list);	// 팔로워 어레이리스트 객체
+		request.setAttribute("user", user);
+		request.setAttribute("followList", followList);
+		request.setAttribute("followerList", followerList);
+		request.setAttribute("postList", postList);
+		request.setAttribute("isFollow", isFollow);
+		
+		return String.format("user.jsp?part=user&userId=%s", userId);
 	}
 	
-	
-	// 우선 사용 안하는 메소드
-	public void user_other(String id, String uid) {
-		member_dao md= new member_dao();
-		member user= md.member_read(id);
-		member other= md.member_read(uid);
+	public boolean update() {
+		String id = request.getParameter("id");
+		String pw = request.getParameter("newPw");
+		String nick = request.getParameter("nick");
+		String email = request.getParameter("email");
+		email += "@"+request.getParameter("addr");
+		int cert = Integer.parseInt(request.getParameter("cert"));
+		String pimg = request.getParameter("pimg");
+		String comt = request.getParameter("comt");
 		
-		request.setAttribute("user", user);		// 로그인 유저 멤버 객체
-		request.setAttribute("other", other);	// 타겟 유저 멤버 객체
+		boolean pwCheck = false;
+		boolean updateCheck = false;
 		
-		String[] other_fl= other.getFollow().split(":");
-		String[] other_flw= other.getFollower().split(":");
+		Connection conn = getConnection();
+		member_dao memberDAO = member_dao.getInstance();
+		memberDAO.setConnection(conn);
 		
-		request.setAttribute("other_fl", other_fl);		// 타겟 유저 팔로우 리스트 배열
-		request.setAttribute("other_flw", other_flw);	// 타겟 유저 팔로워 리스트 배열
+		// DB 업데이트
+		if (pw != "")
+			pwCheck = memberDAO.updateMember(id, pw);
+		updateCheck = memberDAO.updateMember(id, nick, email, cert, pimg, comt);
 		
-		ArrayList<member> fl_list= md.follow_other(other_fl);
-		ArrayList<member> flw_list= md.follower_other(other_flw);
+		// 업데이트 후 user 객체를 업데이트하기 위해 새로 로드
+		member user = memberDAO.selectMember(id);
 		
-		request.setAttribute("fl_list", fl_list);	// 팔로우 어레이리스트 객체
-		request.setAttribute("flw_list", flw_list);	// 팔로워 어레이리스트 객체
-	}
-
-	public void fl_check(String id, String uid) {
-		// 재료 넣기
-		String s = request.getParameter("ss");
-		// 요리 도구 넣기
-		member_dao md= new member_dao();
-		member user= md.member_read(id);
-		member other= md.member_read(uid);
-
-		String[] other_flw= other.getFollower().split(":");
-		
-		String result = null;
-		
-		for(int i=0; i<other_flw.length; i++) {
-			if(other_flw[i].equals(user.getId())) result = "fl";
+		if (updateCheck) {
+			request.getSession().setAttribute("user", user);	// 새로 갱신
 		}
-		if (result == null) result = "no"; 
-		
-		request.setAttribute("follow", result);
+		else {
+			request.setAttribute("fail", -1);
+		}
+
+		return updateCheck;
 	}
 	
 	
-	
-	public void follow(String id, String uid, String follow) {
-		user_other(id, uid);
+	public void follow() {
+		String userId = request.getParameter("userId");
+		String targetId = request.getParameter("targetId");
 		
-		member_dao md= new member_dao();
+		Connection conn = getConnection();
+		member_dao memberDAO = member_dao.getInstance();
+		memberDAO.setConnection(conn);
 		
-		member user= md.member_read(id);
-		String user_follow= user.getFollow();
+		String userFollow = memberDAO.selectMember(userId).getFollow();
+		String targetFollower = memberDAO.selectMember(targetId).getFollower();
 		
-		member other= md.member_read(uid);
-		String other_follower= other.getFollower();
+		// my와 target의 관계
+		String isFollow = memberDAO.isFollow(userId, targetId);
+		// my와 target와 관계 업데이트
+		boolean check = memberDAO.updateFollow(userId, targetId, 
+							userFollow, targetFollower, isFollow);
 		
-		md.fl_update(id, uid, user_follow, other_follower, follow);
-		fl_check(id, uid);
-	}
-	
-	/**
-	 * 해당 유저의 팔로우 리스트를 추출
-	 * @return 해당 유저의 팔로우 리스트
-	 */
-	public ArrayList<member> follow_list(String id) {
-		member_dao md= new member_dao();
-		// 내 데이터
-		member my= md.member_read(id);
-		// 내 데이터의 팔로우 리스트 추출 및 가공
-		String[] follow_list = my.getFollow().split(":");
-		// 해당 팔로우들의 데이터리스트 리턴
-		ArrayList<member> fl = md.follow_other(follow_list);
-		
-		return fl;
-	}
-	
-	public ArrayList<member> follower_list(String id) {
-		member_dao md= new member_dao();
-		// 내 데이터
-		member my= md.member_read(id);
-		// 내 데이터의 팔로우 리스트 추출 및 가공
-		String[] follower_list = my.getFollower().split(":");
-		// 해당 팔로우들의 데이터리스트 리턴
-		ArrayList<member> flw = md.follower_other(follower_list);
-		
-		return flw;
+		if (!check)
+			request.setAttribute("fail", -1);
 	}
 }

@@ -47,18 +47,18 @@
 
 <!-- hidden dropdown -->
 <div class="dropdown d_hide">
-	<c:if test="${sessionScope.user == null}">
-		<a href="login.do">로그인</a>
- 		<a href="join.do">회원가입</a>
+	<c:if test="${sessionScope.sessionUser == null}">
+		<a href="login.jsp">로그인</a>
+ 		<a href="join.jsp">회원가입</a>
 	</c:if>
-	<c:if test="${sessionScope.user != null}">
-    <a href="index.do">메인 페이지</a>
+	<c:if test="${sessionScope.sessionUser != null}">
+    <a href="index.jsp">메인 페이지</a>
     <a href="user.do?part=user&uid=some">마이 페이지</a>
     <a href="post_main.jsp?state=login">포스팅</a>
     <a href="noti.jsp?state=login">알림</a>
     <a href="dm.jsp?state=login">메세지</a>
     <a href="info.jsp?state=login">채용정보</a>
-  	<a href="logout.do">로그아웃</a>
+  	<a href="logout.do?part=logout">로그아웃</a>
 	</c:if>
 </div>
 <!-- top menu -->
@@ -69,11 +69,11 @@
  	<div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
  	
  	<!-- 로그인시 프로필 사진으로 대체 -->
- 	<c:if test="${sessionScope.user == null}">
+ 	<c:if test="${sessionScope.sessionUser == null}">
  		<a href="login.jsp"><img src="img/icon_profile_30.png"></a>
  	</c:if>
-	<c:if test="${sessionScope.user != null}">
-		<a href="login.do" id="top_user_login"><img src="img/icon_profile_30.png"></a>
+	<c:if test="${sessionScope.sessionUser != null}">
+		<a href="user.do?part=user&userId=${sessionUser.id}" id="top_user_login"><img src="img/icon_profile_30.png"></a>
 	</c:if>
 </div>
 </div>
