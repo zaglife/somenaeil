@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.job.job;
+import com.job.job_dao;
 
 public class db_lib {
 	public static int get_num(String table, Connection conn) throws SQLException {
@@ -28,5 +32,15 @@ public class db_lib {
 
 		return num;
 		
+	}
+	
+	public ArrayList<job> slide_list() {
+		job_dao jd= new job_dao();
+		
+		ArrayList<job> data= jd.info_job();
+		
+		System.out.println(data.get(0).getTitle());
+		
+		return data;
 	}
 }

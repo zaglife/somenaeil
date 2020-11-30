@@ -40,6 +40,13 @@
 	margin-top: 3px;
 }
 
+#top_search button {
+	position: absolute;
+	margin: 7px 0;
+	border: 0;
+	background: rgba(255, 255, 255, 0);
+}
+
 #top_search_cate {
 	float: left;
 	position: relative;

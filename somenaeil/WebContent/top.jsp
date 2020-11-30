@@ -50,6 +50,8 @@
 	<c:if test="${sessionScope.user == null}">
 		<a href="login.do">로그인</a>
  		<a href="join.do">회원가입</a>
+ 		<a href="job.do">채용정보</a>
+ 		<a href="cs.do">고객센터</a>
 	</c:if>
 	<c:if test="${sessionScope.user != null}">
     <a href="index.do">메인 페이지</a>
@@ -57,7 +59,8 @@
     <a href="post_main.jsp?state=login">포스팅</a>
     <a href="noti.jsp?state=login">알림</a>
     <a href="dm.jsp?state=login">메세지</a>
-    <a href="info.jsp?state=login">채용정보</a>
+    <a href="job.do">채용정보</a>
+    <a href="cs.do">고객센터</a>
   	<a href="logout.do">로그아웃</a>
 	</c:if>
 </div>

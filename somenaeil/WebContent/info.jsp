@@ -49,7 +49,7 @@ $(document).ready(function(){
   <div id="info_job_wrap">
     <div id="info_job_top">
       <p>채용정보</p> 
-      <a href="job.do?part=job_view" id="go_job">+</a>
+      <a href="job.do?part=job_view" id="go_job"></a>
     </div>
     <div id="info_job_cont">
       <c:forEach var="job" items="${job_list }" varStatus="status" begin="0" end="4" step="1">
@@ -65,7 +65,7 @@ $(document).ready(function(){
   <div id="info_cs_wrap">
     <div id="info_cs_top">
       <p>고객센터</p>
-      <a href="cs.do?part=cs_view" id="go_cs">+</a>
+      <a href="cs.do?part=cs_view" id="go_cs"></a>
     </div>
     <div id="info_cs_cont">
       <c:forEach var="cs" items="${cs_list }" varStatus="status" begin="0" end="4" step="1">

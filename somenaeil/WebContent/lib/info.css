@@ -20,9 +20,9 @@
 #info_job_top {
 	float: left;
 	position: relative;
-	width: 680px;
+	width: 700px;
 	height: 24px;
-	padding: 10px;
+	padding: 10px 0;
 	border-bottom: 1px dashed #555;
 }
 
@@ -34,10 +34,17 @@
 #go_job{
 	float: right;
 	position: absolute;
+	width: 15px;
+	height: 15px;
 	top: 0;
 	right: 0;
-	margin: 10px;
-	font-size: 20px;
+	margin: 15px 0;
+	background: url('../img/plus_15px.png') no-repeat center center;
+	transition: all .2s;
+}
+
+#go_job:hover {
+	transform: rotate(90deg);
 }
 
 #info_job_cont{
@@ -96,10 +103,10 @@
 #info_cs_top {
 	float: left;
 	position: relative;
-	width: 330px;
+	width: 350px;
 	height: 24px;
 	margin-top: 30px;
-	padding: 10px;
+	padding: 10px 0;
 	border-bottom: 1px dashed #555;
 }
 
@@ -111,10 +118,17 @@
 #go_cs{
 	float: right;
 	position: absolute;
+	width: 15px;
+	height: 15px;
 	top: 0;
 	right: 0;
-	margin: 10px;
-	font-size: 20px;
+	margin: 15px 0;
+	background: url('../img/plus_15px.png') no-repeat center center;
+	transition: all .2s;
+}
+
+#go_cs:hover {
+	transform: rotate(90deg);
 }
 
 #info_cs_cont{
