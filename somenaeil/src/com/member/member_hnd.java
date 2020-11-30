@@ -36,7 +36,7 @@ public class member_hnd implements main_able{
 				ms.join();
 				view= "index.jsp";
 				break;
-			case "info" :
+			case "edit" :
 				request.setAttribute("pg", "join_edit.jsp");
 				break;
 			case "update" :	// 회원정보 수정

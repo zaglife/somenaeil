@@ -41,10 +41,11 @@ cert number(1)
 create table job(
 num number(4) not null primary key,
 com varchar2(100) not null,
+end varchar2(100) not null,
 title varchar2(200) not null,
-context varchar2(4000) not null,
+content varchar2(4000) not null,
 time date default sysdate,
-link varchar2(4000) not null
+link varchar2(400) not null
 );
 
 /********* 고객센터 cs *********/

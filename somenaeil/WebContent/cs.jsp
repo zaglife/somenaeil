@@ -52,15 +52,15 @@ $(document).ready(function(){
     <div id="cs_page">
 
       <c:if test="${list.getStartPage() > 10 }">
-      <a href="${m }.do?pnum=${list.getStartPage()-10 }">&lt;</a>
+      <a href="${m }.do?part=cs_view&pnum=${list.getStartPage()-10 }">&lt;</a>
       </c:if>
           
       <c:forEach var="pn" begin="${list.getStartPage() }" end="${list.getEndPage() }">
-      <a href="${m }.do?pnum=${pn }">${pn }</a>
+      <a href="${m }.do?part=cs_view&pnum=${pn }">${pn }</a>
       </c:forEach>
           
       <c:if test="${list.getEndPage() < list.getTotalPage() }">
-      <a href="${m }.do?pnum=${list.getStartPage()+10 }">&gt;</a>
+      <a href="${m }.do?part=cs_view&pnum=${list.getStartPage()+10 }">&gt;</a>
       </c:if>
 
     </div>

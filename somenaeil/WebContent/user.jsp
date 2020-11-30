@@ -51,7 +51,7 @@
 
     <!-- 로그인시 본인 계정 -->
     <div id="user_right">
-      <a href="join_edit.jsp"><img src="img/setting_20.png"></a>
+      <a href="join.do?part=edit"><img src="img/setting_20.png"></a>
       <p>R 타입</p>
     </div>
 

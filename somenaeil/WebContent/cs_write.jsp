@@ -19,7 +19,7 @@
   </div>
   
   <form method="post" action="cs.do">
-  <input type="hidden" name="cs_part" value="cs_update">
+  <input type="hidden" name="part" value="cs_update">
   
   <input type="text" id="cw_title" name="cw_title" placeholder="고객센터 타이틀">
   

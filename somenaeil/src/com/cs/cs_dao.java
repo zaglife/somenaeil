@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.job.job;
 import com.main.main_dao;
 
 public class cs_dao {
@@ -48,11 +49,10 @@ public class cs_dao {
 		try(	Statement stmt= conn.createStatement();
 				ResultSet rs= stmt.executeQuery(sql)) {
 			while(rs.next()) {
-				cs temp= new cs(
-						rs.getInt("num"),
-						rs.getString("title"),
-						rs.getString("content"),
-						rs.getDate("time"));
+				cs temp= new cs(	rs.getInt("num"),
+									rs.getString("title"),
+									rs.getString("content"),
+									rs.getDate("time"));
 				data.add(temp);
 			}
 			return data;
@@ -76,5 +76,27 @@ public class cs_dao {
 			System.out.println("cs_dao - 고객센터의 전체 게시글 수 불러오기 실패");
 		}
 		return 0;
+	}
+	
+	public ArrayList<cs> info_cs() {
+		ArrayList<cs> data= new ArrayList<cs>();
+		String sql= "select * from cs order by num desc";
+		
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			
+			while(rs.next()) {
+				cs temp= new cs(	rs.getInt("num"),
+									rs.getString("title"),
+									rs.getString("content"),
+									rs.getDate("time"));
+				data.add(temp);
+			}
+			return data;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("cs_dao - 고객센터 공지글 불러오기 실패");
+		}
+		return null;
 	}
 }

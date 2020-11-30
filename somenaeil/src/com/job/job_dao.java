@@ -55,14 +55,13 @@ public class job_dao {
 		try(	Statement stmt= conn.createStatement();
 				ResultSet rs= stmt.executeQuery(sql)) {
 			while(rs.next()) {
-				job temp= new job(
-						rs.getInt("num"),
-						rs.getString("com"),
-						rs.getString("end"),
-						rs.getString("title"),
-						rs.getString("content"),
-						rs.getString("link"),
-						rs.getDate("time"));
+				job temp= new job(	rs.getInt("num"),
+									rs.getString("com"),
+									rs.getString("end"),
+									rs.getString("title"),
+									rs.getString("content"),
+									rs.getString("link"),
+									rs.getDate("time"));
 				data.add(temp);
 			}
 			return data;
@@ -86,6 +85,31 @@ public class job_dao {
 			System.out.println("job_dao - 채용정보의 전체 게시글 수 불러오기 실패");
 		}
 		return 0;
+	}
+	
+	public ArrayList<job> info_job() {
+		ArrayList<job> data= new ArrayList<job>();
+		String sql= "select * from job order by num desc";
+		
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			
+			while(rs.next()) {
+				job temp= new job(	rs.getInt("num"),
+									rs.getString("com"),
+									rs.getString("end"),
+									rs.getString("title"),
+									rs.getString("content"),
+									rs.getString("link"),
+									rs.getDate("time"));
+				data.add(temp);
+			}
+			return data;
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("job_dao - 채용정보 공지글 불러오기 실패");
+		}
+		return null;
 	}
 }
 

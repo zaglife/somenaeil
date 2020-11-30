@@ -249,3 +249,114 @@ function csDown(num) {
 
 
 
+
+
+
+/****채용 정보 start****/
+#info_job_wrap {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+#info_job_top {
+	float: left;
+	position: relative;
+	width: 680px;
+	height: 24px;
+	padding: 10px;
+	border-bottom: 1px dashed #555;
+}
+
+#info_job_top p {
+	font-size: 20px;
+    font-weight: 900;
+}
+
+#go_job{
+	float: right;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+	font-size: 20px;
+}
+
+#info_job_cont{
+	float: left;
+	position: relative;
+}
+
+#info_job_cont div {
+	float: left;
+	position: relative;
+	width: 100%;
+	padding: 15px 0;
+	font-size: 14px;
+	border-bottom: 1px solid #555;
+}
+
+#info_job_cont div:last-child {
+	border: 0 !important;
+}
+
+.info_job a:first-child {
+	width: 100px;
+	margin-right: 10px;
+	font-weight: 900;
+}
+
+.info_job a:nth-child(2) {
+	width: 100px;
+	margin-right: 10px;
+	font-weight: 900;
+}
+
+.info_job p {
+	float: right;
+	width: 150px;
+	top: 0;
+	right: 0;
+	margin-right: 10px;
+	font-weight: 100;
+	text-align: right;
+}
+/****채용 정보 end****/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

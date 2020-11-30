@@ -19,7 +19,7 @@
   </div>
   
   <form method="post" action="job.do">
-  <input type="hidden" name="job_part" value="job_update">
+  <input type="hidden" name="part" value="job_update">
   
   <input type="text" id="job_title_input" name="job_title" placeholder="채용정보 타이틀">
   

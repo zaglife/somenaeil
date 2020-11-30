@@ -1,137 +1,234 @@
 @charset "UTF-8";
 
 .info_main{
-    margin-top: 150px;
-    width: 600px;
-    height: auto;
-    left: 50%;
-    position: relative;
-    transform: translate(-50%, 0);
+	float: left;
+	position: relative;
+	width: 700px;
+	height: auto;
+	left: 50%;
+	margin-top: 150px;
+	transform: translate(-50%, 0);
 }
-/****채용 정보 main start****/
-#top_main{
+
+/****채용 정보 start****/
+#info_job_wrap {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+#info_job_top {
+	float: left;
+	position: relative;
+	width: 680px;
+	height: 24px;
+	padding: 10px;
 	border-bottom: 1px dashed #555;
-	padding-bottom: 10px;
-    font-size: 20px;
+}
+
+#info_job_top p {
+	font-size: 20px;
     font-weight: 900;
 }
+
 #go_job{
 	float: right;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
 	font-size: 20px;
 }
-#top_body{
-	margin: 25px 0 0 0
-}
-#top_body div:last-child {
-	border: 0 !important;
-}
 
-.job_lik{
-	border-bottom: 1px solid #555;
-    font-size: 14px;
-    margin: 15px 0 0 0;
-    font-weight: normal;
-    height: 28px;
-}
-.job_lik p{
-	float:right;
-	font-weight: 100;
-    line-height: 25px;
-    margin-top: -5px;
-}
-.job_lik_com{
-	width:80px;
-	text-align:center;
-}
-/****채용 정보 main end****/
-
-
-/****고객센터 main start****/
-#info_body{
-	width: 330px;
-}
-#info_bt{
-    border-bottom: 1px dashed #555;
-    float: left;
-    position: relative;
-    width: 330px;
-    margin: 70px 5px 0 0;
-    font-size: 20px;
-    font-weight: 900;
-    padding-bottom: 10px;
-}
-#info_bt a{
-	margin: 0;
-    float: right;
-}
-
-#bt_main{
+#info_job_cont{
 	float: left;
-    position: relative;
-    width: 330px;
-    margin: 10px 0 0 0;
+	position: relative;
 }
-#bt_main div:last-child {
+
+#info_job_cont div {
+	float: left;
+	position: relative;
+	width: 100%;
+	padding: 15px 0;
+	font-size: 14px;
+	border-bottom: 1px solid #555;
+}
+
+#info_job_cont div:last-child {
 	border: 0 !important;
 }
-.inf_lik{
-	border-bottom: 1px solid #555;
-    font-size: 14px;
-    font-weight: normal;
-    height: 28px;
-    margin: 15px 0 0 0;
+
+.info_job a {
+	cursor: pointer;
 }
-.job_lik a,
-.inf_lik a{
+
+.info_job a:first-child {
+	float: left;
+	width: 120px;
+	margin-right: 10px;
 	font-weight: 900;
+	text-align: center;
 }
-.job_lik a:first-child {
-	margin-right: 15px;
+
+.info_job a:nth-child(2) {
+	margin-right: 10px;
 }
-/****고객센터 main end****/
+
+.info_job p {
+	float: right;
+	width: 150px;
+	top: 0;
+	right: 0;
+	margin-right: 10px;
+	font-weight: 100;
+	text-align: right;
+}
+/****채용 정보 end****/
+
+
+/****고객센터 start****/
+#info_cs_wrap {
+	float: left;
+	position: relative;
+	width: 350px;
+}
+
+#info_cs_top {
+	float: left;
+	position: relative;
+	width: 330px;
+	height: 24px;
+	margin-top: 30px;
+	padding: 10px;
+	border-bottom: 1px dashed #555;
+}
+
+#info_cs_top p {
+	font-size: 20px;
+    font-weight: 900;
+}
+
+#go_cs{
+	float: right;
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 10px;
+	font-size: 20px;
+}
+
+#info_cs_cont{
+	float: left;
+	position: relative;
+}
+
+#info_cs_cont div {
+	float: left;
+	position: relative;
+	width: 100%;
+	padding: 15px 0;
+	font-size: 14px;
+	border-bottom: 1px solid #555;
+	cursor: pointer;
+}
+
+#info_cs_cont div:last-child {
+	border: 0 !important;
+}
+
+.info_cs a {
+	width: 100%;
+}
+/****고객센터 end****/
 
 
 /****고객센터 정보 start****/
-#info_moon{
-	width: 250px;
-    float: right;
-    position: relative;
-    text-align: center;
-    top: -22px;
-    height: 250px;
-    background: #edf8e6;
-    border-radius: 20px;
-}
-#i_m_t1{
-	font-size: 17px;
-    font-weight: 900;
-    margin-top: 28px;
-}
-#i_m_t2{
-	font-size: 13px;
-    font-weight: 800;
-    margin: 5px 0 2px;
-}
-#i_m_t3{
-	font-size: 13px;
-    font-weight: 700;
-}
-#i_m_t4{
-	font-size: 28px;
-    font-weight: 700;
-    color: darkgreen;
-    margin: 15px 0 0 0;
-}
-#i_mt{
-    font-weight: 800;
-}
-#i_mt_1{
-	color: forestgreen;
-    font-size: 16px;
-    font-weight: 800;
-}
-#i_mt_2{
-	margin: 25px 0 0 0;
+#info_box {
+	float: left;
+	position: relative;
+	width: 340px;
+	height: 275px;
+	margin-top: 30px;
+	margin-left: 10px;
+	border-radius: 20px;
+	background: #edf8e6;
+	text-align: center;
 }
 
+#info_box_center {
+	float: left;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#info_box_center p:nth-child(1) {
+	font-size: 17px;
+	font-weight: 900;
+}
+
+#info_box_center p:nth-child(2) {
+	font-size: 13px;
+	font-weight: 900;
+	margin: 5px 0 2px;
+}
+
+#info_box_center p:nth-child(3) {
+	font-size: 13px;
+	font-weight: 700;
+}
+
+#info_box_center p:nth-child(4) {
+	font-size: 28px;
+	font-weight: 700;
+	color: darkgreen;
+	margin: 15px 0 0 0;
+}
+
+#info_box_center p:nth-child(5) {
+	font-weight: 900;
+}
+
+#info_box_center p:nth-child(6) {
+	font-size: 16px;
+	font-weight: 900;
+	color: forestgreen;
+}
+
+#info_box_center p:nth-child(7) {
+	margin: 25px 0 0 0;
+}
 /****고객센터 정보 end****/
+
+
+.cs_click {
+	float: left;
+	position: absolute;
+	width: 340px;
+	height: 275px;
+	left: 0;
+	top: 0;
+	border-radius: 20px;
+	background: #edf8e6;
+	cursor: pointer;
+}
+
+.cs_click_hide {
+	display: none;
+}
+
+.cs_click_center {
+	float: left;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cs_click_btn {
+	float: left;
+	margin: 0 5px;
+	color: forestgreen;
+	font-weight: 900;
+}
