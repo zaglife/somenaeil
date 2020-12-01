@@ -207,21 +207,28 @@ public class dm_dao {
 	}
 	
 	
-	public void insertLastChat(String fromId, String user) {
-		String sql = "SELECT * FROM \r\n" + 
-				"    (SELECT * FROM chat WHERE \r\n" + 
-				"    (fromid=? OR toid=?) AND\r\n" + 
-				"    (fromid=? OR toid=?)\r\n" + 
-				"    ) \r\n" + 
-				"ORDER BY chatid DESC;";
+	/**
+	 * 마지막 채팅
+	 * @param fromId
+	 * @param user
+	 */
+	public String insertLastChat(String fromId, String user) {
+		String sql = "SELECT chatcontent FROM " + 
+				"(SELECT * FROM chat WHERE " + 
+				"(fromid=? OR toid=?) AND " + 
+				"(fromid=? OR toid=?)) " + 
+				"ORDER BY chatid DESC";
+		
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	String result = null;
 	try {
+		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, fromId);
 		pstmt.setString(2, user);
-		rs = pstmt.executeUpdate();
+		rs = pstmt.executeQuery();
 		if(rs.next()) {
-			return rs.get
+			result = rs.getString("chatcontent");
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -230,7 +237,7 @@ public class dm_dao {
 		
 		
 		
-		
+	return result;
 	}
 	
 	

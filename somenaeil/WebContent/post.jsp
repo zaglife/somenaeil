@@ -31,7 +31,7 @@
 						<div class="article_auth">
 							<span class="user_id"><a href="user.jsp">${post.nick}</a></span>
 							<span class="follow"> <img src="img/noti_follow_n_20.png"> </span>
-							<span class="dm"> <a href="dm.some?part=view&toid=${post.nick }"><img src="img/icon_dm_20.png"></a></span>
+							<span class="dm"> <a href="dm.some?part=view&toid=${post.id }"><img src="img/icon_dm_20.png"></a></span>
 						</div>
 						<div class="article_icon">
 							<span class="like">

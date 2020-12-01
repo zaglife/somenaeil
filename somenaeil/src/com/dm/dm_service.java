@@ -105,15 +105,20 @@ public class dm_service {
 		}
 		ArrayList<String> last = new ArrayList<String>();
 		// 해당 아이디를 가진 채팅 가져오기
-		if (member user : memberList) {
+		for (member user : memberList) {
 			// user id를 가지고 chatDAO 메소드 호출
 			String userId = user.getId();
 			// 어떤 메소드 
 			dm_dao dd = new dm_dao();
-			ArrayList<chat> qqq = insertLastChat(fromId, user);
+			String lastChat = dd.insertLastChat(fromId, userId);
+			last.add(lastChat);
 		}
 		
-		
+		// 온전하게 가지고 온 경우
+		if (memberList.size() == last.size()) {
+			request.setAttribute("memberList", memberList);
+			request.setAttribute("lastText", last);
+		}
 		request.setAttribute("otherlist", otherListStr);
 	
 		
