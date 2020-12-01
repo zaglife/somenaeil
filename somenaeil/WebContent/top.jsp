@@ -66,8 +66,10 @@
 <!-- top menu -->
 
 <div id="top_menu">
+	<c:if test="${sessionScope.sessionUser != null }">
  	<a href="noti.some"><img src="img/icon_new_n_30.png"></a>
  	<a href="dm.some?part=view"><img src="img/icon_dm_n_30.png"></a>
+ 	</c:if>
  	<div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
  	
  	<!-- 로그인시 프로필 사진으로 대체 -->

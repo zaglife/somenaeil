@@ -123,4 +123,8 @@ public class noti_dao {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 중복 제거
+	 */
 }

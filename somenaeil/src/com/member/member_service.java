@@ -203,7 +203,7 @@ public class member_service {
 		String userFollow = memberDAO.selectMember(userId).getFollow();
 		String targetFollower = memberDAO.selectMember(targetId).getFollower();
 		
-		// my와 target의 관계
+		// my와 target의 이전관계
 		String isFollow = memberDAO.isFollow(userId, targetId);
 		// my와 target와 관계 업데이트
 		boolean check = memberDAO.updateFollow(userId, targetId, 
@@ -212,8 +212,13 @@ public class member_service {
 		
 		if (!check)
 			request.setAttribute("fail", -1);
-		else
-			notiDAO.insertNoti(userId, targetId, 1);
+		else {
+			// follow를 했을 경우만 알람가기 (이전 관계가 unfollow나 follower였다면)
+			if (isFollow == "unfollow" || isFollow == "follower") {
+				notiDAO.insertNoti(userId, targetId, 1);
+			}
+		}
+			
 		
 		close(conn);
 	}
