@@ -25,6 +25,12 @@ public class dm_hnd implements some_able{
 			// chat  = ds.dm_list();
 			chat = ds.dm_list();
 			ds.dm(chat);
+			request.setAttribute("chatlist", chat);
+			return "dm_send.jsp";
+		}else if(part.equals("views")) {
+			chat = ds.dm_list();
+			request.setAttribute("chatlist", chat);
+			ds.view();
 		}
 		else if(part.equals("list")){
 			chat = ds.dm_list();

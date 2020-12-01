@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--
+	memberList
+	lastText
+	otherlist
+ --%>
 
 <div id="dm_set_wrap" class="dm_set_hide">
 <a id="dm_set_close" onclick="dmSetPop()"></a>
@@ -11,25 +17,21 @@
     <div id="dm_set_popup_close"><img src="img/btn_close_20.png" onclick="dmSetPop()"></div>
     
     <div id="dm_set_popup_scroll">
-    <c:if test="${other != null}">
-      <c:forEach var="other" items="${other }">
-      	<c:if test="${other.fromid.equals(user.id) }">
+    <c:if test="${fn:length(lastText)-1 < 0}">
+    	대화중인 상대가 없습니다.
+    </c:if>
+    <c:if test="${fn:length(lastText)-1 >= 0}">
+   	<c:if test="${memberList != null}">
+      <c:forEach var="i" begin="0" end="${fn:length(lastText)-1 }" step="1">
       	<div id="dm_set_popup_cont">
         <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">${other.toid }</div>
-        <div class="dm_set_popup_comment">${other.chatcontent }</div>
+        <div class="dm_set_popup_name">${memberList.get(i).getNick()}</div>
+        <div class="dm_set_popup_comment">${lastText.get(i).getContent()}</div>
         <div class="dm_set_popup_btn"><p>대화삭제</p></div>
       </div>
-      </c:if>
-      <c:if test="${other.toid.equals(user.id) }">
-      	<div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">${other.fromid }</div>
-        <div class="dm_set_popup_comment">${other.chatcontent }</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      </c:if>
       </c:forEach>
+    </c:if>
+    	
     </c:if>
     </div>
     

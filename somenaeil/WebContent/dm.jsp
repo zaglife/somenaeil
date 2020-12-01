@@ -4,9 +4,9 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
  <c:set var="toid" value="${param.toid }" />
-
 
 <script>
 var dmTemp= 1;
@@ -21,40 +21,6 @@ function dmSetPop() {
 	}
 }
 
-
-function submitFunction(){
-	var toid = '${toid}';
-	var chatcontent = $("#chatcontent").val();
-	var part = $("#part").val();
-	
-	$.ajax({
-		type: "POST",
-		url: "dm.some",
-		data: {
-			toid: encodeURIComponent(toid),
-			chatcontent: encodeURIComponent(chatcontent),
-			part: encodeURIComponent(part)
-			
-		},
-		success: function(result){
-			if (result == 1){
-				alert("메세지 전송에 성공하였습니다.");
-			} else if(result == 0){
-				alert("내용을 입력해주세요");
-			}else {
-				alert(result);
-			}
-		}
-	});
-
-	$("#chatcontent").val('');
-}
-	function getInfiniteChat(){
-		
-		//setTimeout(function(){
-			//location.reload();
-			//},3000);
-	}
 </script>
     
 
@@ -62,18 +28,21 @@ function submitFunction(){
 <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
 <div id="dm_wrap"> 
   <div id="dm_new_wrap">
-  	<c:forTokens items="${otherlist}" var="other" delims=":">
-  	<a href="dm.some?part=view&toid=${other}" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-  	</c:forTokens>
-  	<%--
-     <c:forEach var="other" items="${otherlist }">
-     	 <a href="dm.some?part=view&toid=${other}" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-     </c:forEach>
-     --%>
+  	<c:set var="memberListCnt" value="${fn:length(memberList)}" />
+  	<c:choose>
+  		<c:when test="${memberList == null || memberListCnt == 0}">
+  			<a href="" class="dm_new" style="opacity:0;"></a>
+  			대화중인 상대가 없습니다.
+  		</c:when>
+  		<c:otherwise>
+  			<c:forEach items="${memberList}" var="other">
+  				<a href="dm.some?part=view&toid=${other.id}" class="dm_new"><img src="img/profile02.jpg"></a>
+  			</c:forEach>
+  		</c:otherwise>
+  	</c:choose>
     <a onclick="dmSetPop()" id="dm_manage"><img src="img/setting_20.png"></a>
   </div>
   <div id="dm_choose">유저를 선택해주세요.</div>
-  
   
   
  <c:if test="${param.toid != null }">
@@ -92,33 +61,19 @@ function submitFunction(){
       <c:if test="${chatlist != null }">
 		<input type="hidden" id="lastid" name="lastid" value="${chatlist.size() }">
 		<c:forEach var="chat" items="${chatlist}">
-		 <c:if test="${chat.getFromid().equals(user.getId()) }">
+		 <c:if test="${chat.getFromid().equals(sessionId) }">
 		      <span class="msg_wrap msg_user">
         		<p>${chat.getChatcontent() }</p>
         		<p>${chat.getChatTime() }  보냄</p>       			
       		  </span>    
 		  </c:if>
-		  <c:if test="${!chat.getFromid().equals(user.getId()) }">
+		  <c:if test="${!chat.getFromid().equals(sessionId) }">
 		      <span class="msg_wrap msg_other">
         		<p>${chat.getChatcontent() }</p>
         		<p>${chat.getChatTime() }  보냄</p>       			
       		  </span>      
 		  </c:if>	
 		</c:forEach>
-   <%--    	<c:forEach var="i" begin="0" end="${chatlist.size() -1}" step="1">
-		  <c:if test="${chatlist.get(i).getFromid().equals(user.getId()) }">
-		      <span class="msg_wrap msg_other">
-        		<p>${chatlist.get(i).getChatcontent() }</p>
-        		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
-      		  </span>    
-		  </c:if>
-		  <c:if test="${!chatlist.get(i).getFromid().equals(user.getId()) }">
-		      <span class="msg_wrap msg_other">
-        		<p>${chatlist.get(i).getChatcontent() }</p>
-        		<p>${chatlist.get(i).getChatTime() } + 보냄</p>       			
-      		  </span>      
-		  </c:if>	
-      	</c:forEach> --%>	
       </c:if>
     </div>
     
@@ -130,7 +85,6 @@ function submitFunction(){
       <input type="text" id="chatcontent" name="chatcontent" placeholder="메세지를 입력하세요.">
       <button></button>
     </form>
-  <!--   <button onclick="submitFunction()"></button> -->  
     </div>
   </div>
 </div>
@@ -152,7 +106,6 @@ function submitFunction(){
 </div>
 
 <jsp:include page="dm_setting.jsp" />
-${result}
 <div id="btm_space"></div>
 
 <jsp:include page="top.jsp" />
@@ -164,9 +117,8 @@ ${result}
 
 <script>
 $(document).ready(function(){
-//	
 	$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
-	 getInfiniteChat();
+	document.getElementById('chatcontent').focus();
 })
 
 </script>

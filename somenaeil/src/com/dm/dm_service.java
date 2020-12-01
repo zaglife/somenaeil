@@ -29,19 +29,6 @@ public class dm_service {
 			
 			dm_dao dd = new dm_dao(); // dm_dao선언
 			dd.submit(fromid, toid, chatcontent); //dm_dao에 있는 submit(db에 저장하는 메소드) 실행
-			
-//			for(int i = 0; i < list.size(); i++) {
-//				if(list.get(i).getFromid().equals(fromid) && list.get(i).getToid().equals(fromid) && list.get(i).getFromid().equals(toid) && list.get(i).getToid().equals(toid)) {
-//					// if (chatlist not in memberId) memberId -> chatlist
-//					// 내 -> 상대: 
-//				}else {
-//					member_dao md = new member_dao();
-//					
-//					
-//				}
-//			}
-			
-			
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.out.println("decode오류");
@@ -56,18 +43,7 @@ public class dm_service {
 		result = getID(fromid,toid);/// 채팅 내용들을 모두 가져오는 메소드 실행
 		return result;////  가져온 채팅내용들을 return 시킨다.
 	}
-	
-	
-	
-	
-	//안써요
-	public ArrayList<chat> getTen(String fromid, String toid) {
-		dm_dao dd = new dm_dao();
-		ArrayList<chat> chatlist = dd.getChatListByRecent(fromid, toid); 
-		if(chatlist.size() == 0) return null;
-		return chatlist;
-	}
-	
+		
 	// 이걸써요
 	public ArrayList<chat> getID(String fromid, String toid) { // db에 있는 내용들을  모두 가져오게하는 메소드
 		dm_dao dd = new dm_dao(); 
@@ -75,13 +51,7 @@ public class dm_service {
 		return chatlist;
 	}
 	
-	// 안써요
-	public ArrayList<chat> getID(String fromid, String toid, String chatID) {
-		dm_dao dd = new dm_dao();
-		ArrayList<chat> chatlist = dd.getChatListById(fromid, toid, chatID);
-		if(chatlist.size() == 0) return null;
-		return chatlist;
-	}
+
 	
 	//리스트 가져오는거였습니다.
 	public ArrayList<chat> dm_other() {
@@ -103,6 +73,7 @@ public class dm_service {
 		member_dao memberDAO = new member_dao();
 		
 		ArrayList<chat> userChatList = new ArrayList<chat>(); 			// 로그인 유저의 대화내역
+		ArrayList<member> memberList = new ArrayList<member>();
 		
 		// 로그인 유저 대화 내역 가져오기
 		userChatList = dmDAO.insertChatList(fromId);
@@ -129,10 +100,25 @@ public class dm_service {
 		
 		
 		// memberDAO에서 memberList 추출
+		if (otherListStr != null) {
+			memberList = memberDAO.selectMemberList(otherListStr.split(":"));
+		}
+		ArrayList<String> last = new ArrayList<String>();
+		// 해당 아이디를 가진 채팅 가져오기
+		for (member user : memberList) {
+			// user id를 가지고 chatDAO 메소드 호출
+			String userId = user.getId();
+			// 어떤 메소드 
+			dm_dao dd = new dm_dao();
+			String lastChat = dd.insertLastChat(fromId, userId);
+			last.add(lastChat);
+		}
 		
-		// 해당 아이디를 가진 
-		
-		
+		// 온전하게 가지고 온 경우
+		if (memberList.size() == last.size()) {
+			request.setAttribute("memberList", memberList);
+			request.setAttribute("lastText", last);
+		}
 		request.setAttribute("otherlist", otherListStr);
 	
 		
