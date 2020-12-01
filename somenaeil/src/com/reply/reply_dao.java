@@ -1,11 +1,14 @@
 package com.reply;
 
+import static com.common.DBUtil.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.post.post_dao;
 
 /**
  * reply DB와 연결하는 클래스
@@ -16,34 +19,22 @@ public class reply_dao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	public reply_dao(){
-		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
-		} catch(SQLException e){
-			e.printStackTrace();
-			System.out.println("member_dao - member DB 커넥션 실패");
-		}
-	} 
+	private static reply_dao instance;
+	
+	public reply_dao() {}
 	
 	/**
-	 * 시퀀스 가져오기
-	 * @author gagip
+	 * 싱글턴 패턴
+	 * @return
 	 */
-	public int getSeq() {
-		int result = 1;
-		
-		try {
-			String sql = "SELECT reply_seq.NEXTVAL FROM DUAL";
-			
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) result = rs.getInt(1);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		close();
-		return result;
+	public static reply_dao getInstance() {
+		if (instance == null)
+			instance = new reply_dao();
+		return instance;
+	}
+	
+	public void setConnection(Connection conn) {
+		this.conn = conn;
 	}
 	
 	
@@ -65,7 +56,7 @@ public class reply_dao {
 						+ "		VALUES(?,?,?,sysdate,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rep.getNum());
+			pstmt.setInt(1, getNum("reply", conn));
 			pstmt.setInt(2, rep.getPost_num());
 			pstmt.setString(3, rep.getAuthor());
 			pstmt.setInt(4, rep.getParent());
@@ -86,7 +77,7 @@ public class reply_dao {
 			System.out.println("댓글 작성 오류");
 		}
 		
-		close();
+		close(pstmt);
 		return result;
 	}
 	
@@ -127,22 +118,8 @@ public class reply_dao {
 				e.printStackTrace();
 			}
 		
-		close();
+		close(rs);
+		close(pstmt);
 		return list;
-	}
-	
-	
-	/**
-	 * DB에 사용한 자원 메모리 해제
-	 * @author gagip
-	 */
-	private void close() {
-		try {
-			if (rs != null) { rs.close(); rs = null; }
-			if (pstmt != null) { pstmt.close(); pstmt = null; }
-		} catch (Exception e) {
-			System.out.println("메모리 해제 오류");
-			e.printStackTrace();
-		}
 	}
 }

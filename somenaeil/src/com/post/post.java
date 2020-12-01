@@ -14,6 +14,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
  */
 public class post {
 	private int num;			// 게시글 번호
+	private String id;			// 게시글 작성자 id
 	private String nick;		// 게시글 작성자 닉네임
 	private String cate;		// 게시글 카테고리
 	private Calendar time;		// 작성 날짜
@@ -27,8 +28,9 @@ public class post {
 	
 	public post() {}
 	
-	public post(int num, String cate, String nick, Date time, String title, String context, String hash) {
+	public post(int num, String id, String cate, String nick, Date time, String title, String context, String hash) {
 		this.num = num;
+		this.id = id;
 		this.cate = cate;
 		this.nick = nick;
 		this.time = Calendar.getInstance();
@@ -36,7 +38,7 @@ public class post {
 		this.title = title;
 		// DB에서 엔터는 \n
 		// jsp에서 엔터는 <br>
-		this.context = context.replace("\r\n", "<br>");
+		this.context = context;
 		this.hash = hash;
 	}
 
@@ -179,5 +181,13 @@ public class post {
 		}
 		
 		return thumbnailTag;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

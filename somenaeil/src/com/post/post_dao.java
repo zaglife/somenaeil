@@ -1,5 +1,6 @@
 package com.post;
 
+import static com.common.DBUtil.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.member.member_dao;
 
 
 /**
@@ -19,15 +22,31 @@ public class post_dao {
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
-	public post_dao(){
+	private static post_dao instance;
+	
+	public post_dao() {
 		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
-		} catch (SQLException e) {
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+		} catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("post DB 커넥션 실패");
+			System.out.println("member_dao - member DB 커넥션 실패");
 		}
 	}
 
+	/**
+	 * 싱글턴 패턴
+	 * @return
+	 */
+	public static post_dao getInstance() {
+		if (instance == null)
+			instance = new post_dao();
+		return instance;
+	}
+
+	public void setConnection(Connection conn) {
+		this.conn = conn;
+	}
+	
 	
 	// 승재: 저장하기
 	
@@ -49,10 +68,15 @@ public class post_dao {
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
-				pt = new post(rs.getInt("num"), rs.getString("cate"), rs.getString("nick"),
-							rs.getDate("time"), rs.getString("title"), rs.getString("context"),
-							rs.getString("hash"));
+				pt = new post();
 				// 부가적인 정보 추가
+				pt.setNum(rs.getInt("num"));
+				pt.setId(rs.getString("id"));
+				pt.setCate(rs.getString("cate"));
+				pt.setTime(rs.getDate("time"));
+				pt.setTitle(rs.getString("title"));
+				pt.setContext(rs.getString("context"));
+				pt.setHash(rs.getString("hash"));
 				pt.setLike_cnt(rs.getInt("like_cnt"));
 				pt.setScrap_cnt(rs.getInt("scrap_cnt"));
 				pt.setView_cnt(rs.getInt("view_cnt"));
@@ -62,10 +86,54 @@ public class post_dao {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		close();
+		
+		close(rs);
+		close(pstmt);
 		return pt;
 	}
 	
+	
+	/**
+	 * 해당 유저가 쓴 게시글 다 불러오기 (SELECT)
+	 * @param userId 유저 아이디
+	 * @return
+	 */
+	public ArrayList<post> getPostList(String userId) {
+		String sql = "SELECT * FROM post WHERE id=?"
+					+ "ORDER BY num DESC";
+		
+		ArrayList<post> userPostList = new ArrayList<post>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				post post = new post();
+				// 부가적인 정보 추가
+				post.setNum(rs.getInt("num"));
+				post.setId(rs.getString("id"));
+				post.setNick(rs.getString("nick"));
+				post.setCate(rs.getString("cate"));
+				post.setTime(rs.getDate("time"));
+				post.setTitle(rs.getString("title"));
+				post.setContext(rs.getString("context"));
+				post.setHash(rs.getString("hash"));
+				post.setLike_cnt(rs.getInt("like_cnt"));
+				post.setScrap_cnt(rs.getInt("scrap_cnt"));
+				post.setView_cnt(rs.getInt("view_cnt"));
+				
+				userPostList.add(post);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		close(rs);
+		close(pstmt);
+		return userPostList;
+	}
 	
 	/**
 	 * 검색결과에 따른 post List 호출
@@ -109,42 +177,34 @@ public class post_dao {
 			}
 			// DB 결과를 post에 넣은 뒤, list에 추가
 			while (rs.next()) {
-				post pt = new post();
-				pt.setNum(rs.getInt("num"));
-				pt.setCate(rs.getString("cate"));
-				pt.setNick(rs.getString("nick"));
-				pt.setTime(rs.getDate("time"));
-				pt.setTitle(rs.getString("title"));
-				pt.setContext(rs.getString("context"));
-				pt.setHash(rs.getString("hash"));
-				
-				postList.add(pt);
+				post post = new post();
+				post.setNum(rs.getInt("num"));
+				post.setId(rs.getString("id"));
+				post.setNick(rs.getString("nick"));
+				post.setCate(rs.getString("cate"));
+				post.setTime(rs.getDate("time"));
+				post.setTitle(rs.getString("title"));
+				post.setContext(rs.getString("context"));
+				post.setHash(rs.getString("hash"));
+				post.setLike_cnt(rs.getInt("like_cnt"));
+				post.setScrap_cnt(rs.getInt("scrap_cnt"));
+				post.setView_cnt(rs.getInt("view_cnt"));
+				postList.add(post);
 			}
 		} catch (Exception e) {
 			System.out.println("게시글 리스트 호출 실패");
 			e.printStackTrace();
 		}
-		close();
+		
+		close(rs);
+		close(pstmt);
 		return postList;
 	}
 	
 	
 	// TODO post 방문조회수 늘리기
 	
-	/**
-	 * DB에 사용한 자원 메모리 해제
-	 * @author gagip
-	 */
-	private void close() {
-		try {
-			if (rs != null) { rs.close(); rs = null; }
-			if (pstmt != null) { pstmt.close(); pstmt = null; }
-		} catch (Exception e) {
-			System.out.println("메모리 해제 오류");
-			e.printStackTrace();
-		}
-	}
-	
+
 	
 	// post DB에 연결 작업
 	public void add(String writer, String title, String cate, String content, String hash, String filename, String id, int vote) {
@@ -170,8 +230,9 @@ public class post_dao {
 			e.printStackTrace();
 			System.out.println("글쓰기 DB저장 오류");
 		}
+		
 	}
 	
 	
-	
+
 }

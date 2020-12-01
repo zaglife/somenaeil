@@ -93,19 +93,21 @@ public class main_control extends HttpServlet {
 	}
 	
 	protected void action(HttpServletRequest request, HttpServletResponse response, String cmd) throws ServletException, IOException {
-		main_able hd= map.get(cmd);
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		
 		String view= null;
+		
+		main_able hd= map.get(cmd);
 		view= hd.active(request, response);
+
 		
 		if(view == null) {
-			RequestDispatcher dsp= request.getRequestDispatcher("index.jsp");
-			dsp.forward(request, response);
+			response.sendRedirect("index.jsp");
 		} else {
-			// 수정 필요
+			if(view == "") return;
 			RequestDispatcher dsp= request.getRequestDispatcher(view);
 			dsp.forward(request, response);
-			// sendRedirect: request에 있는 요소들 다 삭제 = setAttribute() 무용지물
-//			response.sendRedirect(view);
 		}
 	}
 }
