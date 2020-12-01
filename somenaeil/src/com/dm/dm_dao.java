@@ -74,61 +74,6 @@ public class dm_dao {
 		return chatlist;
 	}
 	
-	
-	// 선언 안해요
-	public ArrayList<chat> getChatListById(String fromid, String toid, String chatID){
-		ArrayList<chat> chatlist = null;
-		
-		String sql = "select * from chat where ((fromid = ? and toid = ?) or (fromid = ? and toid = ?)) and chatID > ? order by chatTime";
-		PreparedStatement ptmt = null;
-		ResultSet rs = null;
-		try{
-			ptmt = conn.prepareStatement(sql);
-			// 자신이 받던간에 보내던간에 항상 메세지를 가져올수있도록 한다.
-			ptmt.setString(1, fromid);
-			ptmt.setString(2, toid);
-			ptmt.setString(3, toid);
-			ptmt.setString(4, fromid);
-			ptmt.setInt(5,Integer.parseInt(chatID));
-			rs = ptmt.executeQuery();
-			chatlist = new ArrayList<chat>();
-			while(rs.next()) {
-				chat chat = new chat();
-				chat.setChatID(rs.getInt("chatID"));
-				chat.setFromid(rs.getString("fromid").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
-				chat.setToid(rs.getString("toid").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
-				chat.setChatcontent(rs.getString("chatcontent").replace(" ", "&nbsp;").replace("<", "&lt;").replace(">", "&gt;").replace("\n", "<br>"));
-				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
-				String timeType ="오전";
-				if(chatTime > 12) {
-					timeType = "오후";
-					chatTime -= 12;
-				}
-				chat.setChatTime(rs.getTimestamp("chatTime").toString().substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getTimestamp("chatTime").toString().substring(14, 16) +"");
-				chatlist.add(chat);
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("메세지 불러오기 오류");
-			
-		}finally {
-			try {
-				if(rs != null) rs.close();
-				if(ptmt != null) ptmt.close();
-				if(conn != null) conn.close();
-				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-		}
-		return chatlist;
-	}
-	
-	
 	/**
 	 * 대화 내용 출력
 	 * @param fromid
@@ -245,8 +190,13 @@ public class dm_dao {
 				chat.setToid(rs.getString("toid"));
 				chat.setChat_time(rs.getDate("chatTime"));
 				chat.setChatcontent(rs.getString("chatcontent"));
-				
-
+				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
+				String timeType ="오전";
+				if(chatTime > 12) {
+					timeType = "오후";
+					chatTime -= 12;
+				}
+				chat.setChatTime(rs.getTimestamp("chatTime").toString().substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getTimestamp("chatTime").toString().substring(14, 16) +"");
 				chatList.add(chat);
 			}
 		} catch (Exception e) {
@@ -257,7 +207,29 @@ public class dm_dao {
 	}
 	
 	
-	public void insertLastChat() {
+	public void insertLastChat(String fromId, String user) {
+		String sql = "SELECT * FROM \r\n" + 
+				"    (SELECT * FROM chat WHERE \r\n" + 
+				"    (fromid=? OR toid=?) AND\r\n" + 
+				"    (fromid=? OR toid=?)\r\n" + 
+				"    ) \r\n" + 
+				"ORDER BY chatid DESC;";
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	try {
+		pstmt.setString(1, fromId);
+		pstmt.setString(2, user);
+		rs = pstmt.executeUpdate();
+		if(rs.next()) {
+			return rs.get
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+		
+		
 		
 	}
 	
@@ -297,37 +269,6 @@ public class dm_dao {
 			chatList = (ArrayList<chat>) list.stream().filter(x -> ( x.getFromid().equals(id1) || x.getToid().equals(id1) ) &&
 																	( x.getFromid().equals(id2) || x.getToid().equals(id2) ))
 														.collect(Collectors.toList());
-			int idx = 0;
-			for (chat temp : chatList) {
-				System.out.println(idx+"번째 chat");
-				System.out.println("num: "+temp.getChatID());
-				System.out.println("fromId" + temp.getFromid());
-				System.out.println("toId" + temp.getToid());
-				System.out.println("-------------------------");
-				idx++;
-			}
-		
-//			for(int i = 0; i < list.size(); i++) {
-//				chat x = list.get(i);
-//				for (int j = 0; j < list.size(); j++) {
-//					chat y = list.get(j);
-//					if(x.getFromid().equals(y.getToid()) && x.getToid().equals(x.getFromid())) {
-//						if(x.getChatID() < y.getChatID()) {
-//							list.remove(x);
-//							i--;
-//							break;
-//						} else {
-//							list.remove(y);
-//							j--;
-//						}
-//					}
-//				}
-//			}
-			
-			
-			
-			
-			
 			
 //			for(int i = 0; i < list.size(); i++) {
 //				System.out.println(list.get(i).getFromid());
