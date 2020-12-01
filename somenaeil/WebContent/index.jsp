@@ -22,7 +22,7 @@
 <c:if test="${param.part != 'search'}">
 	<jsp:include page="content.jsp" />
 </c:if>
-
+	
 <div id="btm_space"></div>
 
 
@@ -30,6 +30,6 @@
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />
 
-  
+
 </body>
 </html>

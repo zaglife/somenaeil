@@ -1,36 +1,14 @@
-<%@page import="com.post.post_dao"%>
-<%@page import="com.member.member"%>
-<%@page import="com.member.member_dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-
-
-<!-- 분류 탭  -->
-<div id="main_menu_wrap">
-  <div id="main_menu_center">
-    <a class="main_menu current" data-tab="all" href="read.post?part=postList">A전체</a>
-    <a class="main_menu" data-tab="general" href="read.post?part=postList&cate=G">G일반</a>
-    <a class="main_menu" data-tab="review" href="read.post?part=postList&cate=R">R리뷰</a>
-    <a class="main_menu" data-tab="qna" href="read.post?part=postList&cate=Q">Q질문</a>
-    <a style="display:none;" >S스크랩</a>
-  </div>
-</div>
-  
-  
-  
+<c:set var="len" value="${fn:length(postList)}"/>
 
 <!-- 포스팅 내용 -->
 <div class="tab_content">
-
-	<!-- index.jsp (파라미터 없이도 출력) -->
-	<c:if test="${param.part == null}">
-    <c:set var="postList" value="<%=new post_dao().getPostList(null, null)%>"/>
-  </c:if>
- 	
- 	<c:choose>
- 		<c:when test="${postList != null}">
+  <c:choose>
+ 		<c:when test="${postList != null || len != 0}">
  		<c:forEach items="${postList}" var="post">
       <c:if test="${post.getThumbnail()==null}">
       <!-- 이미지 X 템플릿 -->
@@ -179,8 +157,4 @@
  			글이 존재하지 않습니다.
  		</c:otherwise>
    </c:choose>
-   
 </div>
-<!-- 포스팅 내용 끝 -->
-
-<script src="lib/js/content.js"></script>

@@ -38,7 +38,7 @@
   <!-- "noti_scrap.jsp" -->
 <%--   <c:choose> --%>
 <%--     <c:when test="${param.state= scrap }"> --%>
-      <jsp:include page="noti_scrap.jsp" />
+<jsp:include page="noti_basic.jsp" />
 <%--     </c:when> --%>
 <%--     <c:otherwise> --%>
 <%--       <jsp:include page="noti_basic.jsp" /> --%>

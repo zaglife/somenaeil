@@ -3,39 +3,8 @@
 
 <%@page import="com.member.member" %>
 <%@page import="com.member.member_dao" %>
-
-<%
-
-String id= (String) session.getAttribute("id");
-member_dao md= new member_dao();
-member data= md.member_read(id);
-
-String[] email= data.getEmail().split("@");
-
-System.out.println("join_edit - email[0] = "+email[0]);
-
-String naver= "";
-String gmail= "";
-String daum= "";
-String hanmail= "";;
-String nate= "";
-String empas= "";
-String yahoo= "";
-String hotmail=  "";
-	
-	
-if(email.length == 2) {
-	if(email[1].equals("naver.com")) naver= "selected";
-	else if(email[1].equals("gmail.com")) gmail= "selected";
-	else if(email[1].equals("daum.net")) daum= "selected";
-	else if(email[1].equals("hanmail.net")) hanmail= "selected";
-	else if(email[1].equals("nate.com")) nate= "selected";
-	else if(email[1].equals("empas.com")) empas= "selected";
-	else if(email[1].equals("yahoo.com")) yahoo= "selected";
-	else if(email[1].equals("hotmail.com")) hotmail= "selected";
-}
-	
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -48,42 +17,56 @@ if(email.length == 2) {
 </head>
 <body>
 
-<form method="post" action="join.do">
-<input type="hidden" name="part" value="update">
+<c:choose>
+	<%-- 로그인한 상태에서만 이용 가능 --%>
+	<c:when test="${sessionId == null}">
+	<script type="text/javascript">
+		alert("로그인 상태에서만 가능합니다.");
+		location.href = window.history.back();	// 뒤로가기
+	</script>
+	</c:when>
+	
+	<%-- 이전에 입력한 내용 출력 --%>
+	<c:otherwise>
+	
+	<c:set var="user" value="${sessionUser}"/>
+	
+	<form method="post" action="join.do">
+	<input type="hidden" name="part" value="update">
 
-<!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
-<input type="hidden" name="pimg" value="null">
-<input type="hidden" name="cert" value="1">
+	<!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
+	<input type="hidden" name="pimg" value="null">
+	<input type="hidden" name="cert" value="1">
 
-<div id="join_form_wrap">
+	<div id="join_form_wrap">
 
   <div id="join_form_private">
   
     <p class="join_form_tt">개인 정보</p>
     
     <div class="join_form_sub_tt"><p>이름</p><div id="jf_name_back"></div></div>
-    <input type="text" readonly value="${user.getName() }" class="jf_input jf_name">
+    <input type="text" readonly value="${user.name}" class="jf_input jf_name">
     <p class="join_form_exp jfe_name">*이름 변경 불가</p>
     
     <p class="join_form_sub_tt">이메일<div id="jf_email_back"></div></p>
-    <input type="text" name="email" value="<%=email[0] %>" placeholder="" class="jf_input jf_email">
+    <input type="text" name="email" value='${fn:substringBefore(user.email, "@")}' placeholder="" class="jf_input jf_email">
     <p id="jf_email_at">@</p>
     <select id="jf_email_addr" name="addr">
       <option>이메일</option>
-      <option value="naver" <%=naver %>>naver.com</option>
-      <option value="gmail.com" <%=gmail %>>gmail.com</option>
-      <option value="daum.net" <%=daum %>>daum.net</option>
-      <option value="hanmail.net" <%=hanmail %>>hanmail.net</option>
-      <option value="nate.com" <%=nate %>>nate.com</option>
-      <option value="empas.com" <%=empas %>>empas.com</option>
-      <option value="yahoo.co.kr" <%=yahoo %>>yahoo.co.kr</option>
-      <option value="hotmail.com" <%=hotmail %>>hotmail.com</option>
+      <option value="naver.com">naver.com</option>
+      <option value="gmail.com">gmail.com</option>
+      <option value="daum.net">daum.net</option>
+      <option value="hanmail.net">hanmail.net</option>
+      <option value="nate.com">nate.com</option>
+      <option value="empas.com">empas.com</option>
+      <option value="yahoo.co.kr">yahoo.co.kr</option>
+      <option value="hotmail.com">hotmail.com</option>
     </select>
     <a href="#veri" id="join_form_email_btn">인증메일</a>
     <p class="join_form_exp jfe_email">*이메일 주소로 수신된 링크 인증 필수</p>
     
     <div class="join_form_sub_tt"><p>아이디</p><div id="jf_id_back"></div></div>
-    <input type="text" readonly value="${user.getId() }" class="jf_input jf_id">
+    <input type="text" name="id" readonly value="${user.id}" class="jf_input jf_id">
     <p class="join_form_exp jfe_id">*아이디 변경 불가</p>
     
     <p class="join_form_sub_tt">비밀번호</p>
@@ -91,7 +74,7 @@ if(email.length == 2) {
     <div id="jf_edit_wrap">
       <input type="password" name="pw" placeholder="현재 비밀번호" class="jf_input jf_edit_pwo">
       <p>&gt;</p>
-      <input type="password" placeholder="변경할 비밀번호" class="jf_input jf_edit_pw">
+      <input type="password" name="newPw" placeholder="변경할 비밀번호" class="jf_input jf_edit_pw">
       <input type="password" placeholder="비밀번호 확인" class="jf_input jf_edit_pwc">
       <span class="jf_edit_pw_incorrect">&lt;비밀번호가 맞지 않습니다&gt;</span>
       <span class="jf_edit_pw_correct">&lt;비밀번호가 일치합니다&gt;</span>
@@ -115,11 +98,11 @@ if(email.length == 2) {
     </div>
     
     <p class="join_form_sub_tt">닉네임</p>
-    <input type="text" name="nick" value="${user.getNick() }" placeholder="nickname" class="jf_input jf_nick">
+    <input type="text" name="nick" value="${user.nick}" placeholder="nickname" class="jf_input jf_nick">
     <p class="join_form_exp jfe_nick">*한글 8자, 영문 16자 내외</p>
 
     <p class="join_form_sub_tt">프로필 한줄 소개 내용</p>
-    <input type="text" name="comt" value="${user.getComt() }" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
+    <input type="text" name="comt" value="${user.comt}" placeholder="취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS" class="jf_input jf_comment">
     <p class="join_form_exp jfe_comment1">*총 100byte 작성 가능 (한글 2btye, 영문 1byte)</p>
     <p class="join_form_exp jfe_comment2">(0/100)</p>
     
@@ -132,11 +115,33 @@ if(email.length == 2) {
 
 </div>
 </form>
+	
+	</c:otherwise>
+</c:choose>
+
+
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />
+
+
+<script>
+window.onload = function(){
+  setMailAddr('${fn:substringAfter(user.email, "@")}');
+}
+
+// 이전에 입력한 email 주소와 options 값 매칭
+function setMailAddr(val) {
+  var selectMail = document.getElementById("jf_email_addr");
+  for (i = 0, j = selectMail.length; i<j; i ++){
+    if (selectMail.options[i].value == val) {
+      selectMail.options[i].selected = true;
+    }
+  }
+}
+</script>
 
 </body>
 </html>

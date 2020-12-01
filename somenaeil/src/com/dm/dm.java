@@ -22,6 +22,7 @@ public class dm {
 		this.cert= cert;
 	}
 	
+	
 	public int getNum() {
 		return num;
 	}
