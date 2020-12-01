@@ -1,7 +1,12 @@
 package com.member;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class member_service {
 	private  HttpServletRequest request;
@@ -28,6 +33,7 @@ public class member_service {
 		return null;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void join() {
 		String id= request.getParameter("id");
 		String pw= request.getParameter("pw");
@@ -43,6 +49,37 @@ public class member_service {
 		email+= "@"+addr;
 		// 회원가입 테스트를 위한 이메일 인증
 		cert= 1;
+		
+		String path= "C://Users/sbk06/eclipse-workspace/somenaeil/somenaeil/WebContent";
+		path+= "/pimg";
+		
+		int size= 10 * 1024 * 1024;
+		
+		String filename= "";
+		String original= "";
+		
+		try {
+			MultipartRequest multi= new MultipartRequest(
+				request,
+				path,
+				size,
+				"UTF-8",
+				new DefaultFileRenamePolicy()
+			);
+			Enumeration files= multi.getFileNames();
+			
+			while(files.hasMoreElements()) { // 여러파일을 가져올때 반복문을 통해서 files의 다음값을 가져온다
+				String file= (String)files.nextElement();
+				filename= multi.getFilesystemName(file);	// 서버 저장 이름
+				original= multi.getOriginalFileName(file);	// 업로드 저장 이름
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		pimg= filename;
+		
+		System.out.println("member_service - pimg= "+pimg);
 		
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
