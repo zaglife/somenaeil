@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div id="dm_set_wrap" class="dm_set_hide">
 <a id="dm_set_close" onclick="dmSetPop()"></a>
@@ -10,82 +11,26 @@
     <div id="dm_set_popup_close"><img src="img/btn_close_20.png" onclick="dmSetPop()"></div>
     
     <div id="dm_set_popup_scroll">
-      <div id="dm_set_popup_cont">
+    <c:if test="${other != null}">
+      <c:forEach var="other" items="${other }">
+      	<c:if test="${other.fromid.equals(user.id) }">
+      	<div id="dm_set_popup_cont">
         <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
+        <div class="dm_set_popup_name">${other.toid }</div>
+        <div class="dm_set_popup_comment">${other.chatcontent }</div>
         <div class="dm_set_popup_btn"><p>대화삭제</p></div>
       </div>
-      
-      <div id="dm_set_popup_cont">
+      </c:if>
+      <c:if test="${other.toid.equals(user.id) }">
+      	<div id="dm_set_popup_cont">
         <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
+        <div class="dm_set_popup_name">${other.fromid }</div>
+        <div class="dm_set_popup_comment">${other.chatcontent }</div>
         <div class="dm_set_popup_btn"><p>대화삭제</p></div>
       </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
-      
-      <div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="img/profile01.jpg"></div>
-        <div class="dm_set_popup_name">luv_seowoo</div>
-        <div class="dm_set_popup_comment">취업을 준비하는 사람들과 실무자간의 소통을 위한 SNS</div>
-        <div class="dm_set_popup_btn"><p>대화삭제</p></div>
-      </div>
+      </c:if>
+      </c:forEach>
+    </c:if>
     </div>
     
     

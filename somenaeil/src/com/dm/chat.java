@@ -10,14 +10,23 @@ public class chat {
 	private String chatcontent;
 	private String lastID;
 //	
-//	public chat(int chatID, String fromid, String toid, String chatTime, String chatcotent) {
+//	public chat(int chatID, String fromid, String toid, String chatTime, String chatcontent) {
 //		this.chatID = chatID;
 //		this.fromid = fromid;
 //		this.toid = toid;
 //		this.chatTime = chatTime;
-//		this.chatcontent = chatcotent;
+//		this.chatcontent = chatcontent;
 //	}
 //	
+	public chat() {};
+	public chat(int chatID, String fromid, String toid, String chatTime, String chatcontent) {
+		this.chatID = chatID;
+		this.fromid = fromid;
+		this.toid = toid;
+		this.chatTime = chatTime;
+		this.chatcontent = chatcontent;
+	}
+	
 	
 	
 	public String getLastID() {

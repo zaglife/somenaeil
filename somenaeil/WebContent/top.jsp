@@ -56,7 +56,7 @@
     <a href="user.do?part=user&uid=some">마이 페이지</a>
     <a href="post_main.jsp?state=login">포스팅</a>
     <a href="noti.jsp?state=login">알림</a>
-    <a href="dm.jsp?state=login">메세지</a>
+    <a href="dm.some?part=view">메세지</a>
     <a href="info.jsp?state=login">채용정보</a>
   	<a href="logout.do">로그아웃</a>
 	</c:if>
@@ -65,7 +65,7 @@
 
 <div id="top_menu">
  	<a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
- 	<a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
+ 	<a href="dm.some?part=view"><img src="img/icon_dm_n_30.png"></a>
  	<div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
  	
  	<!-- 로그인시 프로필 사진으로 대체 -->

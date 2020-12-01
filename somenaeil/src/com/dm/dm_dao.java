@@ -214,5 +214,68 @@ public class dm_dao {
 	}
 	
 	
+	public ArrayList<chat> other_list(String userid){
+		ArrayList<chat> list = null;
+		String sql = "select * from chat where chatID in(select MAX(chatID) from chat where toid = ? or fromid = ? group by fromid, toid)";
+		PreparedStatement pt = null;
+		ResultSet rs = null;
+		try{
+			pt = conn.prepareStatement(sql);
+			pt.setString(1, userid);
+			pt.setString(2, userid);
+			pt.executeUpdate();
+			rs = pt.executeQuery();
+			while(rs.next()) {
+				if(list==null)
+					list = new ArrayList<chat>(); // null이 되는 경우를 방지 
+				int chatTime = Integer.parseInt(rs.getTimestamp("chatTime").toString().substring(11, 13));
+				String timeType ="오전";
+				if(chatTime > 12) {
+					timeType = "오후";
+					chatTime -= 12;
+				}
+				chat temp = new chat(rs.getInt("chatID"),rs.getString("fromid"), rs.getString("toid"), (rs.getTimestamp("chatTime").toString().substring(0, 11) + " " + timeType + " " + chatTime + ":" + rs.getTimestamp("chatTime").toString().substring(14, 16) +""), rs.getString("chatcontent"));
+				list.add(temp);
+			}
+			
+			for(int i = 0; i < list.size(); i++) {
+				chat x = list.get(i);
+				for (int j = 0; j < list.size(); j++) {
+					chat y = list.get(j);
+					if(x.getFromid().equals(y.getToid()) && x.getToid().equals(x.getFromid())) {
+						if(x.getChatID() < y.getChatID()) {
+							list.remove(x);
+							i--;
+							break;
+						} else {
+							list.remove(y);
+							j--;
+						}
+					}
+				}
+			}
+			
+			
+			
+			
+			
+			
+			for(int i = 0; i < list.size(); i++) {
+				System.out.println(list.get(i).getFromid());
+				System.out.println("/////////////////////");
+				System.out.println(list.get(i).getToid());
+			}
+			return list;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("other_list 불러오기 실패");
+		}
+		return null;
+	}
+	
+	
+	
+	
 	
 }

@@ -108,9 +108,9 @@ function submitFunction(){
 	}
 	function getInfiniteChat(){
 		
-	 /* 	setInterval(function(){
-			chatListFunction($("#lastid").val());
-		}, 3000);  */
+		//setTimeout(function(){
+			//location.reload();
+			//},3000);
 	}
 <%-- 	function qwer(){
 		
@@ -136,18 +136,16 @@ function submitFunction(){
 <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
 <div id="dm_wrap"> 
   <div id="dm_new_wrap">
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile01.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile03.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile04.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile_default.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    <a href="dm.jsp?state=login" class="dm_new"><img src="img/profile_default.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
-    
+     <c:forEach var="other" items="${other }">
+     	 <a href="dm.some?part=view&toid=${other.fromid }" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
+     </c:forEach>
     <a onclick="dmSetPop()" id="dm_manage"><img src="img/setting_20.png"></a>
   </div>
   <div id="dm_choose">유저를 선택해주세요.</div>
   
   
+  
+ <c:if test="${param.toid != null }">
   <div id="dm_cont">
 	<div id="dm_c_wrap">
   <div id="dm_c_left">
@@ -194,7 +192,7 @@ function submitFunction(){
     </div>
     
     <div id="dm_c_msg">
-    <form method="post" action="dm.some">
+    <form method="get" action="dm.some">
     <input type="hidden" id="part" name="part" value="chatlist" >
     <input type="hidden" id="toid" name="toid" value="${toid }">
     <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
@@ -206,6 +204,19 @@ function submitFunction(){
   </div>
 </div>
   </div>
+ </c:if>
+ 
+ <c:if test="${param.toid == null }">
+ <div id="dm_d_wrap">
+  <div id="dm_d_cont">
+    <p>메세지</p>
+    <p>아이디를 통해서 썸유저에게<br>메세지를 보낼수 있어요 :)</p>
+    <button type="button">메세지 보내기</button>
+  </div>
+</div>
+ 
+ </c:if>
+ 
   
 </div>
 
@@ -224,6 +235,7 @@ ${result}
 $(document).ready(function(){
 //	
 	$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
+	 getInfiniteChat();
 })
 
 </script>
