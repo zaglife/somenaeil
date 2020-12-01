@@ -8,10 +8,45 @@
 
 <jsp:include page="css.jsp" />
 
+<script>
+function pimg_show(event) {
+	var reader = new FileReader();
+	
+	reader.onload = function(event) {
+		var img = document.createElement("img");
+		img.setAttribute("src", event.target.result);
+		img.setAttribute("class", "pimg_upload");
+		document.querySelector("div#join_form_pimg_back").appendChild(img);
+
+	};
+	reader.readAsDataURL(event.target.files[0]);
+}
+
+$(function(){
+	$(".jf_pw_correct").hide();
+	$(".jf_pw_incorrect").hide();
+	
+	$("input").keyup(function(){
+		var pw1=$(".jf_pw").val();
+		var pw2=$(".jf_pwc").val();
+		if(pw1 != "" || pw2 != ""){
+			if(pw1 == pw2){
+				$(".jf_pw_correct").show();
+				$(".jf_pw_incorrect").hide();
+			}else{
+				$(".jf_pw_correct").hide();
+				$(".jf_pw_incorrect").show();
+			}
+		}
+	});
+});
+
+</script>
+
 </head>
 <body>
 
-<form method="post" action="join.do">
+<form method="post" action="join.do?part=join" enctype="multipart/form-data">
 <input type="hidden" name="part" value="join">
 
 <!-- 이메일 확인 cert, 프로필사진 pimg 작업 전 회원가입을 위한 hidden input -->
@@ -66,10 +101,9 @@
     
     <p class="join_form_sub_tt">프로필 사진</p>
     <div id="join_form_pimg">
-      <div id="join_form_pimg_back"><a href="#upload"><img src="img/setting_w_20.png"></a></div>
-      <input type="file" name="pimg">
-      <input type="hidden" name="pimg_name">
-      <a href="#upload" id="join_form_pimg_btn">업로드</a>
+      <div id="join_form_pimg_back"><label id="join_form_pimg_btn2" for="pimg"><img src="img/setting_w_20.png"></label></div>
+      <input type="file" name="pimg" id="pimg" onchange="pimg_show(event)">
+      <label id="join_form_pimg_btn" for="pimg">업로드</label>
       <p class="join_form_exp jfe_pimg">*사진크기 - 최소 가로 500px, 세로 500px(jpg, png, gif 가능)</p>
     </div>
     

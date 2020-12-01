@@ -1,5 +1,8 @@
 package com.member;
 
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -33,58 +36,94 @@ public class member_service {
 		return null;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void join() {
-		String id= request.getParameter("id");
-		String pw= request.getParameter("pw");
-		String name= request.getParameter("name");
-		String nick= request.getParameter("nick");
-		String email= request.getParameter("email");
-		String addr= request.getParameter("addr");
-		int cert= Integer.parseInt(request.getParameter("cert"));
-		String pimg= request.getParameter("pimg");
-		String comt= request.getParameter("comt");
+//		String id= request.getParameter("id");
+//		String pw= request.getParameter("pw");
+//		String name= request.getParameter("name");
+//		String nick= request.getParameter("nick");
+//		String email= request.getParameter("email");
+//		String addr= request.getParameter("addr");
+//		int cert= Integer.parseInt(request.getParameter("cert"));
+//		String pimg= request.getParameter("pimg");
+//		String comt= request.getParameter("comt");
 		
 		// 이메일 주소 뒷부분 추가
-		email+= "@"+addr;
+//		email+= "@"+addr;
 		// 회원가입 테스트를 위한 이메일 인증
-		cert= 1;
+//		cert= 1;
 		
-		String path= "C://Users/sbk06/eclipse-workspace/somenaeil/somenaeil/WebContent";
-		path+= "/pimg";
+		String id= null;
+		String pw= null;
+		String name= null;
+		String nick= null;
+		String email= null;
+		String addr= null;
+		int cert= 1;
+		String pimg= null;
+		String comt= null;
 		
+//		String path = request.getServletContext().getRealPath("/pimg"); // 호스팅이 있을 경우 사용
+		String path="C:/Users/BYTE-506/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
+
 		int size= 10 * 1024 * 1024;
 		
 		String filename= "";
 		String original= "";
 		
 		try {
-			MultipartRequest multi= new MultipartRequest(
-				request,
-				path,
-				size,
-				"UTF-8",
-				new DefaultFileRenamePolicy()
-			);
+			
+			
+			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			
+			id= multi.getParameter("id");
+			pw= multi.getParameter("pw");
+			name= multi.getParameter("name");
+			nick= multi.getParameter("nick");
+			email= multi.getParameter("email");
+			addr= multi.getParameter("addr");
+			email+= "@"+addr;
+			comt= multi.getParameter("comt");
+			
 			Enumeration files= multi.getFileNames();
 			
-			while(files.hasMoreElements()) { // 여러파일을 가져올때 반복문을 통해서 files의 다음값을 가져온다
+			while(files.hasMoreElements()) {
 				String file= (String)files.nextElement();
-				filename= multi.getFilesystemName(file);	// 서버 저장 이름
-				original= multi.getOriginalFileName(file);	// 업로드 저장 이름
+				filename= multi.getFilesystemName(file);
+				original= multi.getOriginalFileName(file);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
+			System.out.println("member_service - 회원가입시 프로필 이미지 업로드 실패");
 		}
 		
-		pimg= filename;
-		
-		System.out.println("member_service - pimg= "+pimg);
-		
+		// 회원가입시 프사 이미지명 변경 > "pimg_userid.jpg"
+	    pimg= pimg_change(filename, id, path);
+	    
 		member_dao md=new member_dao();
 		md.member_insert(id, pw, name, nick, email, cert, pimg, comt);
 		member user= md.member_select(id, pw);
 		request.getSession().setAttribute("user", user);
+	}
+	
+	public String pimg_change(String filename, String id, String path) {
+		
+		int pos = filename.lastIndexOf( "." );
+		String enc = filename.substring( pos + 1 );
+
+		String reFileName = filename;
+		String newFileName = "pimg_"+id+"."+enc;
+		String saveDir = path;
+
+		if(!reFileName.equals("")) {
+		     String fullFileName = saveDir + "/" + reFileName;
+		     File f1 = new File(fullFileName);
+		     if(f1.exists()) {
+		          File newFile = new File(saveDir + "/" + newFileName);
+		          f1.renameTo(newFile);
+		     }
+		}
+		
+		return newFileName;
 	}
 	
 	public void update() {
@@ -101,7 +140,6 @@ public class member_service {
 		
 		// 이메일 주소 뒷부분 추가
 		email+= "@"+addr;
-		
 		
 		member_dao md=new member_dao();
 		member user= md.member_update(id, pw, nick, email, cert, pimg, comt);
@@ -225,4 +263,6 @@ public class member_service {
 		
 		return flw;
 	}
+	
+	
 }

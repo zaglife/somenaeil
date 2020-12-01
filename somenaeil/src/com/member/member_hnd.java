@@ -13,7 +13,6 @@ public class member_hnd implements main_able{
 		String follow= request.getParameter("follow");
 		
 		member_service ms= new member_service(request);
-		member_dao md= new member_dao();
 		
 		String uid= request.getParameter("uid");
 		String id= (String)request.getSession().getAttribute("id");

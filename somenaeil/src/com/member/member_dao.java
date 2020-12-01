@@ -130,41 +130,25 @@ public class member_dao {
 		
 		try(	Statement stmt= conn.createStatement();
 				ResultSet rs= stmt.executeQuery(sql)) {
-			if(rs.next()) {
-				noti nt= new noti(
-					rs.getInt("num"),
-					rs.getString("other"),
-					rs.getInt("type"),
-					rs.getDate("time"),
-					rs.getInt("scrap"));
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("member_dao - 유저별 noti테이블 생성 실패");
 		}
 		
-		sql= "create table ";
-		sql+= "dm_"+id+"(";
-		sql+= "num number(4) not null primary key, ";
-		sql+= "other varchar2(20) not null, ";
-		sql+= "context varchar2(4000) not null, ";
-		sql+= "time date default sysdate, ";
-		sql+= "cert number(1))";
-		
-		try(	Statement stmt= conn.createStatement();
-				ResultSet rs= stmt.executeQuery(sql)) {
-			if(rs.next()) {
-				dm dm= new dm(
-					rs.getInt("num"),
-					rs.getString("other"),
-					rs.getString("context"),
-					rs.getDate("time"),
-					rs.getInt("cert"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println("member_dao - 유저별 dm테이블 생성 실패");
-		}
+//		sql= "create table ";
+//		sql+= "dm_"+id+"(";
+//		sql+= "num number(4) not null primary key, ";
+//		sql+= "other varchar2(20) not null, ";
+//		sql+= "context varchar2(4000) not null, ";
+//		sql+= "time date default sysdate, ";
+//		sql+= "cert number(1))";
+//		
+//		try(	Statement stmt= conn.createStatement();
+//				ResultSet rs= stmt.executeQuery(sql)) {
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			System.out.println("member_dao - 유저별 dm테이블 생성 실패");
+//		}
 	}
 	
 	
