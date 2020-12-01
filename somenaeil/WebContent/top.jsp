@@ -53,9 +53,9 @@
 	</c:if>
 	<c:if test="${sessionScope.sessionUser != null}">
     <a href="index.jsp">메인 페이지</a>
-    <a href="user.do?part=user&uid=some">마이 페이지</a>
+    <a href="user.do?part=user&userId=${sessionId}">마이 페이지</a>
     <a href="post_main.jsp?state=login">포스팅</a>
-    <a href="noti.jsp?state=login">알림</a>
+    <a href="noti.some?">알림</a>
     <a href="dm.jsp?state=login">메세지</a>
     <a href="info.jsp?state=login">채용정보</a>
   	<a href="logout.do?part=logout">로그아웃</a>
@@ -64,7 +64,7 @@
 <!-- top menu -->
 
 <div id="top_menu">
- 	<a href="noti.jsp"><img src="img/icon_new_n_30.png"></a>
+ 	<a href="noti.some"><img src="img/icon_new_n_30.png"></a>
  	<a href="dm.jsp"><img src="img/icon_dm_n_30.png"></a>
  	<div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
  	

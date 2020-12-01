@@ -4,6 +4,7 @@ import static com.common.DBUtil.*;
 
 import java.sql.Array;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,14 @@ public class member_dao {
 	
 	private static member_dao instance;
 	
-	public member_dao(){}
+	public member_dao(){
+		try {
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+		} catch(SQLException e){
+			e.printStackTrace();
+			System.out.println("member_dao - member DB 커넥션 실패");
+		}
+	}
 	
 	/**
 	 * 싱글턴 패턴
@@ -248,17 +256,17 @@ public class member_dao {
 	 * @param id 고유한 이름의 db가 저장되어야 하므로 nick보단 id
 	 */
 	public void createUserTable(String id) {
-		String sql = "CREATE TABLE noti_?("
+		String sql = "CREATE TABLE noti_"+id+"("
 					+ "num NUMBER(4) NOT NULL PRIMARY KEY,"
-					+ "other VARCHAR2(20) NOT NULL,"
-					+ "type NUMBER(1) NOT NULL,"
+					+ "other_id VARCHAR2(20) NOT NULL,"
+					+ "noti_type NUMBER(1) NOT NULL,"
 					+ "time DATE DEFAULT SYSDATE,"
-					+ "scrap NUMBER(6))";
+					+ "post_num NUMBER(6),"
+					+ "noti_view CHAR(1) DEFAULT 0)";
 				
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
 			pstmt.executeUpdate(); 	// CREATE 구문에서는 -1을 반환
 			
 			// TODO 중복 예외 처리

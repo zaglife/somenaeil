@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.noti.noti_dao;
 import com.post.post;
 import com.post.post_dao;
 
@@ -146,6 +147,7 @@ public class member_service {
 		request.setAttribute("postList", postList);
 		request.setAttribute("isFollow", isFollow);
 		
+		close(conn);
 		return String.format("user.jsp?part=user&userId=%s", userId);
 	}
 	
@@ -181,6 +183,7 @@ public class member_service {
 			request.setAttribute("fail", -1);
 		}
 
+		close(conn);
 		return updateCheck;
 	}
 	
@@ -192,6 +195,9 @@ public class member_service {
 		Connection conn = getConnection();
 		member_dao memberDAO = member_dao.getInstance();
 		memberDAO.setConnection(conn);
+		noti_dao notiDAO = noti_dao.getInstance();
+		notiDAO.setConnection(conn);
+		
 		
 		String userFollow = memberDAO.selectMember(userId).getFollow();
 		String targetFollower = memberDAO.selectMember(targetId).getFollower();
@@ -202,7 +208,12 @@ public class member_service {
 		boolean check = memberDAO.updateFollow(userId, targetId, 
 							userFollow, targetFollower, isFollow);
 		
+		
 		if (!check)
 			request.setAttribute("fail", -1);
+		else
+			notiDAO.insertNoti(userId, targetId, 1);
+		
+		close(conn);
 	}
 }

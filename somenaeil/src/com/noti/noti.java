@@ -1,38 +1,25 @@
 package com.noti;
 
+
 import java.util.Date;
 
+import com.member.member_dao;
+
 public class noti {
-	private int num;
-	private String other;
-	private int type;
-	private Date time;
-	private int scrap;
+	private int num;			// 번호
+	private String otherId;		// 대상 아이디
+	private int type;			// 타입 1:follow; 2:like; 3:comment 4:scrap
+	private Date time;			// 알림 날짜
+	private int postNum;
 	
 	public noti() {}
-	public noti(	int num,
-					String other,
-					int type,
-					Date time,
-					int scrap) {
-		this.num= num;
-		this.other= other;
-		this.type= type;
-		this.time= time;
-		this.scrap= scrap;
-	}
+
 	
 	public int getNum() {
 		return num;
 	}
 	public void setNum(int num) {
 		this.num = num;
-	}
-	public String getOther() {
-		return other;
-	}
-	public void setOther(String other) {
-		this.other = other;
 	}
 	public int getType() {
 		return type;
@@ -46,10 +33,24 @@ public class noti {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public int getScrap() {
-		return scrap;
+	public int getPostNum() {
+		return postNum;
 	}
-	public void setScrap(int scrap) {
-		this.scrap = scrap;
+	public void setPostNum(int postNum) {
+		this.postNum = postNum;
+	}
+	public String getOtherId() {
+		return otherId;
+	}
+	public void setOtherId(String otherId) {
+		this.otherId = otherId;
+	}
+	
+	// 임시
+	public String getOtherNick() {
+		member_dao memberDAO = new member_dao();
+		String otherNick = null;
+		otherNick = memberDAO.selectMember(otherId).getNick();
+		return otherNick;
 	}
 }
