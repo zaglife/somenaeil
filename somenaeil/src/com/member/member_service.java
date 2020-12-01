@@ -111,7 +111,9 @@ public class member_service {
 		String comt= null;
 		
 //		String path = request.getServletContext().getRealPath("/pimg"); // 호스팅이 있을 경우 사용
-		String path="C:/Users/BYTE-506/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
+		
+		String path="C:/Users/BYTE505-08/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
+
 
 		int size= 10 * 1024 * 1024;
 		
