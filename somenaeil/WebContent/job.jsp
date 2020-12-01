@@ -14,7 +14,6 @@
 
 <script>
 <c:choose>
-<c:when test="${list.hasPage() }">  
 <c:forEach var="data" items="${list.getContent() }">
 
 $(document).ready(function(){
@@ -30,12 +29,11 @@ $(document).ready(function(){
 });
 
 </c:forEach>
-</c:when>
 </c:choose>
 </script>
 
 </head>
-<body> 
+<body>
 
 <div id="job_main">
   <div id="job_top"><p>채용정보</p></div>

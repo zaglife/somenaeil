@@ -13,6 +13,7 @@ public class member_hnd implements main_able{
 		String view = null;
 		
 		member_service ms = new member_service(request);
+
 		
 		
 		if (part == null) {
@@ -27,7 +28,8 @@ public class member_hnd implements main_able{
 				view = ms.logout();
 				break;
 			case "join":
-				view = ms.join();
+				ms.join();
+				view= "index.jsp";
 				break;
 			case "info":
 				// join_edit
