@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class dm_dao {
 	private Connection conn;
@@ -127,6 +129,12 @@ public class dm_dao {
 	}
 	
 	
+	/**
+	 * 대화 내용 출력
+	 * @param fromid
+	 * @param toid
+	 * @return
+	 */
 	public ArrayList<chat> getChatListByRecent(String fromid, String toid){
 		ArrayList<chat> chatlist = null;
 		
@@ -213,6 +221,46 @@ public class dm_dao {
 		return -1;
 	}
 	
+	/**
+	 * 해당 id 채팅 내역
+	 */
+	public ArrayList<chat> insertChatList(String id) {
+		String sql = "SELECT * FROM chat "
+					+ "WHERE (fromid=? OR toid=?)";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<chat> chatList = new ArrayList<chat>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				chat chat = new chat();
+				chat.setChatID(rs.getInt("chatID"));
+				chat.setFromid(rs.getString("fromid"));
+				chat.setToid(rs.getString("toid"));
+				chat.setChat_time(rs.getDate("chatTime"));
+				chat.setChatcontent(rs.getString("chatcontent"));
+				
+
+				chatList.add(chat);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return chatList;
+	}
+	
+	
+	public void insertLastChat() {
+		
+	}
+	
 	
 	public ArrayList<chat> other_list(String userid){
 		ArrayList<chat> list = null;
@@ -238,33 +286,54 @@ public class dm_dao {
 				list.add(temp);
 			}
 			
-			for(int i = 0; i < list.size(); i++) {
-				chat x = list.get(i);
-				for (int j = 0; j < list.size(); j++) {
-					chat y = list.get(j);
-					if(x.getFromid().equals(y.getToid()) && x.getToid().equals(x.getFromid())) {
-						if(x.getChatID() < y.getChatID()) {
-							list.remove(x);
-							i--;
-							break;
-						} else {
-							list.remove(y);
-							j--;
-						}
-					}
-				}
+			System.out.println("asdasd");
+			
+			
+			String id1 = "some";
+			String id2 = "jsp유저";
+			
+			
+			ArrayList<chat> chatList = new ArrayList<chat>();  
+			chatList = (ArrayList<chat>) list.stream().filter(x -> ( x.getFromid().equals(id1) || x.getToid().equals(id1) ) &&
+																	( x.getFromid().equals(id2) || x.getToid().equals(id2) ))
+														.collect(Collectors.toList());
+			int idx = 0;
+			for (chat temp : chatList) {
+				System.out.println(idx+"번째 chat");
+				System.out.println("num: "+temp.getChatID());
+				System.out.println("fromId" + temp.getFromid());
+				System.out.println("toId" + temp.getToid());
+				System.out.println("-------------------------");
+				idx++;
 			}
+		
+//			for(int i = 0; i < list.size(); i++) {
+//				chat x = list.get(i);
+//				for (int j = 0; j < list.size(); j++) {
+//					chat y = list.get(j);
+//					if(x.getFromid().equals(y.getToid()) && x.getToid().equals(x.getFromid())) {
+//						if(x.getChatID() < y.getChatID()) {
+//							list.remove(x);
+//							i--;
+//							break;
+//						} else {
+//							list.remove(y);
+//							j--;
+//						}
+//					}
+//				}
+//			}
 			
 			
 			
 			
 			
 			
-			for(int i = 0; i < list.size(); i++) {
-				System.out.println(list.get(i).getFromid());
-				System.out.println("/////////////////////");
-				System.out.println(list.get(i).getToid());
-			}
+//			for(int i = 0; i < list.size(); i++) {
+//				System.out.println(list.get(i).getFromid());
+//				System.out.println("/////////////////////");
+//				System.out.println(list.get(i).getToid());
+//			}
 			return list;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

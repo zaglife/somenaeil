@@ -18,17 +18,15 @@ public class dm_hnd implements some_able{
 		ArrayList<chat> chat=null;
 		ArrayList<chat> other=null;
 		if (part.equals("view")) {
-			
 			chat = ds.dm_list();
 			request.setAttribute("chatlist", chat);
-			 	
-			other =  ds.dm_other();
-			request.setAttribute("other", other);
-			
+			//other =  ds.dm_other();
+			ds.view();
+			//request.setAttribute("other", other);
 		}else if(part.equals("chatlist")) {
 			// chat  = ds.dm_list();
-			ds.dm();
 			chat = ds.dm_list();
+			ds.dm(chat);
 		}
 		else if(part.equals("list")){
 			chat = ds.dm_list();

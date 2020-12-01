@@ -49,96 +49,27 @@ function submitFunction(){
 
 	$("#chatcontent").val('');
 }
-
-	var lastID = 0; // 가장 마지막의 챗 아이디
-	function chatListFunction(type){
-		var toid = '${toid}';
-		var part = "list";
-		$.ajax({
-			type: "POST",
-			url: "dm.some",
-			data: {
-				toid: encodeURIComponent(toid),
-				listType: type,
-				part : part
-			},
-			success : function(data){
-			//	document.location.reload();
-				//qwer();
-				
-			/* 	if(data == "")return ;
-				var parsed = JSON.parse(data); // 제이슨 형태로 파싱
-				var result = parsed.result;
-				for(var i = 0; i < result.lenght; i++){
-					addChat(result[i][0].value, result[i][2].value, result[i][3].value);
-				}
-				lastID = Number(parsed.last) */
-			}
-		});
-	}
-	//$("body").scrollTop($(document).height());
-	//$("#dm_c_list").scrollTop(0);
-	//$("#dm_c_list").scrollTop($("#dm_c_list")[0].scrollHeight);
-	
-	function addChat(chatName, chatContnet,chatTime){
-		var formid = $("#formid").val();
-		var toid = '${toid}';
-		if(chatName == fromid){
-			$("#dm_c_list").append('<span class="msg_wrap msg_user">' +
-				'<p>'+
-				chatContent +
-				'</p>' +
-				'<p>'+
-				chatTime +
-				' 보냄</p>' +
-				'</span>'
-				);
-		}else if(chatName == toid){
-			$("#dm_c_list").append('<span class="msg_wrap msg_other">' +
-				'<p>'+
-				chatContent +
-				'</p>' +
-				'<p>'+
-				chatTime +
-				' 보냄</p>' +
-				'</span>'
-				);
-		}
-		
-	}
 	function getInfiniteChat(){
 		
 		//setTimeout(function(){
 			//location.reload();
 			//},3000);
 	}
-<%-- 	function qwer(){
-		
-		alert(<=request.getAttribute("chatlist") %>);
-		data = <%=request.getAttribute("chatlist")>;
-		if(data == "")return ;
-		var parsed = JSON.parse(data); // 제이슨 형태로 파싱
-		var result = parsed.result;
-		for(var i = 0; i < result.lenght; i++){
-			addChat(result[i][0].value, result[i][2].value, result[i][3].value);
-		}
-	} --%>
 </script>
     
 
 <jsp:include page="css.jsp" />
-
-
-
-
-
-<input type="hidden" id="part" name="part" value="chatlist">
 <input type="hidden" id="fromid" name="fromid" value="${user.getId() }">
 <div id="dm_wrap"> 
   <div id="dm_new_wrap">
-     <c:forEach var="other" items="${other }">
-     	 <a href="dm.some?part=view&toid=${other.fromid }" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
+  	<c:forTokens items="${otherlist}" var="other" delims=":">
+  	<a href="dm.some?part=view&toid=${other}" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
+  	</c:forTokens>
+  	<%--
+     <c:forEach var="other" items="${otherlist }">
+     	 <a href="dm.some?part=view&toid=${other}" class="dm_new"><img src="img/profile02.jpg"><img src="img/alert_20.png" class="dm_new_icon"></a>
      </c:forEach>
+     --%>
     <a onclick="dmSetPop()" id="dm_manage"><img src="img/setting_20.png"></a>
   </div>
   <div id="dm_choose">유저를 선택해주세요.</div>

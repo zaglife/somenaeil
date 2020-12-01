@@ -1,6 +1,6 @@
 package com.dm;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class chat {
 	private int chatID;
@@ -9,6 +9,7 @@ public class chat {
 	private String chatTime;
 	private String chatcontent;
 	private String lastID;
+	private Date chat_time;
 //	
 //	public chat(int chatID, String fromid, String toid, String chatTime, String chatcontent) {
 //		this.chatID = chatID;
@@ -64,6 +65,12 @@ public class chat {
 	}
 	public void setChatTime(String chatTime) {
 		this.chatTime = chatTime;
+	}
+	public Date getChat_time() {
+		return chat_time;
+	}
+	public void setChat_time(Date chat_time) {
+		this.chat_time = chat_time;
 	}
 	
 }
