@@ -19,7 +19,7 @@ public class dm_service {
 	}
 
 	public void dm(ArrayList<chat> list) {
-		String fromid = ((member)request.getSession().getAttribute("user")).getId();
+		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId();
 		String toid = request.getParameter("toid");
 		String chatcontent = request.getParameter("chatcontent");
 		try {
@@ -49,7 +49,7 @@ public class dm_service {
 	}
 	
 	public ArrayList<chat> dm_list() {
-		String fromid = ((member)request.getSession().getAttribute("user")).getId(); // 보낸 아이디 (유저 아이디) 
+		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId(); // 보낸 아이디 (유저 아이디) 
 		String toid = request.getParameter("toid"); //받은 아이디 (상대 아이디)
 		ArrayList<chat> result = null; // return시킬 ArrayList 선언 
 		
@@ -85,7 +85,7 @@ public class dm_service {
 	
 	//리스트 가져오는거였습니다.
 	public ArrayList<chat> dm_other() {
-		String fromid = ((member)request.getSession().getAttribute("user")).getId();
+		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId();
 		ArrayList<chat> other = null;
 		
 		dm_dao dd = new dm_dao();
@@ -96,7 +96,7 @@ public class dm_service {
 	
 	
 	public void view() {
-		String fromId = ((member) request.getSession().getAttribute("user")).getId();
+		String fromId = ((member) request.getSession().getAttribute("sessionUser")).getId();
 		//String toId = request.getParameter("toid");
 		
 		dm_dao dmDAO = new dm_dao();
@@ -128,11 +128,16 @@ public class dm_service {
 												.collect(Collectors.joining(":"));
 		
 		
+		// memberDAO에서 memberList 추출
+		
+		// 해당 아이디를 가진 
+		
+		
 		request.setAttribute("otherlist", otherListStr);
 	
 		
 		
-		// chatid 리스트 호출 
+		
 		
 		// toUser가 null일시 
 		
