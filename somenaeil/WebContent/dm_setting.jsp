@@ -6,6 +6,7 @@
 	memberList
 	lastText
 	otherlist
+	
  --%>
 
 <div id="dm_set_wrap" class="dm_set_hide">
