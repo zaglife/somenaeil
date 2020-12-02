@@ -52,19 +52,6 @@ public class dm_service {
 		
 		return chatlist;////  가져온 채팅내용들을 return 시킨다.
 	}
-		
-	/**
-	 * user와 상대의 채팅 내용을 불러오는 메소드 ////////////////////////////////////
-	 * @param fromid
-	 * @param toid
-	 * @return
-	 */
-	public ArrayList<chat> getID(String fromid, String toid) { // db에 있는 내용들을  모두 가져오게하는 메소드
-		dm_dao dd = new dm_dao(); 
-		ArrayList<chat> chatlist = dd.getChatListById(fromid, toid); // return 시킬 ArratList선언과 동시에 getChatListById메소드 실행 
-		
-		return chatlist;
-	}
 	
 	/**
 	 * 나랑 대화중인 상대와 마지막 채팅내용을 보여주는 메소드
