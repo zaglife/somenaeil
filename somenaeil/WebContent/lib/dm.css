@@ -225,7 +225,7 @@
 #dm_c_list {
 	float: left;
 	position: relative;
-	width: 702px;
+	width: 730px;
 	height: 480px;
 	padding-right: 8px;
 	overflow-y: scroll;
@@ -269,27 +269,25 @@
 .msg_wrap {
 	clear:both;
 	position: relative;
-	width: 660px;
+	width: 700px;
 	display: inline; 
 }
 
 .msg_other {
 	float: left;
 	color: #333;
-	margin: 10px 20px;
-	padding: 45px 0 5px;
+	padding: 0 15px;
 	font-size: 16px;
-	background: url(../img/dm_other_s.png) no-repeat left top;
 }
 
 .msg_user {
 	float: right;
 	color: #333;
-	margin: 10px 20px;
-	padding: 45px 0 5px;
+	padding: 0 15px;
 	font-size: 16px;
-	background: url(../img/dm_me_s.png) no-repeat right top;
 }
+
+
 
 .msg_other p {
 	float: left;
@@ -331,13 +329,12 @@
 }
 
 #dm_c_msg input {
-	width: 688px;
-	height: 20px;
-	margin: 10px;
-	padding: 5px 10px;
-	
-	border: 2px solid #91c38e;
+	width: 700px;
+	height: 50px;
+	padding: 5px 20px;
+	border: 0;
 	border-radius: 30px;
+	background: rgba(255, 255, 255, 0);
 }
 
 #dm_c_msg button {
@@ -356,9 +353,12 @@
 	transition: transform .2s;
 }
 
-#dm_c_msg button:hover {
-/* 	transform: rotate(-80deg); */
+#dm_c_msg form {
+	margin: 0;
+	padding: 0;
 }
+
+
 
 /*************** dm 실시간 대화 페이지 ***************/
 #dm_set_wrap {
