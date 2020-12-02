@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 
 import com.member.member;
+import com.noti.noti_dao;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.reply.reply;
@@ -192,17 +193,22 @@ public class post_service {
 	 */
 	public String writeReply() {
 		// 파라미터 불러오기
-		String author = request.getParameter("author");
+		String replyWriterId = request.getParameter("replyWriterId");
+		String replyWriterNick = request.getParameter("replyWriterNick");
+		String postWriterId = request.getParameter("postWriterId");
 		String context = request.getParameter("context");
+		int post_num = Integer.parseInt(request.getParameter("post_num"));
+		
+		// 한글 인코딩
 		try {
-			author = URLDecoder.decode(author, "UTF-8");
-			context = URLDecoder.decode(context, "utf-8");
+			replyWriterNick = URLDecoder.decode(replyWriterNick, "UTF-8");
+			context = URLDecoder.decode(context, "UTF-8");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		int post_num = Integer.parseInt(request.getParameter("post_num"));
+		
 		
 		// 댓글 DAO 인스턴스 생성
 		Connection conn = getConnection();
@@ -213,12 +219,21 @@ public class post_service {
 		
 		// DB 데이터 -> 인스턴스 변수
 		rep.setPost_num(post_num);
-		rep.setAuthor(author);
+		rep.setId(replyWriterId);
+		rep.setNick(replyWriterNick);
 		rep.setContext(context);
 		
 		boolean result = replyDAO.insertReply(rep);
 		
-	
-		return "#";		// ajax를 이용할 것이기 때문에 화면 이동 X
+		
+		// 댓글 작성 성공 -> 알람 보내기
+		if (result) {
+			noti_dao notiDAO = noti_dao.getInstance();
+			notiDAO.setConnection(conn);
+			
+			notiDAO.insertNoti(replyWriterId, postWriterId, 2, post_num);
+		}
+		
+		return String.format("read.post?part=postDetail&pageNum=%d#", post_num);
 	}
 }

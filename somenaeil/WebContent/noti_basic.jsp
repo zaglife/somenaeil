@@ -31,8 +31,12 @@
 				<c:when test="${noti.type == 1}">
 					<div class="noti_newline"><a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_follow"><p>${noti.otherNick}</p>님께서 팔로우 하셨습니다.</a></div>
 				</c:when>
-				<%-- 좋아요 --%>
 				<%-- 댓글 --%>
+				<c:when test="${noti.type == 2}">
+					<div class="noti_newline"><a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_scrap"><p>${noti.otherNick}</p>님께서 게시물에 댓글을 작성하셨습니다.</a></div>
+				</c:when>
+				<%-- 좋아요 --%>
+				
 				<%-- 스크랩 --%>
 			</c:choose>
 			

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 import com.post.post_dao;
 
+// TODO 댓글 수정 삭제
+
 /**
  * reply DB와 연결하는 클래스
  * @author gagip
@@ -52,15 +54,16 @@ public class reply_dao {
 			conn.setAutoCommit(false);
 			
 			String sql = "INSERT INTO reply"
-						+ "		(num, post_num, author, time, parent, context)"
-						+ "		VALUES(?,?,?,sysdate,?,?)";
+						+ "		(num, post_num, id, nick, time, parent, context)"
+						+ "		VALUES(?,?,?,?,sysdate,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, getNum("reply", conn));
 			pstmt.setInt(2, rep.getPost_num());
-			pstmt.setString(3, rep.getAuthor());
-			pstmt.setInt(4, rep.getParent());
-			pstmt.setString(5, rep.getContext());
+			pstmt.setString(3, rep.getId());
+			pstmt.setString(4, rep.getNick());
+			pstmt.setInt(5, rep.getParent());
+			pstmt.setString(6, rep.getContext());
 			
 			// 완료시 커밋
 			if (pstmt.executeUpdate() > 0) {
@@ -92,7 +95,7 @@ public class reply_dao {
 		ArrayList<reply> list = new ArrayList<reply>();
 		
 		try {
-			String sql = "SELECT LEVEL, num, post_num, author, time, parent, context "
+			String sql = "SELECT LEVEL, num, post_num, id, nick, time, parent, context "
 						+ "FROM reply "
 						+ "WHERE post_num=? "
 						+ "START WITH parent=0 "
@@ -107,10 +110,12 @@ public class reply_dao {
 				rep.setLevel(rs.getInt("LEVEL"));
 				rep.setNum(rs.getInt("num"));
 				rep.setPost_num(rs.getInt("post_num"));
-				rep.setAuthor(rs.getString("author"));
+				rep.setId(rs.getString("id"));
+				rep.setNick(rs.getString("nick"));
 				rep.setTime(rs.getDate("time"));
 				rep.setParent(rs.getInt("parent"));
 				rep.setContext(rs.getString("context"));
+				
 				list.add(rep);
 			}
 			

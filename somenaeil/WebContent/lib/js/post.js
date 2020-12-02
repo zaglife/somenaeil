@@ -82,7 +82,9 @@ $().ready(function(){
 function writeCmt() {
   var form = $("form[name='comment_form']")[0];
 
-  var author = form.author.value;
+  var replyWriterId = form.authorId.value;
+  var replyWriterNick = form.authorNick.value;
+  var postWriterId = form.postWriterId.value;
   var post_num = form.post_num.value;
   var context = form.context.value;
 
@@ -91,7 +93,7 @@ function writeCmt() {
     alert("댓글 내용 입력해주세요.");
     return false;
   }
-  else if (!author) {
+  else if (!replyWriterNick) {
     alert("로그인 후 댓글 쓰기가 가능합니다.");
     return false;
   }
@@ -99,12 +101,15 @@ function writeCmt() {
     $.ajax({
       type: "POST",
       url: "reply.post",
-      data: {"author": encodeURIComponent(author), 
-            "post_num": post_num, 
-            "context": encodeURIComponent(context)},
+      data: {
+        "replyWriterId": replyWriterId,
+        "replyWriterNick": encodeURIComponent(replyWriterNick), 
+        "postwriterId": postwriterId,
+        "post_num": post_num, 
+        "context": encodeURIComponent(context)},
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function (data) {
-        document.location.reload();
+        $("#article_footer").load(document.location.href+" #article_footer");
       },
       error:function(){
         alert("실패");
