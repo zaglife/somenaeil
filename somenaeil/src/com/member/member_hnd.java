@@ -17,7 +17,7 @@ public class member_hnd implements main_able{
 		
 		
 		if (part == null) {
-			view = "index.jsp";
+			view = "join_form.jsp";
 		}
 		else {
 			switch (part) {

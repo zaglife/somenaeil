@@ -65,21 +65,25 @@
 </div>
 <!-- top menu -->
 
+<%-- 탑 메뉴 - 비로그인 --%>
+<c:if test="${sessionScope.sessionUser == null}">
 <div id="top_menu">
-	<c:if test="${sessionScope.sessionUser != null }">
- 	<a href="noti.some"><img src="img/icon_new_n_30.png"></a>
- 	<a href="dm.some?part=view"><img src="img/icon_dm_n_30.png"></a>
- 	</c:if>
- 	<div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
- 	
- 	<!-- 로그인시 프로필 사진으로 대체 -->
- 	<c:if test="${sessionScope.sessionUser == null}">
- 		<a href="login.jsp"><img src="img/icon_profile_30.png"></a>
- 	</c:if>
-	<c:if test="${sessionScope.sessionUser != null}">
-		<a href="user.do?part=user&userId=${sessionUser.id}" id="top_user_login"><img src="img/icon_profile_30.png"></a>
-	</c:if>
+  <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+  <!-- 로그인시 프로필 사진으로 대체 -->
+  <a href="login.jsp"><img src="img/icon_profile_30.png"></a>
 </div>
+</c:if>
+
+<%-- 탑 메뉴 - 로그인 --%>
+<c:if test="${sessionScope.sessionUser != null}">
+<div id="top_menu" class="login_success">
+  <a href="noti.some"><img src="img/icon_new_n_30.png"></a>
+  <a href="dm.some?part=view"><img src="img/icon_dm_n_30.png"></a>
+  <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
+  <a href="user.do?part=user&userId=${sessionUser.id}" id="top_user_login" class=""><img src="pimg/${sessionUser.pimg }"></a>
+</div>
+</c:if>
+
 </div>
 
 

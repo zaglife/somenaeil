@@ -40,7 +40,7 @@
 			
 		<%-- 해당 유저가 존재 --%>
 		<c:otherwise>
-	<div id="user_img"><img src="img/profile01.jpg"></div>
+	<div id="user_img"><img src="pimg/${user.pimg}"></div>
     <div id="user_info">
       <div id="user_nick">${user.nick}</div>
       <div id="user_ment">${user.comt}</div>
@@ -72,7 +72,7 @@
 				<%-- 유저와의 관계를 파악하여 아이콘을 보여준다 --%>
 				<c:if test="${sessionId != null}">
 					<c:set var="isFollow" value="${isFollow}"/>
-						${isFollow}
+<%-- 						${isFollow} --%>
 						<button class="user_follow_btn">
 						<%-- 해당 유저를 팔로우한 경우 --%>
 						<c:if test='${isFollow == "follow4follow" || isFollow == "follow"}'>	
