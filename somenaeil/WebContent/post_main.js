@@ -75,6 +75,29 @@ function showmov() {
 	}
 }
 
+$(document).ready(function(){
+	var url = window.location.href;
+	var cate = fullStr.charAt(fullStr.length-1);
+	
+	var park = document.getElementsByName("cate_btn");
+	alert("test");
+		if(cate == R){
+			post_cate(2);
+			park[1].checked = true;
+		}else if(cate == Q){
+			post_cate(1);
+			park[2].checked = true;	
+		}else{
+			post_cate(1);
+			park[0].checked = true;
+		}
+				
+	
+	
+});
+
+
+
 function post_cate(num) {
 	if(num == 2){
 		$('#post_hidden').removeClass('post_cate_hidden');

@@ -18,28 +18,6 @@
 
 <jsp:include page="top.jsp" />
 
-<c:choose>
-	<c:when test="${part== 'q' && part== 'a'}">
-	<script>
-		alert("qweqweqwe");
-		$('#post_hidden').addClass('post_cate_hidden');
-		var x = document.getElementById("cate_g_btn");
-		x.style.checked = "checked";        
-	</script>
-	</c:when>
-	<c:when test="${part== 'r'}">
-	<script>
-		$('#post_hidden').removeClass('post_cate_hidden');
-		var x = document.getElementById("cate_r_btn");
-		x.style.checked = "checked";        
-	</script>
-	</c:when>
-</c:choose>
-
-
-
-
-
 <form id="form" method="post" action="write.post?part=writer" onsubmit="return false" enctype="multipart/form-data">
 
 <input id="context" type="hidden" name="context" value="s">
