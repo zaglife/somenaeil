@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.member.member;
+import com.member.member_dao;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.Match;
 
 /**
@@ -143,6 +145,7 @@ public class post {
 		boolean hasThumb = ctxt.contains("<img");	// 썸네일 여부
 		
 		// 태그 제거 정규표현식
+		// TODO 태그 처리 못한 부분 처리
 		ctxt = ctxt.replaceAll("<(\\/)?[\\w\\d]+((\\s[\\w\\d-./]+)"
 				+ "=(\"[\\w\\d-./\\\\:]*\")*)*(\\/)?>", "")
 					.trim();
@@ -187,5 +190,17 @@ public class post {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	/**
+	 * 해당 유저의 pimg를 가지고 온다
+	 * @return
+	 */
+	public String getPimg() {
+		member_dao memberDAO = new member_dao();
+		member writer = memberDAO.selectMember(id);
+		String pimg = null;
+		pimg = writer.getPimg();
+		return pimg;
 	}
 }

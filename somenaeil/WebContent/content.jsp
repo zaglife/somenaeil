@@ -120,8 +120,8 @@
                 <img class="tab_thumb" src="img/cate_q_s.png">
               </c:when>
             </c:choose>
-            <a href="user.jsp">
-              <img class="user_thumb" src="img/profile01.jpg"/>
+            <a href="user.do?part=user&userId=${post.id}">
+              <img class="user_thumb" src="pimg/${post.getPimg()}"/>
             </a>
           </div>
           

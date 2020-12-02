@@ -347,6 +347,8 @@ public class member_dao {
 		boolean follower = false;
 		String result = null;
 		
+		if (myId == null || targetId == null) return null;
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, myId);

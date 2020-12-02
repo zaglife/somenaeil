@@ -18,9 +18,9 @@
 			<!-- header -->
 			<div class="article_header">
 				<div class="article_header_thumb">
-					<a href="user.jsp">
+					<a href="user.do?part=user&userId=${post.id}">
 						<img class="article_tab_thumb" src="img/cate_a_m.png">
-						<img class="article_user_thumb" src="pimg/${pimg}" onerror="this.src='pimg/pimg_none.jpg'"/>
+						<img class="article_user_thumb" src="pimg/${post.getPimg()}" onerror="this.src='pimg/pimg_none.jpg'"/>
 					</a>
 				</div>
 				<div class="article_info">
@@ -29,9 +29,11 @@
 					</div>
 					<div class="article_subinfo1">
 						<div class="article_auth">
-							<span class="user_id"><a href="user.jsp">${post.nick}</a></span>
+							<span class="user_id"><a href="user.do?part=user&userId=${post.id}">${post.nick}</a></span>
+							<c:if test="${post.id != sessionId}">
 							<span class="follow"> <img src="img/noti_follow_n_20.png"> </span>
-							<span class="dm"> <a href="dm.some?part=view&toid=${post.id }&tonick=${post.nick}"><img src="img/icon_dm_20.png"></a></span>
+							<span class="dm"> <a href="dm.some?part=view&toid=${post.id}&tonick=${post.nick}"><img src="img/icon_dm_20.png"></a></span>
+							</c:if>
 						</div>
 						<div class="article_icon">
 							<span class="like">
@@ -70,7 +72,7 @@
 				<div class="article_comment">
 					<!-- 댓글 5개 보여주기 -->
 					<c:forEach items="${replyList}" var="reply" varStatus="cur" end="4">
-						<div class="comment_id"><a href="user.jsp">${reply.nick}</a></div>
+						<div class="comment_id"><a href="user.do?part=user&userId=${reply.id}">${reply.nick}</a></div>
 						<div class="comment_context">${reply.context}</div>
 					</c:forEach>
 					
@@ -78,7 +80,7 @@
 					<!-- more comment -->
 					<div class="comment_hidden">
 						<c:forEach items="${replyList}" var="reply" varStatus="cur" begin="5">
-							<div class="comment_id"><a href="user.jsp">${reply.nick}</a></div>
+							<div class="comment_id"><a href="user.do?part=user&userId=${reply.id}">${reply.nick}</a></div>
 							<div class="comment_context">${reply.context}</div>
 						</c:forEach>
 					</div>
