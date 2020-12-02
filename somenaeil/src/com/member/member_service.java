@@ -113,8 +113,6 @@ public class member_service {
 		String original= "";
 		
 		try {
-			System.out.println("테스트");
-			
 			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
 			id= multi.getParameter("id");
@@ -125,8 +123,6 @@ public class member_service {
 			addr= multi.getParameter("addr");
 			email+= "@"+addr;
 			comt= multi.getParameter("comt");
-			
-			System.out.println(id);
 			
 			Enumeration files= multi.getFileNames();
 			
@@ -239,8 +235,6 @@ public class member_service {
 		// parameter 값 추출
 		String userId = request.getParameter("userId");
 		String cate = request.getParameter("cate");
-		
-		System.out.println(userId+" / "+cate);
 		
 		// 추출 및 가공에 필요한 재료
 		member user = null;

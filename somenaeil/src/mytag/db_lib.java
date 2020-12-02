@@ -39,8 +39,6 @@ public class db_lib {
 		
 		ArrayList<job> data= jd.info_job();
 		
-		System.out.println(data.get(0).getTitle());
-		
 		return data;
 	}
 	

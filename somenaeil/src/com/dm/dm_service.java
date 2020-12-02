@@ -101,7 +101,6 @@ public class dm_service {
 			// 어떤 메소드 
 			dm_dao dd = new dm_dao();
 			String lastChat = dd.insertLastChat(fromId, userId);
-			System.out.println(lastChat);
 			last.add(lastChat);
 		}
 		// 온전하게 가지고 온 경우
@@ -109,7 +108,6 @@ public class dm_service {
 			request.setAttribute("memberList", memberList);
 			request.setAttribute("lastText", last);
 		}
-		System.out.println(last);
 		request.setAttribute("otherlist", otherListStr);
 	}
 	

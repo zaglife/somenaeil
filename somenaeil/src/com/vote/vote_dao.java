@@ -35,16 +35,9 @@ public class vote_dao {
 			pt.setInt(6, stat);
 			pt.setString(7, items);
 			pt.executeUpdate();
-			System.out.println("vote 저징 성공");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("vote 저장 실패");
 		}
-		
-		
-		
-		
-		
-		
 	}
 }

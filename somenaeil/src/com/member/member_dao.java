@@ -382,8 +382,6 @@ public class member_dao {
 			e.printStackTrace();
 		}
 		
-		System.out.println("멤버dao - result= "+result);
-		
 		close(rs);
 		close(pstmt);
 		return result;

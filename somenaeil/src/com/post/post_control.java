@@ -44,7 +44,6 @@ public class post_control extends HttpServlet {
     	Properties prop = new Properties();
     	try (FileReader fs = new FileReader(path)){
     		prop.load(fs);
-    		System.out.println("post.properties 파일 읽기 성공");
     	}catch(IOException e) {
     		e.printStackTrace();
     		System.out.println("post.properties 파일 읽기 실패");
@@ -58,7 +57,7 @@ public class post_control extends HttpServlet {
     			post_able hinst =(post_able)hclass.newInstance();
     			map.put(cmd, hinst);
     		}catch(ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-    			System.out.println("핸들러 클래스 문제있다.");
+    			System.out.println("post_control - init 메소드 에러");
     		}
     	}
 	}

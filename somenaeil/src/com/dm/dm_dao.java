@@ -245,7 +245,6 @@ public class dm_dao {
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
 			result = rs.getString("chatcontent");
-			System.out.println(result);
 		}
 		
 	} catch (SQLException e) {

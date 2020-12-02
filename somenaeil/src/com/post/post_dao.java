@@ -225,8 +225,6 @@ public class post_dao {
 			pt.setString(11, id);
 			pt.setInt(12, vote);
 			pt.executeUpdate();
-			
-			System.out.println("저장성공");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("글쓰기 DB저장 오류");
