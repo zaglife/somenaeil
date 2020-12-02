@@ -90,8 +90,8 @@
     
     <p class="join_form_sub_tt">프로필 사진</p>
     <div id="join_form_pimg">
-      <img id="join_form_pimg_edit" src="img/profile02.jpg">
-      <div id="join_form_pimg_back"><a href="#upload"><img src="img/setting_w_20.png"></a></div>
+      <img id="join_form_pimg_edit" src="pimg/${user.pimg}" onerror="this.src='pimg/pimg_none.jpg'">
+      <div id="join_form_pimg_back"><a href="#upload" class="setting_btn_center"><img src="img/setting_w_20.png"></a></div>
       <!-- input type file이 css 스타일링 적용이 잘 안됨, a태그로 대체 가능한지 여쭤보기 -->
       <a href="#upload" id="join_form_pimg_btn">업로드</a>
       <p class="join_form_exp jfe_pimg">*사진크기 - 최소 가로 500px, 세로 500px(jpg, png, gif 가능)</p>

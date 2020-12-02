@@ -317,12 +317,16 @@
 
 .user_popup_comment {
 	float: left;
-	position: relative;
+	position: absolute;
 	width: 310px;
+	height: 13px;
 	font-size: 11px;
 	font-weight: 100;
 	color: #555;
-	margin-left: 5px;
+	margin: 40px 0 0 55px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .user_popup_btn {

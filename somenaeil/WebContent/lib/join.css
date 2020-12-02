@@ -417,6 +417,21 @@
 	opacity: .5;
 }
 
+.setting_btn_center {
+	float: left;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: transform .2s;
+}
+
+.setting_btn_center:hover {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
 #join_form_email_btn {
 	float: left;
     position: relative;
@@ -550,7 +565,7 @@
 }
 
 .jfe_edit_pw {
-	margin: 25px 0 0 5px;
+	margin: 205px 0 0 67px;
 }
 
 #join_form_pimg_edit {
