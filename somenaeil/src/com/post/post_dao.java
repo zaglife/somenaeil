@@ -73,6 +73,7 @@ public class post_dao {
 				// 부가적인 정보 추가
 				pt.setNum(rs.getInt("num"));
 				pt.setId(rs.getString("id"));
+				pt.setNick(rs.getString("nick"));
 				pt.setCate(rs.getString("cate"));
 				pt.setTime(rs.getDate("time"));
 				pt.setTitle(rs.getString("title"));
