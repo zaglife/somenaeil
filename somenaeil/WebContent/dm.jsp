@@ -64,22 +64,20 @@ function dmSetPop() {
     <div id="dm_cl_ct">
       <div class="dm_cl_btn"><a href="user.do?part=user&userId=${toid }"><img src="img/dm_home_20.png"></a></div>
       <div class="dm_cl_btn">
-      
-<c:if test="${sessionId != null}">
-  <c:set var="isFollow" value="${isFollow}"/>
-  <c:set var="toid" value="${toid}"/>
-  <button class="user_follow_btn dm_follow_btn" style="position: fixed; left:0; top: 0; margin: 200px; z-index:999;">
-  <%-- 해당 유저를 팔로우한 경우 --%>
-  <c:if test='${isFollow == "follow4follow" || isFollow == "follow"}'>	
-    <img src="img/noti_follow_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
-  </c:if>
-  <%-- 해당 유저를 팔로우 하지 않은 경우 --%>
-  <c:if test='${isFollow == "follower" || isFollow == "unfollow" || isFollow == null}'>
-    <img src="img/noti_follow_n_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
-  </c:if>
-  </button>
-</c:if>
-      
+		<c:if test="${sessionId != null}">
+  		<c:set var="isFollow" value="${isFollow}"/>
+ 		<c:set var="toid" value="${toid}"/>
+ 		  <button class="user_follow_btn dm_follow_btn" style="position: fixed; left:0; top: 0; margin: 200px; z-index:999;">
+ 		  <%-- 해당 유저를 팔로우한 경우 --%>
+		  <c:if test='${isFollow == "follow4follow" || isFollow == "follow"}'>	
+		    <img src="img/noti_follow_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
+ 		  </c:if>
+ 		  <%-- 해당 유저를 팔로우 하지 않은 경우 --%>
+  		  <c:if test='${isFollow == "follower" || isFollow == "unfollow" || isFollow == null}'>
+    	    <img src="img/noti_follow_n_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
+  		  </c:if>
+  	    </button>
+	  </c:if>
       </div>
     </div>
   </div>

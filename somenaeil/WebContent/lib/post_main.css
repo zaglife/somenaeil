@@ -467,7 +467,7 @@ a:hovre{
 /***** 카테고리 선택 end *****/
 
 .post_cate_hidden{
-	visibility:
+	visibility: hidden;
 }
 
 .post_link_hide{

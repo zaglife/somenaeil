@@ -40,7 +40,7 @@
 			
 		<%-- 해당 유저가 존재 --%>
 		<c:otherwise>
-	<div id="user_img"><img src="pimg/${user.pimg}"></div>
+	<div id="user_img"><img src="pimg/${user.pimg }" onerror="this.src='pimg/pimg_none.jpg'"></div>
     <div id="user_info">
       <div id="user_nick">${user.nick}</div>
       <div id="user_ment">${user.comt}</div>
@@ -201,8 +201,6 @@
 </div>
 </c:if>
 <!-- 유저 팔로워 리스트 "user_follower.jsp" end -->
-
-
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
