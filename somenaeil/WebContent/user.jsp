@@ -122,7 +122,7 @@
 
       <c:forEach items="${followList}" var="follow">    
       <div id="user_popup_cont">
-        <div class="user_popup_pimg"><img src="img/profile01.jpg" onclick="location.href='user.do?part=user&userId=${follower.id}'"></div>
+        <div class="user_popup_pimg"><img src="pimg/${follow.pimg}" onerror="this.src='pimg/pimg_none.jpg'" onclick="location.href='user.do?part=user&userId=${follower.id}'"></div>
         <div class="user_popup_name" onclick="location.href='user.do?part=user&userId=${follow.id}'">${follow.nick}</div>
         <div class="user_popup_comment">${follow.comt}</div>
         <div class="user_popup_btn">
@@ -169,7 +169,7 @@
 
       <c:forEach items="${followerList}" var="follower">
       <div id="user_popup_cont">
-        <div class="user_popup_pimg"><img src="img/profile01.jpg" onclick="location.href='user.do?part=user&userId=${follower.id}'"></div>
+        <div class="user_popup_pimg"><img src="pimg/${follower.pimg}" onerror="this.src='pimg/pimg_none.jpg'" onclick="location.href='user.do?part=user&userId=${follower.id}'"></div>
 				<div class="user_popup_name" onclick="location.href='user.do?part=user&userId=${follower.id}'">${follower.nick}</div>
         <div class="user_popup_comment">${follower.comt}</div>
         <div class="user_popup_btn"><img src="img/noti_follow_20.png" onclick="changeFollow('${user.id}','${follower.id}')"></div>
