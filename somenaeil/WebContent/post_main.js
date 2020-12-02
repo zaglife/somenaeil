@@ -75,7 +75,21 @@ function showmov() {
 	}
 }
 
+$(document).ready(function() {
+	var url = window.location.href;
+	var cate = fullStr.charAt(fullStr.length-1); //열
+	
+	if(cate == R){
+		post_cate(2);
+	}else if(cate == Q || cate == G ){
+		post_cate(1);
+	}
+	
+});
+
+
 function post_cate(num) {
+	alert(num);
 	if(num == 2){
 		$('#post_hidden').removeClass('post_cate_hidden');
 	}else{
@@ -704,6 +718,8 @@ function add_img(){
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	document.getElementById("post_write").appendChild(new_post_write); 	
-
 	
 }
+
+
+

@@ -29,7 +29,6 @@ public class member_hnd implements main_able{
 				break;
 			case "join":
 				ms.join();
-				view= "index.jsp";
 				break;
 			case "info":
 				// join_edit
