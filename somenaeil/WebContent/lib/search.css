@@ -19,7 +19,7 @@
 
 #search_cate_wrap div a {
 	float: left;
-	margin: 150px 10px 0;
+	margin: 120px 10px 0;
 	padding: 10px 40px;
 	font-size: 13px;
 	font-weight: 900;
@@ -35,7 +35,7 @@
 	position: relative;
 	width: 800px;
 	height: auto;
-	margin-top: 20px;
+	margin-top: 50px;
 	left: 50%;
 	transform: translate(-50%, 0);
 	text-align: center;

@@ -20,7 +20,7 @@
 				<div class="article_header_thumb">
 					<a href="user.jsp">
 						<img class="article_tab_thumb" src="img/cate_a_m.png">
-						<img class="article_user_thumb" src="img/profile01.jpg" />
+						<img class="article_user_thumb" src="pimg/${pimg}" onerror="this.src='pimg/pimg_none.jpg'"/>
 					</a>
 				</div>
 				<div class="article_info">

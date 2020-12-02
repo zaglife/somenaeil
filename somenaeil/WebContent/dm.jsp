@@ -45,7 +45,7 @@ function dmSetPop() {
   		</c:when>
   		<c:otherwise>
   			<c:forEach items="${memberList}" var="other">
-  				<a href="dm.some?part=view&toid=${other.id}&tonick=${other.nick}" class="dm_new"><img src="pimg/pimg_${other.id}.jpg" onerror="this.src='pimg/pimg_none.jpg'"></a>
+  				<a href="dm.some?part=view&toid=${other.id}&tonick=${other.nick}" class="dm_new"><img src="pimg/${other.pimg}" onerror="this.src='pimg/pimg_none.jpg'"></a>
   			</c:forEach>
   		</c:otherwise>
   	</c:choose>

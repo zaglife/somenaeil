@@ -5,12 +5,14 @@ $( window ).scroll( function() {
 		$('#top_search input').addClass('tsi_down');
 		$('#top_search a').addClass('tsa_down');
 		$('#nav_top').addClass('btn_show');
+		$('#top_user_login').addClass('tul_down');
 	} else {
 		$('#top_wrap').removeClass('sc_down');
 		$('#top_search_cate').removeClass('tsc_down');
 		$('#top_search input').removeClass('tsi_down');
 		$('#top_search a').removeClass('tsa_down');
 		$('#nav_top').removeClass('btn_show');
+		$('#top_user_login').removeClass('tul_down');
 	}
 } );
 

@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import javax.servlet.http.HttpServletRequest;
 
 import com.member.member;
+import com.member.member_dao;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.reply.reply;
@@ -49,9 +50,15 @@ public class post_service {
 		replyDAO.setConnection(conn);
 		ArrayList<reply> replyList = replyDAO.getReplyList(pageNum);
 		
+		// member pimg
+		member_dao memberDAO = member_dao.getInstance();
+		memberDAO.setConnection(conn);
+		String pimg = memberDAO.selectMember(pt.getId()).getPimg();
+		
 		// 가져온 post와 댓글들을 request에 전달
 		request.setAttribute("post", pt);
 		request.setAttribute("replyList", replyList);
+		request.setAttribute("pimg", pimg);
 		
 		return String.format("post.jsp?pageNum=%d", pageNum);
 	}
