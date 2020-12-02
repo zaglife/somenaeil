@@ -24,9 +24,11 @@
    	<c:if test="${memberList != null}">
       <c:forEach var="i" begin="0" end="${fn:length(lastText)-1 }" step="1">
       	<div id="dm_set_popup_cont">
-        <div class="dm_set_popup_pimg"><img src="pimg/pimg_${memberList.get(i).getId()}.jpg" onerror="this.src='pimg/pimg_none.jpg'"></div>
-        <div class="dm_set_popup_name">${memberList.get(i).getNick()}</div>
-        <div class="dm_set_popup_comment">${lastText.get(i)}</div>
+      	<a href="dm.some?part=view&toid=${memberList.get(i).getId()}&tonick=${memberList.get(i).getNick()}">
+          <div class="dm_set_popup_pimg"><img src="pimg/pimg_${memberList.get(i).getId()}.jpg" onerror="this.src='pimg/pimg_none.jpg'"></div>
+          <div class="dm_set_popup_name">${memberList.get(i).getNick()}</div>
+          <div class="dm_set_popup_comment">${lastText.get(i)}</div>
+        </a>
         <div class="dm_set_popup_btn"><p>대화삭제</p></div>
       </div>
       </c:forEach>

@@ -103,8 +103,8 @@ public class member_service {
 		int cert= 1;
 		String pimg= null;
 		String comt= null;
-		String path = request.getServletContext().getRealPath("/pimg");
-//		String path="C:/Users/BYTE505-08/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
+//		String path = request.getServletContext().getRealPath("/pimg");
+		String path="C:\\Users\\admin\\Desktop\\java\\java jsp\\web\\somenaeil\\somenaeil\\WebContent\\pimg";
 
 
 		int size= 10 * 1024 * 1024;

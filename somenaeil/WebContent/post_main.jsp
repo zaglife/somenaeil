@@ -106,8 +106,6 @@
     </div>
     <div id="post_write" contenteditable="true">
 	  <div id="post_write1" contenteditable="true"></div>
-	  <!-- text입력부분 소스코드 display none -->
-	
     </div>
   </div>
   
