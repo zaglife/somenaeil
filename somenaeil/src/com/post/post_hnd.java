@@ -33,7 +33,7 @@ public class post_hnd implements post_able {
 			case "post" :
 				view = "post_main.jsp"; break;
 			case "writer" :
-				view = ps.add(); break;
+				view = ps.post_insert(); break;
 			case "search":
 				view = ps.postList(); break;
 			case "reply":

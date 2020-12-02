@@ -85,8 +85,12 @@ public class post_service {
 		return "index.jsp?" + subURL;
 	}
 	
-	
-	public String add() {
+	/**
+	 * 포스트를 DB에 저장
+	 * @return
+	 */
+	public String post_insert() {
+		// post DB에 들어갈 변수 선언
 		String writer = ((member)request.getSession().getAttribute("sessionUser")).getNick();
 		String writerId = ((member)request.getSession().getAttribute("sessionUser")).getId();
 		int vote = 0;
@@ -96,14 +100,10 @@ public class post_service {
 		String post_cate = null;
 		String[] post_temp = null;
 		String post_hash = "";
-		String post_content = null;
 		String post_context = null;
 		String[] fname = new String[5];
-		String[] org = new String[5];
 		
-		
-		
-		
+		// vote DB에 들어갈 변수 선언
 		String vote_title = null;
 		String[] vote_temp = null;
 		String vote_items = "";
@@ -116,14 +116,11 @@ public class post_service {
 		String vote_chk = null;
 		
 		
-		
-		
 		try {
 			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
 			post_title = multi.getParameter("title");
 			post_cate = multi.getParameter("cate_btn");
-			post_content = multi.getParameter("content");
 			post_temp = multi.getParameterValues("hash");
 			
 			if(post_temp != null) {
@@ -141,7 +138,7 @@ public class post_service {
 				fname[k++] = multi.getFilesystemName(file);
 				
 			}
-			
+			// parameter vote에 use값이 들어오면 실행
 			vote_chk = multi.getParameter("vote");
 			if(vote_chk.equals("use")) {
 				vote = 1;
@@ -174,8 +171,6 @@ public class post_service {
 			e.printStackTrace();
 			System.out.println("이미지 저장 실패");
 		}
-		
-		
 		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
 		
 		post_dao pd = new post_dao();
@@ -184,9 +179,8 @@ public class post_service {
 		if(vote_chk.equals("use")) {
 			vote_dao vd = new vote_dao();
 			vd.add(writer, vote_title, vote_items, vote_muit, vote_stat, vote_hidden, vote_date, vote_day);
-		
 		}					
-		return null;
+		return null; // DB에 저장만하면되니까 null;
 	}
 	
 	
