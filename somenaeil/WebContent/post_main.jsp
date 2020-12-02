@@ -118,18 +118,8 @@
       <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
       <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
       <div class="post_hash"><input type="text" placeholder="#태그" name="hash"></div>
-      
-     
     </div>
 	 <div id="post_hashbt" ><button id="hash_btn" type="button" onclick="more_hash();">추가</button></div>
-    <!-- 게시판 파일업로드 input start -->
-    <div class="filebox"> 
-      <label for="file">업로드</label> 
-      <input type="file" id="files"> 
-      <input class="upload-name" value="파일선택">
-    </div>
-    <!-- 게시판 파일업로드 input end -->
-
     <div id="post_send"><button onclick="submit2();">올리기</button></div>
   </div>  
   <!-- 바텀 끝 -->
