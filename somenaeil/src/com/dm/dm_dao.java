@@ -231,7 +231,7 @@ public class dm_dao {
 				"(SELECT * FROM chat WHERE " + 
 				"(fromid=? OR toid=?) AND " + 
 				"(fromid=? OR toid=?)) " + 
-				"ORDER BY chatid DESC";
+				"ORDER BY chatID DESC";
 		
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -239,11 +239,15 @@ public class dm_dao {
 	try {
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, fromId);
-		pstmt.setString(2, user);
+		pstmt.setString(2, fromId);
+		pstmt.setString(3, user);
+		pstmt.setString(4, user);
 		rs = pstmt.executeQuery();
 		if(rs.next()) {
 			result = rs.getString("chatcontent");
+			System.out.println(result);
 		}
+		
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}finally {

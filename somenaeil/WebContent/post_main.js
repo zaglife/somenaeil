@@ -327,28 +327,6 @@ function ct(){
 		}
 		// 적용버튼 클릭시 적용버튼 hidden으로 바꿈
 		document.getElementById('ct_apply').style.visibility='hidden';
-		
-		
-//		배경색 입히기 		
-//		var ct_size = ct.length;
-//		if(row % 2 == 0){
-//			var k=0;
-//			for(var i = 0; i < ct_size/2; i++){
-//				if(k < row/2) {
-//					ct[i*2].className +=  " ct_cell_back";
-//					k++;
-//				} else if(row/2 < k) {
-//					ct[i*2+1].className +=  " ct_cell_back";
-//					k++;
-//				} else if(k == ct_size/4 ) {
-//					k= 0;
-//				}
-//			}
-//		}else if(row % 2 == 1){
-//			for(var i = 0; i < ct_size/2; i++){
-//				ct[i*2].className +=  " ct_cell_back";
-//			}
-//		}
 	}
 	before_row = row;
 	before_col = col;
@@ -430,7 +408,6 @@ function temporary(){
 }
 
 
-//봉규님 작업하신거
 function insertText() {
 	var txtArea = document.getElementById('txtForm');
 	var txtValue = txtArea.value;
@@ -456,7 +433,7 @@ function vote_cnt(){
 }
 
 
-// 서버로 보낼때 방법 1 (문제점 : 인코딩 해야된다 ) 아직 방법을 찾진않았다.
+// 서버로 보낼때 방법 1
 function submit1(){
 	//아이디 안에있는 값 태그까지 스트링타입으로 가져온다.
 	var jbHtml = $('#post_write').html();
@@ -473,7 +450,7 @@ function submit1(){
 	
 }
 
-// 서버로 보낼때 방법 2 (문제점 : 야매방법이라고하심)(임시로 사용)
+// 서버로 보낼때 방법 2
 function submit2(){
 	
 	document.getElementById("post_write1").setAttribute("contenteditable","false");
@@ -487,7 +464,6 @@ function submit2(){
 
 /* post_main script end */
 
-// 이 밑에부터 봉규님 작업하신거
 document.execCommand('styleWithCSS', false, true);
 document.execCommand('insertBrOnReturn', false, true);
 $(document).ready(function() {
@@ -697,7 +673,6 @@ function add_img(){
 	var para = document.createElement("div");
 	var at = document.createAttribute("width");
 	para.setAttributeNode(at);
-//	jQuery(para).attr("id","file"+(cnt-1));
 	jQuery(para).addClass("file");
 	document.getElementById("post_write").appendChild(para);
 	
@@ -718,7 +693,6 @@ function add_img(){
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	document.getElementById("post_write").appendChild(new_post_write); 	
-	
 }
 
 

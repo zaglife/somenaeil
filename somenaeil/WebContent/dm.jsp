@@ -14,7 +14,8 @@
 
 
 
- <c:set var="toid" value="${param.toid }" />
+ <c:set var="toid" value="${param.toid}" />
+ <c:set var="tonick" value="${param.tonick}" />
 
 <script>
 var dmTemp= 1;
@@ -44,7 +45,7 @@ function dmSetPop() {
   		</c:when>
   		<c:otherwise>
   			<c:forEach items="${memberList}" var="other">
-  				<a href="dm.some?part=view&toid=${other.id}" class="dm_new"><img src="img/profile02.jpg"></a>
+  				<a href="dm.some?part=view&toid=${other.id}&tonick=${other.nick}" class="dm_new"><img src="pimg/pimg_${other.id}.jpg" onerror="this.src='pimg/pimg_none.jpg'"></a>
   			</c:forEach>
   		</c:otherwise>
   	</c:choose>
@@ -57,11 +58,27 @@ function dmSetPop() {
   <div id="dm_cont">
 	<div id="dm_c_wrap">
   <div id="dm_c_left">
-    <img src="img/profile01.jpg">
-    <p><a href="user.jsp">${toid }</a></p>
+    <img src="pimg/pimg_${toid}.jpg" onerror="this.src='pimg/pimg_none.jpg'">
+    
+    <p><a href="user.jsp">${tonick}</a></p>
     <div id="dm_cl_ct">
-      <div class="dm_cl_btn"><a href="user.jsp"><img src="img/dm_home_20.png"></a></div>
-      <div class="dm_cl_btn"><a href="#"><img src="img/noti_follow_n_20.png"></a></div>
+      <div class="dm_cl_btn"><a href="user.do?part=user&userId=${toid }"><img src="img/dm_home_20.png"></a></div>
+      <div class="dm_cl_btn">
+		<c:if test="${sessionId != null}">
+  		<c:set var="isFollow" value="${isFollow}"/>
+ 		<c:set var="toid" value="${toid}"/>
+ 		  <button class="user_follow_btn dm_follow_btn" style="position: fixed; left:0; top: 0; margin: 200px; z-index:999;">
+ 		  <%-- 해당 유저를 팔로우한 경우 --%>
+		  <c:if test='${isFollow == "follow4follow" || isFollow == "follow"}'>	
+		    <img src="img/noti_follow_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
+ 		  </c:if>
+ 		  <%-- 해당 유저를 팔로우 하지 않은 경우 --%>
+  		  <c:if test='${isFollow == "follower" || isFollow == "unfollow" || isFollow == null}'>
+    	    <img src="img/noti_follow_n_20.png" onclick="changeFollow('${sessionId}', '${toid}')">
+  		  </c:if>
+  	    </button>
+	  </c:if>
+      </div>
     </div>
   </div>
   <div id="dm_c_right">
@@ -131,6 +148,10 @@ $(document).ready(function(){
 
 </script>
 
+
+
+
+<script src="lib/js/user.js"> </script>
 
 </html>
 

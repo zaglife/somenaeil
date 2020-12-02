@@ -101,6 +101,7 @@ public class dm_service {
 			// 어떤 메소드 
 			dm_dao dd = new dm_dao();
 			String lastChat = dd.insertLastChat(fromId, userId);
+			System.out.println(lastChat);
 			last.add(lastChat);
 		}
 		// 온전하게 가지고 온 경우
@@ -108,6 +109,17 @@ public class dm_service {
 			request.setAttribute("memberList", memberList);
 			request.setAttribute("lastText", last);
 		}
+		System.out.println(last);
 		request.setAttribute("otherlist", otherListStr);
+	}
+	
+	public void dm_follow() {
+		String fromid= ((member) request.getSession().getAttribute("sessionUser")).getId();
+		String toid = request.getParameter("toid");
+		
+		member_dao md= new member_dao();
+		
+		String isFollow= md.isFollow(fromid, toid);
+		request.setAttribute("isFollow", isFollow);
 	}
 }

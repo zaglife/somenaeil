@@ -235,6 +235,60 @@ public class member_service {
 		return String.format("user.jsp?part=user&userId=%s", userId);
 	}
 	
+	public String userBefore() {
+		// parameter 값 추출
+		String userId = request.getParameter("userId");
+		String cate = request.getParameter("cate");
+		
+		System.out.println(userId+" / "+cate);
+		
+		// 추출 및 가공에 필요한 재료
+		member user = null;
+		ArrayList<member> followList = null;
+		ArrayList<member> followerList = null;
+		ArrayList<post> postList = null;
+		
+		// DAO 연결
+		Connection conn = getConnection();
+		member_dao memberDAO = member_dao.getInstance();
+		memberDAO.setConnection(conn);
+		// 해당 유저가 쓴 포스트도 가져온다
+		post_dao postDAO = post_dao.getInstance();
+		postDAO.setConnection(conn);
+		
+		// 유저를 가지고 온다
+		user = memberDAO.selectMember(userId);
+		
+		if (user != null) {
+			String follow = user.getFollow();			// data) id1:id2:id3
+			String follower = user.getFollower();		// data) id1:id2:id3
+			
+			// 팔로우 리스트 추출
+			if (follow != null)
+				followList = memberDAO.selectMemberList(follow.split(":"));
+			// 팔로워 리스트 추출
+			if (follower != null)
+				followerList = memberDAO.selectMemberList(follower.split(":"));
+			
+			// 포스트 리스트 추출
+			postList = postDAO.getPostList(userId);
+			
+			if (cate != null)
+				postList = (ArrayList<post>) postList.stream()
+										.filter(x -> x.getCate().equals(cate))	// 해당 카테고리에 속하는 게시글만 추출
+										.collect(Collectors.toList());
+		}
+		
+		// 가공한 값들을 request에 전달
+		request.setAttribute("user", user);
+		request.setAttribute("followList", followList);
+		request.setAttribute("followerList", followerList);
+		request.setAttribute("postList", postList);
+		
+		close(conn);
+		
+		return String.format("user.jsp?part=user&userId=%s", userId);
+	}
 	
 	
 	public boolean update() {

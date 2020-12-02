@@ -17,7 +17,12 @@ public class member_hnd implements main_able{
 		
 		
 		if (part == null) {
-			view = "join_form.jsp";
+			String userId = request.getParameter("userId");
+			if(userId != null) {
+				view = ms.userBefore();
+			} else {
+				view = "join_form.jsp";
+			}
 		}
 		else {
 			switch (part) {
