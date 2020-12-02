@@ -6,6 +6,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%--
+	memberList
+	chatlist
+ --%>
+
+
+
+
  <c:set var="toid" value="${param.toid }" />
 
 <script>

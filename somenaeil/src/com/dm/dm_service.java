@@ -17,8 +17,12 @@ public class dm_service {
 	public dm_service(HttpServletRequest request) {
 		this.request=request;
 	}
-
-	public void dm(ArrayList<chat> list) {
+	
+	/**
+	 * 보낸 채팅내용을 DB에 저장 시키는 메소드
+	 * @param list
+	 */
+	public void dm_insert() {
 		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId();
 		String toid = request.getParameter("toid");
 		String chatcontent = request.getParameter("chatcontent");
@@ -34,40 +38,26 @@ public class dm_service {
 			System.out.println("decode오류");
 		}
 	}
-	
+	/**
+	 * user와 상대의 채팅 내용을 가져오도록 시키는 메소드 
+	 * @return
+	 */
 	public ArrayList<chat> dm_list() {
 		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId(); // 보낸 아이디 (유저 아이디) 
 		String toid = request.getParameter("toid"); //받은 아이디 (상대 아이디)
-		ArrayList<chat> result = null; // return시킬 ArrayList 선언 
+		ArrayList<chat> chatlist = null; // return시킬 ArrayList 선언
 		
-		result = getID(fromid,toid);/// 채팅 내용들을 모두 가져오는 메소드 실행
-		return result;////  가져온 채팅내용들을 return 시킨다.
-	}
-		
-	// 이걸써요
-	public ArrayList<chat> getID(String fromid, String toid) { // db에 있는 내용들을  모두 가져오게하는 메소드
 		dm_dao dd = new dm_dao(); 
-		ArrayList<chat> chatlist = dd.getChatListById(fromid, toid); // return 시킬 ArratList선언과 동시에 getChatListById메소드 실행 
-		return chatlist;
+		chatlist = dd.getChatListById(fromid, toid); /// 채팅 내용들을 모두 가져오는 메소드 실행
+		
+		return chatlist;////  가져온 채팅내용들을 return 시킨다.
 	}
 	
-
-	
-	//리스트 가져오는거였습니다.
-	public ArrayList<chat> dm_other() {
-		String fromid = ((member)request.getSession().getAttribute("sessionUser")).getId();
-		ArrayList<chat> other = null;
-		
-		dm_dao dd = new dm_dao();
-		other = dd.other_list(fromid);
-		
-		return other;
-	}
-	
-	
-	public void view() {
+	/**
+	 * 나랑 대화중인 상대와 마지막 채팅내용을 보여주는 메소드
+	 */
+	public void other_view() {
 		String fromId = ((member) request.getSession().getAttribute("sessionUser")).getId();
-		//String toId = request.getParameter("toid");
 		
 		dm_dao dmDAO = new dm_dao();
 		member_dao memberDAO = new member_dao();
@@ -113,22 +103,11 @@ public class dm_service {
 			String lastChat = dd.insertLastChat(fromId, userId);
 			last.add(lastChat);
 		}
-		
 		// 온전하게 가지고 온 경우
 		if (memberList.size() == last.size()) {
 			request.setAttribute("memberList", memberList);
 			request.setAttribute("lastText", last);
 		}
 		request.setAttribute("otherlist", otherListStr);
-	
-		
-		
-		
-		
-		// toUser가 null일시 
-		
 	}
-	
-	
-	
 }
