@@ -75,26 +75,9 @@ function showmov() {
 	}
 }
 
-$(document).ready(function(){
-	var url = window.location.href;
-	var cate = fullStr.charAt(fullStr.length-1);
-	
-	var park = document.getElementsByName("cate_btn");
-	alert("test");
-		if(cate == R){
-			post_cate(2);
-			park[1].checked = true;
-		}else if(cate == Q){
-			post_cate(1);
-			park[2].checked = true;	
-		}else{
-			post_cate(1);
-			park[0].checked = true;
-		}
-});
+
 
 function post_cate(num) {
-	alert(num);
 	if(num == 2){
 		$('#post_hidden').removeClass('post_cate_hidden');
 	}else{
@@ -515,6 +498,23 @@ $(document).ready(function() {
 	$("#fontSize").change(function(){
 		document.execCommand('fontSize', false, $(this).val());
 	});
+	
+	// 파라미터값 받아와 radio버튼 checked하기	
+	var url = window.location.href;
+	var cate = url.charAt(url.length-1);
+	
+	var cate_T = document.getElementsByName("cate_btn");
+		if(cate == 'R'){
+			post_cate(2);
+			cate_T[1].checked = true;
+		}else if(cate == 'Q'){
+			post_cate(1);
+			cate_T[2].checked = true;	
+		}else{
+			post_cate(1);
+			cate_T[0].checked = true;
+		}
+	
 });
 
 function post_code(){
@@ -616,9 +616,6 @@ function post_in1(){
 	new_post_write.setAttribute("class", "new_post_write");
 	new_post_write.setAttribute("contenteditable", "true");
 	document.getElementById("post_write").appendChild(new_post_write); 
-	
-	alert("성공");
-	
 }
 
 /*	window.onload= function(){
@@ -669,7 +666,6 @@ function file_upload(){
 // 함수내용 이미지 생성 
 
 function add_img(){
-	
 	
 	// 이렇게 할시 fakepath 오류
 	var file_id="file"+(cnt);

@@ -103,9 +103,13 @@ public class post_control extends HttpServlet {
 		if(view==null) {
 			response.sendRedirect("index.jsp");
 		}else {
-			if (!view.contains("#")) {
+			if (!view.endsWith("#")) {
 				RequestDispatcher dsp = request.getRequestDispatcher(view);
 				dsp.forward(request, response);
+			}
+			else {
+				view = view.substring(0, view.length()-1);
+				response.sendRedirect(view);
 			}
 		}
 	}
