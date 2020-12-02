@@ -80,10 +80,10 @@ $().ready(function(){
 
 // 댓글 등록
 function writeCmt() {
-  var form = $("form[name='comment_form']")[0];
+  var form = document.getElementById("comment_form");
 
-  var replyWriterId = form.authorId.value;
-  var replyWriterNick = form.authorNick.value;
+  var replyWriterId = form.replyWriterId.value;
+  var replyWriterNick = form.replyWriterNick.value;
   var postWriterId = form.postWriterId.value;
   var post_num = form.post_num.value;
   var context = form.context.value;
@@ -94,26 +94,7 @@ function writeCmt() {
     return false;
   }
   else if (!replyWriterNick) {
-    alert("로그인 후 댓글 쓰기가 가능합니다.");
+    alert("로그인 후 이용가능합니다.");
     return false;
-  }
-  else {
-    $.ajax({
-      type: "POST",
-      url: "reply.post",
-      data: {
-        "replyWriterId": replyWriterId,
-        "replyWriterNick": encodeURIComponent(replyWriterNick), 
-        "postwriterId": postwriterId,
-        "post_num": post_num, 
-        "context": encodeURIComponent(context)},
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: function (data) {
-        $("#article_footer").load(document.location.href+" #article_footer");
-      },
-      error:function(){
-        alert("실패");
-      },
-    });
   }
 }

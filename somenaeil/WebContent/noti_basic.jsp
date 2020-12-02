@@ -29,11 +29,19 @@
 			<c:choose>
 				<%-- 팔로우 --%>
 				<c:when test="${noti.type == 1}">
-					<div class="noti_newline"><a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_follow"><p>${noti.otherNick}</p>님께서 팔로우 하셨습니다.</a></div>
+					<div class="noti_newline">
+						<a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_follow">
+						<p>${noti.otherNick}</p>님께서 팔로우 하셨습니다.
+						</a>
+					</div>
 				</c:when>
 				<%-- 댓글 --%>
 				<c:when test="${noti.type == 2}">
-					<div class="noti_newline"><a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_scrap"><p>${noti.otherNick}</p>님께서 게시물에 댓글을 작성하셨습니다.</a></div>
+					<div class="noti_newline">
+						<a href="user.do?part=user&userId=${noti.otherId}" class="noti_new_scrap">
+						<p>${noti.otherNick}</p>님께서 <a href="read.post?part=postDetail&pageNum=${noti.postNum}">게시물</a>에 댓글을 작성하셨습니다.
+						</a>
+					</div>
 				</c:when>
 				<%-- 좋아요 --%>
 				

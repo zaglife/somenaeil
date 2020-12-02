@@ -182,6 +182,9 @@ public class noti_dao {
 					+ "		GROUP BY other_id, noti_type, post_num ) p"
 					+ "WHERE p.other_id=? AND p.noti_type=?";
 		
+		// 양쪽 id 값이 존재해야 한다
+		if (id == null || otherId == null) return false;
+		
 		boolean check = false;
 		
 		try {
@@ -218,6 +221,9 @@ public class noti_dao {
 					+ "		(SELECT other_id, noti_type, post_num FROM noti_"+id
 					+ "		GROUP BY other_id, noti_type, post_num ) p "
 					+ "WHERE p.other_id=? AND p.noti_type=? AND p.post_num=?";
+		
+		// 양쪽 id 값이 존재해야 한다
+		if (id == null || otherId == null) return false;
 		
 		boolean check = false;
 		

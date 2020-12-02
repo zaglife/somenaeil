@@ -12,6 +12,7 @@ import java.util.HashMap;
 import com.member.member_dao;
 
 
+
 // TODO post 스크랩 활성화
 // TODO post 방문조회수, 좋아요 늘리기
 
@@ -233,5 +234,119 @@ public class post_dao {
 	}
 	
 	
-
+	/**
+	 * 조회수 증가
+	 * @author gagip
+	 * @param postNum 게시글번호
+	 * @return
+	 */
+    public boolean updateViewCount(int postNum)
+    {
+    	String sql = "UPDATE post SET view_cnt=view_cnt+1 "
+    				+ "WHERE num=?";
+    	
+        boolean result = false;
+        
+        try {
+            // 자동 커밋을 false로 한다.
+            conn.setAutoCommit(false);
+            
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postNum);
+            
+            int flag = pstmt.executeUpdate();
+            if(flag > 0){
+                result = true;
+                conn.commit(); // 완료시 커밋
+            }    
+        } catch (Exception e) {
+            try {
+                conn.rollback(); // 오류시 롤백
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            }
+            throw new RuntimeException(e.getMessage());
+        }
+        
+        close(pstmt);
+        return result;
+    }
+    
+    
+    /**
+     * 좋아요 수 증가
+     * @author gagip
+     * @param postNum
+     * @return
+     */
+    public boolean updateLikeCount(int postNum)
+    {
+    	String sql = "UPDATE post SET like_cnt=like_cnt+1 "
+    				+ "WHERE num=?";
+    	
+        boolean result = false;
+        
+        try {
+            // 자동 커밋을 false로 한다.
+            conn.setAutoCommit(false);
+            
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postNum);
+            
+            int flag = pstmt.executeUpdate();
+            if(flag > 0){
+                result = true;
+                conn.commit(); // 완료시 커밋
+            }    
+        } catch (Exception e) {
+            try {
+                conn.rollback(); // 오류시 롤백
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            }
+            throw new RuntimeException(e.getMessage());
+        }
+        
+        close(pstmt);
+        return result;
+    }
+    
+    
+    /**
+     * 스크랩 수 증가
+     * @author gagip
+     * @param postNum
+     * @return
+     */
+    public boolean updateScrapCount(int postNum)
+    {
+    	String sql = "UPDATE post SET scrap_cnt=scrap_cnt+1 "
+    				+ "WHERE num=?";
+    	
+        boolean result = false;
+        
+        try {
+            // 자동 커밋을 false로 한다.
+            conn.setAutoCommit(false);
+            
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, postNum);
+            
+            int flag = pstmt.executeUpdate();
+            if(flag > 0){
+                result = true;
+                conn.commit(); // 완료시 커밋
+            }    
+        } catch (Exception e) {
+            try {
+                conn.rollback(); // 오류시 롤백
+            } catch (SQLException sqle) {
+                sqle.printStackTrace();
+            }
+            throw new RuntimeException(e.getMessage());
+        }
+        
+        close(pstmt);
+        return result;
+    }
 }

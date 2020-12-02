@@ -94,17 +94,17 @@
 
 			<!-- 댓글 작성 -->
 			<div class="input_comment">
-				<form action="reply.post" method="post" name="comment_form" accept-charset="UTF-8">
-				<input type="hidden" name="part" value="reply">
-				<input type="hidden" name="replyWriterId" value="${sessionId}">
-				<input type="hidden" name="replyWriterNick" value="${sessionUser.nick}">
-				<input type="hidden" name="post_num" value="${post.num}">
-				<input type="hidden" name="postWriterId" value="${post.id}">
-				<div class="comment_id">${sessionUser.nick}</div>
-				<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
-								required maxlength="400">
-				<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력"
-								onclick="writeCmt();">
+				<form id="comment_form" action="reply.post" method="post">
+					<input type="hidden" name="part" value="reply">
+					<input type="hidden" name="replyWriterId" value="${sessionId}">
+					<input type="hidden" name="replyWriterNick" value="${sessionUser.nick}">
+					<input type="hidden" name="post_num" value="${post.num}">
+					<input type="hidden" name="postWriterId" value="${post.id}">
+					<div class="comment_id">${sessionUser.nick}</div>
+					<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
+									required maxlength="400">
+					<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력"
+									onclick="writeCmt()">
 				</form>
 			</div>
 		</div>

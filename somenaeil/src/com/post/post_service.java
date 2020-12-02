@@ -46,6 +46,7 @@ public class post_service {
 		
 		// 포스트 가져오기
 		post pt = postDAO.getPost(pageNum);
+		postDAO.updateViewCount(pageNum);		// 조회수 1 증가
 		
 		// 댓글 가져오기
 		reply_dao replyDAO = reply_dao.getInstance();
@@ -56,6 +57,7 @@ public class post_service {
 		member_dao memberDAO = member_dao.getInstance();
 		memberDAO.setConnection(conn);
 		String pimg = memberDAO.selectMember(pt.getId()).getPimg();
+		
 		
 		// 가져온 post와 댓글들을 request에 전달
 		request.setAttribute("post", pt);
@@ -216,7 +218,9 @@ public class post_service {
 			e.printStackTrace();
 		}
 		
-		
+		// 글쓴이가 존재하지 않다면 종료
+		if (replyWriterId == null || replyWriterId == "")
+			return String.format("read.post?part=postDetail&pageNum=%d#", post_num);
 		
 		// 댓글 DAO 인스턴스 생성
 		Connection conn = getConnection();
