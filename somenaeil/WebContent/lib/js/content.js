@@ -20,9 +20,4 @@ $(".main_menu").on("click", function(){
   sessionStorage.setItem("menuTab", tab_id);
 })
 
-
-
 // TODO 스크롤 내리기 -> post 추가 로드
-
-
-// TODO 상단바 이미지

@@ -36,8 +36,6 @@ public class post {
 		this.time = Calendar.getInstance();
 		this.time.setTime(time);
 		this.title = title;
-		// DB에서 엔터는 \n
-		// jsp에서 엔터는 <br>
 		this.context = context;
 		this.hash = hash;
 	}
@@ -137,6 +135,7 @@ public class post {
 	
 	/**
 	 * 검색 결과 화면에 간단하게 보여줄 게시글 요약
+	 * @author gagip
 	 * @return
 	 */
 	public String getSummaryContext() {
@@ -170,7 +169,6 @@ public class post {
 	public String getThumbnail() {
 		String ctxt = context;
 		String thumbnailTag = null;
-		// <img src="user_img/${}.jpg"
 		Pattern patten = Pattern.compile("<img((\\s)*[\\w\\d-]*(=\"[\\w\\d/.-]+\")*)*>");
 		Matcher matcher = patten.matcher(ctxt);
 		

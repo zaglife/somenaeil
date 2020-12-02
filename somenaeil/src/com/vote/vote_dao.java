@@ -37,7 +37,6 @@ public class vote_dao {
 			pt.executeUpdate();
 			System.out.println("vote 저징 성공");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("vote 저장 실패");
 		}

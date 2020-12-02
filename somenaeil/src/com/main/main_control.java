@@ -29,7 +29,6 @@ public class main_control extends HttpServlet {
      */
     public main_control() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

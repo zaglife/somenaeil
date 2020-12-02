@@ -33,16 +33,15 @@ public class post_service {
 	 * @return
 	 */
 	public String postDetail() {
-		// 선택한 페이지 번호
+		// 페이저 번호를 통해 DB에서 해당 포스트를 가지고 온다
 		int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		
-		// 페이저 번호를 통해 DB에서 해당 포스트를 가지고 온다
-		
+		// 커넥션 및 DB 연결
 		Connection conn = getConnection();
-		
-		// 포스트 가져오기
 		post_dao postDAO = post_dao.getInstance();
 		postDAO.setConnection(conn);
+		
+		// 포스트 가져오기
 		post pt = postDAO.getPost(pageNum);
 		
 		// 댓글 가져오기
@@ -63,7 +62,7 @@ public class post_service {
 	 * @return
 	 */
 	public String postList() {
-		// 검색 옵션 파라미터 값 불러오기
+		// 카테고리 및 검색값 불러오기
 		String cate = request.getParameter("cate");
 		String condition = request.getParameter("condition");
 		
@@ -71,7 +70,9 @@ public class post_service {
 		Connection conn = getConnection();
 		post_dao postDAO = post_dao.getInstance();
 		postDAO.setConnection(conn);
-		ArrayList<post> postList = postDAO.getPostList(cate, condition);
+		
+		ArrayList<post> postList = new ArrayList<post>();
+		postList = postDAO.getPostList(cate, condition);
 		
 		// 결과 값을 request에 전달
 		request.setAttribute("postList", postList);
@@ -207,10 +208,9 @@ public class post_service {
 			e.printStackTrace();
 		}
 		
-		
 		int post_num = Integer.parseInt(request.getParameter("post_num"));
 		
-		// 댓글 인스턴스 생성
+		// 댓글 DAO 인스턴스 생성
 		Connection conn = getConnection();
 		reply_dao replyDAO = reply_dao.getInstance();
 		replyDAO.setConnection(conn);

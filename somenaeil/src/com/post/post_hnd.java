@@ -12,15 +12,13 @@ import com.vote.vote_service;
 public class post_hnd implements post_able {
 
 	@Override
-	public String active(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 포스트 종류(G,A,Q,R)에 따른 페이지 view
-		
+	public String active(HttpServletRequest request, HttpServletResponse response) {	
 		String part = request.getParameter("part");
 		
 		post_service ps = new post_service(request);
 		String view = null;
 				
-		
+		// TODO 전반적인 화면 처리 재정립 필요
 		if (part==null) {
 			view = "index.jsp";
 		}

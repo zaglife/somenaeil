@@ -29,7 +29,6 @@ public class some_control extends HttpServlet {
        
     public some_control() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 

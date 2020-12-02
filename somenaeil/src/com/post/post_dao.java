@@ -12,10 +12,12 @@ import java.util.HashMap;
 import com.member.member_dao;
 
 
+// TODO post 스크랩 활성화
+// TODO post 방문조회수, 좋아요 늘리기
+
 /**
  * SQL DB에 연결하여 저장 및 추출
  * @author gagip
- *
  */
 public class post_dao {
 	private Connection conn;
@@ -35,6 +37,7 @@ public class post_dao {
 
 	/**
 	 * 싱글턴 패턴
+	 * @author gagip
 	 * @return
 	 */
 	public static post_dao getInstance() {
@@ -42,16 +45,14 @@ public class post_dao {
 			instance = new post_dao();
 		return instance;
 	}
-
+	
 	public void setConnection(Connection conn) {
 		this.conn = conn;
 	}
 	
 	
-	// 승재: 저장하기
-	
 	/**
-	 * 게시글 번호로 해당 게시글 DB 호출
+	 * 게시글 번호로 해당 게시글 DB 호출 (SELECT)
 	 * @author gagip
 	 * @param num 게시글 번호
 	 */
@@ -95,6 +96,7 @@ public class post_dao {
 	
 	/**
 	 * 해당 유저가 쓴 게시글 다 불러오기 (SELECT)
+	 * @author gagip
 	 * @param userId 유저 아이디
 	 * @return
 	 */
@@ -137,6 +139,7 @@ public class post_dao {
 	
 	/**
 	 * 검색결과에 따른 post List 호출
+	 * @author gagip
 	 * @param cate 게시글 카테고리 (G, R, Q)
 	 * @param condition 검색 키워드
 	 */
@@ -175,6 +178,7 @@ public class post_dao {
 				pstmt.setString(4, "%"+condition+"%");
 				rs = pstmt.executeQuery();
 			}
+			// TODO 유저 검색
 			// DB 결과를 post에 넣은 뒤, list에 추가
 			while (rs.next()) {
 				post post = new post();
@@ -201,10 +205,6 @@ public class post_dao {
 		return postList;
 	}
 	
-	
-	// TODO post 방문조회수 늘리기
-	
-
 	
 	// post DB에 연결 작업
 	public void add(String writer, String title, String cate, String content, String hash, String filename, String id, int vote) {

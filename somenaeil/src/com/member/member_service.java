@@ -35,20 +35,25 @@ public class member_service {
 		this.request= request;
 	}
 	
+	/**
+	 * 로그인 처리
+	 * @author gagip(수정)
+	 * @return
+	 */
 	public String login() {
 		HttpSession session = request.getSession();
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		
-		// conn 연결 후 해당 연결
+		// conn를 DAO에 연결
 		Connection conn = getConnection();
 		member_dao md = member_dao.getInstance();
 		md.setConnection(conn);
 
-		int loginCheck = md.checkLogin(id, pw);	
 		String result = null;
 		
+		int loginCheck = md.checkLogin(id, pw);	
 		// 로그인 성공
 		if (loginCheck == 1) {
 			member sessionUesr = md.selectMember(id);
@@ -56,11 +61,13 @@ public class member_service {
 			session.setAttribute("sessionUser", sessionUesr);
 			session.setAttribute("sessionId", sessionUesr.getId());
 		}
+		// 비밀번호 불일치
 		else if (loginCheck == 0) {
 			request.setAttribute("fail", "0");
 			
 			result = "login.jsp";
 		}
+		// 존재하지 않는 아이디 (-1)
 		else {
 			request.setAttribute("fail", "-1");
 			
@@ -72,8 +79,10 @@ public class member_service {
 		return result;
 	}
 	
+	
 	/**
 	 * 로그인 세션 삭제
+	 * @author gagip
 	 * @return
 	 */
 	public String logout() {
@@ -84,22 +93,7 @@ public class member_service {
 	}
 	
 
-	public void join() {
-//		String id= request.getParameter("id");
-//		String pw= request.getParameter("pw");
-//		String name= request.getParameter("name");
-//		String nick= request.getParameter("nick");
-//		String email= request.getParameter("email");
-//		String addr= request.getParameter("addr");
-//		int cert= Integer.parseInt(request.getParameter("cert"));
-//		String pimg= request.getParameter("pimg");
-//		String comt= request.getParameter("comt");
-		
-		// 이메일 주소 뒷부분 추가
-//		email+= "@"+addr;
-		// 회원가입 테스트를 위한 이메일 인증
-//		cert= 1;
-		
+	public void join() {		
 		String id= null;
 		String pw= null;
 		String name= null;
@@ -111,7 +105,6 @@ public class member_service {
 		String comt= null;
 		
 //		String path = request.getServletContext().getRealPath("/pimg"); // 호스팅이 있을 경우 사용
-		
 		String path="C:/Users/BYTE505-08/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
 
 
@@ -155,6 +148,7 @@ public class member_service {
 		request.getSession().setAttribute("user", user);
 	}
 	
+	
 	public String pimg_change(String filename, String id, String path) {
 		
 		int pos = filename.lastIndexOf( "." );
@@ -176,18 +170,26 @@ public class member_service {
 		return newFileName;
 	}
 	
-public String user() {
-		
+	
+	/**
+	 * user.jsp에 필요한 정보들 추출 및 가공한 뒤 request에 전달
+	 * @author gagip
+	 * @return
+	 */
+	public String user() {
+		// parameter 값 추출
 		String userId = request.getParameter("userId");
 		String sessionId = (String) request.getSession().getAttribute("sessionId");
 		String cate = request.getParameter("cate");
 		
+		// 추출 및 가공에 필요한 재료
 		member user = null;
 		ArrayList<member> followList = null;
 		ArrayList<member> followerList = null;
 		ArrayList<post> postList = null;
 		String isFollow = null;
 		
+		// DAO 연결
 		Connection conn = getConnection();
 		member_dao memberDAO = member_dao.getInstance();
 		memberDAO.setConnection(conn);
@@ -195,10 +197,13 @@ public String user() {
 		post_dao postDAO = post_dao.getInstance();
 		postDAO.setConnection(conn);
 		
+		// 유저를 가지고 온다
 		user = memberDAO.selectMember(userId);
+		
+		
 		if (user != null) {
-			String follow = user.getFollow();
-			String follower = user.getFollower();
+			String follow = user.getFollow();			// data) id1:id2:id3
+			String follower = user.getFollower();		// data) id1:id2:id3
 			
 			// 팔로우 리스트 추출
 			if (follow != null)
@@ -214,10 +219,11 @@ public String user() {
 			
 			if (cate != null)
 				postList = (ArrayList<post>) postList.stream()
-										.filter(x -> x.getCate().equals(cate))
+										.filter(x -> x.getCate().equals(cate))	// 해당 카테고리에 속하는 게시글만 추출
 										.collect(Collectors.toList());
 		}
 		
+		// 가공한 값들을 request에 전달
 		request.setAttribute("user", user);
 		request.setAttribute("followList", followList);
 		request.setAttribute("followerList", followerList);
@@ -248,7 +254,7 @@ public String user() {
 		memberDAO.setConnection(conn);
 		
 		// DB 업데이트
-		if (pw != "")
+		if (pw == null || pw != "")
 			pwCheck = memberDAO.updateMember(id, pw);
 		updateCheck = memberDAO.updateMember(id, nick, email, cert, pimg, comt);
 		
@@ -267,10 +273,16 @@ public String user() {
 	}
 	
 	
+	/**
+	 * follow 변화가 있을 시 처리
+	 * @author gagip
+	 */
 	public void follow() {
+		// parameter 추출
 		String userId = request.getParameter("userId");
 		String targetId = request.getParameter("targetId");
 		
+		// 커넥션 및 DAO 연결 
 		Connection conn = getConnection();
 		member_dao memberDAO = member_dao.getInstance();
 		memberDAO.setConnection(conn);
@@ -281,20 +293,19 @@ public String user() {
 		String userFollow = memberDAO.selectMember(userId).getFollow();
 		String targetFollower = memberDAO.selectMember(targetId).getFollower();
 		
-		// my와 target의 이전관계
+		// user와 target의 이전관계
 		String isFollow = memberDAO.isFollow(userId, targetId);
-		// my와 target와 관계 업데이트
+		// user와 target와 관계 업데이트
 		boolean check = memberDAO.updateFollow(userId, targetId, 
 							userFollow, targetFollower, isFollow);
 		
 		
 		if (!check)
-			request.setAttribute("fail", -1);
+			request.setAttribute("fail", -1);		// TODO 실패 화면 처리
 		else {
 			// follow를 했을 경우만 알람가기 (이전 관계가 unfollow나 follower였다면)
-			if (isFollow == "unfollow" || isFollow == "follower") {
+			if (isFollow == "unfollow" || isFollow == "follower")
 				notiDAO.insertNoti(userId, targetId, 1);
-			}
 		}
 			
 		

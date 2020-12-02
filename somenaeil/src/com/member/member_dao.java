@@ -18,6 +18,7 @@ import com.cs.cs;
 import com.dm.dm;
 import com.noti.noti;
 
+// TODO member delete (회원탈퇴)
 
 public class member_dao {
 	private Connection conn;
@@ -137,7 +138,7 @@ public class member_dao {
 	 * @param name 이름
 	 * @param nick 닉네임
 	 * @param email 메일
-	 * @param cert 
+	 * @param cert  인증
 	 * @param pimg 프로필 이미지
 	 * @param comt 한 줄 소개
 	 */
@@ -186,13 +187,13 @@ public class member_dao {
 	/**
 	 * Member 데이터 수정 (UPDATE)
 	 * @author gagip(수정)
-	 * @param id
-	 * @param pw
-	 * @param nick
-	 * @param email
-	 * @param cert
-	 * @param pimg
-	 * @param comt
+	 * @param id 아이디
+	 * @param pw 비밀번호
+	 * @param nick 닉네임
+	 * @param email 이메일
+	 * @param cert 인증
+	 * @param pimg 프로필 사진
+	 * @param comt 안줄
 	 * @return
 	 */
 	public boolean updateMember(String id, String nick, String email, 
@@ -274,7 +275,7 @@ public class member_dao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.executeUpdate(); 	// CREATE 구문에서는 -1을 반환
 			
-			// TODO 중복 예외 처리
+			// TODO 중복 예외 처리 (또는 js에서 조건 제한)
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -335,8 +336,8 @@ public class member_dao {
 	/**
 	 * 해당 유저와 어떤 관계인지 확인
 	 * @author gagip
-	 * @param myId 자신의 아이디
-	 * @param targetId 상대방의 아이디
+	 * @param myId 자신 아이디
+	 * @param targetId 상대방 아이디
 	 * @return
 	 */
 	public String isFollow(String myId, String targetId) {
@@ -385,7 +386,7 @@ public class member_dao {
 	}
 	
 	/**
-	 * follow 리스트 수정
+	 * follow 리스트 수정 (UPDATE)
 	 * @author gagip(수정)
 	 * @param myId
 	 * @param targetId
@@ -403,9 +404,10 @@ public class member_dao {
 		// myFollow와 targetFollower를 preRelation에 따라 수정할 필요성 있음
 		// "follow4follow"와 "follow" = my가 target을 follow 했다
 		if (preRelation == "follow4follow" || preRelation == "follow") {
-			myFollow = Stream.of(myFollow.split(":"))				// myFollow 배열을 스트림으로 변환 후
-							.filter(x -> !x.equals(targetId))					// myId를 제외한 모든 요소를 추출 후
-							.collect(Collectors.joining(":"));		// ":"를 구분자로 문자열 생성
+			myFollow = Stream.of(myFollow.split(":"))					// myFollow 배열을 스트림으로 변환 후
+							.filter(x -> !x.equals(targetId))			// myId를 제외한 모든 요소를 추출 후
+							.collect(Collectors.joining(":"));			// ":"를 구분자로 문자열 생성
+			
 			targetFollower = Stream.of(targetFollower.split(":"))
 							.filter(x -> !x.equals(myId))
 							.collect(Collectors.joining(":"));
@@ -428,6 +430,7 @@ public class member_dao {
 			// 자동 커밋 off
 			conn.setAutoCommit(false);
 			
+			// 1차 sql 실행
 			// 쿼리 값 매핑
 			pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, myFollow);
@@ -437,6 +440,7 @@ public class member_dao {
 				commit(conn);
 			close(pstmt);
 			
+			// 2차 sql 실행
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setString(1, targetFollower);
 			pstmt.setString(2, targetId);

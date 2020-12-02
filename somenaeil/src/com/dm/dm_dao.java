@@ -55,7 +55,6 @@ public class dm_dao {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("메세지 불러오기 오류");
 			
@@ -66,7 +65,6 @@ public class dm_dao {
 				if(conn != null) conn.close();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
@@ -112,7 +110,6 @@ public class dm_dao {
 				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("메세지 불러오기 오류");
 		}finally {
@@ -122,7 +119,6 @@ public class dm_dao {
 				if(conn != null) conn.close();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
@@ -147,7 +143,6 @@ public class dm_dao {
 			return ptmt.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("메세지 불러오기 오류");
 			
@@ -158,7 +153,6 @@ public class dm_dao {
 				if(conn != null) conn.close();
 				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		
@@ -231,7 +225,6 @@ public class dm_dao {
 			result = rs.getString("chatcontent");
 		}
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 		
@@ -284,7 +277,6 @@ public class dm_dao {
 //			}
 			return list;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("other_list 불러오기 실패");
 		}
