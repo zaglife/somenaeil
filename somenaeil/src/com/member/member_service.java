@@ -103,9 +103,8 @@ public class member_service {
 		int cert= 1;
 		String pimg= null;
 		String comt= null;
-		
-//		String path = request.getServletContext().getRealPath("/pimg"); // 호스팅이 있을 경우 사용
-		String path="C:/Users/BYTE505-08/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
+		String path = request.getServletContext().getRealPath("/pimg");
+//		String path="C:/Users/BYTE505-08/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
 
 
 		int size= 10 * 1024 * 1024;
@@ -114,7 +113,7 @@ public class member_service {
 		String original= "";
 		
 		try {
-			
+			System.out.println("테스트");
 			
 			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
@@ -126,6 +125,8 @@ public class member_service {
 			addr= multi.getParameter("addr");
 			email+= "@"+addr;
 			comt= multi.getParameter("comt");
+			
+			System.out.println(id);
 			
 			Enumeration files= multi.getFileNames();
 			

@@ -91,14 +91,10 @@ $(document).ready(function(){
 			post_cate(1);
 			park[0].checked = true;
 		}
-				
-	
-	
 });
 
-
-
 function post_cate(num) {
+	alert(num);
 	if(num == 2){
 		$('#post_hidden').removeClass('post_cate_hidden');
 	}else{
