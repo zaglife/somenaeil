@@ -112,4 +112,14 @@ public class dm_service {
 		System.out.println(last);
 		request.setAttribute("otherlist", otherListStr);
 	}
+	
+	public void dm_follow() {
+		String fromid= ((member) request.getSession().getAttribute("sessionUser")).getId();
+		String toid = request.getParameter("toid");
+		
+		member_dao md= new member_dao();
+		
+		String isFollow= md.isFollow(fromid, toid);
+		request.setAttribute("isFollow", isFollow);
+	}
 }

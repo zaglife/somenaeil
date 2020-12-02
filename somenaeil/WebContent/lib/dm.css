@@ -266,6 +266,10 @@
 	border-radius: 0 !important;
 }
 
+.dm_follow_btn {
+	margin: 5px 0 0 35px !important;
+}
+
 .msg_wrap {
 	clear:both;
 	position: relative;

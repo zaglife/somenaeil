@@ -80,11 +80,10 @@
   <a href="noti.some"><img src="img/icon_new_n_30.png"></a>
   <a href="dm.some?part=view"><img src="img/icon_dm_n_30.png"></a>
   <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
-  <a href="user.do?part=user&userId=${sessionUser.id}" id="top_user_login" class=""><img src="pimg/${sessionUser.pimg }"></a>
+  <a href="user.do?part=user&userId=${sessionUser.id}" id="top_user_login" class=""><img src="pimg/${sessionUser.pimg }" onerror="this.src='pimg/pimg_none.jpg'"></a>
 </div>
 </c:if>
 
 </div>
-
 
 <script src="lib/js/top.js"></script>
