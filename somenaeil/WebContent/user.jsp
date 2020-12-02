@@ -31,7 +31,6 @@
 <body>
 <div id="user_wrap">
   <div id="user_top">
-		
 	<c:choose>
 		<c:when test="${user == null}">
 			해당 유저가 존재하지 않습니다
@@ -40,7 +39,7 @@
 			
 		<%-- 해당 유저가 존재 --%>
 		<c:otherwise>
-	<div id="user_img"><img src="pimg/${user.pimg }" onerror="this.src='pimg/pimg_none.jpg'"></div>
+	<div id="user_img"><img src="pimg/${user.pimg}" onerror="this.src='pimg/pimg_none.jpg'"></div>
     <div id="user_info">
       <div id="user_nick">${user.nick}</div>
       <div id="user_ment">${user.comt}</div>

@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -461,6 +462,44 @@ public class member_dao {
 		return result;
 	}
 	
+	public ArrayList<String> idList() {
+		String sql = "select id from member";
+		ArrayList<String> data = new ArrayList<String>();
+		
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			
+			while(rs.next()) {
+				String temp = rs.getString("id");				
+				data.add(temp);
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 회원가입 중복체크 - 아이디 리스트 불러오기 실패");
+		}
+		
+		return data;
+	}
 	
+	public ArrayList<String> nickList() {
+		String sql = "select nick from member";
+		ArrayList<String> data = new ArrayList<String>();
+		
+		try(	Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(sql)) {
+			
+			while(rs.next()) {
+				String temp =	rs.getString("nick");				
+				data.add("'"+temp+"'");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 회원가입 중복체크 - 닉네임 리스트 불러오기 실패");
+		}
+		
+		return data;
+	}
 
 }

@@ -35,63 +35,6 @@ public class member_service {
 		this.request= request;
 	}
 	
-	/**
-	 * 로그인 처리
-	 * @author gagip(수정)
-	 * @return
-	 */
-	public String login() {
-		HttpSession session = request.getSession();
-		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		
-		// conn를 DAO에 연결
-		Connection conn = getConnection();
-		member_dao md = member_dao.getInstance();
-		md.setConnection(conn);
-
-		String result = null;
-		
-		int loginCheck = md.checkLogin(id, pw);	
-		// 로그인 성공
-		if (loginCheck == 1) {
-			member sessionUesr = md.selectMember(id);
-			
-			session.setAttribute("sessionUser", sessionUesr);
-			session.setAttribute("sessionId", sessionUesr.getId());
-		}
-		// 비밀번호 불일치
-		else if (loginCheck == 0) {
-			request.setAttribute("fail", "0");
-			
-			result = "login.jsp";
-		}
-		// 존재하지 않는 아이디 (-1)
-		else {
-			request.setAttribute("fail", "-1");
-			
-			result = "login.jsp";
-		}
-		
-		
-		close(conn);
-		return result;
-	}
-	
-	
-	/**
-	 * 로그인 세션 삭제
-	 * @author gagip
-	 * @return
-	 */
-	public String logout() {
-		request.getSession().removeAttribute("sessionUser");
-		request.getSession().removeAttribute("sessionId");
-		
-		return null;
-	}
-	
 
 	public void join() {		
 		String id= null;
@@ -104,7 +47,7 @@ public class member_service {
 		String pimg= null;
 		String comt= null;
 //		String path = request.getServletContext().getRealPath("/pimg");
-		String path="C:\\Users\\admin\\Desktop\\java\\java jsp\\web\\somenaeil\\somenaeil\\WebContent\\pimg";
+		String path="C:\\Users\\sbk06\\eclipse-workspace\\somenaeil\\somenaeil\\WebContent\\pimg";
 
 
 		int size= 10 * 1024 * 1024;
@@ -113,7 +56,8 @@ public class member_service {
 		String original= "";
 		
 		try {
-			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			MultipartRequest multi = new MultipartRequest(
+					request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 			
 			id= multi.getParameter("id");
 			pw= multi.getParameter("pw");
@@ -136,9 +80,11 @@ public class member_service {
 			System.out.println("member_service - 회원가입시 프로필 이미지 업로드 실패");
 		}
 		
-		// 회원가입시 프사 이미지명 변경 > "pimg_userid.jpg"
-	    pimg= pimg_change(filename, id, path);
-	    
+		if(pimg != null) {
+			// 회원가입시 프사 이미지명 변경 > "pimg_userid.jpg"
+		    pimg= pimg_change(filename, id, path);
+		}
+		
 		member_dao md=new member_dao();
 		md.insertMember(id, pw, name, nick, email, cert, pimg, comt);
 		member user= md.selectMember(id);
@@ -197,7 +143,6 @@ public class member_service {
 		// 유저를 가지고 온다
 		user = memberDAO.selectMember(userId);
 		
-		
 		if (user != null) {
 			String follow = user.getFollow();			// data) id1:id2:id3
 			String follower = user.getFollower();		// data) id1:id2:id3
@@ -231,6 +176,10 @@ public class member_service {
 		return String.format("user.jsp?part=user&userId=%s", userId);
 	}
 	
+	/**
+	 * 사용 안함 / 추후 삭제 예정
+	 * @return
+	 */
 	public String userBefore() {
 		// parameter 값 추출
 		String userId = request.getParameter("userId");
@@ -361,5 +310,17 @@ public class member_service {
 		close(conn);
 	}
 	
-	
+	public String joinCheck() {
+		ArrayList<String> id_list = new ArrayList<String>();
+		ArrayList<String> nick_list = new ArrayList<String>();
+		
+		member_dao md = new member_dao();
+		id_list = md.idList();
+		nick_list = md.nickList();
+		
+		request.setAttribute("id_list", id_list);
+		request.setAttribute("nick_list", nick_list);
+		
+		return "join_form.jsp";
+	}
 }

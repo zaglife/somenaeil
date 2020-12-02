@@ -73,6 +73,7 @@ a.current {
 	height: 60px;
 	right: 0;
 	bottom: 0;
+	object-fit: cover;
 }
 
 .post_info {

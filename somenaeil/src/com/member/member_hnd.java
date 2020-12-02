@@ -14,24 +14,16 @@ public class member_hnd implements main_able{
 		
 		member_service ms = new member_service(request);
 
-		
-		
 		if (part == null) {
 			String userId = request.getParameter("userId");
 			if(userId != null) {
-				view = ms.userBefore();
+				view = ms.user();
 			} else {
-				view = "join_form.jsp";
+				view = ms.joinCheck();
 			}
 		}
 		else {
 			switch (part) {
-			case "login":
-				view = ms.login();
-				break;
-			case "logout":
-				view = ms.logout();
-				break;
 			case "join":
 				ms.join();
 				break;

@@ -30,11 +30,10 @@
                 <img class="tab_thumb" src="img/cate_q_s.png">
               </c:when>
             </c:choose>
-            <a href="user.jsp">
-              <img class="user_thumb" src="img/profile01.jpg"/>
+            <a href="user.do?part=user&userId=${post.id}">
+              <img class="user_thumb" src="pimg/${post.pimg}" onerror="this.src='pimg/pimg_none.jpg'" />
             </a>
           </div>
-          
           <div class="post_info">
             <div class="post_auth"><a href="user.do?part=user&userId=${post.id}">${post.nick}</a></div>
             <div class="post_date">${post.time}</div>
@@ -98,8 +97,8 @@
                 <img class="tab_thumb" src="img/cate_q_s.png">
               </c:when>
             </c:choose>
-            <a href="user.jsp">
-              <img class="user_thumb" src="img/profile01.jpg"/>
+            <a href="user.do?part=user&userId=${post.id}">
+              <img class="user_thumb" src="pimg/${post.pimg}" onerror="this.src='pimg/pimg_none.jpg'" />
             </a>
           </div>
           

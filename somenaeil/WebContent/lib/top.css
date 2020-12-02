@@ -182,11 +182,12 @@
 
 #top_user_login img {
 	width: 60px;
-	height: auto;
+	height: 60px;
 	margin: -17px 0 0 -10px;
 	border: 3px solid #80ca7c;
 	border-radius: 40px;
 	overflow: hidden;
+	object-fit: cover;
 }
 
 .login_success {

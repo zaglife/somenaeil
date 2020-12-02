@@ -49,8 +49,8 @@
 <div class="dropdown d_hide">
 
 	<c:if test="${sessionScope.sessionUser == null}">
-		<a href="login.jsp">로그인</a>
- 		<a href="join.jsp">회원가입</a>
+		<a href="login.do">로그인</a>
+ 		<a href="join.do">회원가입</a>
 	</c:if>
 	<c:if test="${sessionScope.sessionUser != null}">
     <a href="index.jsp">메인 페이지</a>
@@ -69,8 +69,7 @@
 <c:if test="${sessionScope.sessionUser == null}">
 <div id="top_menu">
   <div class="top_menu_btn" onclick="dropdown();"><img src="img/icon_menu_30.png"></div>
-  <!-- 로그인시 프로필 사진으로 대체 -->
-  <a href="login.jsp"><img src="img/icon_profile_30.png"></a>
+  <a href="login.do"><img src="img/icon_profile_30.png"></a>
 </div>
 </c:if>
 
@@ -87,5 +86,4 @@
 </c:if>
 
 </div>
-
 <script src="lib/js/top.js"></script>

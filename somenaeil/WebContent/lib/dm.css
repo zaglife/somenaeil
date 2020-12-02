@@ -31,8 +31,8 @@
 }
 
 .dm_new img{
-	width: 100%;
-	height: auto;
+	width: 70px;
+	height: 70px;
 	border-radius: 11px;
 	
 	cursor: pointer;
@@ -42,6 +42,8 @@
 	
 	transition: transform .2s ease, opacity .2s ease;
 	-webkit-transition: transform .2s ease, opacity .2s ease;
+	
+	object-fit: cover;
 }
 
 .dm_new img:hover{
@@ -483,9 +485,10 @@
 }
 
 .dm_set_popup_pimg img {
-	width: 100%;
-	height: auto;
+	width: 50px;
+	height: 50px;
 	border-radius: 30px;
+	object-fit: cover;
 }
 
 .dm_set_popup_name {

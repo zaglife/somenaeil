@@ -3,13 +3,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:if test="${fail }">
-  <script>
-    alert("아이디 또는 비밀번호가 잘못되었습니다.");
-  </script>
-  <c:remove var="fail" scope="session" />
-</c:if>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,27 +12,39 @@
 
 <jsp:include page="css.jsp" />
 
+<script>
+<c:if test="${fail.equals('0') }">
+alert("아이디 또는 비밀번호가 잘못되었습니다.");
+</c:if>
+
+<c:if test="${fail.equals('-1') }">
+alert("존재하지 않는 아이디입니다.");
+</c:if>
+</script>
+
+<%-- remove 동작 안함 --%>
+<c:remove var="fail"/>
+
 </head>
 <body>
   <div id="login_main">
-  
     <!-- Login Top -->
 	<div id="login_title">    
 	<div id="login_title_text">로그인</div>
     </div>
     
     <!-- Login body -->
-    <form method="post" action="login.do">
+    <form method="post" action="login.do" id="loginForm">
     <input type="hidden" name="part" value="login">
     <div id="login_body"> 
 	  <div id="login_body_text">
 	  
 	    <div id="lb_text_left">
-		  <input type='text' placeholder="아이디" name="id"> 
-		  <input type='password' placeholder="••••" name="pw">
+		  <input type='text' placeholder="아이디" name="id" id="login_id"> 
+		  <input type='password' placeholder="••••" name="pw" id="login_pw">
 	    </div>
 	    
-	    <button id="login_bt">로그인</button>
+	    <input type="button" id="login_bt" onclick="loginCheck()" value="로그인">
 	    
 	    <div id="lb_bt">
 		  <input type="checkbox" id="login_ing">

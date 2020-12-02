@@ -265,7 +265,7 @@
 
 .jfe_name { margin: 25px 0 0 145px; }
 .jfe_email { margin: 89px 0 0 448px; }
-.jfe_pw { margin: 206px 0 0 66px; }
+.jfe_pw { margin: 266px 0 0 354px; }
 .jfe_pimg { margin: 85px 0 0 112px; width: 340px; }
 .jfe_comment1 { margin: 347px 0 0 0; }
 .jfe_comment2 {
@@ -274,10 +274,7 @@
 	margin: 347px 30px 0 0;
 }
 .jfe_nick { margin: 233px 0 0 130px; }
-.jfe_nick_match {
-	color: #d25f5f;
-	margin: 216px 0 0 130px;
-}
+
 .jfe_id { margin: 147px 0 0 180px; }
 
 .jf_pwo {
@@ -324,21 +321,6 @@
 	margin: -10px 0 5px 0;
 }
 
-.jf_pw_incorrect {
-	float: left;
-    font-size: 12px;
-    color: #d25f5f;
-    margin: 25px 0 0 3px;
-}
-
-.jf_pw_correct {
-	display: none;
-	float: left;
-    font-size: 12px;
-    color: #91c38e;
-    margin: 25px 0 0 3px;
-}
-
 #join_form_open {
 	float: left;
 	position: relative;
@@ -364,8 +346,9 @@
 }
 
 .pimg_upload {
-	width: 100%;
-	height: auto;
+	width: 90px;
+	height: 90px;
+	object-fit: cover;
 }
 
 #join_form_pimg_btn2 {
@@ -480,7 +463,57 @@
 	background: #edf8e6;
 	font-size: 16px;
 	font-weight: 900;
+	cursor: pointer;
 }
+
+#join_form_clear:hover {
+	opacity: .7;
+}
+
+/* 아이디, 닉네임 중복체크 및 비밀번호 체크 */
+
+.jfe_id_match {
+	float: left;
+	position: absolute;
+	font-size: 12px;
+	color: #91c38e;
+	margin: 147px 0 0 127px;
+}
+
+.jfe_id_mismatch {
+	float: left;
+	position: absolute;
+	font-size: 12px;
+	color: #d25f5f;
+	margin: 147px 0 0 127px;
+}
+
+.jfe_nick_match {
+	color: #91c38e;
+	margin: 216px 0 0 130px;
+}
+
+.jfe_nick_mismatch {
+	color: #d25f5f;
+	margin: 216px 0 0 130px;
+}
+
+.jfe_pw_match {
+	float: left;
+    font-size: 12px;
+    color: #91c38e;
+    margin: 10px 0 0 8px;
+}
+
+.jfe_pw_mismatch {
+	float: left;
+    font-size: 12px;
+    color: #d25f5f;
+    margin: 10px 0 0 8px;
+}
+
+
+
 
 /* join_form 이름, 이메일 뒤 밑줄*/
 #jf_name_back {
@@ -575,6 +608,7 @@
 	height: 90px;
 	margin: 5px;
 	border-radius: 60px;
+	object-fit: cover;
 }
 
 

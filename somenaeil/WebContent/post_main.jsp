@@ -10,9 +10,9 @@
 <meta charset="UTF-8">
 
 <title>some, 내일</title>
-<link rel="stylesheet" href="lib/popup.css">
+
 <jsp:include page="css.jsp" />
-<script type="text/javascript" src="post_main.js"></script>
+
 </head>
 <body>
 
