@@ -142,6 +142,16 @@ $(document).ready(function(){
 <%-- popup end --%>
 
 
+<%-- admin account's properties --%>
+<c:if test="${sessionId != null }">
+<c:if test="${sessionId eq 'sbk0606' || sessionId eq 'slea1' || sessionId eq 'gagip'}">
+<div id="admin_write">
+  <a href="info.do?part=job_write">채용정보 글쓰기</a>
+  <a href="info.do?part=cs_write">고객센터 글쓰기</a>
+</div>
+</c:if>
+</c:if>
+
 <jsp:include page="top.jsp" />
 <jsp:include page="totop.jsp" />
 

@@ -17,6 +17,22 @@
 <jsp:include page="css.jsp" />
 
 
+<script>
+function login_alert() {
+	$('#login_alert').removeClass('login_alert_dis');
+	setTimeout(function() {
+		$('#login_alert').removeClass('login_alert_opa');
+	}, 1);
+	
+	setTimeout(function() {
+		$('#login_alert').addClass('login_alert_opa');
+	}, 3000);
+	setTimeout(function() {
+		$('#login_alert').addClass('login_alert_dis');
+	}, 3100);
+}
+</script>
+
 <!--
   parameter 및 attribute 설명
   - user: user.jsp의 member
@@ -64,8 +80,15 @@
 				<%-- 언팔로우 아이콘을 보여준다 () --%>
 				<c:if test="${sessionId == null}">
 					<button class="user_follow_btn">
-						<img src="img/noti_follow_n_20.png" onclick="changeFollow('${sessionId}', '${user.id}')">
+						<img src="img/noti_follow_n_20.png" onclick="login_alert()">
 					</button>
+					
+					
+          <div id="login_alert" class="login_alert_opa login_alert_dis">
+            <p>로그인이 필요한 서비스입니다.</p>
+            <a href="login.do">로그인</a>
+          </div>
+					
 				</c:if>
 				
 				<%-- 유저와의 관계를 파악하여 아이콘을 보여준다 --%>
@@ -98,7 +121,7 @@
     <a href="user.do?part=user&userId=${user.id}&cate=G">G일반</a>
     <a href="user.do?part=user&userId=${user.id}&cate=R">R리뷰</a>
     <a href="user.do?part=user&userId=${user.id}&cate=Q">Q질문</a>
-    <a href="user.do?state=userScrap">S스크랩</a>
+    <a href="#">S스크랩</a>
     <div id="cate_focus"></div>
   </div>
 </div>

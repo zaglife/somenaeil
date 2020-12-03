@@ -151,3 +151,22 @@ select {
 	border-bottom-right-radius: 15px !important;
 }
 
+#admin_write {
+	float: left;
+	position: fixed;
+	left: 0;
+	bottom : 0;
+	margin: 20px;
+}
+
+#admin_write a {
+	clear: both;
+	float: left;
+	position: relaitve;
+	margin: 3px;
+	padding: 3px 10px;
+	font-size: 12px;
+	border: 1px solid #80ca7c;
+	border-radius: 5px;
+	background: #edf8e6;
+}
