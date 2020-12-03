@@ -38,7 +38,7 @@ public class noti_dao {
 	 * @author gagip
 	 * @param fromId 보내는 유저 id
 	 * @param toId 받는 유저 id
-	 * @param type 알람 타입 (1:팔로우; 2:댓글; 3:좋아요; 4:스크랩)
+	 * @param type 알람 타입 (1:팔로우; 2:댓글; 3:좋아요; 4:스크랩, 5:dm)
 	 */
 	public void insertNoti(String fromId, String toId, int type) {
 		String sql = "INSERT INTO noti_"+toId+"(num, other_id, noti_type, time) "
@@ -47,8 +47,8 @@ public class noti_dao {
 		// 자기자신한테 알람 X
 		if (fromId.equals(toId)) return;
 		
-		// 중복된 값이 존재하나 체크
-		if (checkDuplicate(fromId, toId, type)) return;
+		// 중복된 값이 존재하나 체크 (dm 예외)
+		if (checkDuplicate(fromId, toId, type) && type != 5) return;
 		
 		try {
 			conn.setAutoCommit(false);
