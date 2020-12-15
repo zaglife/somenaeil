@@ -118,7 +118,7 @@ $(document).ready(function(){
     </div>
             
     <div id="job_click_body">
-      ${job.getContent() }
+      ${job.getCont() }
     </div>
     
     <div id="job_click_bottom">

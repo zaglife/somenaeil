@@ -17,7 +17,6 @@ function pimg_show(event) {
 		img.setAttribute("src", event.target.result);
 		img.setAttribute("class", "pimg_upload");
 		document.querySelector("div#join_form_pimg_back").appendChild(img);
-
 	};
 	reader.readAsDataURL(event.target.files[0]);
 }

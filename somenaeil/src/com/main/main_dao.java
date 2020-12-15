@@ -11,7 +11,7 @@ public class main_dao {
 	
 	public main_dao(){
 		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("main_dao - 실패");

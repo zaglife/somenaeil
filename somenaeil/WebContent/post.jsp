@@ -57,7 +57,7 @@
 			<!-- content (글, 이미지, 해시태그)-->
 			<div class="article_content">
 			
-				${post.context}
+				${post.content}
 
 				<div class="article_hashTag">
 					<c:forTokens items="${post.hash}" var="hash" delims=",">
@@ -73,7 +73,7 @@
 					<!-- 댓글 5개 보여주기 -->
 					<c:forEach items="${replyList}" var="reply" varStatus="cur" end="4">
 						<div class="comment_id"><a href="user.do?part=user&userId=${reply.id}">${reply.nick}</a></div>
-						<div class="comment_context">${reply.context}</div>
+						<div class="comment_content">${reply.content}</div>
 					</c:forEach>
 					
 					
@@ -81,7 +81,7 @@
 					<div class="comment_hidden">
 						<c:forEach items="${replyList}" var="reply" varStatus="cur" begin="5">
 							<div class="comment_id"><a href="user.do?part=user&userId=${reply.id}">${reply.nick}</a></div>
-							<div class="comment_context">${reply.context}</div>
+							<div class="comment_content">${reply.content}</div>
 						</c:forEach>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 					<input type="hidden" name="post_num" value="${post.num}">
 					<input type="hidden" name="postWriterId" value="${post.id}">
 					<div class="comment_id">${sessionUser.nick}</div>
-					<input class="comment_context" type="text" name="context" placeholder="댓글을 입력하세요"
+					<input class="comment_content" type="text" name="content" placeholder="댓글을 입력하세요"
 									required maxlength="400">
 					<input class="comment_send" type="image" src="img/icon_send_20.png" alt="댓글입력"
 									onclick="writeCmt()">
@@ -116,5 +116,4 @@
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />
 
-<script src="lib/js/post.js"></script>
 </body>

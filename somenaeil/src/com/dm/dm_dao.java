@@ -14,7 +14,7 @@ public class dm_dao {
 	
 	public dm_dao(){
 		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("post DB 커넥션 실패");

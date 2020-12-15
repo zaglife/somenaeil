@@ -54,7 +54,7 @@ public class reply_dao {
 			conn.setAutoCommit(false);
 			
 			String sql = "INSERT INTO reply"
-						+ "		(num, post_num, id, nick, time, parent, context)"
+						+ "		(num, post_num, id, nick, time, parent, content)"
 						+ "		VALUES(?,?,?,?,sysdate,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
@@ -63,7 +63,7 @@ public class reply_dao {
 			pstmt.setString(3, rep.getId());
 			pstmt.setString(4, rep.getNick());
 			pstmt.setInt(5, rep.getParent());
-			pstmt.setString(6, rep.getContext());
+			pstmt.setString(6, rep.getContent());
 			
 			// 완료시 커밋
 			if (pstmt.executeUpdate() > 0) {
@@ -95,7 +95,7 @@ public class reply_dao {
 		ArrayList<reply> list = new ArrayList<reply>();
 		
 		try {
-			String sql = "SELECT LEVEL, num, post_num, id, nick, time, parent, context "
+			String sql = "SELECT Lvl, num, post_num, id, nick, time, parent, content "
 						+ "FROM reply "
 						+ "WHERE post_num=? "
 						+ "START WITH parent=0 "
@@ -107,14 +107,14 @@ public class reply_dao {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				reply rep = new reply();
-				rep.setLevel(rs.getInt("LEVEL"));
+				rep.setLvl(rs.getInt("Lvl"));
 				rep.setNum(rs.getInt("num"));
 				rep.setPost_num(rs.getInt("post_num"));
 				rep.setId(rs.getString("id"));
 				rep.setNick(rs.getString("nick"));
 				rep.setTime(rs.getDate("time"));
 				rep.setParent(rs.getInt("parent"));
-				rep.setContext(rs.getString("context"));
+				rep.setContent(rs.getString("content"));
 				
 				list.add(rep);
 			}

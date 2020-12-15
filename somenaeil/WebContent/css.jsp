@@ -18,7 +18,6 @@
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="some_icon_pack/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-    
 
 <link rel="stylesheet" type="text/css" href="lib/somenaeil_fonts.css">
 <link rel="stylesheet" type="text/css" href="lib/common.css">
@@ -27,30 +26,32 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-
-<script src="lib/js/post_main.js"></script>
 <script src="lib/js/login.js"></script>
 
 
 <link rel="stylesheet" href="lib/index.css">
 <link rel="stylesheet" href="lib/content.css">
-
 <link rel="stylesheet" href="lib/top.css">
 <link rel="stylesheet" href="lib/bottom.css">
-<link rel="stylesheet" href="lib/user.css">
 <link rel="stylesheet" href="lib/dm.css">
 <link rel="stylesheet" href="lib/noti.css">
 <link rel="stylesheet" href="lib/search.css">
-
-<link rel="stylesheet" href="lib/post_main.css">
-<link rel="stylesheet" href="lib/popup.css">
-<link rel="stylesheet" href="lib/post.css">
-
 <link rel="stylesheet" href="lib/join.css">
 <link rel="stylesheet" href="lib/login.css">
 <link rel="stylesheet" href="lib/cs.css">
 <link rel="stylesheet" href="lib/job.css">
 <link rel="stylesheet" href="lib/info.css">
+
+<%-- 유저 --%>
+<script src="lib/js/user.js"></script>
+<link rel="stylesheet" href="lib/user.css">
+
+<%-- 포스팅 --%>
+<script src="lib/js/post.js"></script>
+<script src="lib/js/post_main.js"></script>
+<link rel="stylesheet" href="lib/post.css">
+<link rel="stylesheet" href="lib/post_main.css">
+<link rel="stylesheet" href="lib/popup.css">
 
 <%-- 스펙트럼 --%>
 <script src="lib/spectrum.js"></script>

@@ -28,9 +28,9 @@ public class connection_pool extends HttpServlet{
 		}
 	}
 	public void pool()  { // 오라클 로그인작업
-		String url = "jdbc:oracle:thin:@175.203.68.186:1521:orcl";
-		String user = "somenaeil";
-		String pw = "byte1026";
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+		String user = "some";
+		String pw = "123456";
 		
 		ConnectionFactory conn = new DriverManagerConnectionFactory(url, user, pw);
 		PoolableConnectionFactory pool = new PoolableConnectionFactory(conn,null);
@@ -48,7 +48,7 @@ public class connection_pool extends HttpServlet{
 		try {
 			Class.forName("org.apache.commons.dbcp2.PoolingDriver");
 			PoolingDriver driver = (PoolingDriver)DriverManager.getDriver("jdbc:apache:commons:dbcp:");
-			driver.registerPool("somenaeil", conpool);
+			driver.registerPool("some", conpool);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("커넥션 풀 실패");

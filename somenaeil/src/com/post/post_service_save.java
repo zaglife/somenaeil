@@ -1,5 +1,6 @@
 package com.post;
 
+
 import static com.common.DBUtil.*;
 import java.net.URLDecoder;
 import java.sql.Connection;
@@ -22,10 +23,10 @@ import com.vote.vote_dao;
  * 요청한 post 데이터를 클라이언트에게 반환
  * @author gagip
  */
-public class post_service {
+public class post_service_save {
 	private HttpServletRequest request;
 	
-	public post_service(HttpServletRequest request) {
+	public post_service_save(HttpServletRequest request) {
 		this.request=request;
 	}
 	
@@ -102,26 +103,96 @@ public class post_service {
 	 */
 	public String post_insert() {
 		// post DB에 들어갈 변수 선언
-		String id = ((member)request.getSession().getAttribute("sessionUser")).getId();
-		String nick = ((member)request.getSession().getAttribute("sessionUser")).getNick();
-		String title = request.getParameter("title");
-		String cate = request.getParameter("cate_btn");
-		String content = request.getParameter("content");
+		String writer = ((member)request.getSession().getAttribute("sessionUser")).getNick();
+		String writerId = ((member)request.getSession().getAttribute("sessionUser")).getId();
+		int vote = 0;
+		String path = request.getServletContext().getRealPath("/user_img");
+		int size = 10*1024*1024;
+		String post_title = null;
+		String post_cate = null;
+		String[] post_temp = null;
+		String post_hash = "";
+		String post_context = null;
+		String[] fname = new String[5];
 		
-		String[] hash_temp = request.getParameterValues("hash");
-		String hash = "";
+		// vote DB에 들어갈 변수 선언
+		String vote_title = null;
+		String[] vote_temp = null;
+		String vote_items = "";
+		int vote_muit = 0;
+		int vote_hidden = 0;
+		int vote_stat = 0;
+		int vote_date = 0;
+		String vote_day = null;
+		String[] vote_temp2 = null;
+		String vote_chk = null;
 		
-		if(hash_temp != null) {
-			for(int i = 0; i < hash_temp.length; i++) {
-				hash += hash_temp[i] +",";
+		
+		try {
+			MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
+			
+			post_title = multi.getParameter("title");
+			post_cate = multi.getParameter("cate_btn");
+			post_temp = multi.getParameterValues("hash");
+			
+			if(post_temp != null) {
+				for(int i = 0; i < post_temp.length; i++) {
+					post_hash += post_temp[i] +",";
+				}
+				post_hash += post_temp[post_temp.length-1];
 			}
-			hash += hash_temp[hash_temp.length-1];
+			post_context = multi.getParameter("context");
+			
+			Enumeration em = multi.getFileNames();
+			int k = 0;
+			while(em.hasMoreElements()) {
+				String file = (String)em.nextElement();
+				fname[k++] = multi.getFilesystemName(file);
+				
+			}
+			// parameter vote에 use값이 들어오면 실행
+			vote_chk = multi.getParameter("vote");
+			if(vote_chk.equals("use")) {
+				vote = 1;
+				vote_title = multi.getParameter("title");
+				vote_temp = multi.getParameterValues("items");
+				
+				if(vote_temp != null) {
+					for(int i = 0; i < vote_temp.length; i++) {
+						vote_items += vote_temp[i] +",";
+					}
+					vote_items += vote_temp[vote_temp.length-1];
+				}
+				vote_temp2 = multi.getParameterValues("choice");
+				if(vote_temp2 != null) {
+					for(int i = 0; i < vote_temp2.length; i++) {
+						if(vote_temp2[i].equals("muit")) 
+							vote_muit = 1;
+						else if(vote_temp2[i].equals("hidden")) {
+							vote_hidden = 1;				
+						}else if(vote_temp2[i].equals("stat"))
+							vote_stat = 1;
+						else if(vote_temp2[i].equals("date")) {
+							vote_date = 1;
+							vote_day = multi.getParameter("day");
+						}
+					}
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("이미지 저장 실패");
 		}
-
+		String filename = fname[0] + "," + fname[1] + "," + fname[2] + "," + fname[3] + "," + fname[4];
+		
 		post_dao pd = new post_dao();
-		pd.add(id, nick, cate, title, content, hash);
-
-		return null; // DB에 저장만하면되니까 null
+//		pd.add(writer, post_title, post_cate, post_context, post_hash, filename, writerId ,vote);
+		
+		if(vote_chk.equals("use")) {
+			vote_dao vd = new vote_dao();
+			vd.add(writer, vote_title, vote_items, vote_muit, vote_stat, vote_hidden, vote_date, vote_day);
+		}					
+		return null; // DB에 저장만하면되니까 null;
 	}
 	
 	
@@ -142,7 +213,8 @@ public class post_service {
 		try {
 			replyWriterNick = URLDecoder.decode(replyWriterNick, "UTF-8");
 			content = URLDecoder.decode(content, "UTF-8");
-		} catch(Exception e) {
+		}
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		

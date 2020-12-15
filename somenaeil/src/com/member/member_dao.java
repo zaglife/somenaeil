@@ -30,7 +30,7 @@ public class member_dao {
 	
 	public member_dao(){
 		try {
-			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("member_dao - member DB 커넥션 실패");
@@ -233,28 +233,28 @@ public class member_dao {
 	public boolean updateMember(String id, String pw) {
 		String sql = "UPDATE member SET pw=? "
 				+ "WHERE id=?";
-	boolean result = false;
-	
-	try	{
-		// 자동 커밋 off
-		conn.setAutoCommit(false);
+		boolean result = false;
 		
-		// sql 값 매핑
-		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, pw);
-		pstmt.setString(2, id);
-		
-		if (pstmt.executeUpdate() > 0) {
-			commit(conn);
-			result = true;
+		try	{
+			// 자동 커밋 off
+			conn.setAutoCommit(false);
+			
+			// sql 값 매핑
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pw);
+			pstmt.setString(2, id);
+			
+			if (pstmt.executeUpdate() > 0) {
+				commit(conn);
+				result = true;
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+			System.out.println("member_dao - 회원정보수정 실패");
 		}
-	} catch(SQLException e) {
-		e.printStackTrace();
-		System.out.println("member_dao - 회원정보수정 실패");
-	}
-	
-	close(pstmt);
-	return result;
+		
+		close(pstmt);
+		return result;
 	}
 	
 	/**
@@ -301,8 +301,6 @@ public class member_dao {
 									Stream.of(idList)
 									.map(x -> "'"+x+"'")					// x를 문자열('x')로 변환
 									.collect(Collectors.joining(",")));		// 값들 사이에 반점(,)
-		
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -327,7 +325,6 @@ public class member_dao {
 			e.printStackTrace();
 			System.out.println("member_dao - <팔로우 리스트> 다른 유저 정보 불러오기 실패");
 		}
-		
 		close(rs);
 		close(pstmt);
 		return memberList;
@@ -381,6 +378,7 @@ public class member_dao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("member_dao - <isFollow> 팔로우 상태  확인 실패");
 		}
 		
 		close(rs);
@@ -401,8 +399,6 @@ public class member_dao {
 		String sql2 = "UPDATE member SET follower=? WHERE id=?";
 
 		boolean result = false;
-		
-		
 		
 		// myFollow와 targetFollower를 preRelation에 따라 수정할 필요성 있음
 		// "follow4follow"와 "follow" = my가 target을 follow 했다
@@ -456,6 +452,7 @@ public class member_dao {
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("member_dao - <updateFollow> 팔로우 업데이트 실패");
 		}
 		
 		close(pstmt);

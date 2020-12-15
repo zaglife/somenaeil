@@ -435,17 +435,15 @@ function submit1(){
 	f.appendChild(i); // form 엘리멘트에 input 엘리멘트 추가 
 
 	f.submit();
-	
 }
 
 // 서버로 보낼때 방법 2
 function submit2(){
 	
 	document.getElementById("post_write1").setAttribute("contenteditable","false");
-	var context = $("#post_write").html();
-	$("#context").val(context);
+	var content = $("#post_write").html();
+	$("#content").val(content);
 	var f = document.getElementById("form");
-	
 	
 	f.submit();
 }
@@ -455,23 +453,23 @@ function submit2(){
 document.execCommand('styleWithCSS', false, true);
 document.execCommand('insertBrOnReturn', false, true);
 $(document).ready(function() {
-	$("#post_write1").focus();
+	$("#post_write").focus();
     $('button').click(function(){
         document.execCommand($(this).attr('id'), false, true);
       });
-	$('#post_bold').click(function() {
+	$('#bold').click(function() {
 		document.execCommand('bold', false, true);
 	});
 	$('#selectAll').click(function() {
 		document.execCommand('selectAll', false, true);
 	});
-	$('#post_italic').click(function() {
+	$('#italic').click(function() {
 		document.execCommand('italic', false, true);
 	});
-	$("#post_underline").click(function() {
+	$("#underline").click(function() {
 		document.execCommand('underLine', false, true);
 	});
-	$("#post_strike").click(function() {
+	$("#strike").click(function() {
 		document.execCommand('strikeThrough', false, true);
 	});
 	$("#justifyLeft").click(function() {
@@ -504,6 +502,10 @@ $(document).ready(function() {
 	var cate = url.charAt(url.length-1);
 	
 	var cate_T = document.getElementsByName("cate_btn");
+	
+	console.log(cate_T.length);
+	
+	if(cate_T.length != 0){
 		if(cate == 'R'){
 			post_cate(2);
 			cate_T[1].checked = true;
@@ -514,7 +516,7 @@ $(document).ready(function() {
 			post_cate(1);
 			cate_T[0].checked = true;
 		}
-	
+	}
 });
 
 function post_code(){

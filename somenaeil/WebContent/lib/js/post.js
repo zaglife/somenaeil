@@ -5,14 +5,14 @@ function more_comment() {
   // 히든 박스에 있는 요소들 찾기
   var parent = $(".comment_hidden").parent();									// visualable comment box
   var c_id = $(".comment_hidden > .comment_id");							
-  var c_context = $(".comment_hidden > .comment_context");		 
+  var c_content = $(".comment_hidden > .comment_content");		 
   
   // 5개씩 댓글 추가로 보여주기
   for (var i=0; i<5; i++) {
     if (i >= c_id.length) break;
     
     parent.append(c_id[i]);
-    parent.append(c_context[i]);
+    parent.append(c_content[i]);
   }
   check_comment();
 }
@@ -86,10 +86,10 @@ function writeCmt() {
   var replyWriterNick = form.replyWriterNick.value;
   var postWriterId = form.postWriterId.value;
   var post_num = form.post_num.value;
-  var context = form.context.value;
+  var content = form.content.value;
 
   // 필수 항목에 내용이 존재하지 않는 경우
-  if(!context) {
+  if(!content) {
     alert("댓글 내용 입력해주세요.");
     return false;
   }

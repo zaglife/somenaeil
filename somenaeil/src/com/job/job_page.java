@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class job_page {
 	private int total;
 	private int currentPage;
-	private ArrayList<job> content;
+	private ArrayList<job> cont;
 	private int totalPage;
 	private int startPage;
 	private int endPage;
@@ -13,10 +13,10 @@ public class job_page {
 	public job_page(	int total,
 						int currentPage,
 						int size,
-						ArrayList<job> content) {
+						ArrayList<job> cont) {
 		this.total= total;
 		this.currentPage= currentPage;
-		this.content= content;
+		this.cont= cont;
 		
 		if(total == 0) {
 			totalPage= 0;
@@ -55,11 +55,11 @@ public class job_page {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
-	public ArrayList<job> getContent() {
-		return content;
+	public ArrayList<job> getCont() {
+		return cont;
 	}
-	public void setContent(ArrayList<job> content) {
-		this.content = content;
+	public void setCont(ArrayList<job> cont) {
+		this.cont = cont;
 	}
 	public int getTotalPage() {
 		return totalPage;

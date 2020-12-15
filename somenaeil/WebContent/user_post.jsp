@@ -48,7 +48,7 @@
         <!-- post_content start -->
         <div class="post_content">
           <a href="read.post?part=postDetail&pageNum=${post.num}">
-            <p>${post.getSummaryContext()}</p>
+            <p>${post.getSummaryContent()}</p>
           </a>
         </div>
         <!-- post_content end -->
@@ -120,7 +120,7 @@
             <div class="post_thumb"><a href="post.jsp"><img src="img/sample01.jpg"></a></div>
           </div>
           <a href="post.jsp">
-            <p>${post.getSummaryContext()}</p>
+            <p>${post.getSummaryContent()}</p>
           </a>
         </div>
         <!-- post_content end -->

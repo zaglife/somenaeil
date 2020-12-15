@@ -21,7 +21,7 @@ public class post {
 	private String cate;		// 게시글 카테고리
 	private Calendar time;		// 작성 날짜
 	private String title;		// 게시글 제목
-	private String context;		// 게시글 내용
+	private String content;		// 게시글 내용
 	private String hash;		// 해시태그
 	private int view_cnt;		// 조회수
 	private int scrap_cnt;		// 스크랩 수
@@ -30,7 +30,7 @@ public class post {
 	
 	public post() {}
 	
-	public post(int num, String id, String cate, String nick, Date time, String title, String context, String hash) {
+	public post(int num, String id, String cate, String nick, Date time, String title, String content, String hash) {
 		this.num = num;
 		this.id = id;
 		this.cate = cate;
@@ -38,7 +38,7 @@ public class post {
 		this.time = Calendar.getInstance();
 		this.time.setTime(time);
 		this.title = title;
-		this.context = context;
+		this.content = content;
 		this.hash = hash;
 	}
 
@@ -119,12 +119,12 @@ public class post {
 		return String.format("%d %s(%s)", num, title, nick);
 	}
 
-	public void setContext(String context) {
-		this.context = context;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
-	public String getContext() {
-		return context;
+	public String getContent() {
+		return content;
 	}
 
 	public int getLike_cnt() {
@@ -140,8 +140,8 @@ public class post {
 	 * @author gagip
 	 * @return
 	 */
-	public String getSummaryContext() {
-		String ctxt = context;
+	public String getSummaryContent() {
+		String ctxt = content;
 		boolean hasThumb = ctxt.contains("<img");	// 썸네일 여부
 		
 		// 태그 제거 정규표현식
@@ -171,7 +171,7 @@ public class post {
 	 * @return
 	 */
 	public String getThumbnail() {
-		String ctxt = context;
+		String ctxt = content;
 		String thumbnailTag = null;
 		Pattern patten = Pattern.compile("<img((\\s)*[\\w\\d-]*(=\"[\\w\\d/.-]+\")*)*>");
 		Matcher matcher = patten.matcher(ctxt);

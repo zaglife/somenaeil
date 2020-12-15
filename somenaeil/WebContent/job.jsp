@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,8 @@
 <jsp:include page="css.jsp" />
 
 <script>
-<c:choose>
-<c:forEach var="data" items="${list.getContent() }">
+<c:if test="${list != null }">
+<c:forEach var="data" items="${list.getCont() }">
 
 $(document).ready(function(){
 	$(".job_click${data.getNum() }").click(function(){
@@ -29,7 +30,7 @@ $(document).ready(function(){
 });
 
 </c:forEach>
-</c:choose>
+</c:if>
 </script>
 
 </head>
@@ -47,7 +48,7 @@ $(document).ready(function(){
   
     <c:choose>
       <c:when test="${list.hasPage() }">
-      <c:forEach var="data" items="${list.getContent() }">
+      <c:forEach var="data" items="${list.getCont() }">
       
       <div class="job_article">
         <a class="job_com job_click${data.getNum() }">${data.getCom() }</a>
@@ -93,7 +94,7 @@ $(document).ready(function(){
 <%-- popup start --%>
 <c:choose>
 <c:when test="${list.hasPage() }">
-<c:forEach var="data" items="${list.getContent() }">
+<c:forEach var="data" items="${list.getCont() }">
 
 <div id="job_click_pop${data.getNum() }" class="job_click job_click_hide">
   <div id="job_click_close${data.getNum() }" class="job_click_close"></div>
@@ -109,7 +110,7 @@ $(document).ready(function(){
     </div>
             
     <div id="job_click_body">
-      ${data.getContent() }
+      ${data.getCont() }
     </div>
     
     <div id="job_click_bottom">

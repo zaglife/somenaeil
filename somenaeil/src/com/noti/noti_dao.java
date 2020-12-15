@@ -44,6 +44,8 @@ public class noti_dao {
 		String sql = "INSERT INTO noti_"+toId+"(num, other_id, noti_type, time) "
 					+ "VALUES(?,?,?,sysdate)";
 		
+		
+		
 		// 자기자신한테 알람 X
 		if (fromId.equals(toId)) return;
 		
@@ -63,6 +65,7 @@ public class noti_dao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <insertNoti 1> 실패");
 		}
 		
 		close(pstmt);
@@ -101,6 +104,7 @@ public class noti_dao {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <insertNoti 2> 실패");
 		}
 		
 		close(pstmt);
@@ -136,6 +140,7 @@ public class noti_dao {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <selectNotiList> 실패");
 		}
 		
 		close(rs);
@@ -163,6 +168,7 @@ public class noti_dao {
 				commit(conn);
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <updateNoti> 실패");
 		}
 		
 		close(pstmt);
@@ -179,8 +185,8 @@ public class noti_dao {
 	private boolean checkDuplicate(String id, String otherId, int type) {
 		String sql = "SELECT * FROM "
 					+ "		(SELECT other_id, noti_type, post_num FROM noti_"+id
-					+ "		GROUP BY other_id, noti_type, post_num ) p"
-					+ "WHERE p.other_id=? AND p.noti_type=?";
+					+ "		GROUP BY other_id, noti_type, post_num ) "
+					+ "WHERE other_id=? AND noti_type=?";
 		
 		// 양쪽 id 값이 존재해야 한다
 		if (id == null || otherId == null) return false;
@@ -197,9 +203,9 @@ public class noti_dao {
 			if (rs.next())
 				check = true;
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <checkDuplicate 1> 실패");
 		}
 		
 		close(rs);
@@ -238,9 +244,9 @@ public class noti_dao {
 			if (rs.next())
 				check = true;
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("noti_dao - <checkDuplicate 2> 실패");
 		}
 		
 		close(rs);

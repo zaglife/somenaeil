@@ -18,9 +18,9 @@
 
 <jsp:include page="top.jsp" />
 
-<form id="form" method="post" action="write.post?part=writer" onsubmit="return false" enctype="multipart/form-data">
+<form id="form" method="post" action="write.post?part=writer" onsubmit="return false">
+<input id="content" type="hidden" name="content" value="none">
 
-<input id="context" type="hidden" name="context" value="s">
 <div id="post_wrap">
   
   <!-- 타이틀 시작  -->
@@ -59,10 +59,10 @@
   <div id="post_mid">
     <div id="post_mid_top">
   	  <div class="post_tcate_part">
-  	    <div class="post_tcate"><button id="post_bold" class="post_func_btn" onclick="document.execCommand('bold')"><img src="img/post_b_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_italic" class="post_func_btn"onclick="document.execCommand('italic')"><img src="img/post_i_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_underline" type="button" class="post_func_btn"onclick="document.execCommand('underline')"><img src="img/post_u_20.png"></button></div>
-  	    <div class="post_tcate"><button id="post_strike" type="button" class="post_func_btn"onclick="document.execCommand('strikeThrough')"><img src="img/post_s_20.png"></button></div>
+  	    <div class="post_tcate"><button id="bold" class="post_func_btn" onclick="document.execCommand('bold')"><img src="img/post_b_20.png"></button></div>
+  	    <div class="post_tcate"><button id="italic" class="post_func_btn"onclick="document.execCommand('italic')"><img src="img/post_i_20.png"></button></div>
+  	    <div class="post_tcate"><button id="underline" type="button" class="post_func_btn"onclick="document.execCommand('underline')"><img src="img/post_u_20.png"></button></div>
+  	    <div class="post_tcate"><button id="trike" type="button" class="post_func_btn"onclick="document.execCommand('strikeThrough')"><img src="img/post_s_20.png"></button></div>
   	    <div class="post_tcate post_color_space"><button id="post_color" type="button" class="post_func_btn" onclick="document.execCommand('color')"><img src="img/post_c_20.png"></button></div>
   	    <div id="post_color_picker">
   	      <input type="color" name="color" id="foreColor">

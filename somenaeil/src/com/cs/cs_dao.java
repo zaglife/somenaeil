@@ -16,7 +16,7 @@ public class cs_dao {
 	
 	public cs_dao() {
 		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("cs_dao - cs DB 커넥션 실패");
@@ -24,7 +24,7 @@ public class cs_dao {
 	}
 	
 	public void cs_insert(String title, String cont) {
-		String sql= "insert into cs(num, title, content) ";
+		String sql= "insert into cs(num, title, cont) ";
 		sql+= "values(?, ?, ?)";
 		
 		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
@@ -51,7 +51,7 @@ public class cs_dao {
 			while(rs.next()) {
 				cs temp= new cs(	rs.getInt("num"),
 									rs.getString("title"),
-									rs.getString("content"),
+									rs.getString("cont"),
 									rs.getDate("time"));
 				data.add(temp);
 			}
@@ -88,7 +88,7 @@ public class cs_dao {
 			while(rs.next()) {
 				cs temp= new cs(	rs.getInt("num"),
 									rs.getString("title"),
-									rs.getString("content"),
+									rs.getString("cont"),
 									rs.getDate("time"));
 				data.add(temp);
 			}

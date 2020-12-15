@@ -91,7 +91,7 @@ $(document).ready(function(){
     </div>
             
     <div id="job_click_body">
-      ${slide.getContent() }
+      ${slide.getCont() }
     </div>
     
     <div id="job_click_bottom">

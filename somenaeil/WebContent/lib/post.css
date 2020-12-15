@@ -130,6 +130,8 @@
 .article_content {
 	margin-top: 10px;
 	margin-left: 160px;
+	font-size: 14px;
+	line-height: 24px;
 }
 .article_content p {
 	margin: 10px auto;
@@ -144,6 +146,7 @@
 .article_hashTag {
 	height: 30px;
 	line-height: 30px;
+	margin-top: 30px;
 }
 .hash {
 	color: #7899ec !important; 
@@ -166,11 +169,11 @@
 	text-align: center;
 }
 
-.comment_context {
+.comment_content {
 	width: 680px;
 }
 
-.comment_id, .comment_context {
+.comment_id, .comment_content {
 	float: left;
 	margin: 8px auto;	
 }
@@ -198,7 +201,7 @@
 	line-height: 35px;	
 }
 
-input.comment_context {
+input.comment_content {
 	border: 2px solid #333;
 	border-radius: 20px;
   

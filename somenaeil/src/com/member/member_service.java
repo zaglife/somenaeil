@@ -47,7 +47,7 @@ public class member_service {
 		String pimg= null;
 		String comt= null;
 //		String path = request.getServletContext().getRealPath("/pimg");
-		String path="C:\\Users\\sbk06\\eclipse-workspace\\somenaeil\\somenaeil\\WebContent\\pimg";
+		String path="C:/Users/sbk06/eclipse-workspace/somenaeil/somenaeil/WebContent/pimg";
 
 
 		int size= 10 * 1024 * 1024;
@@ -80,8 +80,9 @@ public class member_service {
 			System.out.println("member_service - 회원가입시 프로필 이미지 업로드 실패");
 		}
 		
+		pimg= filename;
+
 		if(pimg != null) {
-			// 회원가입시 프사 이미지명 변경 > "pimg_userid.jpg"
 		    pimg= pimg_change(filename, id, path);
 		}
 		
@@ -93,7 +94,6 @@ public class member_service {
 	
 	
 	public String pimg_change(String filename, String id, String path) {
-		
 		int pos = filename.lastIndexOf( "." );
 		String enc = filename.substring( pos + 1 );
 

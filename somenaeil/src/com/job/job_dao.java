@@ -15,7 +15,7 @@ public class job_dao {
 	
 	public job_dao() {
 		try {
-			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn=DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("job_dao - job DB 커넥션 실패");
@@ -27,7 +27,7 @@ public class job_dao {
 							String com,
 							String end,
 							String link) {
-		String sql= "insert into job(num, com, end, title, content, link) ";
+		String sql= "insert into job(num, com, end, title, cont, link) ";
 		sql+= "values(?, ?, ?, ?, ?, ?)";
 		
 		try(PreparedStatement ptmt= conn.prepareStatement(sql)) {
@@ -59,7 +59,7 @@ public class job_dao {
 									rs.getString("com"),
 									rs.getString("end"),
 									rs.getString("title"),
-									rs.getString("content"),
+									rs.getString("cont"),
 									rs.getString("link"),
 									rs.getDate("time"));
 				data.add(temp);
@@ -99,7 +99,7 @@ public class job_dao {
 									rs.getString("com"),
 									rs.getString("end"),
 									rs.getString("title"),
-									rs.getString("content"),
+									rs.getString("cont"),
 									rs.getString("link"),
 									rs.getDate("time"));
 				data.add(temp);

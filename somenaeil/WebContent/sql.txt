@@ -44,15 +44,15 @@ com varchar2(100) not null,
 end varchar2(100) not null,
 title varchar2(200) not null,
 content varchar2(4000) not null,
-time date default sysdate,
-link varchar2(400) not null
+link varchar2(400) not null,
+time date default sysdate
 );
 
 /********* 고객센터 cs *********/
 create table cs(
 num number(4) not null primary key,
 title varchar2(200) not null,
-context varchar2(4000) not null,
+cont varchar2(4000) not null,
 time date default sysdate
 );
 

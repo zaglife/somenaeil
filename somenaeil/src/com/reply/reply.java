@@ -13,8 +13,8 @@ public class reply {
 	private String nick;		// 댓글 작성자 닉네임
 	private Date time;			// 댓글 작성 날짜
 	private int parent;			// 부모 댓글 번호
-	private String context;		// 댓글 내용
-	private int level;			// 댓글 깊이
+	private String content;		// 댓글 내용
+	private int lvl;			// 댓글 깊이
 	
 	public reply() {}
 	
@@ -30,23 +30,17 @@ public class reply {
 	public void setPost_num(int post_num) {
 		this.post_num = post_num;
 	}
-	public int getParent() {
-		return parent;
+	public String getId() {
+		return id;
 	}
-	public void setParent(int parent) {
-		this.parent = parent;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getContext() {
-		return context;
+	public String getNick() {
+		return nick;
 	}
-	public void setContext(String context) {
-		this.context = context;
-	}
-	public int getLevel() {
-		return level;
-	}
-	public void setLevel(int level) {
-		this.level = level;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 	public Date getTime() {
 		return time;
@@ -54,19 +48,22 @@ public class reply {
 	public void setTime(Date time) {
 		this.time = time;
 	}
-	public String getId() {
-		return id;
+	public int getParent() {
+		return parent;
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public void setParent(int parent) {
+		this.parent = parent;
 	}
-
-	public String getNick() {
-		return nick;
+	public String getContent() {
+		return content;
 	}
-
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public int getLvl() {
+		return lvl;
+	}
+	public void setLvl(int lvl) {
+		this.lvl = lvl;
 	}
 }

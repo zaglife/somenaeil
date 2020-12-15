@@ -50,6 +50,7 @@
 #info_job_cont{
 	float: left;
 	position: relative;
+	width: 100%;
 }
 
 #info_job_cont div {

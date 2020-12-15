@@ -117,7 +117,7 @@ function login_alert() {
 
 <div id="user_post_cate_wrap">
   <div id="user_post_cate_center">
-    <a href="user.jsp">A전체</a>
+    <a href="user.do?part=user&userId=${user.id}">A전체</a>
     <a href="user.do?part=user&userId=${user.id}&cate=G">G일반</a>
     <a href="user.do?part=user&userId=${user.id}&cate=R">R리뷰</a>
     <a href="user.do?part=user&userId=${user.id}&cate=Q">Q질문</a>
@@ -214,23 +214,18 @@ function login_alert() {
     <div id="user_popup_close"><img src="img/btn_close_20.png" onclick="userFollowerPop()"></div>
     
     <div id="user_popup_scroll">
-
       <p class="none_fl">팔로워가 없습니다.</p>
-      
     </div>
     
   </div>
 </div>
 </c:if>
-<!-- 유저 팔로워 리스트 "user_follower.jsp" end -->
 
 <jsp:include page="top.jsp" />
 <jsp:include page="bottom.jsp" />
 <jsp:include page="totop.jsp" />
 <jsp:include page="nav.jsp" />
 
-
-<script src="lib/js/user.js"> </script>
 </body>
 </html>
 

@@ -22,7 +22,7 @@ public class DBUtil {
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
-			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
 			System.out.println("member_dao - member DB 커넥션 실패");

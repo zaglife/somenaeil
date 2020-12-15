@@ -1,6 +1,8 @@
 window.onload = function() {
-	  document.getElementById("login_id").focus();
-	};
+	if(document.getElementById("login_id")) {
+		document.getElementById("login_id").focus();	
+	}
+};
 
 function loginCheck() {
 	if($("#login_id").val() == null || $("#login_id").val() == "") {

@@ -53,7 +53,7 @@
     <!-- post_content start -->
     <div class="post_content">
       <a href="read.post?part=postDetail&pageNum=${post.num}">
-				<p>${post.getSummaryContext()}</p>
+				<p>${post.getSummaryContent()}</p>
       </a>
     </div>
     <!-- post_content end -->

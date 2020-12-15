@@ -7,7 +7,7 @@ public class job {
 	private String com;
 	private String end;
 	private String title;
-	private String content;
+	private String cont;
 	private String link;
 	private Date time;
 	
@@ -16,14 +16,14 @@ public class job {
 				String com,
 				String end,
 				String title,
-				String content,
+				String cont,
 				String link,
 				Date time) {
 		this.num= num;
 		this.com= com;
 		this.end= end;
 		this.title= title;
-		this.content= content;
+		this.cont= cont;
 		this.link= link;
 		this.time= time;
 	}
@@ -52,11 +52,11 @@ public class job {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	public String getCont() {
+		return cont;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setCont(String cont) {
+		this.cont = cont;
 	}
 	public String getLink() {
 		return link;

@@ -29,10 +29,10 @@ public class post_dao {
 	
 	public post_dao() {
 		try {
-			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:somenaeil");
+			conn = DriverManager.getConnection("jdbc:apache:commons:dbcp:some");
 		} catch(SQLException e){
 			e.printStackTrace();
-			System.out.println("member_dao - member DB 커넥션 실패");
+			System.out.println("post_dao - post DB 커넥션 실패");
 		}
 	}
 
@@ -78,11 +78,11 @@ public class post_dao {
 				pt.setCate(rs.getString("cate"));
 				pt.setTime(rs.getDate("time"));
 				pt.setTitle(rs.getString("title"));
-				pt.setContext(rs.getString("context"));
+				pt.setContent(rs.getString("content"));
 				pt.setHash(rs.getString("hash"));
-				pt.setLike_cnt(rs.getInt("like_cnt"));
-				pt.setScrap_cnt(rs.getInt("scrap_cnt"));
 				pt.setView_cnt(rs.getInt("view_cnt"));
+				pt.setScrap_cnt(rs.getInt("scrap_cnt"));
+				pt.setLike_cnt(rs.getInt("like_cnt"));
 			}
 			
 		}
@@ -122,7 +122,7 @@ public class post_dao {
 				post.setCate(rs.getString("cate"));
 				post.setTime(rs.getDate("time"));
 				post.setTitle(rs.getString("title"));
-				post.setContext(rs.getString("context"));
+				post.setContent(rs.getString("content"));
 				post.setHash(rs.getString("hash"));
 				post.setLike_cnt(rs.getInt("like_cnt"));
 				post.setScrap_cnt(rs.getInt("scrap_cnt"));
@@ -169,7 +169,7 @@ public class post_dao {
 						+ "		(SELECT * FROM post "
 						+ "			WHERE cate LIKE ? "
 						+ "			AND (title LIKE ? "
-						+ "				OR context LIKE ? "
+						+ "				OR content LIKE ? "
 						+ "				OR hash LIKE ?)"			
 						+ "			ORDER BY num DESC) data ";		// 검색에 만족하는 데이터를 data라고 하자
 				
@@ -190,7 +190,7 @@ public class post_dao {
 				post.setCate(rs.getString("cate"));
 				post.setTime(rs.getDate("time"));
 				post.setTitle(rs.getString("title"));
-				post.setContext(rs.getString("context"));
+				post.setContent(rs.getString("content"));
 				post.setHash(rs.getString("hash"));
 				post.setLike_cnt(rs.getInt("like_cnt"));
 				post.setScrap_cnt(rs.getInt("scrap_cnt"));
@@ -209,28 +209,33 @@ public class post_dao {
 	
 	
 	// post DB에 연결 작업
-	public void add(String writer, String title, String cate, String content, String hash, String filename, String id, int vote) {
-		String sql = "insert into post(num, cate, nick, view_cnt, scrap_cnt, time, hash, title, context, like_cnt, img, id, vote) values(?,?,?,?,?,sysdate,?,?,?,?,?,?,?)";
+	public void add(	String id,
+						String nick,
+						String cate,
+						String title,
+						String content,
+						String hash) {
+		String sql = "insert into post(";
+		sql+= "num, id, nick, cate, title, content, hash, ";
+		sql+= "view_cnt, scrap_cnt, like_cnt) ";
+		sql+= "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try(PreparedStatement pt = conn.prepareStatement(sql)){
-			pt.setInt(1, mytag.db_lib.get_num("post", conn));
-			pt.setString(2, cate);
-			pt.setString(3, writer);
-			pt.setInt(4, 0);
-			pt.setInt(5, 0);			
-			pt.setString(6,hash);
-			pt.setString(7,title);
-			pt.setString(8,content);
-			pt.setInt(9,0);
-			pt.setString(10,filename);
-			pt.setString(11, id);
-			pt.setInt(12, vote);
+			pt.setInt(1, getNum("post", conn));
+			pt.setString(2, id);
+			pt.setString(3, nick);
+			pt.setString(4, cate);
+			pt.setString(5, title);
+			pt.setString(6, content);
+			pt.setString(7, hash);
+			pt.setInt(8, 0);
+			pt.setInt(9, 0);
+			pt.setInt(10, 0);
 			pt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println("글쓰기 DB저장 오류");
 		}
-		
 	}
 	
 	
@@ -240,8 +245,7 @@ public class post_dao {
 	 * @param postNum 게시글번호
 	 * @return
 	 */
-    public boolean updateViewCount(int postNum)
-    {
+    public boolean updateViewCount(int postNum) {
     	String sql = "UPDATE post SET view_cnt=view_cnt+1 "
     				+ "WHERE num=?";
     	
@@ -279,8 +283,7 @@ public class post_dao {
      * @param postNum
      * @return
      */
-    public boolean updateLikeCount(int postNum)
-    {
+    public boolean updateLikeCount(int postNum) {
     	String sql = "UPDATE post SET like_cnt=like_cnt+1 "
     				+ "WHERE num=?";
     	
@@ -318,8 +321,7 @@ public class post_dao {
      * @param postNum
      * @return
      */
-    public boolean updateScrapCount(int postNum)
-    {
+    public boolean updateScrapCount(int postNum) {
     	String sql = "UPDATE post SET scrap_cnt=scrap_cnt+1 "
     				+ "WHERE num=?";
     	
